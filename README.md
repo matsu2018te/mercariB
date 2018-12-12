@@ -21,8 +21,8 @@
 |sns_credentials_id|references|foreign_key|
 
 ### Association
-- has_many :buyer_product, class_name: 'Product', :foreign_key => 'buyer_id'
-- has_many :seller_product, class_name: 'Product', :foreign_key => 'seller_id'
+- has_many :buyer_products, class_name: 'Product', :foreign_key => 'buyer_id'
+- has_many :seller_products, class_name: 'Product', :foreign_key => 'seller_id'
 - has_many :user_evalutions
 - has_many :evalutions, through: :user_evalutions
 - has_many :credits
@@ -38,8 +38,8 @@
 |evaluation_id|references|foreign_key|
 
 ### Association
-- belongs_to :user
-- belongs_to :evaluation
+- has_many :user
+- has_many :evaluation
 
 
 ## evalution
@@ -82,6 +82,7 @@
 |prefecture|string|null: false|
 |municipality|string|null: false|
 |address_number|integer|null: false|
+|building_name|string||
 |user_id|references|foreign_key|
 
 ### Association
@@ -114,8 +115,8 @@
 |product_state|string|null: false|
 |delivery_fee_owner|string|null: false|
 |area_id|references|foreign_key|
-|dalivery_date|datatime|null: false|
-|status_id|references|foreign_key|
+|delivery_date|datatime|null: false|
+|sell_status_id|references|foreign_key|
 |shipping_method|string|null: false|
 
 ### Association
@@ -123,7 +124,7 @@
 - belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id'
 - belongs_to :category
 - belongs_to :brand
-- belongs_to :size
+- belongs_to :size_status
 - belongs_to :area
 - belongs_to :sell_status
 - has_many   :product_images
@@ -142,11 +143,12 @@
 ## category
 |Column|Type|Options|
 |------|----|-------|
-|product_id|references|foreign_key|
-|product_image|string||
+|category_name|string|null: false|
+|parent_id|references|foreign_key class_name: Category|
 
 ### Association
-- belongs_to :product
+- has_many   :products
+- belongs_to :parent, class_name: 'Category', :foreign_key => 'parent_id'
 
 
 ## brand
@@ -155,7 +157,7 @@
 |name|string|null: false|
 
 ### Association
-- belongs_to :product
+- has_many :product
 
 
 ## area
@@ -164,7 +166,7 @@
 |prefectures|string|null: false|
 
 ### Association
-- belongs_to :product
+- has_many :product
 
 
 ## sell_status
@@ -173,7 +175,7 @@
 |status|string|null: false|
 
 ### Association
-- belongs_to :product
+- has_many :product
 
 
 ## size_status
@@ -182,4 +184,4 @@
 |size|integer|null: false|
 
 ### Association
-- belongs_to :product
+- has_many :product
