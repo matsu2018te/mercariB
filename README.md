@@ -17,17 +17,17 @@
 |icon_picture|string||
 |profile|text||
 |background_image|string||
-|credit_id|references|foreign_key: true|
 |point|integer||
 |sns_credentials_id|references|foreign_key|
 
 ### Association
-- has_many :buyer_product, class_name: 'Transaction', :foreign_key => 'buyer_id'
-- has_many :seller_product, class_name: 'Transaction', :foreign_key => 'seller_id'
+- has_many :buyer_product, class_name: 'Product', :foreign_key => 'buyer_id'
+- has_many :seller_product, class_name: 'Product', :foreign_key => 'seller_id'
 - has_many :user_evalutions
 - has_many :evalutions, through: :user_evalutions
 - has_many :credits
 - has_one  :address
+- has_many :sns_credentials
 
 
 ## user_evalution
@@ -42,16 +42,25 @@
 - belongs_to :evaluation
 
 
-## user_product
-
+## evalution
 |Column|Type|Options|
 |------|----|-------|
+|value|string|null: false|
+
+### Association
+- has_many :user_evalutions
+- has_many :users, through: :user_evalutions
+
+
+## sns_credential
+|Column|Type|Options|
+|------|----|-------|
+|uid|string|null: false|
+|provider|string|null: false|
 |user_id|references|foreign_key|
-|product_id|references|foreign_key|
 
 ### Association
 - belongs_to :user
-- belongs_to :product
 
 
 ## credit
@@ -77,16 +86,6 @@
 
 ### Association
 - belongs_to :user
-
-
-## evalution
-|Column|Type|Options|
-|------|----|-------|
-|value|string|null: false|
-
-### Association
-- has_many :user_evalutions
-- has_many :users, through: :user_evalutions
 
 
 ## comment
