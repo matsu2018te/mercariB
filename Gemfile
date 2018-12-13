@@ -43,6 +43,11 @@ group :development, :test do
   gem 'pry-doc'
   gem 'rspec-rails'
   gem 'factory_girl_rails', "~> 4.4.1"
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
@@ -65,3 +70,7 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 # Devise
 gem 'devise'
+group :production do
+  #Unicorn
+  gem 'unicorn'
+end
