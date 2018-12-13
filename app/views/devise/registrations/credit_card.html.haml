@@ -1,0 +1,23 @@
+.single-container
+  %header.single-header
+    %h1
+      = link_to do
+        = image_tag("logo.svg", alt:"mercari")
+
+  %main.single-main
+    .signup-panel
+      %h2.signup-panel__head 会員情報入力
+      = form_for "" do |f|
+        .form-group
+          = f.label :card_number, "カード番号"
+          = f.text_field :card_number, autofocus: true
+        .form-group
+          = f.label :expiration_date, "有効期限"
+          = f.number_field :expiration_date, autofocus: true, min: "1", max: "12"
+          = f.number_field :expiration_date, autofocus: true, min: "1", max: "31"
+        .form-group
+          = f.label :security_code, "セキュリティコード"
+          = f.text_field :security_code, autofocus: true
+        = f.submit "次へ進む", class: "btn btn__red"
+
+  = render "devise/shared/footer"
