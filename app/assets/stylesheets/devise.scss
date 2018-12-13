@@ -33,25 +33,25 @@
       .login-form-inner {
         padding:24px 0;
       }
-      form {
-        .form-group {
-          margin-bottom: 24px;
-          input {
-            box-sizing: border-box;
-            font-size:16px;
-            height: 48px;
-            padding:8px 10px;
-            width:100%;
-          }
-          .g-recaptcha {
-            width:100%;
-          }
-        }
-      }
     }
     a {
       color: #0099e8;
       text-decoration:none;
+    }
+    .signup-panel {
+      background-color:white;
+      max-width: 456px;
+      margin:0 auto;
+      padding: 0 40px;
+      &__head {
+        border-bottom:1px solid #EEEEEE;
+        margin: 0;
+        padding:24px 8px;
+        text-align:center;
+      }
+      &__inner {
+        padding:64px 0;
+      }
     }
   }
 
@@ -101,6 +101,16 @@
   &__red {
     background-color:red;
   }
+  &__mail {
+    background-color:#EEEEEE;
+    color:black;
+    margin-bottom:16px;
+    position:relative;
+    i {
+      position: absolute;
+      left:16px;
+    }
+  }
   &__sns {
     position:relative;
     i {
@@ -113,6 +123,22 @@
     &--google{
       background-color:#DC4E41;
       margin-top: 16px;
+    }
+  }
+}
+
+form {
+  .form-group {
+    margin-bottom: 24px;
+    input {
+      box-sizing: border-box;
+      font-size:16px;
+      height: 48px;
+      padding:8px 10px;
+      width:100%;
+    }
+    .g-recaptcha {
+      width:100%;
     }
   }
 }
