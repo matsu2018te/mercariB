@@ -1,0 +1,17 @@
+.single-container
+  %header.single-header
+    %h1
+      = link_to do
+        = image_tag("logo.svg", alt:"mercari")
+
+  %main.single-main
+    .signup-panel
+      %h2.signup-panel__head 会員登録完了
+      %p
+        ありがとうございます。
+        %br
+        会員登録が完了しました。
+      %button.btn.btn__red
+        メルカリをはじめる
+
+  = render "devise/shared/footer"
