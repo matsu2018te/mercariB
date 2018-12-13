@@ -7,5 +7,4 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true, length: { minimum: 6 }, confirmation: true
-  validates :telephone, presence: true
 end
