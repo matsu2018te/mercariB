@@ -1,0 +1,39 @@
+.single-container
+  %header.single-header
+    %h1
+      = link_to do
+        = image_tag("logo.svg", alt:"mercari")
+
+  %main.single-main
+    .signup-panel
+      %h2.signup-panel__head 電話番号の確認
+      = form_for "" do |f|
+        .form-group
+          = f.label [:fist_name, :last_name], "お名前"
+          %span 必須
+          = f.text_field :fist_name, autofocus: true, placeholder: "例)山田"
+          = f.text_field :last_name, autofocus: true, placeholder: "例)彩"
+        .form-group
+          = f.label [:fist_name_phonetic, :last_name_phonetic], "お名前カナ"
+          = f.text_field :fist_name_phonetic, autofocus: true, placeholder: "例)ヤマダ"
+          = f.text_field :last_name_phonetic, autofocus: true, placeholder: "例)アヤ"
+        .form-group
+          = f.label [:postal_code], "郵便番号"
+          = f.text_field :postal_code, autofocus: true, placeholder: "例)123-4567"
+        .form-group
+          = f.label [:prefecture], "都道府県"
+          = f.text_field :prefecture, autofocus: true, placeholder: "例)北海道"
+        .form-group
+          = f.label [:municipality], "市区町村"
+          = f.text_field :municipality, autofocus: true, placeholder: "例)横浜市緑区"
+        .form-group
+          = f.label [:address_number], "番地"
+          = f.text_field :address_number, autofocus: true, placeholder: "例)青山1-1-1"
+        .form-group
+          = f.label [:building_name], "建物名"
+          = f.text_field :building_name, autofocus: true, placeholder: "例)柳ビル103"
+        .form-group
+          = f.label [:telephone], "建物名"
+          = f.text_field :telephone, autofocus: true, placeholder: "例)09012345678"
+        = f.submit "次へ進む", class: "btn btn__red"
+  = render "devise/shared/footer"
