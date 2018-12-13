@@ -41,8 +41,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails', "~> 4.4.1"
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
@@ -69,7 +67,6 @@ gem 'erb2haml'
 # Fontawesome-rails
 gem 'font-awesome-rails'
 # Devise
-gem 'devise'
 group :production do
   #Unicorn
   gem 'unicorn'
