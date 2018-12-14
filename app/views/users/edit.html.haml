@@ -1,1 +1,19 @@
 / mypage/profile
+<<<<<<< HEAD
+=======
+.profile
+  = form_for(@user) do |f|
+    %h4.profile__title プロフィール
+    .profile__box.clearfix
+      .profile__box-name.clearfix
+        .field-image
+          %img{src: "/assets/icon.jpg", alt: "", class:"image"}/
+        .field-name-input
+          = f.text_field :name, class:"name-input", autofocus: true, placeholder:"例) メルカリ太郎"
+    .profile__intro-box
+      = f.text_area :name, class:"text-input", autofocus: true, placeholder: "例) こんにちは、メルカリ大好きメルカリ太郎です。趣味はハンドメイドです！出品はハンドメイド作品メインです！ぜひ気に入った方はご購入ください"
+      .actions
+        = f.submit "変更する", class: 'btn-red'
+
+
+>>>>>>> master
