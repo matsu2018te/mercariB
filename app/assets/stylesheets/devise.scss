@@ -2,6 +2,7 @@
   background-color: #F5F5F5;
 
   .single-header {
+    text-align: center;
     h1 {
       margin: 12px;
       text-align:center;
@@ -87,6 +88,62 @@
       text-align:center;
     }
   }
+  .signup-bar {
+    .progress-bar {
+      list-style-type:none;
+      text-align:center;
+      li {
+        display:inline-block;
+        min-width: 60px;
+        .circle {
+          position:relative;
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          background: #ccc;
+          border-radius: 50px;
+          &:after , &:before{
+            content: '';
+            border-top:solid 1px #ccc;
+            position:absolute;
+            bottom: 5px;
+            width:60px;
+          }
+          &:before {
+            right: 50%;
+          }
+          &:after {
+            left: 50%;
+          }
+          &--first {
+            @extend .circle;
+            &:before {
+              border:none;
+            }
+          }
+          &--last {
+            @extend .circle;
+            &:after {
+              border:none;
+            }
+          }
+          &--red {
+            @extend .circle;
+            background-color:red;
+            &:before {
+              border-color: red;
+            }
+          }
+          &--through {
+            &:after{
+              border-color:red;
+              left: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .btn {
@@ -137,6 +194,9 @@ form {
       padding:8px 10px;
       width:100%;
     }
+    input.number_field {
+      width:25%;
+    }
     .g-recaptcha {
       width:100%;
     }
@@ -148,5 +208,27 @@ form {
   color:white;
   margin-right: 10px;
   padding:2px 3px;
-  // font-weight: bold;
+}
+
+
+@media screen and (min-width: 768px) {
+  .single-container {
+    .single-header {
+      h1 {
+        display: inline-block;
+        img {
+          width: 185px;
+          height: 49px;
+          text-align:top;
+        }
+      }
+      .signup-bar {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+    .single-footer nav ul li{
+      display:inline-block;
+    }
+  }
 }

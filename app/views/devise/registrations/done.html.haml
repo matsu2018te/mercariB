@@ -3,6 +3,28 @@
     %h1
       = link_to do
         = image_tag("logo.svg", alt:"mercari")
+    %nav.signup-bar
+      %ul.progress-bar
+        %li
+          会員情報
+          %br
+          .circle--first.circle--red.circle--through
+        %li
+          電話番号認証
+          %br
+          .circle.circle--red.circle--through
+        %li
+          住所入力
+          %br
+          .circle.circle--red.circle--through
+        %li
+          支払い方法
+          %br
+          .circle.circle--red.circle--through
+        %li
+          完了
+          %br
+          .circle--last.circle--red.circle--through
 
   %main.single-main
     .signup-panel

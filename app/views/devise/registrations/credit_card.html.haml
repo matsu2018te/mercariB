@@ -3,6 +3,28 @@
     %h1
       = link_to do
         = image_tag("logo.svg", alt:"mercari")
+    %nav.signup-bar
+      %ul.progress-bar
+        %li
+          会員情報
+          %br
+          .circle--first.circle--red.circle--through
+        %li
+          電話番号認証
+          %br
+          .circle.circle--red.circle--through
+        %li
+          住所入力
+          %br
+          .circle.circle--red.circle--through
+        %li
+          支払い方法
+          %br
+          .circle.circle--red
+        %li
+          完了
+          %br
+          .circle--last
 
   %main.single-main
     .signup-panel
@@ -10,14 +32,21 @@
       = form_for "" do |f|
         .form-group
           = f.label :card_number, "カード番号"
+          %span.form-require 必須
           = f.text_field :card_number, autofocus: true
         .form-group
           = f.label :expiration_date, "有効期限"
-          = f.number_field :expiration_date, autofocus: true, min: "1", max: "12"
-          = f.number_field :expiration_date, autofocus: true, min: "1", max: "31"
+          %span.form-require 必須
+          %br
+          = f.number_field :expiration_date, min: "1", max: "12", class: "number_field"
+          月
+          %br
+          = f.number_field :expiration_date, min: "1", max: "31", class: "number_field"
+          年
         .form-group
           = f.label :security_code, "セキュリティコード"
-          = f.text_field :security_code, autofocus: true
+          %span.form-require 必須
+          = f.text_field :security_code
         = f.submit "次へ進む", class: "btn btn__red"
 
   = render "devise/shared/footer"

@@ -3,6 +3,29 @@
     %h1
       = link_to do
         = image_tag("logo.svg", alt:"mercari")
+    %nav.signup-bar
+      %ul.progress-bar
+        %li
+          会員情報
+          %br
+          .circle--first.circle--red.circle--through
+        %li
+          電話番号認証
+          %br
+          .circle.circle--red
+        %li
+          住所入力
+          %br
+          .circle
+        %li
+          支払い方法
+          %br
+          .circle
+        %li
+          完了
+          %br
+          .circle--last
+
 
   %main.single-main
     .signup-panel
@@ -10,7 +33,7 @@
       = form_for "" do |f|
         .form-group
           = f.label :telephone, "携帯電話の番号"
-          = f.telephone_field :telephone, autofocus: true, autocomplete: "email", placeholder: "携帯電話の番号を入力"
+          = f.telephone_field :telephone, autofocus: true, placeholder: "携帯電話の番号を入力"
           %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
         = f.submit "smsを送信する", class: "btn btn__red"
         %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
