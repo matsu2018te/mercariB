@@ -74,22 +74,10 @@ gem 'haml-rails'
 gem 'erb2haml'
 # Fontawesome-rails
 gem 'font-awesome-rails'
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Devise
-gem 'devise'
-=======
-=======
-
 # Devise
 gem 'devise'
 
->>>>>>> matsu2018te/master
 group :production do
   #Unicorn
   gem 'unicorn'
 end
-<<<<<<< HEAD
->>>>>>> matsu2018te/master
-=======
->>>>>>> matsu2018te/master
