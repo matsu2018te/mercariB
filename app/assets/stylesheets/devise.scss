@@ -1,5 +1,5 @@
 .single-container {
-  background-color: #F5F5F5;
+  background-color: $Whitesmoke;
 
   .single-header {
     text-align: center;
@@ -18,13 +18,13 @@
     margin: 0 auto;
 
     .login-panel {
-      background-color:white;
+      background-color:$White;
       max-width: 456px;
       margin:0 auto;
       padding: 0 32px;
 
       .login-no-account {
-        border-bottom:1px solid #EEEEEE;
+        border-bottom:1px solid $ThinGray;
         padding:24px 0;
         text-align:center;
         p {
@@ -36,16 +36,16 @@
       }
     }
     a {
-      color: #0099e8;
+      color: $linkBlue;
       text-decoration:none;
     }
     .signup-panel {
-      background-color:white;
+      background-color:$White;
       max-width: 456px;
       margin:0 auto;
       padding: 0 40px;
       &__head {
-        border-bottom:1px solid #EEEEEE;
+        border-bottom:1px solid $ThinGray;
         margin: 0;
         padding:24px 8px;
         text-align:center;
@@ -67,7 +67,7 @@
         text-align:center;
         li {
           a {
-            color:black;
+            color:$Black;
             text-decoration: none;
           }
         }
@@ -100,11 +100,11 @@
           display: inline-block;
           width: 10px;
           height: 10px;
-          background: #ccc;
+          background: $Gray;
           border-radius: 50px;
           &:after , &:before{
             content: '';
-            border-top:solid 1px #ccc;
+            border-top:solid 1px $Gray;
             position:absolute;
             bottom: 5px;
             width:60px;
@@ -129,14 +129,14 @@
           }
           &--red {
             @extend .circle;
-            background-color:red;
+            background-color:$Red;
             &:before {
-              border-color: red;
+              border-color: $Red;
             }
           }
           &--through {
             &:after{
-              border-color:red;
+              border-color:$Red;
               left: 50%;
             }
           }
@@ -147,20 +147,20 @@
 }
 
 .btn {
-  color: white;
+  color: $White;
   font-size: 14px;
   line-height: 48px;
   text-align: center;
   width: 100%;
   &__blue {
-    background-color:#369AE8;
+    background-color:$ButtonBlue;
   }
   &__red {
-    background-color:red;
+    background-color:$Red;
   }
   &__mail {
-    background-color:#EEEEEE;
-    color:black;
+    background-color:$ThinGray;
+    color:$Black;
     margin-bottom:16px;
     position:relative;
     i {
@@ -175,10 +175,10 @@
       left:16px;
     }
     &--facebook{
-      background-color:#385185;
+      background-color:$Navy;
     }
     &--google{
-      background-color:#DC4E41;
+      background-color:$Rouge;
       margin-top: 16px;
     }
   }
@@ -204,8 +204,8 @@ form {
 }
 
 .form-require {
-  background-color:red;
-  color:white;
+  background-color:$Red;
+  color:$White;
   margin-right: 10px;
   padding:2px 3px;
 }
@@ -224,7 +224,7 @@ form {
       }
       .signup-bar {
         display: inline-block;
-        vertical-align: top;
+        vertical-align: middle;
       }
     }
     .single-footer nav ul li{
