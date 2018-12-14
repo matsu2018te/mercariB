@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = "aaa"
-
   end
 
   def update
