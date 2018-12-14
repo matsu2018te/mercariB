@@ -1,7 +1,5 @@
+@import "./valiable";
+@import "modules/user-profile";
 @import "./reset";
 @import "font-awesome";
-@import "config/color";
-@import "mixin/clearfix";
-@import "mixin/user-config";
-@import "modules/mypage";
-@import "modules/side_bar";
+@import "./devise";
