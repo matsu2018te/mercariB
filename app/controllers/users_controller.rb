@@ -12,11 +12,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-<<<<<<< HEAD
-=======
     @user = "aaa"
->>>>>>> master
-
   end
 
   def update
