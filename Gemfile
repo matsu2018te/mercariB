@@ -41,6 +41,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', "~> 4.4.1"
+
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
@@ -57,6 +60,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :production do
+  #Unicorn
+  gem 'unicorn'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails-i18n', '~> 5.1'
@@ -67,11 +75,21 @@ gem 'erb2haml'
 # Fontawesome-rails
 gem 'font-awesome-rails'
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Devise
 gem 'devise'
 =======
+=======
+
+# Devise
+gem 'devise'
+
+>>>>>>> matsu2018te/master
 group :production do
   #Unicorn
   gem 'unicorn'
 end
+<<<<<<< HEAD
+>>>>>>> matsu2018te/master
+=======
 >>>>>>> matsu2018te/master
