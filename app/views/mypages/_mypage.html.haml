@@ -1,0 +1,15 @@
+.mypage
+  .mypage_contents
+    .mypage_top
+      =link_to "" do
+        .mypage_top__backimage
+          %img{src: "/assets/member_photo_noimage_thumb.png",class: "mypage_top__profile_icon"}
+          .mypage_top__profile
+            = "名前が入るよ #{}"
+          .mypage_top__profile
+            = "評価 #{0}  出品数 #{0}"
+  = render 'mypages/notification'
+  / = render 'mypages/todo' やることリスト閲覧時に指定
+  = render 'mypages/purchase'
+  / = render 'mypages/purchased' 過去の取引閲覧時に指定
+

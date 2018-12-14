@@ -1,0 +1,18 @@
+.mypage__content-box
+  .mypage__content-head
+    %h3.mypage__content-label 購入した商品
+  .mypage__tabs
+    =link_to "",class: "mypage__tab" do
+      .mypage__tabs-list
+        %ul
+          %li.tab-active
+            %h4.mypage__tabs-text 取引中
+    =link_to "",class: "mypage__tab" do
+      .mypage__tabs-list
+        %ul
+          %li
+            %h4.mypage__tabs-text 過去の取引
+  .mypage__no-item
+    .mypage__no-item-icon
+    .mypage__no-item-text 取引中の商品はありません
+
