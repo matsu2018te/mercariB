@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
-
   def production?
     Rails.env.production?
   end
