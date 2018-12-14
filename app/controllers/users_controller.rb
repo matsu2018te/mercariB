@@ -12,8 +12,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # 仮置きで変数が無いとエラーが出てしまうため、残しております。
-    @user = "あああ"
 
   end
 
