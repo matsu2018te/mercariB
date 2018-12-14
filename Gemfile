@@ -41,12 +41,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
-<<<<<<< HEAD
-=======
   gem 'rspec-rails'
   gem 'factory_girl_rails', "~> 4.4.1"
 
->>>>>>> master
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
@@ -77,19 +74,10 @@ gem 'haml-rails'
 gem 'erb2haml'
 # Fontawesome-rails
 gem 'font-awesome-rails'
-<<<<<<< HEAD
 # Devise
 gem 'devise'
-<<<<<<< HEAD
-=======
-=======
 
->>>>>>> master
 group :production do
   #Unicorn
   gem 'unicorn'
 end
-<<<<<<< HEAD
->>>>>>> matsu2018te/master
-=======
->>>>>>> master
