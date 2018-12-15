@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get "/signup/done" => "devise/registrations#done"#完了画面
   end
 
+
+  root 'home#index'
   devise_for :users
   get 'mypage' => 'users#show'
   get 'mypage/profile' => 'users#edit'
