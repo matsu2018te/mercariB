@@ -1,6 +1,6 @@
 .sidebar_wrapper
   .sidebar
-    =link_to "",class: "sidebar__content active" do
+    =link_to mypage_path,class: "sidebar__content active" do
       %h4.sidebar__content-name マイページ
       %i.sidebar__content-angle.active
     =link_to "",class: "sidebar__content" do
@@ -54,7 +54,7 @@
 
   .sidebar
     %h3.sidebar__title 設定
-    =link_to "",class: "sidebar__content" do
+    =link_to mypage_profile_path,class: "sidebar__content" do
       %h4.sidebar__content-name プロフィール
       %i.sidebar__content-angle
     =link_to "",class: "sidebar__content" do
@@ -69,6 +69,6 @@
     =link_to "",class: "sidebar__content" do
       %h4.sidebar__content-name 電話番号の確認
       %i.sidebar__content-angle
-    =link_to "",class: "sidebar__content" do
+    =link_to mypage_logout_path,class: "sidebar__content" do
       %h4.sidebar__content-name ログアウト
       %i.sidebar__content-angle
