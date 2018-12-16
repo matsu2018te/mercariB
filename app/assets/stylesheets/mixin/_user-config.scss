@@ -1,0 +1,36 @@
+@mixin user-icon($phi:60px){
+  border-radius: 50%;
+  display: block;
+  height:$phi;
+  width:$phi;
+  margin: 0 auto;
+}
+
+@mixin mypage-content-angle{
+  float:right;
+  line-height: 50px;
+}
+
+@mixin mypage-content-tag{
+  width:100%;
+  text-decoration: none;
+  color:black;
+  background-color:$white;
+  border-bottom:thin solid;
+  border-color: $light-gray;
+  box-sizing:border-box;
+  padding:0 15px;
+}
+
+@mixin mypage-content-parts{
+  width:100%;
+  text-decoration: none;
+  border-bottom:thin solid;
+  border-color: $gray;
+  box-sizing:border-box;
+  padding:0 15px;
+  background-color:$white;
+  &:hover{
+    background-color:$light-gray;
+  }
+}

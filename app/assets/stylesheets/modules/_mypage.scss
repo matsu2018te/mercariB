@@ -1,0 +1,156 @@
+a{
+  text-decoration: none;
+  color:black;
+}
+
+body{
+  background-color: $gray;
+}
+
+.l-contener{
+  margin: 0 auto 0;
+  padding:40px 0;
+  max-width: 1020px;
+  @include clearfix;
+}
+
+.mypage{
+  @include clearfix;
+  text-decoration: none;
+  &_contents{
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  &_top{
+    &:hover{
+      opacity:.8;
+    }
+    &__backimage{
+      padding-top: 40px;
+      height: 160px;
+      background-image: url("/assets/user-bg.jpg");
+    }
+    &__profile_icon{
+      @include user-icon(60px);
+    }
+    &__profile{
+      text-align: center;
+      margin: 10px;
+    }
+  }
+  &__content{
+    &-box{
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    &-head{
+      padding: 25px 18px;
+      width:100%;
+      background-color:#FAFAFA;
+      float:left;
+    }
+    &-label{
+      font-weight: bold;
+      @include clearfix;
+    }
+  }
+  &__tabs{
+    background: $gray;
+    @include clearfix;
+    &-list{
+      float: left;
+      text-align: center;
+      width: 50%;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 74px;
+      &:hover{
+      color:rgba(0,0,0,0.6);
+      }
+      .tab-active{
+        background: $white;
+        border-top: 2px solid #ea352d;
+      }
+    }
+    &-text{
+      line-height: 74px;
+      text-align: center;
+      padding:auto 0;
+    }
+  }
+  &__item{
+    @include mypage-content-parts;
+    padding: 20px;
+    height: 95px;
+    width: 100%;
+    display: inline-block;
+    &-figure{
+      margin-right:18px;
+      float: left;
+      height:95px;
+      .item-figure{
+        width:48px;
+      }
+    }
+    &-text{
+      line-height: 18px;
+    }
+    &-time{
+      color: gray;
+    }
+    &-angle{
+      display: inline-block;
+      @include mypage-content-angle;
+    }
+    &-to-index{
+      padding: 16px 20px;
+      background: $white;
+      margin-bottom: 40px;
+      .link-to-item{
+        height: 55px;
+        background: $gray;
+        text-align: center;
+        &:hover{
+          background: $light-gray;
+        }
+        h4.view-index{
+          padding: 20px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  &__no-item{
+    width:100%;
+    margin-bottom: 40px;
+    background:$white;
+    font-weight: bold;
+    color: $gray;
+    padding:55px 0 60px;
+    float:left;
+    &-top{
+      background:gray;
+    }
+    &-icon{
+      background-image:url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?27899896");
+      height: 85px;
+      width: 78px;
+      margin:0 auto 20px;
+      }
+    &-text{
+      text-align: center;
+    }
+  }
+}
+
+.mypage__item-list-top li.hidden{
+  display:none;
+}
+.mypage__item-list-bottom li.hidden{
+  display:none;
+}

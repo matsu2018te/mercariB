@@ -1,0 +1,51 @@
+.sidebar_wrapper {
+  max-width:700px;
+  margin: 0 auto;
+  .sidebar {
+    margin-bottom:40px;
+    &__title {
+      padding-bottom:5px;
+      font-weight: bold;
+    }
+    &__content {
+      height:50px;
+      @include mypage-content-parts;
+      padding-left:15px;
+      float: left;
+      color: #D1D1D1;
+      transition: 1s;
+      -webkit-transition: 0.5s;
+      &:after{
+        font-weight: bold;
+        @include mypage-content-angle;
+        content:"＞";
+      }
+      &.active {
+        background-color: gray;
+        color: black;
+      }
+      &:hover {
+        color: black;
+        padding:0 10px 0 15px;
+      }
+      &-name {
+        float: left;
+        font-size: 14px;
+        line-height: 50px;
+        color:black;
+      }
+    }
+    @include clearfix;
+  }
+}
+
+@media screen and (min-width: 1060px) {
+  .mypage{
+    float:right;
+    width:700px;
+  }
+  .sidebar_wrapper {
+    width:280px;
+    float:left;
+  }
+}
