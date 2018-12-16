@@ -1,0 +1,100 @@
+.app__banner
+  .app__banner-pc
+    .app__banner-pc-inner
+      %h2 スマホで簡単フリマアプリ
+      %p 今すぐ無料ダウンロード！
+      .app__banner-icon
+        = image_tag("mercari_icon.png", class:"app__banner-logo")
+        %ul.store
+          %li
+            %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"}
+              = image_tag("app-store.svg", class:"app-store")
+          %li
+            %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
+              = image_tag("google-play.svg", class:"google-play")
+    = image_tag("banner-img.jpg", class:"app__banner-pc-image")
+
+%footer.footer
+  .nav
+    %ul.nav__list
+      %li.footer-cell
+        %h2.footer-head メルカリについて
+        %ul.lists
+          %li
+            %a{href:"https://about.mercari.com/"} 会社概要(運営会社)
+          %li
+            %a{href:""} プライバシーポリシー
+          %li
+            %a{href:""} メルカリ利用規約
+          %li
+            %a{href:""} メルカリ利用規約・有償ポイントに関する特約
+          %li
+            %a{href:""} あんしんスマホサポート制度に関する利用特約
+          %li
+            %a{href:""} コンプライアンスポリシー
+          %li
+            %a{href:""} 個人データの安全管理に係る基本方針
+          %li
+            %a{href:""} 特定商取引に関する表記
+          %li
+            %a{href:""} 資金決済法に基づく表示
+          %li
+            %a{href:""} 法令順守と犯罪抑止のために
+          %li
+            %a{href:""} 採用情報
+      %li.footer-cell
+        %h2.footer-head メルカリを見る
+        %ul.lists
+          %li
+            %a{href:""} カテゴリー一覧
+          %li
+            %a{href:""} ブランド一覧
+          %li
+            %a{href:""} 出品地域一覧
+          %li
+            %a{href:""} 公式ブログ
+          %li
+            %a{href:""} 公式Twitter
+          %li
+            %a{href:""} 公式Facebook
+      %li.footer-cell
+        %h2.footer-head ヘルプ&ガイド
+        %ul.lists
+          %li
+            %a{href:""} メルカリガイド
+          %li
+            %a{href:""} メルカリロゴ利用ガイドライン
+          %li
+            %a{href:""} お知らせ
+          %li
+            %a{href:""} らくらくメルカリ便とは
+          %li
+            %a{href:""} ゆうゆうメルカリ便とは
+          %li
+            %a{href:""} 大型らくらくメルカリ便とは
+          %li
+            %a{href:""} 車体取引ガイド
+          %li
+            %a{href:""} 返品・返金ポリシー
+          %li
+            %a{href:""} メルカリあんしん・あんぜん宣言！
+          %li
+            %a{href:""} 偽ブランド品撲滅への取り組み
+          %li
+            %a{href:""} メルカリボックス
+      %li.footer-cell
+        %h2.footer-head 国
+        %ul.lists
+          %li
+            %a{href:"", class:"jp-link"}
+              = image_tag("flag_jp", class:"jp")
+              日本
+
+
+  %a{href: ""}
+    = image_tag("logo-white.svg")
+  %p.footer__copyright © 2018 Mercari
+
+  %a{href: "", class:"sell-btn"}
+    %p.sell-text 出品
+    %i.fas.fa-camera

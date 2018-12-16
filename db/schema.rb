@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212100724) do
+ActiveRecord::Schema.define(version: 20181216032957) do
+
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "postal_code",    null: false
+    t.string   "prefecture",     null: false
+    t.string   "municipality",   null: false
+    t.string   "address_number", null: false
+    t.string   "building_name"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
@@ -23,16 +35,19 @@ ActiveRecord::Schema.define(version: 20181212100724) do
     t.string   "nickname",                                          null: false
     t.string   "first_name",                                        null: false
     t.string   "last_name",                                         null: false
-    t.string   "fist_name_phonetic",                                null: false
     t.string   "last_name_phonetic",                                null: false
-    t.integer  "telephone",                                         null: false
-    t.datetime "birthday",                                          null: false
     t.string   "icon_picture"
     t.text     "profile",                limit: 65535
     t.string   "background_image"
     t.integer  "point"
+    t.string   "first_name_phonetic"
+    t.string   "telephone",                                         null: false
+    t.integer  "birth_year",                                        null: false
+    t.integer  "birth_month",                                       null: false
+    t.integer  "birth_day",                                         null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "users"
 end
