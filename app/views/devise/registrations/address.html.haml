@@ -1,0 +1,66 @@
+.single-container
+  %header.single-header
+    %h1
+      = link_to do
+        = image_tag("logo.svg", alt:"mercari")
+    %nav.signup-bar
+      %ul.progress-bar
+        %li
+          会員情報
+          %br
+          .circle--first.circle--red.circle--through
+        %li
+          電話番号認証
+          %br
+          .circle.circle--red.circle--through
+        %li
+          住所入力
+          %br
+          .circle.circle--red
+        %li
+          支払い方法
+          %br
+          .circle
+        %li
+          完了
+          %br
+          .circle--last
+
+  %main.single-main
+    .signup-panel
+      %h2.signup-panel__head 住所入力
+      = form_for "" do |f|
+        .form-group
+          = f.label [:fist_name, :last_name], "お名前"
+          %span.form-require 必須
+          = f.text_field :fist_name, placeholder: "例)山田"
+          = f.text_field :last_name, placeholder: "例)彩"
+        .form-group
+          = f.label [:fist_name_phonetic, :last_name_phonetic], "お名前カナ"
+          %span.form-require 必須
+          = f.text_field :fist_name_phonetic, placeholder: "例)ヤマダ"
+          = f.text_field :last_name_phonetic, placeholder: "例)アヤ"
+        .form-group
+          = f.label :postal_code, "郵便番号"
+          %span.form-require 必須
+          = f.text_field :postal_code, placeholder: "例)123-4567"
+        .form-group
+          = f.label :prefecture, "都道府県"
+          %span.form-require 必須
+          = f.text_field :prefecture, placeholder: "例)北海道"
+        .form-group
+          = f.label :municipality, "市区町村"
+          %span.form-require 必須
+          = f.text_field :municipality, placeholder: "例)横浜市緑区"
+        .form-group
+          = f.label :address_number, "番地"
+          %span.form-require 必須
+          = f.text_field :address_number, placeholder: "例)青山1-1-1"
+        .form-group
+          = f.label :building_name, "建物名"
+          = f.text_field :building_name, placeholder: "例)柳ビル103"
+        .form-group
+          = f.label :telephone, "電話番号"
+          = f.text_field :telephone, placeholder: "例)09012345678"
+        = f.submit "次へ進む", class: "btn btn__red"
+  = render "devise/shared/footer"

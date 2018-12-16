@@ -1,0 +1,240 @@
+.single-container {
+  background-color: $Whitesmoke;
+  height:100vh;
+
+  .single-header {
+    text-align: center;
+    h1 {
+      margin: 12px;
+      text-align:center;
+      img {
+        height:33px;
+        vertical-align: middle;
+        width:120px;
+      }
+    }
+  }
+
+  .single-main {
+    margin: 0 auto;
+
+    .login-panel {
+      background-color:$White;
+      max-width: 456px;
+      margin:0 auto;
+      padding: 0 32px;
+
+      .login-no-account {
+        border-bottom:1px solid $ThinGray;
+        padding:24px 0;
+        text-align:center;
+        p {
+          margin:0;
+        }
+      }
+      .login-form-inner {
+        padding:24px 0;
+      }
+    }
+    a {
+      color: $linkBlue;
+      text-decoration:none;
+    }
+    .signup-panel {
+      background-color:$White;
+      max-width: 456px;
+      margin:0 auto;
+      padding: 0 40px;
+      &__head {
+        border-bottom:1px solid $ThinGray;
+        margin: 0;
+        padding:24px 8px;
+        text-align:center;
+      }
+      &__inner {
+        padding:64px 0;
+      }
+    }
+  }
+
+  .single-footer {
+    height:250px;
+    padding:40px 0;
+    width:100%;
+
+    nav {
+      ul {
+        list-style-type: none;
+        text-align:center;
+        li {
+          a {
+            color:$Black;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    .single-footer-logo {
+      height:65px;
+      width:80px;
+      margin:0 auto;
+      img {
+        display: block;
+        margin:0 auto;
+        vertical-align:middle;
+      }
+    }
+    p {
+      text-align:center;
+    }
+  }
+  .signup-bar {
+    .progress-bar {
+      list-style-type:none;
+      text-align:center;
+      li {
+        display:inline-block;
+        min-width: 60px;
+        .circle {
+          position:relative;
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          background: $Gray;
+          border-radius: 50px;
+          &:after , &:before{
+            content: '';
+            border-top:solid 1px $Gray;
+            position:absolute;
+            bottom: 5px;
+            width:60px;
+          }
+          &:before {
+            right: 50%;
+          }
+          &:after {
+            left: 50%;
+          }
+          &--first {
+            @extend .circle;
+            &:before {
+              border:none;
+            }
+          }
+          &--last {
+            @extend .circle;
+            &:after {
+              border:none;
+            }
+          }
+          &--red {
+            @extend .circle;
+            background-color:$Red;
+            &:before {
+              border-color: $Red;
+            }
+          }
+          &--through {
+            &:after{
+              border-color:$Red;
+              left: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn {
+  color: $White;
+  font-size: 14px;
+  line-height: 48px;
+  text-align: center;
+  width: 100%;
+  &__blue {
+    background-color:$ButtonBlue;
+  }
+  &__red {
+    background-color:$Red;
+  }
+  &__mail {
+    background-color:$ThinGray;
+    color:$Black;
+    margin-bottom:16px;
+    position:relative;
+    i {
+      position: absolute;
+      left:16px;
+      top:30%;
+      font-size:18px;
+    }
+  }
+  &__sns {
+    position:relative;
+    i {
+      position: absolute;
+      left:16px;
+      top:30%;
+      font-size:18px;
+    }
+    &--facebook{
+      background-color:$Navy;
+    }
+    &--google{
+      background-color:$Rouge;
+      margin-top: 16px;
+    }
+  }
+}
+
+form {
+  .form-group {
+    margin-bottom: 24px;
+    input {
+      border: 0.1px solid $Black;
+      box-sizing: border-box;
+      font-size:16px;
+      height: 48px;
+      padding:8px 10px;
+      width:100%;
+    }
+    input.number_field {
+      width:25%;
+    }
+    .g-recaptcha {
+      width:100%;
+    }
+  }
+}
+
+.form-require {
+  background-color:$Red;
+  color:$White;
+  margin-right: 10px;
+  padding:2px 3px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .single-container {
+    .single-header {
+      h1 {
+        display: inline-block;
+        img {
+          width: 185px;
+          height: 49px;
+          text-align:top;
+        }
+      }
+      .signup-bar {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    .single-footer nav ul li{
+      display:inline-block;
+    }
+  }
+}
