@@ -26,7 +26,4 @@ class UsersController < ApplicationController
 
   end
 
-  def sms_confirmation
-  end
-
 end
