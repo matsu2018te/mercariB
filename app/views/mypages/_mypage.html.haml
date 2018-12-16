@@ -1,0 +1,67 @@
+.mypage
+  .mypage_contents
+    .mypage_top
+      =link_to "" do
+        .mypage_top__backimage
+          =image_tag "/assets/member_photo_noimage_thumb.png",alt:"noimage_thumb",class: "mypage_top__profile_icon"
+          .mypage_top__profile
+            = "名前が入るよ #{}"
+          .mypage_top__profile
+            = "評価 #{0}  出品数 #{0}"
+  .mypage__content-box
+    %ul.mypage__tabs-top
+      %button.mypage__tabs-list
+        %li.tab-active
+          .mypage__tabs-text おしらせ
+      %button.mypage__tabs-list
+        %li
+          .mypage__tabs-text やることリスト
+    %ul.mypage__item-list-top
+      %li
+        =link_to "",class: "mypage__item-link" do
+          .mypage__item
+            .mypage__item-figure
+              =image_tag "//static-mercari-jp.akamaized.net/images/mercari_profile.png",class: "item-figure"
+            %i.mypage__item-angle ＞
+            .mypage__item-text
+              = "おしらせ"
+            .mypage__item-time
+              %i.far.fa-clock
+                = " 2時間前"
+        =link_to "",class: "mypage__item-link" do
+          .mypage__item
+            .mypage__item-figure
+              =image_tag "//static-mercari-jp.akamaized.net/images/mercari_profile.png",class: "item-figure"
+            %i.mypage__item-angle ＞
+            .mypage__item-text
+              = "もじもじもじももじもじもじもじもじもじもじもじもじもじもじもじもじもじもじもじも"
+            .mypage__item-time
+              %i.far.fa-clock
+                = " 4時間前"
+        .mypage__item-to-index
+          .link-to-item
+            = link_to "" do
+              %h4.view-index 一覧を見る
+      %li.hidden
+        .mypage__no-item
+          .mypage__no-item-icon
+          .mypage__no-item-text 現在、やることリストはありません
+    .mypage__content-box
+      .mypage__content-head
+        %h3.mypage__content-label 購入した商品
+      %ul.mypage__tabs-bottom
+        %button.mypage__tabs-list
+          %li.tab-active
+            .mypage__tabs-text 取引中
+        %button.mypage__tabs-list
+          %li
+            .mypage__tabs-text 過去の取引
+    %ul.mypage__item-list-bottom
+      %li
+        .mypage__no-item
+          .mypage__no-item-icon
+          .mypage__no-item-text 取引中の商品はありません
+      %li.hidden
+        .mypage__no-item
+          .mypage__no-item-icon
+          .mypage__no-item-text 過去に取引した商品がありません

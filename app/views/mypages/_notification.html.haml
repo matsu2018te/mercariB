@@ -1,0 +1,33 @@
+.mypage
+  .mypage_contents
+    .mypage__content-box
+      .mypage__tabs-top
+        %button.mypage__tabs-list
+          .tab-active
+            .mypage__tabs-text おしらせ
+        %button.mypage__tabs-list
+          .mypage__tabs-text やることリスト
+    =link_to "",class: "mypage__item-link" do
+      .mypage__item
+        .mypage__item-figure
+          =image_tag "//static-mercari-jp.akamaized.net/images/mercari_profile.png",class: "item-figure"
+        %i.mypage__item-angle ＞
+        .mypage__item-text
+          = "おしらせ"
+        .mypage__item-time
+          .fa-clock-o
+            = " 2時間前"
+    =link_to "",class: "mypage__item-link" do
+      .mypage__item
+        .mypage__item-figure
+          =image_tag "//static-mercari-jp.akamaized.net/images/mercari_profile.png",class: "item-figure"
+        %i.mypage__item-angle ＞
+        .mypage__item-text
+          = "もじもじもじももじもじもじもじもじもじもじもじもじもじもじもじもじもじもじもじも"
+        .mypage__item-time
+          .fa-clock-o
+            = " 4時間前"
+    .mypage__item-to-index
+      .link-to-item
+        = link_to "" do
+          %h4.view-index 一覧を見る
