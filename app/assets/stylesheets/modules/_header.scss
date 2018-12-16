@@ -1,0 +1,106 @@
+.pc-header {
+  height: 90px;
+  width: 100%;
+  background-color: $white;
+
+  &-inner {
+    height: 82px;
+    width: 85%;
+    padding-top: 8px;
+    margin: 0 auto;
+    background-color: $white;
+    img.l-left {
+      height: 36px;
+      width: 134px;
+      // background-color: $red;
+      float: left;
+      display: inline-block;
+      line-height: 36px;
+    }
+
+    .pc-header-form.l-right {
+      height: 36px;
+      width: calc(100% - (134px + 16px)); /*仮*/
+      background-color: $white;
+      float: right;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      line-height: 36px;
+      .input-default {
+        height: 30px;
+        width: calc(100% - 36px);
+        padding:9px 32px 9px 8px;
+        border: none;
+      }
+
+      i.icon-search {
+        height: 36px;
+        width: 36px;
+        background-color: $red;
+        float: right;
+      }
+    }
+    .pc-header-nav-box.clearfix {
+      height: 38px;
+      width: 100%;
+      margin-top: 44px;
+      background-color: $white;
+      box-sizing: border-box;
+      nav.list-left {
+        height: 38px;
+        width: 250px;
+        background-color: green;
+        float: left;
+        ul.pc-header-nav-l {
+          height: 38px;
+          width: 50%;
+          float: left;
+          background-color:$white;
+          font: 66.66667% sans-serif;
+          text-align: center;
+          line-height: 38px;
+          padding: 0;
+          margin: 0;
+        }
+      }
+
+      nav.list-right {
+        height: 38px;
+        width: 200px;
+        float: right;
+        .sp-header-btn {
+          height: 32px;
+          width:97.5px;
+          float: left;
+          font: 66.66667% sans-serif;
+          text-align: center;
+          line-height: 32px;
+          padding: 0;
+          margin: 0;
+        }
+        .btn-red {
+          color: $white;
+          background-color: $red;
+          font-color: $red;
+          border-radius: 5px;
+        }
+        .header-signup {
+          color: #0099e8;
+          border: solid 1px #0099e8;
+          border-radius: 5px;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
