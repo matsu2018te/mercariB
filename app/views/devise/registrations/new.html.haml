@@ -64,6 +64,18 @@
             = f.label :telephone, "電話番号"
             = f.text_field :telephone, placeholder: "例)09012345678"
           .form-group
+            = f.label [:birth_year, :birth_month, :birth_day], "生年月日"
+            %span.form-require 必須
+            %br
+            = f.number_field :birth_year, min: "1900", max: "2018", class: "number_field"
+            年
+            %br
+            = f.number_field :birth_month, min: "1", max: "12", class: "number_field"
+            月
+            %br
+            = f.number_field :birth_day, min: "1", max: "31", class: "number_field"
+            日
+          .form-group
             .g-recaptcha{data:{callback:"clearcall", sitekey:"ここにサイトキーをいれる"}}
           = f.submit "次へ進む", class: "btn btn__red"
   = render "devise/shared/footer"
