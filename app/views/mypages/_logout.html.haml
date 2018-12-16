@@ -1,0 +1,7 @@
+.mypage
+  .mypage_contents
+    .mypage__logout
+      = link_to destroy_user_session_path, method: :delete, class: '.btn-red',"style": "color:white;" do
+        %p.mypage__logout-btn ログアウト
+
+

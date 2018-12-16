@@ -1,10 +1,9 @@
 a{
   text-decoration: none;
-  color:black;
 }
 
 body{
-  background-color: $gray;
+  background:$light-gray;
 }
 
 .l-contener{
@@ -19,7 +18,8 @@ body{
   text-decoration: none;
   &_contents{
     max-width: 700px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
+    background:$white;
   }
   &_top{
     &:hover{
@@ -40,7 +40,6 @@ body{
   }
   &__content{
     &-box{
-      max-width: 700px;
       margin: 0 auto;
     }
     &-head{
@@ -55,8 +54,16 @@ body{
     }
   }
   &__tabs{
-    background: $gray;
-    @include clearfix;
+    &-top{
+      background: $gray;
+      float:left;
+      width:100%;
+    }
+    &-bottom{
+      background: $gray;
+      float:left;
+      width:100%;
+    }
     &-list{
       float: left;
       text-align: center;
@@ -131,7 +138,7 @@ body{
     background:$white;
     font-weight: bold;
     color: $gray;
-    padding:55px 0 60px;
+    padding:40px 0 60px;
     float:left;
     &-top{
       background:gray;
