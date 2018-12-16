@@ -1,14 +1,13 @@
-.mypage__tabs
-  =link_to "",class: "mypage__tab" do
-    .mypage__tabs-list
-      %ul
-        %li
-          %h4.mypage__tabs-text おしらせ
-  =link_to "",class: "mypage__tab" do
-    .mypage__tabs-list
-      %ul
-        %li.tab-active
-          %h4.mypage__tabs-text やることリスト
-.mypage__no-item
-  .mypage__no-item-icon
-  .mypage__no-item-text 現在、やることリストはありません
+.mypage
+  .mypage_contents
+    .mypage__content-box
+      .mypage__tabs-top
+        %button.mypage__tabs-list
+          .mypage__tabs-text おしらせ
+        %button.mypage__tabs-list
+          .tab-active
+            .mypage__tabs-text やることリスト
+        .mypage__no-item
+          .mypage__no-item-icon
+            .mypage__no-item-top
+          .mypage__no-item-text 現在、やることリストはありません

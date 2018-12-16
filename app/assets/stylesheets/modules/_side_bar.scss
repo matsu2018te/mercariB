@@ -10,32 +10,29 @@
     &__content {
       height:50px;
       @include mypage-content-parts;
-      float:left;
-      &-name {
-        float:left;
-        font-size: 14px;
-        padding:auto 5px;
-        line-height: 50px;
-      }
-      &-angle {
+      padding-left:15px;
+      float: left;
+      color: #D1D1D1;
+      transition: 1s;
+      -webkit-transition: 0.5s;
+      &:after{
+        font-weight: bold;
         @include mypage-content-angle;
-        color: gray;
+        content:"＞";
       }
-    }
-    &__current{
-      height:50px;
-      width:100%;
-      text-decoration: none;
-      border-bottom:thin solid;
-      border-color: $gray;
-      box-sizing:border-box;
-      padding:0 15px;
-      background-color:gray;
-      float:left;
-      padding:0 15px;
-      &-angle {
-        @include mypage-content-angle;
+      &.active {
+        background-color: gray;
         color: black;
+      }
+      &:hover {
+        color: black;
+        padding:0 10px 0 15px;
+      }
+      &-name {
+        float: left;
+        font-size: 14px;
+        line-height: 50px;
+        color:black;
       }
     }
     @include clearfix;

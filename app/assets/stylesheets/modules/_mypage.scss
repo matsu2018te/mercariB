@@ -3,9 +3,13 @@ a{
   color:black;
 }
 
+body{
+  background-color: $gray;
+}
+
 .l-contener{
-  margin: 40px auto 0;
-  padding: 0 20px;
+  margin: 0 auto 0;
+  padding:40px 0;
   max-width: 1020px;
   @include clearfix;
 }
@@ -41,22 +45,30 @@ a{
     }
     &-head{
       padding: 25px 18px;
+      width:100%;
       background-color:#FAFAFA;
+      float:left;
     }
     &-label{
-      line-height:15px;
       font-weight: bold;
+      @include clearfix;
     }
   }
   &__tabs{
     background: $gray;
-    font-weight: bold;
-    width: 100%;
     @include clearfix;
     &-list{
       float: left;
       text-align: center;
       width: 50%;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 74px;
       &:hover{
       color:rgba(0,0,0,0.6);
       }
@@ -67,7 +79,6 @@ a{
     }
     &-text{
       line-height: 74px;
-      text-decoration: none;
       text-align: center;
       padding:auto 0;
     }
@@ -121,6 +132,10 @@ a{
     font-weight: bold;
     color: $gray;
     padding:55px 0 60px;
+    float:left;
+    &-top{
+      background:gray;
+    }
     &-icon{
       background-image:url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?27899896");
       height: 85px;
@@ -133,3 +148,9 @@ a{
   }
 }
 
+.mypage__item-list-top li.hidden{
+  display:none;
+}
+.mypage__item-list-bottom li.hidden{
+  display:none;
+}
