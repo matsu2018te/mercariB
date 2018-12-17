@@ -1,0 +1,23 @@
+%header.pc-header
+  .pc-header-inner
+    %img.l-left{alt: 'メルカリ', src: '/assets/logo.svg'}
+    %form.pc-header-form.l-right
+      %input.input-default{name: "keyword",placeholder: "キーワードから探す", type: "search", value: ""}
+      %i.fas.fa-search
+    .pc-header-nav-box.clearfix
+      %nav.list-left
+        / カテゴリー/ブランド
+        %ul.pc-header-nav-l
+          カテゴリーから探す
+          %li
+          %li
+        %ul.pc-header-nav-l
+          ブランドから探す
+          %li
+          %li
+
+      %nav.list-right
+        %li
+          %a.sp-header-btn.btn-red ログイン
+        %li
+          %a.sp-header-btn.header-signup 新規会員登録
