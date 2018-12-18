@@ -15,8 +15,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(current_user.id)
-    user.update(user_params)
+    if current_user.update(user_params)
+      redirect_to root_path
+    else
+      render action: :iden_edit
+    end
   end
 
   def show
@@ -28,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   def iden_edit
-    @user = User.find(current_user.id)
   end
 
   private
@@ -38,6 +40,9 @@ class UsersController < ApplicationController
       :last_name,
       :first_name_phonetic,
       :last_name_phonetic,
+      :birth_year,
+      :birth_month,
+      :birth_day,
       address_attributes: [:postal_code,
                            :prefecture,
                            :municipality,

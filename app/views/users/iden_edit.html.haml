@@ -5,7 +5,7 @@
         %h4.profile__title 本人情報の登録
         %p.profile__text お客さまのあんしん・あんぜんな取引のため、本人情報のご登録をお願いしております。
         .profile__intro-box
-          = form_for @user,url: {action: :update} do |f|
+          = form_for current_user,url: {action: :update} do |f|
             .form-group
               = f.label [:first_name, :last_name], "お名前"
               %span.form-require 必須
