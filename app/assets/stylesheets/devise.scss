@@ -191,13 +191,16 @@
 form {
   .form-group {
     margin-bottom: 24px;
-    input {
+    input, select {
       border: 0.1px solid $Black;
       box-sizing: border-box;
       font-size:16px;
       height: 48px;
       padding:8px 10px;
       width:100%;
+    }
+    select {
+      appearance: none;
     }
     input.number_field {
       display:block;
