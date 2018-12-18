@@ -1,0 +1,9 @@
+.l-contener
+  .mypage
+    .mypage_contents
+      %h4.profile__title 本人情報の登録
+      .mypage__logout
+        %p.profile__text クレジットカード一覧
+        = link_to mypage_card_create_path, method: :get, class: '.btn-red',"style": "color:white;" do
+          %p.mypage__logout-btn クレジットカードを追加する
+  = render 'mypages/side_bar'
