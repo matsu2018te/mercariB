@@ -17,5 +17,10 @@ Rails.application.routes.draw do
   get 'mypage/identification' => 'users#set_user'
   patch 'mypage' => 'users#update'
   get 'mypage/logout' => 'users#destroy'
+  # クレジットカード
+  get 'mypage/card' => 'credits#index'
+  get 'mypage/card/create' => 'credits#new'
+  post 'mypage/card' => 'credits#create'
+  delete 'mypage/card' => 'credits#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
