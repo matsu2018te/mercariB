@@ -81,3 +81,6 @@ group :production do
   #Unicorn
   gem 'unicorn'
 end
+
+# jp_prefecture(都道府県)
+gem 'jp_prefecture'
