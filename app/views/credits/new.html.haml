@@ -1,0 +1,27 @@
+.l-contener
+  .mypage
+    .mypage_contents
+      .profile
+        %h4.profile__title 本人情報の登録
+        %p.profile__text お客さまのあんしん・あんぜんな取引のため、本人情報のご登録をお願いしております。
+        .profile__intro-box
+          = form_for @credit,url: {action: :create}  do |f|
+            .form-group
+              = f.label :card_number, "カード番号"
+              %span.form-require 必須
+              = f.text_field :card_number, placeholder: "半角英数のみ"
+            .form-group
+              = f.label [:expiration_monnth, :expiration_year], "有効期限"
+              %span.form-require 必須
+              %br
+              = f.number_field :expiration_month, min: "1", max: "12", class: "number_field"
+              年
+              = f.number_field :expiration_year, min: "18", max: "28", class: "number_field"
+              月
+            .form-group
+              = f.label :security_code, "セキュリティコード"
+              %span.form-require 必須
+              = f.text_field :security_code, placeholder: "カード背面4桁もしくは3桁の番号"
+            .actions
+              = f.submit "追加する", class: 'btn-red'
+  = render 'mypages/side_bar'
