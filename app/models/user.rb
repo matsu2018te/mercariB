@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true, length: { minimum: 6 }, confirmation: true
 
   has_one  :address
-  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :address, update_only: true
 end
