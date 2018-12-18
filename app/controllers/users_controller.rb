@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to root_path
     else
-      render action: :iden_edit
+      render action: :set_user
     end
   end
 
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   end
 
-  def iden_edit
+  def set_user
   end
 
   private
