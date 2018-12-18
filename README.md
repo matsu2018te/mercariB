@@ -66,9 +66,9 @@
 ## credit
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false, unique: true|
-|expiration_date_month|integer|null: false|
-|expiration_date_year|integer|null: false|
+|card_number|string|null: false, unique: true|
+|expiration_month|integer|null: false|
+|expiration_year|integer|null: false|
 |security_code|integer|null: false|
 |user_id|references|foreign_key|
 
