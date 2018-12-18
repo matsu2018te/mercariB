@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
   get 'mypage' => 'users#show'
+  post 'mypage' => 'users#update'
   get 'mypage/profile' => 'users#edit'
+  get 'mypage/identification' => 'users#set_user'
+  patch 'mypage' => 'users#update'
   get 'mypage/logout' => 'users#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
