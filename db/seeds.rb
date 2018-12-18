@@ -1,7 +1,30 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "csv"
+
+Category.delete_all
+parents =[]
+children =[]
+CSV.foreach('db/category_parent.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+  parent = Category.create(category_name: row[0],belongs: "parent")
+  parents << parent
+end
+
+parent_count = 0
+parents.each do |parents|
+  CSV.foreach('db/category_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+    if row[parent_count]
+      child = parents.children.create(category_name: row[parent_count],belongs: "child")
+      children << child
+    end
+  end
+  parent_count += 1
+end
+
+child_count = 0
+children.each do |child|
+  CSV.foreach('db/category_g_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+    if row[child_count]
+      child.children.create(category_name: row[child_count],belongs: "g_child")
+    end
+  end
+  child_count += 1
+end
