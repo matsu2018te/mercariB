@@ -1,10 +1,13 @@
 .credit {
   background:$white;
-  height: 179px;
+  border-top:1px solid $Whitesmoke;
   margin:0 auto;
   padding:30px;
   width:100%;
+  &__form {
+    margin: 0 auto;
     max-width: 320px;
+  }
   &__text {
     font-size: 14px;
     font-weight: bold;
@@ -21,7 +24,7 @@
   display: inline-block;
   &__mark {
     height: 20px;
-    width:49px;
+    width:30px;
   }
   &__delete {
     background-color:$White;
@@ -39,17 +42,12 @@
   }
 }
 
-.number_select {
+select.number_select {
   outline:none;
   text-indent: 0.01px;
   text-overflow: '';
-  background: none transparent;
-  vertical-align: middle;
-  font-size: inherit;
-  color: inherit;
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
+  vertical-align: left;
+  width:110px;
 }
 
 
@@ -83,4 +81,8 @@
   height:14px;
   text-align:center;
   width:14px;
+}
+
+.btn-red {
+  background-color:$Red;
 }

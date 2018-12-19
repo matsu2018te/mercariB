@@ -1,10 +1,9 @@
 .l-contener
   .mypage
     .mypage_contents
-      .profile
-        %h4.profile__title 本人情報の登録
-        %p.profile__text お客さまのあんしん・あんぜんな取引のため、本人情報のご登録をお願いしております。
-        .profile__intro-box
+      %h4.profile__title クレジットカード情報入力
+      .credit
+        .credit__form
           = form_for @credit,url: {action: :create}  do |f|
             .form-group
               = f.label :card_number, "カード番号"
@@ -20,7 +19,7 @@
                 %li.card
                   = image_tag("credits/jcb.svg", alt:"jcb", class: "card__mark")
                 %li.card
-                  = image_tag("credits/american_express.svg", alt:"american_express", class: "card__mark")
+                  = image_tag("credits/american_express.svg", alt:"american_express", class: "card__mark", width:21)
                 %li.card
                   = image_tag("credits/dinersclub.svg", alt:"dinersclub", class: "card__mark")
                 %li.card
@@ -29,9 +28,10 @@
               = f.label [:expiration_monnth, :expiration_year], "有効期限"
               %span.form-require 必須
               %br
-              = f.select :expiration_month, options_for_select((1..12).to_a), class: "number_select"
+              = f.select :expiration_month, options_for_select(1..12), {}, { class: "number_select" }
               月
-              = f.select :expiration_year, options_for_select((18..28).to_a), class: "number_select"
+              %br
+              = f.select :expiration_year,options_for_select(18..28), {}, { class: "number_select" }
               年
             .form-group
               = f.label :security_code, "セキュリティコード"
@@ -44,5 +44,5 @@
                 %p カードの裏面をご参照ください
                 = image_tag("credits/seq-card.png", alt:"カードの裏面説明")
             .actions
-              = f.submit "追加する", class: 'btn-red'
+              = f.submit "追加する", class: 'btn btn__red'
   = render 'mypages/side_bar'
