@@ -37,7 +37,10 @@
               = f.label :security_code, "セキュリティコード"
               %span.form-require 必須
               = f.text_field :security_code, placeholder: "カード背面4桁もしくは3桁の番号"
-              %p カード裏面の番号とは?
+              %p.security-code__description カード裏面の番号とは?
+              .security-code__image
+                %p カードの裏面をご参照ください
+                = image_tag("credits/seq-card.png", alt:"カードの裏面説明")
             .actions
               = f.submit "追加する", class: 'btn-red'
   = render 'mypages/side_bar'

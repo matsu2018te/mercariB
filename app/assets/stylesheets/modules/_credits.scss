@@ -7,3 +7,24 @@
     }
   }
 }
+
+.security-code{
+  &__description {
+    color:$linkBlue;
+    text-align:right;
+    }
+  &__image {
+    background-color:$gray;
+    opacity: 0;
+    padding: 16px;
+    position: absolute;
+      left:0;
+      right:0;
+    visibility: hidden;
+    z-index:1;
+    &--show {
+      opacity:1;
+      visibility: visible;
+    }
+  }
+}
