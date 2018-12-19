@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true, length: { minimum: 6 }, confirmation: true
 
   has_one  :address
+  has_many :products
 end
