@@ -12,6 +12,12 @@ class CreditsController < ApplicationController
   end
 
   def destroy
+    credit = current_user.credit
+    if credit.destroy
+      redirect_to mypage_card_path
+    else
+      render mypage_card_path
+    end
   end
 
   private

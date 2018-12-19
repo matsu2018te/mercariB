@@ -1,13 +1,25 @@
-.card-list {
-  li {
-    display: inline-block;
+.cards {
+}
+.card {
+  display: inline-block;
+  &__mark {
+    height: 20px;
+    width:49px;
+  }
+  &__delete {
+    background-color:$White;
+    border:solid 1px $Red;
+    border-radius:3px;
+    color:$Red;
+    padding:4px 6px;
+    position:absolute;
+      // top:0;
+      // right:0;
+    text-align:center;
   }
 }
 
-.card_mark {
-  height: 20px;
-  width:49px;
-}
+
 
 .security-code{
   &__description {

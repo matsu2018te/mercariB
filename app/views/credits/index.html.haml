@@ -16,6 +16,9 @@
               = @credit.month_number
             \/
             = @credit.expiration_year
+          = link_to "/mypage/card", method: :delete do
+            .card__delete
+              削除する
         - else
           = link_to mypage_card_create_path, method: :get, class: '.btn-red',"style": "color:white;" do
             %p.mypage__logout-btn クレジットカードを追加する
