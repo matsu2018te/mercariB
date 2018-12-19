@@ -21,5 +21,7 @@
               = link_to "削除する", "/mypage/card", method: :delete, class: "card__delete__text"
           - else
             = link_to mypage_card_create_path, method: :get, class: '.btn-red',"style": "color:white;" do
-              %p.mypage__logout-btn クレジットカードを追加する
+              %p.mypage__logout-btn
+                %i.far.fa-credit-card
+                クレジットカードを追加する
   = render 'mypages/side_bar'
