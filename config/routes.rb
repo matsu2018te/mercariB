@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get 'mypage' => 'users#show'
   get 'mypage/profile' => 'users#edit'
   get 'mypage/logout' => 'users#destroy'
+  get 'show' => 'products#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
