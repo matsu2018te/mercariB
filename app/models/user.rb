@@ -14,8 +14,4 @@ class User < ApplicationRecord
   has_many :products
 
   accepts_nested_attributes_for :address, update_only: true
-
-
-  accepts_nested_attributes_for :address, update_only: true
-
 end
