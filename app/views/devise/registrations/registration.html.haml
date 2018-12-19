@@ -33,23 +33,23 @@
     .signup-panel
       %h2.signup-panel__head 会員情報入力
       .signup-panel__inner
-        = form_for "" do |f|
+        = form_for(@user, url: signup_sms_confirmation_path, html: {method: :post}) do |f|
           .form-group
             = f.label :nickname, "ニックネーム"
             %span.form-require 必須
-            = f.text_field :nickname, autofocus: true, placeholder: "例)メルカリ太郎"
+            = f.text_field :nickname, autofocus: true, placeholder: "例)メルカリ太郎", required:"入力してください"
           .form-group
             = f.label :email, "メールアドレス"
             %span.form-require 必須
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", required:"入力してください"
           .form-group
             = f.label :password, "パスワード"
             %span.form-require 必須
-            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上"
+            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", required:"入力してください"
           .form-group
             = f.label :password_confirmation, "パスワード（確認）"
             %span.form-require 必須
-            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上"
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", required:"入力してください"
           .form-group
             .g-recaptcha{data:{callback:"clearcall", sitekey:"ここにサイトキーをいれる"}}
           = f.submit "次へ進む", class: "btn btn__red"
