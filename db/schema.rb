@@ -10,16 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
+
 
 
 
 
 ActiveRecord::Schema.define(version: 20181219072245) do
 
-=======
-ActiveRecord::Schema.define(version: 20181218114909) do
->>>>>>> 330da4412ac6602dd87e4e43ef7ee924044b6156
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postal_code",    null: false
@@ -33,7 +30,7 @@ ActiveRecord::Schema.define(version: 20181218114909) do
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
-<<<<<<< HEAD
+
 
 
 
@@ -66,10 +63,10 @@ ActiveRecord::Schema.define(version: 20181218114909) do
     t.integer  "card_number",     null: false
     t.integer  "expiration_date", null: false
     t.integer  "security_code",   null: false
-=======
+
   create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "security_code",    null: false
->>>>>>> 330da4412ac6602dd87e4e43ef7ee924044b6156
+
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -124,7 +121,7 @@ ActiveRecord::Schema.define(version: 20181218114909) do
   end
 
   add_foreign_key "addresses", "users"
-<<<<<<< HEAD
+
 
   add_foreign_key "images", "products"
   add_foreign_key "products", "users", column: "buyer_id"
@@ -138,7 +135,7 @@ ActiveRecord::Schema.define(version: 20181218114909) do
 
   add_foreign_key "credit_cards", "users"
 
-=======
+
   add_foreign_key "credits", "users"
->>>>>>> 330da4412ac6602dd87e4e43ef7ee924044b6156
+
 end
