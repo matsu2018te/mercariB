@@ -15,7 +15,11 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    if current_user.update(user_params)
+      redirect_to root_path
+    else
+      render action: :set_user
+    end
   end
 
   def show
@@ -26,4 +30,23 @@ class UsersController < ApplicationController
 
   end
 
+  def set_user
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :first_name_phonetic,
+      :last_name_phonetic,
+      :birth_year,
+      :birth_month,
+      :birth_day,
+      address_attributes: [:postal_code,
+                           :prefecture,
+                           :municipality,
+                           :address_number,
+                           :building_name])
+  end
 end

@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20181217013132) do
+=======
+ActiveRecord::Schema.define(version: 20181217114434) do
+>>>>>>> 8d1d018d91804e3b0fde6184d3263c3b4f71f585
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postal_code",    null: false
@@ -55,6 +59,9 @@ ActiveRecord::Schema.define(version: 20181217013132) do
     t.integer  "birth_year",                                        null: false
     t.integer  "birth_month",                                       null: false
     t.integer  "birth_day",                                         null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
