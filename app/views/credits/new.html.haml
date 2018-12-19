@@ -29,9 +29,9 @@
               = f.label [:expiration_monnth, :expiration_year], "有効期限"
               %span.form-require 必須
               %br
-              = f.number_field :expiration_month, min: "1", max: "12", class: "number_field"
+              = f.select :expiration_month, options_for_select((1..12).to_a), class: "number_select"
               月
-              = f.number_field :expiration_year, min: "18", max: "28", class: "number_field"
+              = f.select :expiration_year, options_for_select((18..28).to_a), class: "number_select"
               年
             .form-group
               = f.label :security_code, "セキュリティコード"

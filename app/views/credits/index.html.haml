@@ -2,24 +2,24 @@
   .mypage
     .mypage_contents
       %h4.profile__title 支払い方法
-      .mypage__logout
-        %p.profile__text クレジットカード一覧
-        - if @credit.present?
-          .card__mark
-            = image_tag("credits/#{@credit.card_img}.svg", alt:"#{@credit.card_img}")
-          %p
-            = @credit.low_four_digits
-          %p
-            - if @credit.expiration_month >= 10
-              = @credit.expiration_month
-            - else
-              = @credit.month_number
-            \/
-            = @credit.expiration_year
-          = link_to "/mypage/card", method: :delete do
+      .credit
+        %p.credit__text クレジットカード一覧
+        .credit__list
+          - if @credit.present?
+            .card__mark
+              = image_tag("credits/#{@credit.card_img}.svg", alt:"#{@credit.card_img}")
+            %p
+              = @credit.low_four_digits
+            %p
+              - if @credit.expiration_month >= 10
+                = @credit.expiration_month
+              - else
+                = @credit.month_number
+              \/
+              = @credit.expiration_year
             .card__delete
-              削除する
-        - else
-          = link_to mypage_card_create_path, method: :get, class: '.btn-red',"style": "color:white;" do
-            %p.mypage__logout-btn クレジットカードを追加する
+              = link_to "削除する", "/mypage/card", method: :delete, class: "card__delete__text"
+          - else
+            = link_to mypage_card_create_path, method: :get, class: '.btn-red',"style": "color:white;" do
+              %p.mypage__logout-btn クレジットカードを追加する
   = render 'mypages/side_bar'

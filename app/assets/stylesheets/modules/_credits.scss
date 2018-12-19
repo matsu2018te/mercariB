@@ -1,5 +1,22 @@
-.cards {
+.credit {
+  background:$white;
+  height: 179px;
+  margin:0 auto;
+  padding:30px;
+  width:100%;
+    max-width: 320px;
+  &__text {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    text-align:left;
+  }
+  &__list {
+    position:relative;
+  }
 }
+
+
 .card {
   display: inline-block;
   &__mark {
@@ -13,12 +30,27 @@
     color:$Red;
     padding:4px 6px;
     position:absolute;
-      // top:0;
-      // right:0;
+      top:0;
+      right:0;
     text-align:center;
+    &__text {
+      color:$Red;
+    }
   }
 }
 
+.number_select {
+  outline:none;
+  text-indent: 0.01px;
+  text-overflow: '';
+  background: none transparent;
+  vertical-align: middle;
+  font-size: inherit;
+  color: inherit;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+}
 
 
 .security-code{
@@ -27,7 +59,7 @@
     text-align:right;
     }
   &__image {
-    background-color:$gray;
+    background-color:$Gray;
     opacity: 0;
     padding: 16px;
     position: absolute;
