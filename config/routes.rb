@@ -19,5 +19,9 @@ Rails.application.routes.draw do
   patch 'mypage' => 'users#update'
   get 'mypage/logout' => 'users#destroy'
   get 'show' => 'products#show'
+  get 'mypage/card' => 'credits#index'
+  get 'mypage/card/create' => 'credits#new'
+  post 'mypage/card' => 'credits#create'
+  delete 'mypage/card' => 'credits#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
