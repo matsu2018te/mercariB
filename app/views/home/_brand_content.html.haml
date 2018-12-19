@@ -1,0 +1,86 @@
+%section.items-box-container.clearfix
+  %h3.text-center
+    シャネル 新着アイテム
+  .items-box-content.clearfix
+    - @products.each do |product|
+      %section.items-box
+        %a
+          .items-box-photo
+            %img{alt: 'メルカリ', src: '/assets/250px-Red_Apple.jpg'}
+            / = image_tag product.images.first.image
+            / carrierwave実装後にコメントアウトを外す
+          .items-box-body
+            %h3.items-box-name.font-2
+              = product.product_name
+            .items-box-num.clearfix
+              .items-box-price.font-5
+                ¥ #{product.price}
+              .items-box-likes.font-2
+                ♥
+              %p.item-box-tax
+                （税込）
+  .view-all
+    %a 全ての商品を見る
+%section.items-box-container.clearfix
+  %h3.text-center
+    ルイヴィトン 新着アイテム
+  .items-box-content.clearfix
+    - @products.each do |product|
+      %section.items-box
+        %a
+          .items-box-photo
+            %img{alt: 'メルカリ', src: '/assets/250px-Red_Apple.jpg'}
+          .items-box-body
+            %h3.items-box-name.font-2
+              = product.product_name
+            .items-box-num.clearfix
+              .items-box-price.font-5
+                ¥ #{product.price}
+              .items-box-likes.font-2
+                ♥
+              %p.item-box-tax
+                （税込）
+  .view-all
+    %a 全ての商品を見る
+%section.items-box-container.clearfix
+  %h3.text-center
+    シュプリーム新着アイテム
+  .items-box-content.clearfix
+    - @products.each do |product|
+      %section.items-box
+        %a
+          .items-box-photo
+            %img{alt: 'メルカリ', src: '/assets/250px-Red_Apple.jpg'}
+          .items-box-body
+            %h3.items-box-name.font-2
+              = product.product_name
+            .items-box-num.clearfix
+              .items-box-price.font-5
+                ¥ #{product.price}
+              .items-box-likes.font-2
+                ♥
+              %p.item-box-tax
+                （税込）
+  .view-all
+    %a 全ての商品を見る
+%section.items-box-container.clearfix
+  %h3.text-center
+    ナイキ新着アイテム
+  .items-box-content.clearfix
+    - @products.each do |product|
+      %section.items-box
+        %a
+          .items-box-photo
+            %img{alt: 'メルカリ', src: '/assets/250px-Red_Apple.jpg'}
+          .items-box-body
+            %h3.items-box-name.font-2
+              = product.product_name
+            .items-box-num.clearfix
+              .items-box-price.font-5
+                ¥ #{product.price}
+              .items-box-likes.font-2
+                ♥
+              %p.item-box-tax
+                （税込）
+  .view-all
+    %a 全ての商品を見る
