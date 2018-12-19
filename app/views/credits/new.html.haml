@@ -10,21 +10,21 @@
               = f.label :card_number, "カード番号"
               %span.form-require 必須
               = f.text_field :card_number, placeholder: "半角英数のみ"
-              %ul.card-list
-                %li
-                  = image_tag("credits/visa.svg", alt:"vise", class: "card_mark")
-                %li
-                  = image_tag("credits/master-card.svg", alt:"master-card" class: "card_mark")
-                %li
-                  = image_tag("credits/saison-card.svg", alt:"saison-card" class: "card_mark")
-                %li
-                  = image_tag("credits/jcb.svg", alt:"jcb" class: "card_mark")
-                %li
-                  = image_tag("credits/american_express.svg", alt:"american_express" class: "card_mark")
-                %li
-                  = image_tag("credits/dinersclub.svg", alt:"dinersclub" class: "card_mark")
-                %li
-                  = image_tag("credits/discover.svg", alt:"discover" class: "card_mark")
+              %ul.cards
+                %li.card
+                  = image_tag("credits/visa.svg", alt:"vise", class: "card__mark")
+                %li.card
+                  = image_tag("credits/master-card.svg", alt:"master-card" class: "card__mark")
+                %li.card
+                  = image_tag("credits/saison-card.svg", alt:"saison-card" class: "card__mark")
+                %li.card
+                  = image_tag("credits/jcb.svg", alt:"jcb" class: "card__mark")
+                %li.card
+                  = image_tag("credits/american_express.svg", alt:"american_express" class: "card__mark")
+                %li.card
+                  = image_tag("credits/dinersclub.svg", alt:"dinersclub" class: "card__mark")
+                %li.card
+                  = image_tag("credits/discover.svg", alt:"discover" class: "card__mark")
             .form-group
               = f.label [:expiration_monnth, :expiration_year], "有効期限"
               %span.form-require 必須

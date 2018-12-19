@@ -1,5 +1,6 @@
 class CreditsController < ApplicationController
   def index
+    @credit = current_user.credit
   end
 
   def new

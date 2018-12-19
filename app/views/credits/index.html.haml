@@ -1,9 +1,22 @@
 .l-contener
   .mypage
     .mypage_contents
-      %h4.profile__title 本人情報の登録
+      %h4.profile__title 支払い方法
       .mypage__logout
         %p.profile__text クレジットカード一覧
-        = link_to mypage_card_create_path, method: :get, class: '.btn-red',"style": "color:white;" do
-          %p.mypage__logout-btn クレジットカードを追加する
+        - if @credit.present?
+          .card__mark
+            = image_tag("credits/#{@credit.card_img}.svg", alt:"#{@credit.card_img}")
+          %p
+            = @credit.low_four_digits
+          %p
+            - if @credit.expiration_month >= 10
+              = @credit.expiration_month
+            - else
+              = @credit.month_number
+            \/
+            = @credit.expiration_year
+        - else
+          = link_to mypage_card_create_path, method: :get, class: '.btn-red',"style": "color:white;" do
+            %p.mypage__logout-btn クレジットカードを追加する
   = render 'mypages/side_bar'
