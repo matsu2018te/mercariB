@@ -8,11 +8,11 @@ class Credit < ApplicationRecord
     card_numbers = card_number.split("")
     first_number = card_numbers[0].to_i
     digit  = card_numbers.length
-    if digit === 14
+    if digit == 14
       card_img = "dinersclub"
-    elsif digit === 15
+    elsif digit == 15
       card_img = "american_express"
-    else digit === 16
+    else digit == 16
       case first_number
       when 3
         card_img = "jcb"
