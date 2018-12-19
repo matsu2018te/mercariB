@@ -10,9 +10,13 @@ class User < ApplicationRecord
   validates :birth_year, :birth_month, :birth_day, presence: true
 
   has_one  :address
+<<<<<<< HEAD
 
   has_many :products
 
   accepts_nested_attributes_for :address, update_only: true
 
+=======
+  accepts_nested_attributes_for :address, update_only: true
+>>>>>>> master
 end

@@ -84,9 +84,14 @@ group :production do
   gem 'unicorn'
 end
 
+<<<<<<< HEAD
 
 gem 'carrierwave'
 
 # jp_prefecture(都道府県)
 gem 'jp_prefecture'
 
+=======
+# jp_prefecture(都道府県)
+gem 'jp_prefecture'
+>>>>>>> master
