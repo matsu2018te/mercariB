@@ -84,4 +84,9 @@ group :production do
   gem 'unicorn'
 end
 
+
 gem 'carrierwave'
+
+# jp_prefecture(都道府県)
+gem 'jp_prefecture'
+
