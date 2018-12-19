@@ -8,7 +8,12 @@ class CreditsController < ApplicationController
   end
 
   def create
-    Credit.create(credit_params)
+    @credit = Credit.new(credit_params)
+    if @credit.save
+      redirect_to mypage_card_path
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -16,7 +21,7 @@ class CreditsController < ApplicationController
     if credit.destroy
       redirect_to mypage_card_path
     else
-      render mypage_card_path
+      render :index
     end
   end
 

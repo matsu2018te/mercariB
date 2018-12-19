@@ -1,6 +1,9 @@
 class Credit < ApplicationRecord
   belongs_to :user
 
+  validates :expiration_month, :expiration_year, :security_code, presence: true
+  validates :card_number, presence: true, uniqueness: true
+
   def card_img
     card_numbers = card_number.split("")
     first_number = card_numbers[0].to_i
