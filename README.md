@@ -25,7 +25,7 @@
 - has_many :seller_products, class_name: 'Product', :foreign_key => 'seller_id'
 - has_many :user_evalutions
 - has_many :evalutions, through: :user_evalutions
-- has_many :credits
+- has_one :credit
 - has_one  :address
 - has_many :sns_credentials
 
