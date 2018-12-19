@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'home#index'
   devise_scope :user do
     get 'login' => 'devise/sessions#new'#ログイン
     get 'signup' => 'devise/registrations#signup' #新規会員登録
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
     get "/signup/done" => "devise/registrations#done"#完了画面
   end
 
-  root 'home#index'
+
   devise_for :users
   get 'mypage' => 'users#show'
   post 'mypage' => 'users#update'
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   get 'mypage/identification' => 'users#set_user'
   patch 'mypage' => 'users#update'
   get 'mypage/logout' => 'users#destroy'
-  # クレジットカード
+  get 'show' => 'products#show'
   get 'mypage/card' => 'credits#index'
   get 'mypage/card/create' => 'credits#new'
   post 'mypage/card' => 'credits#create'

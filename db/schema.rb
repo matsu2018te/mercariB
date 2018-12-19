@@ -56,9 +56,6 @@ ActiveRecord::Schema.define(version: 20181218114909) do
     t.integer  "birth_year",                                        null: false
     t.integer  "birth_month",                                       null: false
     t.integer  "birth_day",                                         null: false
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
