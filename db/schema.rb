@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20181217013132) do
-=======
+
 ActiveRecord::Schema.define(version: 20181217114434) do
->>>>>>> 8d1d018d91804e3b0fde6184d3263c3b4f71f585
+
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postal_code",    null: false

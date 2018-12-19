@@ -1,7 +1,7 @@
 $(function(){
 
-var mainSlider = ".slider";
-var thumbnailSlider = ".thumb";
+  var mainSlider = ".slider";
+  var thumbnailSlider = ".thumb";
   $('.slider').slick({
     autoplay: false,
     speed: 500,
