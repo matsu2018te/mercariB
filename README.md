@@ -131,11 +131,11 @@
 - has_many   :product_images
 
 
-## product_image
+## image
 |Column|Type|Options|
 |------|----|-------|
 |product_id|references|foreign_key|
-|product_image|string||
+|image|string||
 
 ### Association
 - belongs_to :product
