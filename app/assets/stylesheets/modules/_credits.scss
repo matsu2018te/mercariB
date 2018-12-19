@@ -28,3 +28,14 @@
     }
   }
 }
+
+.cricle-mark {
+  background-color:$linkBlue;
+  border-radius: 50%;
+  color:$White;
+  display:inline-block;
+  font-size: 12px;
+  height:14px;
+  text-align:center;
+  width:14px;
+}
