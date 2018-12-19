@@ -12,7 +12,9 @@
 
 
 
+
 ActiveRecord::Schema.define(version: 20181219072245) do
+
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postal_code",    null: false
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 20181219072245) do
     t.integer  "birth_month",                                       null: false
     t.integer  "birth_day",                                         null: false
 
+
     t.integer  "seller_id"
     t.integer  "buyer_id"
 
@@ -97,6 +100,8 @@ ActiveRecord::Schema.define(version: 20181219072245) do
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
+
+
 
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
