@@ -1,11 +1,12 @@
 .card-list {
   li {
     display: inline-block;
-    img {
-      height: 20px;
-      width:49px;
-    }
   }
+}
+
+.card_mark {
+  height: 20px;
+  width:49px;
 }
 
 .security-code{

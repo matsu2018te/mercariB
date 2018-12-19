@@ -12,19 +12,19 @@
               = f.text_field :card_number, placeholder: "半角英数のみ"
               %ul.card-list
                 %li
-                  = image_tag("credits/visa.svg", alt:"vise")
+                  = image_tag("credits/visa.svg", alt:"vise", class: "card_mark")
                 %li
-                  = image_tag("credits/master-card.svg", alt:"master-card")
+                  = image_tag("credits/master-card.svg", alt:"master-card" class: "card_mark")
                 %li
-                  = image_tag("credits/saison-card.svg", alt:"saison-card")
+                  = image_tag("credits/saison-card.svg", alt:"saison-card" class: "card_mark")
                 %li
-                  = image_tag("credits/jcb.svg", alt:"jcb")
+                  = image_tag("credits/jcb.svg", alt:"jcb" class: "card_mark")
                 %li
-                  = image_tag("credits/american_express.svg", alt:"american_express")
+                  = image_tag("credits/american_express.svg", alt:"american_express" class: "card_mark")
                 %li
-                  = image_tag("credits/dinersclub.svg", alt:"dinersclub")
+                  = image_tag("credits/dinersclub.svg", alt:"dinersclub" class: "card_mark")
                 %li
-                  = image_tag("credits/discover.svg", alt:"discover")
+                  = image_tag("credits/discover.svg", alt:"discover" class: "card_mark")
             .form-group
               = f.label [:expiration_monnth, :expiration_year], "有効期限"
               %span.form-require 必須
