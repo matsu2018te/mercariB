@@ -115,7 +115,7 @@
 |size_id|references|foreign_key|
 |product_state|string|null: false|
 |delivery_fee_owner|string|null: false|
-|area_id|references|foreign_key|
+|area|integer|null: false|
 |delivery_date|datatime|null: false|
 |sell_status_id|references|foreign_key|
 |shipping_method|string|null: false|
@@ -126,7 +126,6 @@
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :size_status
-- belongs_to :area
 - belongs_to :sell_status
 - has_many   :product_images
 
@@ -145,11 +144,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |category_name|string|null: false|
-|parent_id|references|foreign_key class_name: Category|
+|ancestry|string|index: true|
+|belongs|string|null: false|
 
 ### Association
 - has_many   :products
-- belongs_to :parent, class_name: 'Category', :foreign_key => 'parent_id'
+- has_ancestry
 
 
 ## brand
@@ -158,31 +158,31 @@
 |name|string|null: false|
 
 ### Association
-- has_many :product
+- has_many :products
 
-
-## area
+<!-- 商品側にはjp_prefectureのコードを使用 -->
+<!-- ## area
 |Column|Type|Options|
 |------|----|-------|
 |prefectures|string|null: false|
 
 ### Association
-- has_many :product
+- has_many :product -->
 
 
 ## sell_status
 |Column|Type|Options|
 |------|----|-------|
-|status|string|null: false|
+|status|integer|null: false|
 
 ### Association
 - has_many :product
 
 
-## size_status
+## size
 |Column|Type|Options|
 |------|----|-------|
-|size|integer|null: false|
+|size|string|null: false|
 
 ### Association
 - has_many :product
