@@ -179,10 +179,10 @@
 - has_many :product
 
 
-## size_status
+## size
 |Column|Type|Options|
 |------|----|-------|
-|size|integer|null: false|
+|size|string|null: false|
 
 ### Association
 - has_many :product
