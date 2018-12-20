@@ -96,6 +96,15 @@ ActiveRecord::Schema.define(version: 20181220080553) do
     t.string "size", null: false
   end
 
+  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "uid"
+    t.string   "provider"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
@@ -132,4 +141,5 @@ ActiveRecord::Schema.define(version: 20181220080553) do
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "users", column: "buyer_id"
   add_foreign_key "products", "users", column: "seller_id"
+  add_foreign_key "sns_credentials", "users"
 end
