@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
   end
 
-  def create
+  # def create
 
-  end
+  # end
 
   def new
   end

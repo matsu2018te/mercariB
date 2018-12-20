@@ -29,24 +29,41 @@
   %main.single-main
     .signup-panel
       %h2.signup-panel__head 会員情報入力
-      = form_for "" do |f|
+      = form_for(@user, url: signup_completed_path ) do |f|
         .form-group
-          = f.label :card_number, "カード番号"
-          %span.form-require 必須
-          = f.text_field :card_number, autofocus: true
-        .form-group
-          = f.label :expiration_date, "有効期限"
-          %span.form-require 必須
-          %br
-          = f.number_field :expiration_date, min: "1", max: "12", class: "number_field"
-          月
-          %br
-          = f.number_field :expiration_date, min: "1", max: "31", class: "number_field"
-          年
-        .form-group
-          = f.label :security_code, "セキュリティコード"
-          %span.form-require 必須
-          = f.text_field :security_code
-        = f.submit "次へ進む", class: "btn btn__red"
+          = f.hidden_field :nickname, value: @user.nickname
+          = f.hidden_field :email, value: @user.email
+          = f.hidden_field :password, value: @user.password
+          = f.hidden_field :password_confirmation, value: @user.password_confirmation
+          = f.hidden_field :first_name, value: @user.first_name
+          = f.hidden_field :last_name, value: @user.last_name
+          = f.hidden_field :first_name_phonetic, value: @user.first_name_phonetic
+          = f.hidden_field :last_name_phonetic, value: @user.last_name_phonetic
+          = f.hidden_field :telephone, value: @user.telephone
+          = f.fields_for :address do |i|
+            = i.hidden_field :postal_code, value: @user.address.postal_code
+            = i.hidden_field :prefecture, value: @user.address.prefecture
+            = i.hidden_field :municipality, value: @user.address.municipality
+            = i.hidden_field :address_number, value: @user.address.address_number
+            = i.hidden_field :building_name, value: @user.address.building_name
+          = f.fields_for :credits do |i2|
+            .form-group
+              = i2.label :card_number, "カード番号"
+              %span.form-require 必須
+              = i2.text_field :card_number, autofocus: true, required:""
+            .form-group
+              = i2.label :expiration_date, "有効期限"
+              %span.form-require 必須
+              %br
+              = i2.number_field :expiration_month, min: "1", max: "12", class: "number_field", required:""
+              月
+              %br
+              = i2.number_field :expiration_year, min: "1", max: "31", class: "number_field", required:""
+              年
+            .form-group
+              = i2.label :security_code, "セキュリティコード"
+              %span.form-require 必須
+              = i2.text_field :security_code, required:""
+          = f.submit "次へ進む", class: "btn btn__red"
 
   = render "devise/shared/footer"
