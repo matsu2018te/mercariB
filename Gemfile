@@ -43,12 +43,14 @@ group :development, :test do
   gem 'pry-doc'
   gem 'rspec-rails'
   gem 'factory_girl_rails', "~> 4.4.1"
+  gem 'rails-controller-testing'
 
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+
 end
 
 group :development do
@@ -82,5 +84,13 @@ group :production do
   gem 'unicorn'
 end
 
+
+gem 'carrierwave'
+
 # jp_prefecture(都道府県)
 gem 'jp_prefecture'
+
+
+# jp_prefecture(都道府県)
+gem 'jp_prefecture'
+
