@@ -94,3 +94,8 @@ gem 'jp_prefecture'
 # jp_prefecture(都道府県)
 gem 'jp_prefecture'
 
+
+#認証
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
