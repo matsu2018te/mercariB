@@ -1,0 +1,209 @@
+.sell{
+  &-contents{
+    max-width: 700px;
+    padding:40px;
+    background:$white;
+    margin:0 auto;
+    border-bottom: solid thin $gray;
+    @include clearfix;
+    &-label{
+      color:gray;
+      font-size: 14px;
+      font-weight:bold;
+      float:left;
+    }
+    &__caution{
+      font-size: 14px;
+      line-height: 1.5;
+      &-space{
+        height:40px;
+      }
+    }
+    &__comment{
+      font-size: 12px;
+      margin-top: 15px;
+    }
+  }
+  &-form{
+    border:thin solid gray;
+    @include clearfix;
+    &-box{
+      margin-top:40px;
+      width: 400px;
+      float:right;
+    }
+    &-title{
+      font-size:16px;
+      font-weight: bold;
+    }
+    &-sub_title{
+      font-weight: bold;
+      font-size:14px;
+      &-price{
+        font-size:14px;
+        margin:13px 0;
+        font-weight: bold;
+      }
+    }
+    &-price{
+      @include clearfix;
+      height:90px;
+      border-bottom:thin solid gray;
+      &_left{
+        float:left;
+        padding-top:20px;
+        width:100px;
+      }
+      &_right{
+        float:right;
+      }
+      &-fee{
+        height:40px;
+        @include clearfix;
+        border-bottom:thin solid gray;
+        &-text{
+          float:left;
+          font-size:12px;
+        }
+        &-num{
+          float:right;
+        }
+      }
+      &-gains{
+          height:40px;
+          @include clearfix;
+          font-weight: bold;
+          font-size: 16px;
+          margin-top: 20px;
+        &-text{
+          float:left;
+        }
+        &-num{
+          float:right;
+        }
+      }
+    }
+  }
+  &-dropbox{
+    &_container{
+      margin-top: 16px;
+      height:186px;
+      @include clearfix;
+    }
+    &-items{
+      height:186px;
+      float:left;
+      &_container{
+        height:186px;
+        width:140px;
+        text-align: center;
+        background: $light-gray;
+        border:thin dashed gray;
+        @include clearfix;
+        position:relative
+      }
+      &-figure{
+        height:70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &-btn{
+        height:30%;
+        padding-top: 16px;
+        width:50%;
+        border: thin solid $gray;
+        color:$light-blue;
+        float:left;
+      }
+    }
+    &-uploader{
+      height:100%;
+      padding:60px 20px;
+      width:75%;
+      text-align: center;
+      background: $light-gray;
+      border:thin dashed gray;
+      float:right;
+    }
+  }
+}
+h2.l-single-head{
+  font-weight: bold;
+  text-align: center;
+  font-size:22px;
+  width:100%;
+}
+span.form-require.sell{
+  display: inline-block;
+  font-size:12px;
+  font-weight: bold;
+}
+p.btn.btn__gray{
+  @extend.btn__red;
+  width:280px;
+  margin:23px auto 0;
+  background: gray;
+}
+a.text-blue{
+  color:$light-blue;
+}
+
+input[type="text"].sell-form-text_field{
+  border-radius: 5px;
+  border: thin solid gray;
+  margin-top:8px;
+  &:focus{
+    border-color:$light-blue;
+    outline: 0;
+  }
+}
+
+input[type="number"].sell-form-text_number{
+  @extend input[type="text"].sell-form-text_field;
+  width:160px;
+  text-align: right;
+  &::-webkit-outer-spin-button,&::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  }
+}
+
+textarea.sell-form-text_area{
+  @extend input[type="text"].sell-form-text_field;
+  border-radius:none;
+  padding:10px;
+  height:120px;
+  width:100%;
+}
+
+.sell-form-select select{
+  @extend input[type="text"].sell-form-text_field;
+  background: none transparent;
+  vertical-align: middle;
+  font-size: inherit;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  padding:0 16px ;
+  width:100%;
+  height:46px;
+}
+.select-wrap {
+  position: relative;
+  &:before {
+    z-index: 1;
+    position: absolute;
+    right: 15px;
+    font-size:26px;
+    content: "\f107";
+    font-family: "FontAwesome";
+    line-height: 60px;
+    pointer-events: none;
+    color:gray;
+  }
+}
+.form-arbitrary.sell{
+  @extend .form-require;
+  background: gray;
+  border-color: gray;
+}
