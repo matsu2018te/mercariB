@@ -1,6 +1,5 @@
 require "csv"
 
-Category.delete_all
 parents =[]
 children =[]
 CSV.foreach('db/category_parent.csv', encoding: 'Shift_JIS:UTF-8') do |row|
@@ -27,4 +26,8 @@ children.each do |child|
     end
   end
   child_count += 1
+end
+
+CSV.foreach('db/size.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
+  Size.create(size: row[0])
 end

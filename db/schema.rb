@@ -11,11 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-
-
-
-
-ActiveRecord::Schema.define(version: 20181219072245) do
+ActiveRecord::Schema.define(version: 20181220065255) do
 
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -30,9 +26,31 @@ ActiveRecord::Schema.define(version: 20181219072245) do
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "category_name", null: false
+    t.string   "belongs"
+    t.string   "ancestry"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  end
 
-
+  create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "security_code",    null: false
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "expiration_month", null: false
+    t.integer  "expiration_year",  null: false
+    t.string   "card_number"
+    t.index ["user_id"], name: "index_credits_on_user_id", using: :btree
+  end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_id"
@@ -54,26 +72,26 @@ ActiveRecord::Schema.define(version: 20181219072245) do
     t.string   "shipping_method",                  null: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.integer  "category_id"
+    t.integer  "brand_id"
+    t.integer  "sell_status_id"
+    t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
+    t.integer  "size_id"
     t.index ["buyer_id"], name: "index_products_on_buyer_id", using: :btree
+    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["sell_status_id"], name: "index_products_on_sell_status_id", using: :btree
     t.index ["seller_id"], name: "index_products_on_seller_id", using: :btree
+    t.index ["size_id"], name: "index_products_on_size_id", using: :btree
+  end
 
+  create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "size", null: false
+  end
 
-
-  create_table "credit_cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "card_number",     null: false
-    t.integer  "expiration_date", null: false
-    t.integer  "security_code",   null: false
-
-  create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "security_code",    null: false
-
-    t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "expiration_month", null: false
-    t.integer  "expiration_year",  null: false
-    t.string   "card_number"
-    t.index ["user_id"], name: "index_credits_on_user_id", using: :btree
+  create_table "sell_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "status",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -97,45 +115,19 @@ ActiveRecord::Schema.define(version: 20181219072245) do
     t.integer  "birth_year",                                        null: false
     t.integer  "birth_month",                                       null: false
     t.integer  "birth_day",                                         null: false
-
-
-
     t.integer  "seller_id"
     t.integer  "buyer_id"
-
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
-
-
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
-
-
-
-
-
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "addresses", "users"
-
-
+  add_foreign_key "credits", "users"
   add_foreign_key "images", "products"
+  add_foreign_key "products", "brands"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "sell_statuses"
+  add_foreign_key "products", "sizes"
   add_foreign_key "products", "users", column: "buyer_id"
   add_foreign_key "products", "users", column: "seller_id"
-
-  add_foreign_key "credit_cards", "users"
-
-
-  add_foreign_key "credit_cards", "users"
-
-
-  add_foreign_key "credit_cards", "users"
-
-
-  add_foreign_key "credits", "users"
-
 end

@@ -34,3 +34,13 @@
     background-color:#FAFAFA;
   }
 }
+
+@mixin FormWindow{
+  border-radius: 5px;
+  border: thin solid gray;
+  margin-top:8px;
+  &:focus{
+    border-color:$light-blue;
+    outline: 0;
+  }
+}
