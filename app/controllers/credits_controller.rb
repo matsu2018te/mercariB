@@ -17,7 +17,7 @@ class CreditsController < ApplicationController
   end
 
   def destroy
-    credit = current_user.credit
+    credit = current_user.credits
     if credit.destroy
       redirect_to mypage_card_path
     else
