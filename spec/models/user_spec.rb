@@ -8,9 +8,9 @@ describe User do
     end
 
     it "is invalid without a nickname" do
-    user = build(:user, nickname: "")
-    user.valid?
-    expect(user.errors[:nickname]).to include("を入力してください")
+      user = build(:user, nickname: "")
+      user.valid?
+      expect(user.errors[:nickname]).to include("を入力してください")
     end
 
     it "is invalid without a password" do
