@@ -46,24 +46,24 @@
             = i.hidden_field :municipality, value: @user.address.municipality
             = i.hidden_field :address_number, value: @user.address.address_number
             = i.hidden_field :building_name, value: @user.address.building_name
-          = f.fields_for :credit_cards do |i2|
+          = f.fields_for :credits do |i2|
             .form-group
               = i2.label :card_number, "カード番号"
               %span.form-require 必須
-              = i2.text_field :card_number, autofocus: true
+              = i2.text_field :card_number, autofocus: true, required:""
             .form-group
               = i2.label :expiration_date, "有効期限"
               %span.form-require 必須
               %br
-              = i2.number_field :expiration_date, min: "1", max: "12", class: "number_field"
+              = i2.number_field :expiration_month, min: "1", max: "12", class: "number_field", required:""
               月
               %br
-              = i2.number_field :expiration_date, min: "1", max: "31", class: "number_field"
+              = i2.number_field :expiration_year, min: "1", max: "31", class: "number_field", required:""
               年
             .form-group
               = i2.label :security_code, "セキュリティコード"
               %span.form-require 必須
-              = i2.text_field :security_code
+              = i2.text_field :security_code, required:""
           = f.submit "次へ進む", class: "btn btn__red"
 
   = render "devise/shared/footer"

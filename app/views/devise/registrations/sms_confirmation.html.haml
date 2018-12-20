@@ -37,7 +37,7 @@
           = f.hidden_field :password, value: @user.password
           = f.hidden_field :password_confirmation, value: @user.password_confirmation
           = f.label :telephone, "携帯電話の番号"
-          = f.telephone_field :telephone, autofocus: true, placeholder: "携帯電話の番号を入力"
+          = f.telephone_field :telephone, autofocus: true, placeholder: "携帯電話の番号を入力", required:""
           %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
         = f.submit "smsを送信する", class: "btn btn__red"
         %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。

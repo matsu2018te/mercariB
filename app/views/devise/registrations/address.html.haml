@@ -39,30 +39,30 @@
         .form-group
           = f.label [:first_name, :last_name], "お名前"
           %span.form-require 必須
-          = f.text_field :first_name, placeholder: "例)山田"
-          = f.text_field :last_name, placeholder: "例)彩"
+          = f.text_field :first_name, placeholder: "例)山田", required:""
+          = f.text_field :last_name, placeholder: "例)彩", required:""
         .form-group
           = f.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
           %span.form-require 必須
-          = f.text_field :first_name_phonetic, placeholder: "例)ヤマダ"
-          = f.text_field :last_name_phonetic, placeholder: "例)アヤ"
+          = f.text_field :first_name_phonetic, placeholder: "例)ヤマダ", required:""
+          = f.text_field :last_name_phonetic, placeholder: "例)アヤ", required:""
           = f.fields_for :address do |i|
             .form-group
               = i.label :postal_code, "郵便番号"
               %span.form-require 必須
-              = i.text_field :postal_code, placeholder: "例)123-4567"
+              = i.text_field :postal_code, placeholder: "例)123-4567", required:""
             .form-group
               = i.label :prefecture, "都道府県"
               %span.form-require 必須
-              = i.text_field :prefecture, placeholder: "例)北海道"
+              = i.text_field :prefecture, placeholder: "例)北海道", required:""
             .form-group
               = i.label :municipality, "市区町村"
               %span.form-require 必須
-              = i.text_field :municipality, placeholder: "例)横浜市緑区"
+              = i.text_field :municipality, placeholder: "例)横浜市緑区", required:""
             .form-group
               = i.label :address_number, "番地"
               %span.form-require 必須
-              = i.text_field :address_number, placeholder: "例)青山1-1-1"
+              = i.text_field :address_number, placeholder: "例)青山1-1-1", required:""
             .form-group
               = i.label :building_name, "建物名"
               = i.text_field :building_name, placeholder: "例)柳ビル103"

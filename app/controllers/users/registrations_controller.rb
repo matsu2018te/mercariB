@@ -54,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :telephone, :first_name, :first_name, :last_name, :first_name_phonetic, :last_name_phonetic, address_attributes: [:id, :postal_code, :prefecture, :municipality, :address_number, :building_name],
-      credits_attributes: [:id, :card_number, :expiration_date, :security_code])
+      credits_attributes: [:id, :card_number, :expiration_month, :expiration_year, :security_code])
     #  :birthday,
   end
 
