@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'home#index'
   devise_scope :user do
     get 'login' => 'devise/sessions#new'#ログイン
     get 'signup' => 'devise/registrations#signup' #新規会員登録
@@ -9,10 +10,18 @@ Rails.application.routes.draw do
     get "/signup/done" => "devise/registrations#done"#完了画面
   end
 
-  root 'home#index'
+
   devise_for :users
   get 'mypage' => 'users#show'
+  post 'mypage' => 'users#update'
   get 'mypage/profile' => 'users#edit'
+  get 'mypage/identification' => 'users#set_user'
+  patch 'mypage' => 'users#update'
   get 'mypage/logout' => 'users#destroy'
+  get 'show' => 'products#show'
+  get 'mypage/card' => 'credits#index'
+  get 'mypage/card/create' => 'credits#new'
+  post 'mypage/card' => 'credits#create'
+  delete 'mypage/card' => 'credits#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

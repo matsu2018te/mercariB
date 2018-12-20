@@ -1,0 +1,88 @@
+.credit {
+  background:$white;
+  border-top:1px solid $Whitesmoke;
+  margin:0 auto;
+  padding:30px;
+  width:50%;
+  &__form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+  &__text {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    text-align:left;
+  }
+  &__list {
+    position:relative;
+  }
+}
+
+
+.card {
+  display: inline-block;
+  &__mark {
+    height: 20px;
+    width:30px;
+  }
+  &__delete {
+    background-color:$White;
+    border:solid 1px $Red;
+    border-radius:3px;
+    color:$Red;
+    padding:4px 6px;
+    position:absolute;
+      top:0;
+      right:0;
+    text-align:center;
+    &__text {
+      color:$Red;
+    }
+  }
+}
+
+select.number_select {
+  outline:none;
+  text-indent: 0.01px;
+  text-overflow: '';
+  vertical-align: left;
+  width:110px;
+}
+
+
+.security-code{
+  &__description {
+    color:$linkBlue;
+    text-align:right;
+    }
+  &__image {
+    background-color:$Gray;
+    opacity: 0;
+    padding: 16px;
+    position: absolute;
+      left:0;
+      right:0;
+    visibility: hidden;
+    z-index:1;
+    &--show {
+      opacity:1;
+      visibility: visible;
+    }
+  }
+}
+
+.cricle-mark {
+  background-color:$linkBlue;
+  border-radius: 50%;
+  color:$White;
+  display:inline-block;
+  font-size: 12px;
+  height:14px;
+  text-align:center;
+  width:14px;
+}
+
+.btn-red {
+  background-color:$Red;
+}

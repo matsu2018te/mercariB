@@ -196,15 +196,22 @@
 form {
   .form-group {
     margin-bottom: 24px;
-    input {
-      border: 0.1px solid $Black;
+    input, select {
+      border: 1px solid $Black;
       box-sizing: border-box;
       font-size:16px;
       height: 48px;
       padding:8px 10px;
+    }
+    select.prefecture_select{
+      background-color:$White;
       width:100%;
     }
+    input {
+      width: 100%;
+    }
     input.number_field {
+      display:block;
       width:25%;
     }
     .g-recaptcha {
@@ -223,6 +230,12 @@ form {
   padding:1px 1px;
 }
 
+.form-arbitrary {
+  background-color:$Gray;
+  color:$White;
+  margin-right: 10px;
+  padding:2px 3px;
+}
 
 @media screen and (min-width: 768px) {
   .single-container {
@@ -242,6 +255,13 @@ form {
     }
     .single-footer nav ul li{
       display:inline-block;
+    }
+  }
+  form {
+    .form-group {
+      input.number_field {
+        display: inline-block;
+      }
     }
   }
 }

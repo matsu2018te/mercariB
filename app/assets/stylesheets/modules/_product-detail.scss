@@ -1,0 +1,552 @@
+.product-box-container{
+  width: 700px;
+  margin: 40px auto 0;
+  padding: 24px 40px 40px 40px;
+  background-color: $White;
+  .product-name{
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.4;
+  }
+  .product-main-box{
+    margin: 16px 0 0;
+    .product-img-box{
+        max-width: 300px;
+        min-width: 300px;
+        height: 375px;
+        float: left;
+        overflow: hidden;
+        .product-img-carousel{
+          .product-img-box-main{
+            float:left;
+            max-width: 300px;
+          }
+        }
+        .product-img-box-detail{
+          display: inline-block;
+          .box-sub{
+            float: left;
+            max-width: 75px;
+            min-width: 75px;
+            height: 75px;
+            opacity: 0.5;
+          }
+          .box-sub:hover{
+            opacity: 1;
+          }
+        }
+      }
+    .product-info{
+      max-width: 300px;
+      min-width: 300px;
+      float: right;
+      height: 375px;
+      margin: 0 auto;
+      border: solid 1px $Whitesmoke;
+      border-collapse: collapse;
+      tbody{
+        text-align: left;
+        tr{
+          th{
+            background-color: $Whitesmoke;
+            width: 45%;
+            vertical-align: middle;
+            padding: 8px;
+            font-size: 13px;
+          }
+          td{
+            padding: 8px;
+            width: 55%;
+            background-color: $White;
+            border: solid 1px $Whitesmoke;
+            vertical-align: middle;
+            font-size: 13px;
+            a:hover{
+              text-decoration: underline;
+            }
+            div{
+              padding: 0;
+              margin: 0;
+              .product-user-rate{
+                display:inline-block;
+                margin: 8px 0 0 10px;
+                i.good::before{
+                  font-family: "Font Awesome 5 Free";
+                  content: '\f580';
+                  color: $Red;
+                }
+                .count{
+                  float: right;
+                  font-size: 8px;
+                  line-height: 1.5;
+                  padding-left: 3px;
+                }
+                i.normal::before{
+                  font-family: "Font Awesome 5 Free";
+                  content: '\f11a';
+                  color: #F7C147;
+                }
+                i.bad::before{
+                  font-family: "Font Awesome 5 Free";
+                  content: '\f119';
+                  color: $Skyblue;
+                }
+              }
+              .product-user-rate:first-child{
+                margin: 8px 0 0 0;
+              }
+            }
+            .parent{
+
+            }
+            .child-box{
+              i.right::before{
+                font-family: "Font Awesome 5 Free";
+                content: '\f054';
+                color: #F7C147;
+                font-weight: 600;
+                display: inline-block;
+                float: left;
+                padding-right: 3px;
+              }
+              .child{
+
+              }
+              .g-child{
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .product-main-box::after{
+    content:"";
+    display: block;
+    clear: both;
+  }
+  .price-box{
+    text-align: center;
+    margin: 24px 0 0 0;
+    line-height: 1.5;
+    .price{
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .tax{
+      font-size: 8px;
+      padding: 0 0 0 12px;
+    }
+    .tax-include{
+      font-size: 16px;
+    }
+  }
+  .buy-btn{
+    background-color: $Red;
+    text-align: center;
+    font-size: 24px;
+    color: $White;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .product-detail{
+    padding: 32px 0 0 0;
+    height: 10px;
+  }
+  .product-btn{
+    margin: 20px 0 0 0;
+    &-left{
+      float: left;
+      .like-btn{
+        display: inline-block;
+        background-color: $ThinGray;
+        padding: 8px 16px;
+        border: 1px solid $ThinGray;
+        border-radius: 40px;
+        i.like::before{
+          font-family: "Font Awesome 5 Free";
+          content: '\f004';
+          color: $Gray;
+          display: inline-block;
+          padding-right: 5px;
+        }
+        .text{
+          display: inline-block;
+        }
+        .like-count{
+          display: inline-block;
+        }
+      }
+      .report{
+        display: inline-block;
+        background-color: $ThinGray;
+        padding: 8px 16px;
+        border: 1px solid $ThinGray;
+        border-radius: 40px;
+        font-size: 14px;
+        margin-left: 10px;
+        i.flag::before{
+          font-family: "Font Awesome 5 Free";
+          content: '\f024';
+          color: $Gray;
+          display: inline-block;
+        }
+        .text{
+          display: inline-block;
+        }
+      }
+    }
+    &-right{
+      float: right;
+      margin-top: 8px;
+      font-size: 14px;
+      color: $Skyblue;
+      i.lock::before{
+        font-family: "Font Awesome 5 Free";
+        content: '\f023';
+        color: $Skyblue;
+        display: inline-block;
+        font-weight: 600;
+        padding-right: 5px;
+      }
+      .text{
+        display: inline-block;
+      }
+    }
+  }
+  // .product-btn.clearfix{
+  //   content:"";
+  //   display: block;
+  //   clear: both;
+  // }
+}
+// .product-box-container.clearfix::after{
+//   content:"";
+//   display: block;
+//   clear: both;
+// }
+.product-message{
+  width: 700px;
+  margin: 5px auto 0;
+  padding: 24px;
+  background-color: $White;
+  .messages{
+    li{
+      margin-top: 60px;
+      .message-user{
+        float: left;
+        position: relative;
+        top: -20px;
+        .user-img{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: $ThinGray;
+          overflow: hidden;
+          .user-icon{
+            width: 40px;
+            height: 32px;
+            margin-top: 10px;
+          }
+
+        }
+
+      }
+      .message-body{
+        position: relative;
+        width: 600px;
+        float: right;
+        padding: 16px;
+        background-color: $ThinGray;
+        line-height: 1.5;
+        border-radius: 15px;
+        z-index: 1;
+        .message-text{
+
+        }
+        .message-icons{
+          margin-top: 8px;
+          .icon-left{
+            float: left;
+            i.time::before{
+              font-family: "Font Awesome 5 Free";
+              content: '\f017';
+              color: $Gray;
+              display: inline-block;
+            }
+            .text{
+              display: inline-block;
+              font-size: 12px;
+              line-height: 12px;
+              color: $Gray;
+
+            }
+
+          }
+          .icon-right{
+            float: right;
+            i.flag::before{
+              font-family: "Font Awesome 5 Free";
+              content: '\f024';
+              color: $Gray;
+              display: inline-block;
+            }
+
+          }
+        }
+        .message-icons.clearfix::after{
+          content:"";
+          display: block;
+          clear: both;
+        }
+        i.balloon::before{
+          font-family: "Font Awesome 5 Free";
+          content: '\f3e5';
+          color: $ThinGray;
+          display: inline-block;
+          font-weight: 600;
+          font-size: 35px;
+          transform:rotate3d(-1,1,0,180deg);
+          position: absolute;
+          top: 8px;
+          left: -9px;
+
+        }
+      }
+    }
+    li:first-child{
+      margin-top: 20px;
+    }
+    // li.clearfix::after{
+    //   content:"";
+    //   display: block;
+    //   clear: both;
+    // }
+    .caution{
+      background-color: #fff6de;
+      padding: 8px;
+      font-size: 14px;
+    }
+    .comment{
+      margin-top: 8px;
+      padding: 10px;
+      .text-input{
+        background-color: $ThinGray;
+        border: 1px solid #ccc;
+        min-height: 104px;
+        line-height: 1.5;
+        width: 100%;
+      }
+      .actions{
+        text-align: center;
+
+        margin: 8px 0 0 0;
+        .btn-gray{
+          width: 100%;
+          background-color: $Gray;
+          font-size: 14px;
+          line-height: 48px;
+          color: $White;
+        }
+      }
+    }
+  }
+}
+.nav-item-link{
+  width: 700px;
+  margin: 24px auto 0;
+
+  .nav-prev{
+    float: left;
+    width: 45%;
+    .prev{
+      color: $Skyblue;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      i.prev-icon::before{
+        font-family: "Font Awesome 5 Free";
+        content: '\f054';
+        color: #F7C147;
+        font-weight: 600;
+        display: inline-block;
+        transform:scale(-1,1);
+      }
+      .prev-icon{
+        position: absolute;
+        left: 0;
+        top: 33%;
+      }
+      .text{
+        display: inline-block;
+        padding-left: 15px;
+      }
+    }
+  }
+  .nav-next{
+    float: right;
+    width: 45%;
+    text-align: right;
+    .next{
+      color: $Skyblue;
+      text-decoration: none;
+      i.prev-icon-right::before{
+        font-family: "Font Awesome 5 Free";
+        content: '\f054';
+        color: #F7C147;
+        font-weight: 600;
+        display: inline-block;
+      }
+      .text{
+        display: inline-block;
+        padding-left: 15px;
+      }
+    }
+  }
+}
+// ul.nav-item-link.clearfix::after{
+//   content:"";
+//   display: block;
+//   clear: both;
+// }
+.social-media-box{
+  width: 700px;
+  margin: 24px auto 32px;
+  padding: 32px 0 24px;
+  background-color: $White;
+  .social-media-icons{
+    margin: 16px 0 0;
+    text-align: center;
+    li{
+      display: inline-block;
+      margin: 0 8px 8px 0;
+      vertical-align: middle;
+      text-align: center;
+      i{
+        display: block;
+        width: 44px;
+        height: 44px;
+        border-radius: 4px;
+        line-height: 44px;
+      }
+      i.facebook-icon{
+        background-color: $Navy;
+      }
+      i.facebook-icon::before{
+        font-family: "Font Awesome\ 5 Brands";
+        content: '\f082';
+        color: $White;
+      }
+      i.twitter-icon{
+        background-color: $ButtonBlue;
+      }
+      i.twitter-icon::before{
+        font-family: "Font Awesome\ 5 Brands";
+        content: '\f081';
+        color: $White;
+      }
+      i.line-icon{
+        background-color: #00c137;
+      }
+      i.line-icon::before{
+        font-family: "Font Awesome\ 5 Brands";
+        content: '\f3c0';
+        color: $White;
+      }
+      i.pinterest-icon{
+        background-color: #aa262a;
+      }
+      i.pinterest-icon::before{
+        font-family: "Font Awesome\ 5 Brands";
+        content: '\f0d2';
+        color: $White;
+      }
+    }
+  }
+}
+
+.items-in-user-profile{
+  margin: 24px auto 8px;
+  width: 700px;
+  .items-box-container{
+    .item-box-head{
+      font-size: 22px;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      .user-link{
+        color:$Skyblue;
+      }
+    }
+    .items-box-content{
+      margin: 0 auto;
+      .items-box{
+        margin: 0 0 20px 0;
+        float: left;
+        width: 220px;
+        .item-box{
+          width: 220px;
+          height: 220px;
+          .items-box-photo{
+
+          }
+          .items-box-body{
+            height: 110px;
+            padding: 16px;
+            .item-name{
+              overflow: hidden;
+              position: relative;
+              font-weight: 400;
+              height: 3em;
+              line-height: 1.5;
+            }
+            .item-box-num{
+              margin: 8px 0 0 0;
+              .item-box-price{
+                font-size: 16px;
+                float: left;
+
+              }
+              .item-box-likes{
+                float: right;
+                i.like.font-2::before{
+                  font-family: "Font Awesome 5 Free";
+                  content: '\f004';
+                  color: $Gray;
+                  display: inline-block;
+                  padding-right: 5px;
+                  float: right;
+                }
+                .like-count{
+                  display: inline-block;
+                  float:right;
+                }
+              }
+              .item-box-tax{
+                font-size: 10px;
+                clear: both;
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+}
+.in-category{
+  margin: 24px 0 8px 0;
+}
+
+.clearfix::after{
+  content:"";
+  display: block;
+  clear: both;
+}
