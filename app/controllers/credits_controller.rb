@@ -1,6 +1,6 @@
 class CreditsController < ApplicationController
   def index
-    @credit = current_user.credit
+    @credits = current_user.credits
   end
 
   def new
