@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20181220065255) do
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
+
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -39,7 +40,6 @@ ActiveRecord::Schema.define(version: 20181220065255) do
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
->>>>>>> master
   create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "security_code",    null: false
     t.integer  "user_id"
