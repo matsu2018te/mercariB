@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+
   devise_scope :user do
     get 'login' => 'devise/sessions#new'#ログイン
     get 'signup' => 'devise/registrations#signup' #新規会員登録
@@ -10,8 +10,13 @@ Rails.application.routes.draw do
     post "/signup/done" => "devise/registrations#edit"#完了画面
   end
 
+  devise_for :users, :controllers => {
+    :sessions      => "users/sessions",
+    :registrations => "users/registrations",
+    :passwords     => "users/passwords"
+  }
 
-  devise_for :users
+  root 'home#index'
   get 'mypage' => 'users#show'
   post 'mypage' => 'users#update'
   get 'mypage/profile' => 'users#edit'
