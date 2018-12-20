@@ -90,7 +90,5 @@ gem 'carrierwave'
 # jp_prefecture(都道府県)
 gem 'jp_prefecture'
 
-
-# jp_prefecture(都道府県)
-gem 'jp_prefecture'
-
+# カテゴリテーブル 階層構造
+gem 'ancestry'
