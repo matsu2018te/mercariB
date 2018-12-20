@@ -6,11 +6,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def registration
     @user = User.new
-
   end
 
   def sms_confirmation
-    @user.build_address
+    # @user.build_address
   end
 
   def address
