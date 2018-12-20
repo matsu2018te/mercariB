@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20181220080553) do
     t.integer  "sell_status_id"
     t.integer  "size_id"
     t.integer  "area",                             null: false
+
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["buyer_id"], name: "index_products_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
