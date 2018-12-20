@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe User do
   describe '#create' do
     it "is valid with a nickname, email, password, password_confirmation" do
@@ -7,11 +8,10 @@ describe User do
     end
 
     it "is invalid without a nickname" do
-    user = build(:user, nickname: "")
-    user.valid?
-    expect(user.errors[:nickname]).to include("を入力してください")
+      user = build(:user, nickname: "")
+      user.valid?
+      expect(user.errors[:nickname]).to include("を入力してください")
     end
-
 
     it "is invalid without a password" do
       user = build(:user, password: nil)
@@ -31,6 +31,35 @@ describe User do
       expect(user.errors[:password][0]).to include("は6文字以上で入力してください")
     end
 
+    it "is invalid without telephone" do
+    user = build(:user, telephone: "")
+    user.valid?
+    expect(user.errors[:telephone]).to include("を入力してください")
+    end
+
+    it "is invalid without first_name" do
+    user = build(:user, first_name: "")
+    user.valid?
+    expect(user.errors[:first_name]).to include("を入力してください")
+    end
+
+    it "is invalid without last_name" do
+    user = build(:user, last_name: "")
+    user.valid?
+    expect(user.errors[:last_name]).to include("を入力してください")
+    end
+
+    it "is invalid without first_name_phonetic" do
+    user = build(:user, first_name_phonetic: "")
+    user.valid?
+    expect(user.errors[:first_name_phonetic]).to include("を入力してください")
+    end
+
+    it "is invalid without last_name_phonetic" do
+    user = build(:user, last_name_phonetic: "")
+    user.valid?
+    expect(user.errors[:last_name_phonetic]).to include("を入力してください")
+    end
 
   end
 end
