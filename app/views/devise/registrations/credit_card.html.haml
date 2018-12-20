@@ -29,7 +29,7 @@
   %main.single-main
     .signup-panel
       %h2.signup-panel__head 会員情報入力
-      = form_for(@user, url: new_user_create_done_path ) do |f|
+      = form_for(@user, url: signup_completed_path ) do |f|
         .form-group
           = f.hidden_field :nickname, value: @user.nickname
           = f.hidden_field :email, value: @user.email

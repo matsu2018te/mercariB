@@ -15,6 +15,6 @@ class User < ApplicationRecord
 
   has_many :products
 
-  has_many :credit_cards, dependent: :destroy
-  accepts_nested_attributes_for :credit_cards
+  has_many :credits, dependent: :destroy
+  accepts_nested_attributes_for :credits
 end

@@ -17,7 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def credit_card
-    @user.credit_cards.build
+    @user.credits.build
   end
 
   def done
@@ -27,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
 
     @user.save
-    redirect_to new_user_create_done_path
+    redirect_to signup_done_path
     # yield resource if block_given?
     # if resource.persisted?
     #   if resource.active_for_authentication?
@@ -54,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :telephone, :first_name, :first_name, :last_name, :first_name_phonetic, :last_name_phonetic, address_attributes: [:id, :postal_code, :prefecture, :municipality, :address_number, :building_name],
-      credit_cards_attributes: [:id, :card_number, :expiration_date, :security_code])
+      credits_attributes: [:id, :card_number, :expiration_date, :security_code])
     #  :birthday,
   end
 
