@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema.define(version: 20181220065255) do
+ActiveRecord::Schema.define(version: 20181220061722) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postal_code",    null: false
@@ -25,7 +23,6 @@ ActiveRecord::Schema.define(version: 20181220065255) do
     t.datetime "updated_at",     null: false
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
-
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -76,8 +73,8 @@ ActiveRecord::Schema.define(version: 20181220065255) do
     t.integer  "category_id"
     t.integer  "brand_id"
     t.integer  "sell_status_id"
-    t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.integer  "size_id"
+    t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["buyer_id"], name: "index_products_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["sell_status_id"], name: "index_products_on_sell_status_id", using: :btree
@@ -85,14 +82,14 @@ ActiveRecord::Schema.define(version: 20181220065255) do
     t.index ["size_id"], name: "index_products_on_size_id", using: :btree
   end
 
-  create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "size", null: false
-  end
-
   create_table "sell_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "status",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "size", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
