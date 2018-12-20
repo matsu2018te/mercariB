@@ -1,6 +1,5 @@
 require "csv"
 
-Category.delete_all
 parents =[]
 children =[]
 CSV.foreach('db/category_parent.csv', encoding: 'Shift_JIS:UTF-8') do |row|
