@@ -30,7 +30,7 @@
   %main.single-main
     .signup-panel
       %h2.signup-panel__head 電話番号の確認
-      = form_for(@user, url: signup_address_path, html: {method: :post}) do |f|
+      = form_for(@user, url: signup_address_path, html: { id:"form", method: :post}) do |f|
         .form-group
           = f.hidden_field :nickname, value: @user.nickname
           = f.hidden_field :email, value: @user.email
