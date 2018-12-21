@@ -8,7 +8,9 @@ class Product < ApplicationRecord
   belongs_to :sell_status
   has_many :images
   accepts_nested_attributes_for :images
-  accepts_nested_attributes_for :brands
+  accepts_nested_attributes_for :brand
 
   validates :seller, :category, :area, :sell_status, presence: true
+
+  delivery_fee_owner status: {postage: 0,cash_on: 1}
 end
