@@ -119,6 +119,7 @@
 |delivery_date|datatime|null: false|
 |sell_status_id|references|foreign_key|
 |shipping_method|string|null: false|
+|image_id|references|foreign_key|
 
 ### Association
 - belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
@@ -127,7 +128,7 @@
 - belongs_to :brand
 - belongs_to :size_status
 - belongs_to :sell_status
-- has_many   :product_images
+- has_many   :images
 
 
 ## image
