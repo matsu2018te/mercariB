@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :product_new, only:[:create]
+  before_action :product_new, only:[:new]
   def show
 
   end
@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   def create
     binding.pry
+    @product = products_params
     if @product.save
       redirect_to home_path
     else
