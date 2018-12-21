@@ -6,7 +6,7 @@
 
   .l-contener
     .signup-panel__inner
-      = form_for(@product, url: home_path, html: {method: :post}) do |f|
+      = form_for(@product, url: sell_path, html: {method: :post}) do |f|
 
         .sell-contents
           %h2.l-single-head 商品の情報を入力
@@ -72,12 +72,13 @@
                   = f.select :size_id,["S","M","L","XL"], prompt: "---"
                   / = f.collection_select size_id:, product.size_id, :id, :name, prompt: "---", class: "sell-form-select" モデル作成後使用
           .sell-form-box
-            .form-group
-              = f.label :brand_name do
-                %h4.sell-form-sub_title
-                  ブランド
-                  %span.form-arbitrary.sell 任意
-              = f.text_field :brand_name, placeholder: "例）シャネル",class: "sell-form-text_field input_brand"
+            =f.fields_for :brands do ||
+              .form-group
+                = f.label :brand_name do
+                  %h4.sell-form-sub_title
+                    ブランド
+                    %span.form-arbitrary.sell 任意
+                = f.text_field :brand_name, placeholder: "例）シャネル",class: "sell-form-text_field input_brand"
           .sell-form-box
             .form-group
               = f.label :product_state, class: "sell-form-select" do
