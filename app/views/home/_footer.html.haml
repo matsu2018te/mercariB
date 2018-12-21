@@ -14,7 +14,7 @@
               = image_tag("google-play.svg", class:"google-play")
     = image_tag("banner-img.jpg", class:"app__banner-pc-image")
 
-%footer.footer
+.footer
   .nav
     %ul.nav__list
       %li.footer-cell
@@ -91,10 +91,6 @@
               日本
 
 
-  %a{href: ""}
+  =link_to root_path do
     = image_tag("logo-white.svg")
   %p.footer__copyright © 2018 Mercari
-
-  %a{href: "", class:"sell-btn"}
-    %p.sell-text 出品
-    %i.fas.fa-camera

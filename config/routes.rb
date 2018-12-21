@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   post 'mypage' => 'users#update'
   get 'mypage/profile' => 'users#edit'
   get 'mypage/identification' => 'users#set_user'
+  get 'mypage/notification' => 'users#notification'
+  get 'mypage/todo' => 'users#todo'
+  get 'mypage/purchase' => 'products#purchase'
+  get 'mypage/purchased' => 'products#purchased'
   patch 'mypage' => 'users#update'
   get 'mypage/logout' => 'users#destroy'
   get 'show' => 'products#show'
@@ -35,3 +39,5 @@ Rails.application.routes.draw do
   delete 'mypage/card' => 'credits#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
+
