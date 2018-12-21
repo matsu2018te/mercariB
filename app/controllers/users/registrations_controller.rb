@@ -25,11 +25,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    if @user.save
-      redirect_to signup_done_path
-    else
-      redirect_to signup_registration_path
-    end
+    @user.save!
+    redirect_to signup_done_path
+    # else
+    #   redirect_to signup_registration_path
+    # end
     # yield resource if block_given?
     # if resource.persisted?
     #   if resource.active_for_authentication?
