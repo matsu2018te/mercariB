@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-
+// 金額算出
   function  ReplaceNum(num) {
     num = num.toLocaleString();
     return num;
@@ -23,4 +23,26 @@ $(document).on('turbolinks:load', function() {
       $(".sell-form-price-gains-num").text('-');
     }
   });
+
+// ブランド名検索
+  // $(".input_brand").on("keyup", function(e) {
+  //   var input = $(this).val();
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: '/brand/index',
+  //     data: { keyword: input},
+  //     dataType: 'json'
+  //   })
+  //   .done(function(brands) {
+  //     $("#brand-search-result").empty();
+  //     if (brands.length !== 0 && brands.length !== 0 ){
+  //       brands.forEach(function(brand) {
+  //         appendBrand(brand);
+  //       });
+  //     }
+  //   })
+  //   .fail(function() {
+  //     alert("ブランドの検索に失敗しました")
+  //   })
+  // });
 });
