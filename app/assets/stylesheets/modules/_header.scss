@@ -5,14 +5,13 @@
 
   &-inner {
     height: 82px;
-    width: 85%;
+    width: 70%;
     padding-top: 8px;
     margin: 0 auto;
     background-color: $white;
     img.l-left {
       height: 36px;
       width: 134px;
-      // background-color: $red;
       float: left;
       display: inline-block;
       line-height: 36px;
@@ -47,48 +46,87 @@
       background-color: $white;
       box-sizing: border-box;
       nav.list-left {
-        height: 38px;
         width: 250px;
-        background-color: green;
         float: left;
+        font: 66.66667% sans-serif;
+        line-height: 32px;
+        padding: 0;
+        margin: 0;
         ul.pc-header-nav-l {
-          height: 38px;
           width: 50%;
           float: left;
-          background-color:$white;
-          font: 66.66667% sans-serif;
           text-align: center;
-          line-height: 38px;
-          padding: 0;
-          margin: 0;
         }
       }
 
       nav.list-right {
         height: 38px;
-        width: 200px;
+        width: 310px;
         float: right;
-        .sp-header-btn {
+        .sp-header-btn {//新規会員登録
           height: 32px;
           width:97.5px;
+          float: right;
+          font: 66.66667% sans-serif;
+          text-align: center;
+          line-height: 32px;
+          border-radius: 5px;
+          padding: 0;
+          float: right;
+        }
+        .btn-red {//ログイン
+          color: $white;
+          background-color: $red;
+        }
+        .header-signup {//新規会員登録
+          color: #0099e8;
+          border: solid 1px #0099e8;
+          margin-left: 5px;
+        }
+        .nav_mypage_icon {
+          height: 32px;
+          border-radius: 50%;
+          float: left;
+        }
+        .nav-mypage {
+          height: 38px;
+          width: 70px;
           float: left;
           font: 66.66667% sans-serif;
           text-align: center;
           line-height: 32px;
-          padding: 0;
-          margin: 0;
+          color: #333;
         }
-        .btn-red {
-          color: $white;
-          background-color: $red;
-          font-color: $red;
-          border-radius: 5px;
+        .fa-bell {
+          height: 38px;
+          float: left;
+          line-height: 32px;
+          padding-left: 10px;
+          font-weight: 400;
         }
-        .header-signup {
-          color: #0099e8;
-          border: solid 1px #0099e8;
-          border-radius: 5px;
-          margin-left: 5px;
+        .nav-notification {
+          height: 38px;
+          width: 56px;
+          float: left;
+          font: 66.66667% sans-serif;
+          text-align: center;
+          line-height: 32px;
+          color: #333;
+        }
+        .fa-check {
+          height: 38px;
+          float: left;
+          line-height: 32px;
+          padding-left: 10px;
+        }
+        .nav-todo{
+          height: 38px;
+          width: 98px;
+          float: left;
+          font: 66.66667% sans-serif;
+          text-align: center;
+          line-height: 32px;
+          color: #333;
         }
       }
     }
