@@ -1,5 +1,5 @@
 class Credit < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
 
   validates :expiration_month, :expiration_year, :security_code, presence: true
   validates :card_number, presence: true, uniqueness: true
