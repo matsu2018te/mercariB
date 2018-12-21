@@ -6,19 +6,17 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|fist_name_phonetic|string|null: false|
-|last_name_phonetic|string|null: false|
 |telephone|integer|null: false, unique: true|
 |email|string|null: false|
 |password|string|null: false|
-|birthday|datetime|null: false|
+|birth_year|integer||
+|birth_month|integer||
+|birth_month|integer||
 |icon_picture|string||
 |profile|text||
 |background_image|string||
 |point|integer||
-|sns_credentials_id|references|foreign_key|
+
 
 ### Association
 - has_many :buyer_products, class_name: 'Product', :foreign_key => 'buyer_id'
@@ -84,6 +82,10 @@
 |municipality|string|null: false|
 |address_number|string|null: false|
 |building_name|string||
+|first_name|string|null: false|
+|last_name|string|null: false|
+|fist_name_phonetic|string|null: false|
+|last_name_phonetic|string|null: false|
 |user_id|references|foreign_key|
 
 ### Association
@@ -107,16 +109,17 @@
 |------|----|-------|
 |seller_id|references|foreign_key, class_name: "User"|
 |buyer_id|references|foreign_key, class_name: "User"|
-|product_name|string|null: false|
-|product_info|text|null: false|
+|name|string|null: false|
+|info|text|null: false|
 |price|integer|null: false|
 |category_id|references|foreign_key|
 |brand_id|references|foreign_key|
 |size_id|references|foreign_key|
-|product_state|string|null: false|
+|status|string|null: false|
 |delivery_fee_owner|string|null: false|
-|area|integer|null: false|
+|precfecture|integer|null: false|
 |delivery_date|datatime|null: false|
+|delivery_fee_owner|datatime|null: false|
 |sell_status_id|references|foreign_key|
 |shipping_method|string|null: false|
 
@@ -143,7 +146,7 @@
 ## category
 |Column|Type|Options|
 |------|----|-------|
-|category_name|string|null: false|
+|name|string|null: false|
 |ancestry|string|index: true|
 |belongs|string|null: false|
 
@@ -160,15 +163,6 @@
 ### Association
 - has_many :products
 
-<!-- 商品側にはjp_prefectureのコードを使用 -->
-<!-- ## area
-|Column|Type|Options|
-|------|----|-------|
-|prefectures|string|null: false|
-
-### Association
-- has_many :product -->
-
 
 ## sell_status
 |Column|Type|Options|
@@ -176,7 +170,7 @@
 |status|integer|null: false|
 
 ### Association
-- has_many :product
+- has_many :products
 
 
 ## size
@@ -185,4 +179,4 @@
 |size|string|null: false|
 
 ### Association
-- has_many :product
+- has_many :products
