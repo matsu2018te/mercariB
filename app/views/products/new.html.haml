@@ -69,16 +69,16 @@
                   サイズ
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :size_id,["S","M","L","XL"], prompt: "---"
-                  / = f.collection_select size_id:, product.size_id, :id, :name, prompt: "---", class: "sell-form-select" モデル作成後使用
+                  = f.collection_select :size_id, Size.all, :id, :size, prompt: "---"
+                  /  モデル作成後使用
           .sell-form-box
-            =f.fields_for :brands do ||
+            =f.field_for :brand do |b|
               .form-group
-                = f.label :brand_name do
+                = b.label :brand_name do
                   %h4.sell-form-sub_title
                     ブランド
                     %span.form-arbitrary.sell 任意
-                = f.text_field :brand_name, placeholder: "例）シャネル",class: "sell-form-text_field input_brand"
+                = b.text_field :name, placeholder: "例）シャネル",class: "sell-form-text_field input_brand"
           .sell-form-box
             .form-group
               = f.label :product_state, class: "sell-form-select" do
@@ -87,7 +87,7 @@
                   %span.form-require.sell 必須
                 .select-wrap
                   = f.select :product_state,["よい","やべぇ"], prompt: "---"
-                  / = f.collection_select product_state:, product.product_state, :id, prompt: "---", class: "sell-form-select"
+                  / = f.collection_select :product_state,product.product_state, :id, prompt: "---"
         / 配送 ▼
         .sell-contents
           %h3.sell-contents-label
@@ -101,7 +101,7 @@
                   配送料の負担
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :delivery_fee_owner, ["おれ","おまえ"], prompt: "---"
+                  = f.select :status, Product.statuses.map { |k, v|,"t(articles.status.#{k}), v"
                   / = f.collection_select delivery_fee_owner:, product.delivery_fee_owner, class: "sell-form-select", prompt: "---"
           .sell-form-box
             .form-group
@@ -110,7 +110,7 @@
                   発送元の地域
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :area_id,["どこか","そこか"], prompt: "---"
+                  = f.select :area,["どこか","そこか"], prompt: "---"
                   / = f.collection_select area_id:, product.area_id, class: "sell-form-select", prompt: "---"
           .sell-form-box
             .form-group
@@ -129,7 +129,7 @@
               ?
           .sell-form-box
             .form-group.sell-form-price
-              = f.label :price_integer do
+              = f.label :price do
                 .sell-form-price_left
                   .sell-form-sub_title-price
                     価格
@@ -137,7 +137,7 @@
                 .sell-form-price_right
                   %h5.sell-contents__comment
                     ¥
-                    = f.number_field :price_integer, placeholder: "例）300",min:"300", max:"9999999",class: "sell-form-text_number"
+                    = f.number_field :price, placeholder: "例）300",min:"300", max:"9999999",class: "sell-form-text_number"
             .sell-form-price-fee
               %p.sell-form-price-fee-text
                 販売手数料 (10%)
