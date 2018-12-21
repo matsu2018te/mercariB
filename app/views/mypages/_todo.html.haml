@@ -2,9 +2,9 @@
   .mypage_contents
     .mypage__content-box
       .mypage__tabs-top
-        %button.mypage__tabs-list
+        =link_to mypage_notification_path, class: "mypage__tabs-list" do
           .mypage__tabs-text おしらせ
-        %button.mypage__tabs-list
+        =link_to mypage_todo_path, class: "mypage__tabs-list" do
           .tab-active
             .mypage__tabs-text やることリスト
         .mypage__no-item
