@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'mypage/logout' => 'users#destroy'
   get 'show' => 'products#show'
   get 'sell' => 'products#new'
+  post 'sell' => 'product#create'
   get 'mypage/card' => 'credits#index'
   get 'mypage/card/create' => 'credits#new'
   post 'mypage/card' => 'credits#create'
