@@ -2,10 +2,10 @@
   .mypage_contents
     .mypage__content-box
       .mypage__tabs-top
-        %button.mypage__tabs-list
+        =link_to mypage_notification_path, class: "mypage__tabs-list" do
           .tab-active
             .mypage__tabs-text おしらせ
-        %button.mypage__tabs-list
+        =link_to mypage_todo_path, class: "mypage__tabs-list" do
           .mypage__tabs-text やることリスト
     =link_to "",class: "mypage__item-link","style": "color:black;" do
       .mypage__item
@@ -29,5 +29,6 @@
             = " 4時間前"
     .mypage__item-to-index
       .link-to-item
-        = link_to "" do
+        = link_to "",class: "mypage__item-to-show" do
           %h4.view-index 一覧を見る
+

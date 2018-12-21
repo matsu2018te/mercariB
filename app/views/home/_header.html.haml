@@ -1,6 +1,6 @@
 %header.pc-header
   .pc-header-inner
-    %img.l-left{alt: 'メルカリ', src: '/assets/logo.svg'}
+    = image_tag('/assets/logo.svg', alt:"mercari", class: 'l-left')
     %form.pc-header-form.l-right
       %input.input-default{name: "keyword",placeholder: "キーワードから探す", type: "search", value: ""}
       %i.fas.fa-search
