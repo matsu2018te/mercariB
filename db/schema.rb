@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181220181955) do
+ActiveRecord::Schema.define(version: 20181221021705) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "postal_code",    null: false
@@ -110,9 +110,9 @@ ActiveRecord::Schema.define(version: 20181220181955) do
     t.string   "background_image"
     t.integer  "point"
     t.string   "telephone",                                         null: false
-    t.integer  "birth_year",                                        null: false
-    t.integer  "birth_month",                                       null: false
-    t.integer  "birth_day",                                         null: false
+    t.integer  "birth_year"
+    t.integer  "birth_month"
+    t.integer  "birth_day"
     t.integer  "seller_id"
     t.integer  "buyer_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

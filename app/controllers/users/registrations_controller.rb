@@ -10,6 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def sms_confirmation
     # @user.build_address
+
   end
 
   def address

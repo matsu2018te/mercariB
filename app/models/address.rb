@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
 
   #都道府県
   include JpPrefecture
