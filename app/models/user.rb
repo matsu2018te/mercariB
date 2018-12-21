@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter, :facebook, :google_oauth2]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true
@@ -23,6 +23,8 @@ class User < ApplicationRecord
 
   has_many :credits, dependent: :destroy
   accepts_nested_attributes_for :credits
+
+  has_many :sns_credentials
 
   protected
   def self.find_oauth(auth)
@@ -51,7 +53,7 @@ class User < ApplicationRecord
           user_id: user.id
           )
       end
-      return user
     end
+    return user
   end
 end
