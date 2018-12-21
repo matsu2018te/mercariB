@@ -92,3 +92,4 @@ gem 'jp_prefecture'
 
 # カテゴリテーブル 階層構造
 gem 'ancestry'
+gem 'gretel'
