@@ -72,7 +72,7 @@
                   = f.collection_select :size_id, Size.all, :id, :size, prompt: "---"
                   /  モデル作成後使用
           .sell-form-box
-            =f.field_for :brand do |b|
+            =f.fields_for :brand do |b|
               .form-group
                 = b.label :brand_name do
                   %h4.sell-form-sub_title
@@ -101,7 +101,7 @@
                   配送料の負担
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :status, Product.statuses.map { |k, v|,"t(articles.status.#{k}), v"
+                  = f.select :delivery_fee_owner, Product.delivery_fee_owners.map{|k, v| [t("products.delivery_fee_owner.#{k}"), v]}, prompt: "---"
                   / = f.collection_select delivery_fee_owner:, product.delivery_fee_owner, class: "sell-form-select", prompt: "---"
           .sell-form-box
             .form-group

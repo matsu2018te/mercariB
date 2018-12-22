@@ -1,0 +1,5 @@
+ja:
+  products:
+    delivery_fee_owner:
+      postage: '送料込み(出品者負担)'
+      cash_on: '着払い(購入者負担)'

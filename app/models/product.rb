@@ -12,5 +12,5 @@ class Product < ApplicationRecord
 
   validates :seller, :category, :area, :sell_status, presence: true
 
-  delivery_fee_owner status: {postage: 0,cash_on: 1}
+  enum delivery_fee_owner: {postage: 0,cash_on: 1}
 end
