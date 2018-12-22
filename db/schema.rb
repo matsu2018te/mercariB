@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 20181221021705) do
     t.integer  "brand_id"
     t.integer  "sell_status_id"
     t.integer  "size_id"
-    t.integer  "area",                             null: false
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["buyer_id"], name: "index_products_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
@@ -104,12 +103,12 @@ ActiveRecord::Schema.define(version: 20181221021705) do
     t.string   "nickname",                                          null: false
     t.string   "first_name",                                        null: false
     t.string   "last_name",                                         null: false
+    t.string   "first_name_phonetic",                               null: false
     t.string   "last_name_phonetic",                                null: false
     t.string   "icon_picture"
     t.text     "profile",                limit: 65535
     t.string   "background_image"
     t.integer  "point"
-    t.string   "first_name_phonetic"
     t.string   "telephone",                                         null: false
     t.integer  "birth_year"
     t.integer  "birth_month"
