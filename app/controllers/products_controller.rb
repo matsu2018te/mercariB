@@ -12,8 +12,8 @@ class ProductsController < ApplicationController
     # クリックした商品に紐づく出品者のユーザー情報
     @sell_items = Product.where(seller_id: @product.seller_id)
     # クリックした商品の出品者が出品している他の商品の情報
-    brand = @product.brand_id
-    @brand = Brand.find_by(id: brand)
+    @brand = Brand.find_by(id: @product.brand_id)
+    @category = Category.find_by(id: @product.category_id)
 
   end
 end

@@ -38,7 +38,7 @@
         %tr
           %th 出品者
           %td
-            =link_to("DPS(ぶーんです)@大人ふるぎ養成講座", "/")
+            =link_to("#{@user.nickname}", "/")
             %div
               .product-user-rate
                 %i.good
@@ -53,13 +53,13 @@
           %th カテゴリー
           %td
             =link_to do
-              %p.parent レディース
+              %p.parent #{@category.parent.parent.name}
             =link_to "",class: 'child-box' do
               %i.right
-              %p.child バッグ
+              %p.child #{@category.parent.name}
             =link_to "",class: 'child-box' do
               %i.right
-              %p.g-child ショルダーバッグ
+              %p.g-child #{@category.name}
 
         %tr
           %th ブランド
