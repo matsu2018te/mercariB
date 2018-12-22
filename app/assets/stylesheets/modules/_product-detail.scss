@@ -20,6 +20,8 @@
           .product-img-box-main{
             float:left;
             max-width: 300px;
+            min-height: 300px;
+            max-height: 300px;
           }
         }
         .product-img-box-detail{
@@ -489,7 +491,9 @@
           width: 220px;
           height: 220px;
           .items-box-photo{
-
+            width: 220px;
+            height: 200px;
+            min-height: 200px;
           }
           .items-box-body{
             height: 110px;

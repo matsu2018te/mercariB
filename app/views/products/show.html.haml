@@ -2,27 +2,37 @@
 
 %section.product-box-container.clearfix
   %h1.product-name
-    正規品！COACH【コーチ】★★大きめ ミニシグネチャー ショルダーバッグ
+    #{@product.name}
   .product-main-box
     .product-img-box
       .product-img-carousel.slider
-        .product-img-box-main
-          = image_tag("bag.jpg", alt:"バッグ")
-        .product-img-box-main
-          = image_tag("bag-2.jpg", alt:"バッグ")
-        .product-img-box-main
-          = image_tag("bag-3.jpg", alt:"バッグ")
-        .product-img-box-main
-          = image_tag("bag-4.jpg", alt:"バッグ")
+        - @images.each do |image|
+          .product-img-box-main
+            = image_tag image.image, alt:"バッグ"
+            / = image_tag("bag.jpg", alt:"バッグ")
+          .product-img-box-main
+            = image_tag image.image, alt:"バッグ2"
+            / = image_tag("bag-2.jpg", alt:"バッグ")
+          .product-img-box-main
+            = image_tag image.image, alt:"バッグ3"
+            / = image_tag("bag-3.jpg", alt:"バッグ")
+          .product-img-box-main
+            = image_tag image.image, alt:"バッグ4"
+            / = image_tag("bag-4.jpg", alt:"バッグ")
       .product-img-box-detail.thumb
-        .box-sub
-          = image_tag("bag.jpg", alt:"バッグ")
-        .box-sub
-          = image_tag("bag-2.jpg", alt:"バッグ")
-        .box-sub
-          = image_tag("bag-3.jpg", alt:"バッグ")
-        .box-sub
-          = image_tag("bag-4.jpg", alt:"バッグ")
+        - @images.each do |image|
+          .box-sub
+            = image_tag image.image, alt:"バッグ"
+            / = image_tag("bag.jpg", alt:"バッグ")
+          .box-sub
+            = image_tag image.image, alt:"バッグ2"
+            / = image_tag("bag-2.jpg", alt:"バッグ")
+          .box-sub
+            = image_tag image.image, alt:"バッグ3"
+            / = image_tag("bag-3.jpg", alt:"バッグ")
+          .box-sub
+            = image_tag image.image, alt:"バッグ4"
+            / = image_tag("bag-4.jpg", alt:"バッグ")
     %table.product-info
       %tbody
         %tr
@@ -130,6 +140,6 @@
       =link_to "" do
         %i.pinterest-icon
 
-= render "product_user-item"
+= render "product_user-item", user: @user, sell_items: @sell_items, brand: @brand
 
 = render "home/footer"
