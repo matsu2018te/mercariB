@@ -7,18 +7,17 @@
         %p.profile__text お客さまのあんしん・あんぜんな取引のため、本人情報のご登録をお願いしております。
         .profile__intro-box
           = form_for current_user,url: {action: :update} do |f|
-            .form-group
-              = f.label [:first_name, :last_name], "お名前"
-              %span.form-require 必須
-              = f.text_field :first_name, placeholder: "例)山田", value: current_user.first_name
-              = f.text_field :last_name, placeholder: "例)彩", value: current_user.last_name
-            .form-group
-              = f.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
-              %span.form-require 必須
-              = f.text_field :first_name_phonetic, placeholder: "例)ヤマダ", value: current_user.first_name_phonetic
-              = f.text_field :last_name_phonetic, placeholder: "例)アヤ", value: current_user.last_name_phonetic
-            //住所情報
             = f.fields_for :address do |add_f|
+              .form-group
+                = f.label [:first_name, :last_name], "お名前"
+                %span.form-require 必須
+                = f.text_field :first_name, placeholder: "例)山田", value: current_user.address.first_name
+                = f.text_field :last_name, placeholder: "例)彩", value: current_user.address.last_name
+              .form-group
+                = f.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
+                %span.form-require 必須
+                = f.text_field :first_name_phonetic, placeholder: "例)ヤマダ", value: current_user.address.first_name_phonetic
+                = f.text_field :last_name_phonetic, placeholder: "例)アヤ", value: current_user.address.last_name_phonetic
               .form-group
                 = add_f.label :postal_code, "郵便番号"
                 %span.form-arbitrary 任意
@@ -26,7 +25,8 @@
               .form-group
                 = add_f.label :prefecture, "都道府県"
                 %span.form-require 必須
-                = add_f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, class: "prefecture_select"
+                .select-wrap
+                  = add_f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, {}, {class: "prefecture_select"}
               .form-group
                 = add_f.label :municipality, "市区町村"
                 %span.form-require 必須
