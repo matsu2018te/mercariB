@@ -118,8 +118,7 @@
 |status|string|null: false|
 |delivery_fee_owner|string|null: false|
 |precfecture|integer|null: false|
-|delivery_date|datatime|null: false|
-|delivery_fee_owner|datatime|null: false|
+|delivery_date|string|null: false|
 |sell_status_id|references|foreign_key|
 |shipping_method|string|null: false|
 
