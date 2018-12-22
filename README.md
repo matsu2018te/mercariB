@@ -11,7 +11,7 @@
 |password|string|null: false|
 |birth_year|integer||
 |birth_month|integer||
-|birth_month|integer||
+|birth_day|integer||
 |icon_picture|string||
 |profile|text||
 |background_image|string||
