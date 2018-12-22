@@ -1,6 +1,3 @@
-//暫定記載
-%script{src:'https://www.google.com/recaptcha/api.js'}
-
 .single-container
   %header.single-header
     %h1
@@ -76,6 +73,6 @@
             = f.number_field :birth_day, min: "1", max: "31", class: "number_field"
             日
           .form-group
-            .g-recaptcha{data:{callback:"clearcall", sitekey:"ここにサイトキーをいれる"}}
+            = recaptcha_tags
           = f.submit "次へ進む", class: "btn btn__red"
   = render "devise/shared/footer"
