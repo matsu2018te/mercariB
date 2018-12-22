@@ -9,15 +9,15 @@
           = form_for current_user,url: {action: :update} do |f|
             = f.fields_for :address do |add_f|
               .form-group
-                = f.label [:first_name, :last_name], "お名前"
+                = add_f.label [:first_name, :last_name], "お名前"
                 %span.form-require 必須
-                = f.text_field :first_name, placeholder: "例)山田", value: current_user.address.first_name
-                = f.text_field :last_name, placeholder: "例)彩", value: current_user.address.last_name
+                = add_f.text_field :first_name, placeholder: "例)山田", value: current_user.address.first_name
+                = add_f.text_field :last_name, placeholder: "例)彩", value: current_user.address.last_name
               .form-group
-                = f.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
+                = add_f.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
                 %span.form-require 必須
-                = f.text_field :first_name_phonetic, placeholder: "例)ヤマダ", value: current_user.address.first_name_phonetic
-                = f.text_field :last_name_phonetic, placeholder: "例)アヤ", value: current_user.address.last_name_phonetic
+                = add_f.text_field :first_name_phonetic, placeholder: "例)ヤマダ", value: current_user.address.first_name_phonetic
+                = add_f.text_field :last_name_phonetic, placeholder: "例)アヤ", value: current_user.address.last_name_phonetic
               .form-group
                 = add_f.label :postal_code, "郵便番号"
                 %span.form-arbitrary 任意
