@@ -35,12 +35,12 @@
           = f.hidden_field :email, value: @user.email
           = f.hidden_field :password, value: @user.password
           = f.hidden_field :password_confirmation, value: @user.password_confirmation
-          = f.hidden_field :first_name, value: @user.first_name
-          = f.hidden_field :last_name, value: @user.last_name
-          = f.hidden_field :first_name_phonetic, value: @user.first_name_phonetic
-          = f.hidden_field :last_name_phonetic, value: @user.last_name_phonetic
           = f.hidden_field :telephone, value: @user.telephone
           = f.fields_for :address do |i|
+            = i.hidden_field :first_name, value: @user.address.first_name
+            = i.hidden_field :last_name, value: @user.address.last_name
+            = i.hidden_field :first_name_phonetic, value: @user.address.first_name_phonetic
+            = i.hidden_field :last_name_phonetic, value: @user.address.last_name_phonetic
             = i.hidden_field :postal_code, value: @user.address.postal_code
             = i.hidden_field :prefecture, value: @user.address.prefecture
             = i.hidden_field :municipality, value: @user.address.municipality
