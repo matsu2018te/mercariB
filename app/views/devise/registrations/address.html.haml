@@ -36,17 +36,17 @@
           = f.hidden_field :password, value: @user.password
           = f.hidden_field :password_confirmation, value: @user.password_confirmation
           = f.hidden_field :telephone, value: @user.telephone
-        .form-group
-          = f.label [:first_name, :last_name], "お名前"
-          %span.form-require 必須
-          = f.text_field :first_name, placeholder: "例)山田", required:""
-          = f.text_field :last_name, placeholder: "例)彩", required:""
-        .form-group
-          = f.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
-          %span.form-require 必須
-          = f.text_field :first_name_phonetic, placeholder: "例)ヤマダ", required:""
-          = f.text_field :last_name_phonetic, placeholder: "例)アヤ", required:""
           = f.fields_for :address do |i|
+            .form-group
+              = i.label [:first_name, :last_name], "お名前"
+              %span.form-require 必須
+              = i.text_field :first_name, placeholder: "例)山田", required:""
+              = i.text_field :last_name, placeholder: "例)彩", required:""
+            .form-group
+              = i.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
+              %span.form-require 必須
+              = i.text_field :first_name_phonetic, placeholder: "例)ヤマダ", required:""
+              = i.text_field :last_name_phonetic, placeholder: "例)アヤ", required:""
             .form-group
               = i.label :postal_code, "郵便番号"
               %span.form-require 必須
