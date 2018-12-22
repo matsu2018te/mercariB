@@ -108,5 +108,17 @@ status = ["新品未使用","未使用に近い","目立った傷や汚れなし
   category = Category.find(180)
   sell_status = SellStatus.find(3)
   product = Product.create(seller_id:"#{user.id}", name:"ウルヴァリン", info:"ミュータントであるウルヴァリンは動物的な鋭い感覚と反射能力、そして実質的にどんな怪我からも回復することができる治癒能力（ヒーリング・ファクター）を持っている。この治癒能力はスーパーソルジャー製造計画「ウェポンX」において、骨格（出し入れが可能なカミソリのように鋭い爪を含む）に世界最硬の金属であるアダマンチウム合金を組み入れることを可能にした。近接戦闘の達人でもある。コードネームの「ウルヴァリン」とは、クズリというイタチ科の、小さいが獰猛な動物を意味する。また、「ウェポンX」（ウェポンエックス）の「X」はローマ数字の「10」のダブルミーニングであり「兵器第10号」を意味するが、実在するアメリカ陸軍兵器・M10 (駆逐戦車)の型番も「M10」（Model10:10型）である。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
-  Image.create(product_id: "#{product.id}",image: "https://s.pacn.ws/640/98/xmen-origins-wolverine-ultimate-2disc-edition-166221.7.jpg?o6zszf")
 }
+
+product = Product.find(9)
+Image.create(product_id: "#{product.id}",image: "http://file.hirohiron.blog.shinobi.jp/x-men3.jpg")
+Image.create(product_id: "#{product.id}",image: "https://marvel.disney.co.jp/content/dam/disney/characters/marvel/1002_ironman/1002_ironman.jpg")
+Image.create(product_id: "#{product.id}",image: "http://zipangu-az.xyz/wp-content/uploads/2017/05/iron-man-577332_640.jpg")
+Image.create(product_id: "#{product.id}",image: "https://cdn-ak.f.st-hatena.com/images/fotolife/m/muu03/20180508/20180508193035.png")
+
+
+product = Product.find(25)
+Image.create(product_id: "#{product.id}",image: "http://yajilab.com/wp-content/uploads/2015/04/a98b1120712ae2558c294773114e59b310.jpg")
+Image.create(product_id: "#{product.id}",image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDttNaiKmVJ1iU-uZXoXhgJNh_Gkve0SFSclkkFtJC7z0i5L1Y")
+Image.create(product_id: "#{product.id}",image: "https://images-na.ssl-images-amazon.com/images/I/515pipL1E0L._SY355_.jpg")
+Image.create(product_id: "#{product.id}",image: "https://images-na.ssl-images-amazon.com/images/I/91q1%2BLBE97L.jpg")
