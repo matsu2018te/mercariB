@@ -20,8 +20,8 @@ FactoryGirl.define do
   factory :product do
     seller_id            "1"
     buyer_id             "1"
-    product_name    "りんご"
-    product_info    "美味しいりんご"
+    name    "りんご"
+    info    "美味しいりんご"
     price             "500"
     product_state              "出品中"
     delivery_fee_owner              "送料込み（出品者負担）"
