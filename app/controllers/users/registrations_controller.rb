@@ -7,15 +7,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def registration
     @user = User.new
-    if verify_recaptcha(model: @user) && @user.save
-      redirect_to signup_sms_confirmation_path
-    else
-      render 'registration'
-    end
   end
 
   def sms_confirmation
     # @user.build_address
+    unless verify_recaptcha
+      render action: :registration
+    end
 
   end
 
