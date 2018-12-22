@@ -1,0 +1,46 @@
+.single-container
+  %header.single-header
+    %h1
+      = link_to do
+        = image_tag("logo.svg", alt:"mercari")
+
+  %main.single-main
+    .signup-panel
+      %h2.signup-panel__head 購入を確定しますか？
+
+      .product-img-box-main
+        = image_tag("bag.jpg", alt:"バッグ")
+
+      %h1.product-name
+        正規品！COACH【コーチ】★★大きめ ミニシグネチャー ショルダーバッグ
+
+      %form.buy-form
+        %p.buy-price-ja.bold
+          %h1
+            %span.price ¥ 3,380
+            %span.tax-include 送料込み
+
+        %ul.buy-accordiona
+          ポイントを使う
+
+        %ul.buy-price-table
+          %li.buy-price-row.buy-you-pay.bold
+            .buy-price-cell 支払い金額
+            .buy-price-cell ¥ 3,380
+
+        %p この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+
+        .signup-panel__inner
+          =link_to root_path do
+            %button.btn.btn__mail
+              購入する
+        %p アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
+        %ul.store
+          %li
+            %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"}
+              = image_tag("app-store.svg", class:"app-store")
+          %li
+            %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
+              = image_tag("google-play.svg", class:"google-play")
+
+  = render "devise/shared/footer"
