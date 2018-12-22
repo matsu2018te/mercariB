@@ -7,10 +7,6 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true, length: { minimum: 6 }, confirmation: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :first_name_phonetic, presence: true
-  validates :last_name_phonetic, presence: true
   validates :telephone, presence: true
 
   # validates :birth_year, :birth_month, :birth_day, presence: true
