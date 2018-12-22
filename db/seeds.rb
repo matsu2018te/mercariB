@@ -31,3 +31,72 @@ end
 CSV.foreach('db/size.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
   Size.create(size: row[0])
 end
+
+# ユーザーの作成
+User.new(nickname: "test1", telephone: 08011112222, email: "test@gmail.com", password: "test1test1", birth_year: 1991, birth_month: 1, birth_day: 1)
+
+User.new(nickname: "test2", telephone: 08022223333, email: "test2@gmail.com", password: "test2test2", birth_year: 1992, birth_month: 2, birth_day: 2)
+
+User.new(nickname: "test3", telephone: 08033334444, email: "test3@gmail.com", password: "test3test3", birth_year: 1993, birth_month: 3, birth_day: 3)
+
+# クレジットの作成
+Credit.create(card_number: 1111111111, expiration_month: 1, expiration_year: 21, security_code: 1111, user_id: 1)
+
+Credit.create(card_number: 2222222222, expiration_month: 2, expiration_year: 22, security_code: 2222, user_id: 2)
+
+Credit.create(card_number: 3333333333, expiration_month: 3, expiration_year: 23, security_code: 3333, user_id: 3)
+
+# アドレスの作成
+Address.create( first_name: "テスト", last_name: "一郎",　first_name_phonetic: "テスト", last_name_phonetic: "イチロウ", postal_code: 123-456, prefecture: ,municipality: "テスト市テスト区", address_number: "テスト町1-1-1", building_name: "テストハウス101", user_id: 1)
+
+Address.create( first_name: "テスト", last_name: "次郎",　first_name_phonetic: "テスト", last_name_phonetic: "ジロウ", postal_code: 123-456, prefecture: ,municipality: "テスト市テスト区", address_number: "テスト町1-1-1", building_name: "テストハウス101", user_id: 2)
+
+Address.create( first_name: "テスト", last_name: "三郎",　first_name_phonetic: "テスト", last_name_phonetic: "サブロウ", postal_code: 123-456, prefecture: ,municipality: "テスト市テスト区", address_number: "テスト町1-1-1", building_name: "テストハウス101", user_id: 3)
+
+s_status = ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れや汚れあり","傷や汚れや汚れあり","全体的に状態が悪い"]
+s_status.each do |s_status|
+  sell_status = Sell_status.create(status:s_status)
+end
+
+delivery_fee_owner = ["着払い(購入者負担)","送料込み(出品者負担)"]
+shipping_method = ["未定","クロネコヤマト","ゆうパック","ゆうメール"]
+delivery_date = ["1〜2日で発送","2〜3日で発送","4〜7日で発送"]
+
+# 商品
+8.times {
+  random = Random.new
+  brand = Brand.create(name:"MARVEL")
+  category = Category.where(id:160)
+  size = Size.where(id:1)
+  sell_status = Sell_status.where(id:1)
+  product = Product.create(seller_id: , name:"スパイダーマン", info:"スパイダーマンは、原作者のスタン・リー)とアーティストのスティーブ・ディッコによって作られて、Amazing Fantasy#15（1962年8月）で初登場した。「Spidey（スパイディ）」、「Friendly Neighborhood（親愛なる隣人）」、「Web head（ウェブヘッド）」、「Web slinger（ウェブスリンガー）」などのニックネームを持つ。キャッチフレーズは「Your Friendly Neighborhood Spider-Man（あなたの親愛なる隣人スパイダーマン）」。", price:random.rand(300..90000), category_id: category.id, brand_id: brand.id, size_id: size.id, status: random.rand(0..1), delivery_fee_owner: delivery_fee_owner.rondom(0..1), delivery_date: delivery_daterondom(0..2), sell_status_id: sell_status.id, shipping_method: shipping_method.rondom(0..3))
+  Images.create(roduct_id: product.id,image: "http://img21.shop-pro.jp/PA01331/897/product/94192800.jpg?cmsp_timestamp=20151009154246")
+}
+
+
+8.times {
+  random = Random.new
+  brand = Brand.create(name:"スタークインダストリーズ")
+  category = Category.where(id:180)
+  size = Size.where(id:2)
+  product = Product.create(name:"アイアンマン",info:"『アイアンマン』（[英]):Iron Man）は、マーベル・コミックが刊行しているアメリカン・コミックス。アニメや映画作品も制作されており、2008年5月2日には実写映画『アイアンマン (映画)』が公開された。", price:random.rand(300..90000), category_id: category.id, brand_id: brand.id, size_id: size.id, status: random.rand(0..1), delivery_fee_owner: delivery_fee_owner.rondom(0..1), delivery_date: delivery_daterondom(0..2), sell_status_id: sell_status.id, shipping_method: shipping_method.rondom(0..3))
+  Images.create(roduct_id: product.id,image: "https://www.cinemacafe.net/imgs/thumb_h1/65544.jpg")
+}
+
+8.times {
+  random = Random.new
+  brand = Brand.create(name:"ウルヴァリン")
+  category = Category.where(id:175)
+  size = Size.where(id:3)
+  product = Product.create(name:"マグニート",info:"マグニートーは磁場を生成し操作する能力を持つ、強力なミュータントである。ミュータントとは、生まれながらに普通の人間にはない特殊な能力が備わった新たな人類種を指し、マグニートーは人類をホモサピエンスと呼ぶことから、ミュータントを「ホモ・スペリオール」（優れた人間）と呼んでいる。マグニートーは人類より優れたミュータントによる世界の支配を目的としており、人間とミュータントの平和的共存という考えは否定している。マグニートーの生い立ちや動機については作家により肉付けが行われており、ホロコースト生存者であることが明らかにされている。マグニートーのテロ活動を基本とする極端な手段やシニカルな哲学は、ミュータントを恐れ、迫害する人間達によりミュータントがホロコーストの二の舞になることを防ぎたいという決意からきている。", price:random.rand(300..90000), category_id: category.id, brand_id: brand.id, size_id: size.id, status: random.rand(0..1), delivery_fee_owner: delivery_fee_owner.rondom(0..1), delivery_date: delivery_daterondom(0..2), sell_status_id: sell_status.id, shipping_method: shipping_method.rondom(0..3))
+  Images.create(roduct_id: product.id,image: "http://file.hirohiron.blog.shinobi.jp/x-men3.jpg")
+}
+
+8.times {
+  random = Random.new
+  brand = Brand.where(name:"ウルヴァリン")
+  category = Category.where(id:173)
+  size = Size.where(id:4)
+  product = Product.create(seller_id: , name:"ウルヴァリン", info:"ミュータントであるウルヴァリンは動物的な鋭い感覚と反射能力、そして実質的にどんな怪我からも回復することができる治癒能力（ヒーリング・ファクター）を持っている。この治癒能力はスーパーソルジャー製造計画「ウェポンX」において、骨格（出し入れが可能なカミソリのように鋭い爪を含む）に世界最硬の金属であるアダマンチウム合金を組み入れることを可能にした。近接戦闘の達人でもある。コードネームの「ウルヴァリン」とは、クズリというイタチ科の、小さいが獰猛な動物を意味する。また、「ウェポンX」（ウェポンエックス）の「X」はローマ数字の「10」のダブルミーニングであり「兵器第10号」を意味するが、実在するアメリカ陸軍兵器・M10 (駆逐戦車)の型番も「M10」（Model10:10型）である。", price:random.rand(300..90000), category_id: category.id, brand_id: brand.id, size_id: size.id, status: random.rand(0..1), delivery_fee_owner: delivery_fee_owner.rondom(0..1), delivery_date: delivery_daterondom(0..2), sell_status_id: sell_status.id, shipping_method: shipping_method.rondom(0..3))
+  Images.create(roduct_id: product.id,image: "https://s.pacn.ws/640/98/xmen-origins-wolverine-ultimate-2disc-edition-166221.7.jpg?o6zszf")
+}
