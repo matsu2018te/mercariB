@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
-  belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
+  belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id', optional: true
   belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id'
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :category
   belongs_to :brand, optional: true
   belongs_to :size

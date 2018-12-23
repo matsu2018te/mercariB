@@ -35,17 +35,17 @@
         / 商品名・説明 ▼
         .sell-contents
           .form-group
-            = f.label :product_name do
+            = f.label :name do
               %h4.sell-form-sub_title
                 商品名
                 %span.form-require.sell 必須
-              = f.text_field :product_name, placeholder: "商品名（必須40文字まで)",class: "sell-form-text_field"
+              = f.text_field :name, placeholder: "商品名（必須40文字まで)",class: "sell-form-text_field"
           .form-group
-            = f.label :product_info do
+            = f.label :info do
               %h4.sell-form-sub_title
                 商品の説明
                 %span.form-require.sell 必須
-              = f.text_area :product_info, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",class: "sell-form-text_area"
+              = f.text_area :info, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",class: "sell-form-text_area"
         / 商品詳細 ▼
         .sell-contents
           %h3.sell-contents-label 商品の詳細
@@ -81,13 +81,12 @@
                 = b.text_field :name, placeholder: "例）シャネル",class: "sell-form-text_field input_brand"
           .sell-form-box
             .form-group
-              = f.label :product_state, class: "sell-form-select" do
+              = f.label :status, class: "sell-form-select" do
                 %h4.sell-form-sub_title
                   商品の状態
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :product_state,["よい","やべぇ"], prompt: "---"
-                  / = f.collection_select :product_state,product.product_state, :id, prompt: "---"
+                  = f.select :status,["よい","やべぇ"], prompt: "---"
         / 配送 ▼
         .sell-contents
           %h3.sell-contents-label

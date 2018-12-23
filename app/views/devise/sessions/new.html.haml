@@ -1,6 +1,3 @@
-//暫定記載
-%script{src:'https://www.google.com/recaptcha/api.js'}
-
 .single-container
   %header.single-header
     %h1
@@ -20,14 +17,15 @@
         %button.btn.btn__sns.btn__sns--google
           %i.fab.fa-google-plus
           Googleでログイン
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: { id:"form"}) do |f|
         .form-group
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", required:""
         .form-group
           = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
         .form-group
-          .g-recaptcha{data:{callback:"clearcall", sitekey:"ここにサイトキーをいれる"}}
+          = recaptcha_tags
         = f.submit "ログイン", class: "btn btn__red"
       = link_to "パスワードをお忘れの方", new_password_path(resource_name)
 
   = render "devise/shared/footer"
+
