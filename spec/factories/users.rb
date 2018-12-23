@@ -1,10 +1,10 @@
 FactoryGirl.define do
 
   factory :user do
-    first_name            "目流化理"
-    last_name             "太郎"
-    first_name_phonetic    "メルカリ"
-    last_name_phonetic    "タロウ"
+    # first_name            "目流化理"
+    # last_name             "太郎"
+    # first_name_phonetic    "メルカリ"
+    # last_name_phonetic    "タロウ"
     telephone             "09066667543"
     nickname              "merucari"
     email                 "merucari@gmail.com"
