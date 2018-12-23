@@ -92,3 +92,6 @@ gem 'jp_prefecture'
 
 # カテゴリテーブル 階層構造
 gem 'ancestry'
+
+#私はロボットではありません
+gem 'recaptcha', require: "recaptcha/rails"

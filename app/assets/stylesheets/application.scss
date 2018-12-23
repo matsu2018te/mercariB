@@ -4,7 +4,7 @@
 @import "modules/product-detail";
 @import "modules/footer";
 @import "font-awesome";
-@import "./devise";
+@import "modules/devise";
 @import "config/color";
 @import "mixin/clearfix";
 @import "mixin/user-config";
@@ -15,3 +15,4 @@
 @import "modules/logout";
 @import "modules/credits";
 @import "modules/product_exhibit";
+@import "modules/transaction";

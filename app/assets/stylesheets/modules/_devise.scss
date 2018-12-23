@@ -204,8 +204,10 @@ form {
       padding:8px 10px;
     }
     select.prefecture_select{
+      -webkit-appearance: button;
       background-color:$White;
       width:100%;
+      position: relative;
     }
     input {
       width: 100%;

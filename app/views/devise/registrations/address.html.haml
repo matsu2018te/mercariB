@@ -54,7 +54,9 @@
             .form-group
               = i.label :prefecture, "都道府県"
               %span.form-require 必須
-              = i.text_field :prefecture, placeholder: "例)北海道", required:""
+              / = i.text_field :prefecture, placeholder: "例)北海道", required:""
+              .select-wrap
+                = i.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, {}, {class: "prefecture_select"}
             .form-group
               = i.label :municipality, "市区町村"
               %span.form-require 必須

@@ -11,6 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def sms_confirmation
     # @user.build_address
+    unless verify_recaptcha
+      render action: :registration
+    end
 
   end
 
@@ -60,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def user_params
     params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :telephone, address_attributes: [ :first_name, :first_name, :last_name, :first_name_phonetic, :last_name_phonetic, :id, :postal_code, :prefecture, :municipality, :address_number, :building_name],
       credits_attributes: [:id, :card_number, :expiration_month, :expiration_year, :security_code])
-    #  :birthday,
+    #  :birth_year,birth_month,birth_day,
   end
 
   def after_sign_up_path_for(resource)

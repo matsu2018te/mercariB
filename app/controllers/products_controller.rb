@@ -21,5 +21,9 @@ class ProductsController < ApplicationController
       @related_items = Product.where("brand_id = ? or category_id = ?", @product.brand_id, @product.category_id)
     end
 
-  end
+    def transaction
+      # @product = Product.find(params[:id])
+      # @product.update(buyer_id: current_user.id)
+    end
+
 end
