@@ -108,6 +108,8 @@ status = ["新品未使用","未使用に近い","目立った傷や汚れなし
   category = Category.find(180)
   sell_status = SellStatus.find(3)
   product = Product.create(seller_id:"#{user.id}", name:"ウルヴァリン", info:"ミュータントであるウルヴァリンは動物的な鋭い感覚と反射能力、そして実質的にどんな怪我からも回復することができる治癒能力（ヒーリング・ファクター）を持っている。この治癒能力はスーパーソルジャー製造計画「ウェポンX」において、骨格（出し入れが可能なカミソリのように鋭い爪を含む）に世界最硬の金属であるアダマンチウム合金を組み入れることを可能にした。近接戦闘の達人でもある。コードネームの「ウルヴァリン」とは、クズリというイタチ科の、小さいが獰猛な動物を意味する。また、「ウェポンX」（ウェポンエックス）の「X」はローマ数字の「10」のダブルミーニングであり「兵器第10号」を意味するが、実在するアメリカ陸軍兵器・M10 (駆逐戦車)の型番も「M10」（Model10:10型）である。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
+
   Image.create(product_id: "#{product.id}",image: open("#{Rails.root}/db/fixtures/wolvarine.jpg"))
 }
+
 
