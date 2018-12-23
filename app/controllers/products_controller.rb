@@ -15,5 +15,11 @@ class ProductsController < ApplicationController
     @brand = Brand.find_by(id: @product.brand_id)
     @category = Category.find_by(id: @product.category_id)
 
+    if @product.brand_id.present? && @product.category_id.present?
+      @related_items = Product.where(brand_id: @product.brand_id, category_id: @product.category_id)
+    else @product.brand_id.present? || @product.category_id.present?
+      @related_items = Product.where("brand_id = ? or category_id = ?", @product.brand_id, @product.category_id)
+    end
+
   end
 end

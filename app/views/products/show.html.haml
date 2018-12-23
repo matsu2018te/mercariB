@@ -65,7 +65,7 @@
           %th ブランド
           %td
             =link_to do
-              %p コーチ
+              %p #{@brand.name}
         %tr
           %th 商品の状態
           %td
@@ -140,6 +140,6 @@
       =link_to "" do
         %i.pinterest-icon
 
-= render "product_user-item", user: @user, sell_items: @sell_items, brand: @brand
+= render "product_user-item", user: @user, sell_items: @sell_items, brand: @brand, category: @category, related_items: @related_items
 
 = render "home/footer"

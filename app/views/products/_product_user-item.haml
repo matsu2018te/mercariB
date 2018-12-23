@@ -13,7 +13,7 @@
             .items-box-body
               %h3.item-name.font-2 #{sell_item.name}
               .item-box-num.clearfix
-                .item-box-price.font-5 #{sell_item.price}
+                .item-box-price.font-5 ¥ #{sell_item.price}
                 .item-box-likes
                   %p.like-count 13
                   %i.like.font-2
@@ -22,77 +22,20 @@
   %section.items-box-container.clearfix.in-category
     %h2.item-box-head
       =link_to "",class: 'user-link' do
-        %p #{brand.name}の孫カテゴリー その他の商品
+        %p #{brand.name}の#{category.name} その他の商品
     .items-box-content.clearfix
-      %section.items-box
-        =link_to "",class: 'item-box' do
-          .items-box-photo
-            = image_tag("250px-Red_Apple.jpg", alt:"バッグ")
-          .items-box-body
-            %h3.item-name.font-2 美品 90s トミーヒルフィガー☆リュックサック/デイパック 青×黒
-            .item-box-num.clearfix
-              .item-box-price.font-5 ¥ 5,800
-              .item-box-likes
-                %p.like-count 13
-                %i.like.font-2
-              %p.item-box-tax（税込）
-      %section.items-box
-        =link_to "",class: 'item-box' do
-          .items-box-photo
-            = image_tag("250px-Red_Apple.jpg", alt:"バッグ")
-          .items-box-body
-            %h3.item-name.font-2 美品 90s トミーヒルフィガー☆リュックサック/デイパック 青×黒
-            .item-box-num.clearfix
-              .item-box-price.font-5 ¥ 5,800
-              .item-box-likes
-                %p.like-count 13
-                %i.like.font-2
-              %p.item-box-tax（税込）
-      %section.items-box
-        =link_to "",class: 'item-box' do
-          .items-box-photo
-            = image_tag("250px-Red_Apple.jpg", alt:"バッグ")
-          .items-box-body
-            %h3.item-name.font-2 美品 90s トミーヒルフィガー☆リュックサック/デイパック 青×黒
-            .item-box-num.clearfix
-              .item-box-price.font-5 ¥ 5,800
-              .item-box-likes
-                %p.like-count 13
-                %i.like.font-2
-              %p.item-box-tax（税込）
-      %section.items-box
-        =link_to "",class: 'item-box' do
-          .items-box-photo
-            = image_tag("250px-Red_Apple.jpg", alt:"バッグ")
-          .items-box-body
-            %h3.item-name.font-2 美品 90s トミーヒルフィガー☆リュックサック/デイパック 青×黒
-            .item-box-num.clearfix
-              .item-box-price.font-5 ¥ 5,800
-              .item-box-likes
-                %p.like-count 13
-                %i.like.font-2
-              %p.item-box-tax（税込）
-      %section.items-box
-        =link_to "",class: 'item-box' do
-          .items-box-photo
-            = image_tag("250px-Red_Apple.jpg", alt:"バッグ")
-          .items-box-body
-            %h3.item-name.font-2 美品 90s トミーヒルフィガー☆リュックサック/デイパック 青×黒
-            .item-box-num.clearfix
-              .item-box-price.font-5 ¥ 5,800
-              .item-box-likes
-                %p.like-count 13
-                %i.like.font-2
-              %p.item-box-tax（税込）
-      %section.items-box
-        =link_to "",class: 'item-box' do
-          .items-box-photo
-            = image_tag("250px-Red_Apple.jpg", alt:"バッグ")
-          .items-box-body
-            %h3.item-name.font-2 美品 90s トミーヒルフィガー☆リュックサック/デイパック 青×黒
-            .item-box-num.clearfix
-              .item-box-price.font-5 ¥ 5,800
-              .item-box-likes
-                %p.like-count 13
-                %i.like.font-2
-              %p.item-box-tax（税込）
+      - related_items[0...6].each do |related_item|
+        %section.items-box
+          =link_to "",class: 'item-box' do
+            .items-box-photo
+              = image_tag related_item.images[0]
+              / = image_tag("250px-Red_Apple.jpg", alt:"バッグ")
+            .items-box-body
+              %h3.item-name.font-2 #{related_item.name}
+              .item-box-num.clearfix
+                .item-box-price.font-5 ¥ #{related_item.price}
+                .item-box-likes
+                  %p.like-count 13
+                  %i.like.font-2
+                %p.item-box-tax（税込）
+
