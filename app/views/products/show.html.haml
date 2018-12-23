@@ -9,36 +9,28 @@
         - @images.each do |image|
           .product-img-box-main
             = image_tag image.image, alt:"バッグ"
-            / = image_tag("bag.jpg", alt:"バッグ")
           .product-img-box-main
             = image_tag image.image, alt:"バッグ2"
-            / = image_tag("bag-2.jpg", alt:"バッグ")
           .product-img-box-main
             = image_tag image.image, alt:"バッグ3"
-            / = image_tag("bag-3.jpg", alt:"バッグ")
           .product-img-box-main
             = image_tag image.image, alt:"バッグ4"
-            / = image_tag("bag-4.jpg", alt:"バッグ")
       .product-img-box-detail.thumb
         - @images.each do |image|
           .box-sub
             = image_tag image.image, alt:"バッグ"
-            / = image_tag("bag.jpg", alt:"バッグ")
           .box-sub
             = image_tag image.image, alt:"バッグ2"
-            / = image_tag("bag-2.jpg", alt:"バッグ")
           .box-sub
             = image_tag image.image, alt:"バッグ3"
-            / = image_tag("bag-3.jpg", alt:"バッグ")
           .box-sub
             = image_tag image.image, alt:"バッグ4"
-            / = image_tag("bag-4.jpg", alt:"バッグ")
     %table.product-info
       %tbody
         %tr
           %th 出品者
           %td
-            =link_to("#{@user.nickname}", "/")
+            =link_to("#{@sell_user.nickname}", "/")
             %div
               .product-user-rate
                 %i.good
@@ -53,31 +45,31 @@
           %th カテゴリー
           %td
             =link_to do
-              %p.parent #{@category.parent.parent.name}
+              %p.parent #{@sell_product_category.parent.parent.name}
             =link_to "",class: 'child-box' do
               %i.right
-              %p.child #{@category.parent.name}
+              %p.child #{@sell_product_category.parent.name}
             =link_to "",class: 'child-box' do
               %i.right
-              %p.g-child #{@category.name}
+              %p.g-child #{@sell_product_category.name}
 
         %tr
           %th ブランド
           %td
             =link_to do
-              %p #{@brand.name}
+              %p #{@sell_product_brand.name}
         %tr
           %th 商品の状態
           %td
-            %p やや汚れあり
+            %p #{@product.status}
         %tr
           %th 配送料の負担
           %td
-            %p 送料込み(出品者負担)
+            %p #{@product.delivery_fee_owner}
         %tr
           %th 配送の方法
           %td
-            %p らくらくメルカリ便
+            %p #{@product.shipping_method}
         %tr
           %th 配送元地域
           %td
@@ -86,19 +78,14 @@
         %tr
           %th 発送日の目安
           %td
-            %p 1~2日で発送
+            %p #{@product.delivery_date}
   .price-box
     %h1
       %span.price ¥ 3,380
       %span.tax (税込)
       %span.tax-include 送料込み
   .buy-btn 購入画面に進む
-  .product-detail ■商品ご覧頂き、誠にありがとうございます。
-  %br ※今だけ、フォロワーになって下さった方に、300円のお値引きサービス中！！
-  %br 私の商品検索は、・バッグ検索してください。質問がありましたらコメントでよろしくお願いします！
-  %br ■ 商品説明■まずはプロフを確認してください☆
-  %br ■ 商品詳細 ■シンプルな落ち着いたお色味でどんな場面にも合い、どんな服にも合わせやすいお鞄です。
-  %br 使用感有！角擦れはございませんが多少の汚れはあります。内側はとても綺麗です☆使わなくなったのでどなたか使っていただける方お願いします。
+  .product-detail #{@product.info}
   .product-btn.clearfix
     .product-btn-left
       %button.like-btn
@@ -140,6 +127,6 @@
       =link_to "" do
         %i.pinterest-icon
 
-= render "product_user-item", user: @user, sell_items: @sell_items, brand: @brand, category: @category, related_items: @related_items
+= render "product_user-item", user: @sell_user, sell_items: @sell_items, brand: @sell_product_brand, category: @sell_product_category, related_items: @related_items
 
 = render "home/footer"

@@ -155,7 +155,7 @@
   }
   .product-detail{
     padding: 32px 0 0 0;
-    height: 10px;
+    line-height: 1.3;
   }
   .product-btn{
     margin: 20px 0 0 0;
@@ -218,17 +218,7 @@
       }
     }
   }
-  // .product-btn.clearfix{
-  //   content:"";
-  //   display: block;
-  //   clear: both;
-  // }
 }
-// .product-box-container.clearfix::after{
-//   content:"";
-//   display: block;
-//   clear: both;
-// }
 .product-message{
   width: 700px;
   margin: 5px auto 0;
@@ -321,11 +311,6 @@
     li:first-child{
       margin-top: 20px;
     }
-    // li.clearfix::after{
-    //   content:"";
-    //   display: block;
-    //   clear: both;
-    // }
     .caution{
       background-color: #fff6de;
       padding: 8px;
@@ -408,11 +393,7 @@
     }
   }
 }
-// ul.nav-item-link.clearfix::after{
-//   content:"";
-//   display: block;
-//   clear: both;
-// }
+
 .social-media-box{
   width: 700px;
   margin: 24px auto 32px;

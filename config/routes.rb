@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   get 'mypage/purchased' => 'products#purchased'
   patch 'mypage' => 'users#update'
   get 'mypage/logout' => 'users#destroy'
-  # get 'show' => 'products#show'
   get 'sell' => 'products#new'
   get 'transaction' => 'products#transaction'
   get 'mypage/card' => 'credits#index'
