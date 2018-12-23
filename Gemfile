@@ -97,3 +97,6 @@ gem 'ancestry'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+
+#私はロボットではありません
+gem 'recaptcha', require: "recaptcha/rails"

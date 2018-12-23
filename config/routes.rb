@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get "/signup/registration" => "users/registrations#registration"#会員情報入力
     post "/signup/sms_confirmation" => "users/registrations#sms_confirmation"#電話番号入力
     post "/signup/address" => "users/registrations#address"#住所入力
-    post "/signup/credit_card" => "users/registrations#credit_card"#支払い方法
+    post "/signup/credit_card" => "users/registrations#credit"#支払い方法
     post "/signup/completed" => "users/registrations#create"
     get "/signup/done" => "users/registrations#done"#完了画面
   end
