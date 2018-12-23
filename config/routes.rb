@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => {
-    :sessions      => "users/sessions",
-    :registrations => "users/registrations",
-    :passwords     => "users/passwords"
+    :sessions           => "users/sessions",
+    :registrations      => "users/registrations",
+    :passwords          => "users/passwords",
+    :omniauth_callbacks =>  "users/omniauth_callbacks"
   }
 
   devise_scope :user do
@@ -16,8 +17,6 @@ Rails.application.routes.draw do
     post "/signup/completed" => "users/registrations#create"
     get "/signup/done" => "users/registrations#done"#完了画面
   end
-
-
 
   root 'home#index'
   get 'mypage' => 'users#show'
