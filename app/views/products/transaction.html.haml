@@ -5,42 +5,73 @@
         = image_tag("logo.svg", alt:"mercari")
 
   %main.single-main
-    .signup-panel
-      %h2.signup-panel__head 購入を確定しますか？
+    .transaction-product-container
+      .transaction-product-container__head 購入を確定しますか？
 
-      .product-img-box-main
-        = image_tag("bag.jpg", alt:"バッグ")
+      .transaction-content
+        .transaction-content-inner
+          .transaction-product-image
+            = image_tag("bag.jpg", alt:"バッグ")
 
-      %h1.product-name
-        正規品！COACH【コーチ】★★大きめ ミニシグネチャー ショルダーバッグ
+          .transaction-product-name
+            正規品！COACH【コーチ】★★大きめ ミニシグネチャー ショルダーバッグ
 
-      %form.buy-form
-        %p.buy-price-ja.bold
-          %h1
-            %span.price ¥ 3,380
-            %span.tax-include 送料込み
+          %form.transaction-form
+            %p.transaction-price-ja.bold
+              ¥ 3,380
+              %span.tax-include 送料込み
 
-        %ul.buy-accordiona
-          ポイントを使う
+            .accordion-toggle
+              =link_to root_path do
+                %button.btn.btn__mail.point_info
+                  ポイントを使う
 
-        %ul.buy-price-table
-          %li.buy-price-row.buy-you-pay.bold
-            .buy-price-cell 支払い金額
-            .buy-price-cell ¥ 3,380
+            .transaction-price-table
+              %li.transaction-price-row.transaction-you-pay.bold
+                .transaction-price-cell 支払い金額
+                .transaction-price-cell-price ¥ 3,380
 
-        %p この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+            %p.transaction_info
+              配送先と支払い方法の入力を完了してください
 
-        .signup-panel__inner
-          =link_to root_path do
-            %button.btn.btn__mail
-              購入する
-        %p アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
-        %ul.store
-          %li
-            %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"}
-              = image_tag("app-store.svg", class:"app-store")
-          %li
-            %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
-              = image_tag("google-play.svg", class:"google-play")
+            .signup-panel__inner-buy
+              =link_to root_path do
+                %button.btn.btn__mail
+                  購入する
+
+            %p.transaction_app_info
+              アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
+            %ul.store_transaction
+              %li.transaction_app
+                %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"}
+                  = image_tag("app-store.svg", class:"app-store")
+              %li.transaction_google-play
+                %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
+                  = image_tag("google-play.svg", class:"google-play")
+
+      .transaction-user-info
+        .transaction-content-inner
+          配送先
+          .transaction-user-info-text
+            郵便番号 000-000
+            %br
+            東京都日野市落川00-00
+            %br
+            田中太郎
+          .transaction-user-info-fix
+            %span 変更する
+            %i.fas.fa-arrow-right
+      .transaction-user-info
+        .transaction-content-inner
+          支払い方法
+          .transaction-user-info-text
+            クレジットカード番号 000-000
+            %br
+            有効期限 2018/12/22
+            %br
+            お名前 田中
+          .transaction-user-info-fix.credit-info
+            %span 変更する
+            %i.fas.fa-arrow-right
 
   = render "devise/shared/footer"
