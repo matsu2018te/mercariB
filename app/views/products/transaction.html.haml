@@ -1,0 +1,75 @@
+.single-container
+  %header.single-header
+    %h1
+      = link_to do
+        = image_tag("logo.svg", alt:"mercari")
+
+  %main.single-main
+    .transaction-product-container
+      .transaction-product-container__head 購入を確定しますか？
+
+      .transaction-content
+        .transaction-content-inner
+          .transaction-product-image
+            = image_tag("bag.jpg", alt:"バッグ")
+
+          .transaction-product-name
+            正規品！COACH【コーチ】★★大きめ ミニシグネチャー ショルダーバッグ
+
+          %form.transaction-form
+            %p.transaction-price-ja.bold
+              ¥ 3,380
+              %span.tax-include 送料込み
+
+            .accordion-toggle
+              =link_to root_path do
+                %button.btn.btn__mail.point_info
+                  ポイントを使う
+
+            .transaction-price-table
+              %li.transaction-price-row.transaction-you-pay.bold
+                .transaction-price-cell 支払い金額
+                .transaction-price-cell-price ¥ 3,380
+
+            %p.transaction_info
+              配送先と支払い方法の入力を完了してください
+
+            .signup-panel__inner-buy
+              =link_to root_path do
+                %button.btn.btn__mail
+                  購入する
+
+            %p.transaction_app_info
+              アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
+            %ul.store_transaction
+              %li.transaction_app
+                = link_to image_tag('app-store.svg', class: 'app-store'), 'https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8'
+              %li.transaction_google-play
+                = link_to image_tag('google-play.svg', class: "google-play"), 'https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja'
+
+      .transaction-user-info
+        .transaction-content-inner
+          配送先
+          .transaction-user-info-text
+            郵便番号 000-000
+            %br
+            東京都日野市落川00-00
+            %br
+            田中太郎
+          .transaction-user-info-fix
+            %span 変更する
+            %i.fas.fa-arrow-right
+      .transaction-user-info
+        .transaction-content-inner
+          支払い方法
+          .transaction-user-info-text
+            クレジットカード番号 000-000
+            %br
+            有効期限 2018/12/22
+            %br
+            お名前 田中
+          .transaction-user-info-fix.credit-info
+            %span 変更する
+            %i.fas.fa-arrow-right
+
+  = render "devise/shared/footer"
