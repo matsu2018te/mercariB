@@ -43,11 +43,9 @@
               アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
             %ul.store_transaction
               %li.transaction_app
-                %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"}
-                  = image_tag("app-store.svg", class:"app-store")
+                = link_to image_tag('app-store.svg', class: 'app-store'), 'https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8'
               %li.transaction_google-play
-                %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
-                  = image_tag("google-play.svg", class:"google-play")
+                = link_to image_tag('google-play.svg', class: "google-play"), 'https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja'
 
       .transaction-user-info
         .transaction-content-inner
