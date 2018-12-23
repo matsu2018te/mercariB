@@ -42,6 +42,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'rspec-rails'
+  gem 'capybara'
   gem 'factory_girl_rails', "~> 4.4.1"
   gem 'rails-controller-testing'
 
