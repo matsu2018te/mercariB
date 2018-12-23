@@ -74,7 +74,7 @@ status = ["新品未使用","未使用に近い","目立った傷や汚れなし
   category = Category.find(160)
   sell_status = SellStatus.find(1)
   product = Product.create!(seller_id: "#{user.id}", name:"スパイダーマン", info:"スパイダーマンは、原作者のスタン・リーとアーティストのスティーブ・ディッコによって作られて、Amazing Fantasy15（1962年8月）で初登場した。「Spidey（スパイディ）」、「Friendly Neighborhood（親愛なる隣人）」、「Web head（ウェブヘッド）」、「Web slinger（ウェブスリンガー）」などのニックネームを持つ。キャッチフレーズは「Your Friendly Neighborhood Spider-Man（あなたの親愛なる隣人スパイダーマン）」。", price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
-  Image.create(product_id: "#{product.id}",image: "http://img21.shop-pro.jp/PA01331/897/product/94192800.jpg?cmsp_timestamp=20151009154246")
+  Image.create(product_id: "#{product.id}",image: open("#{Rails.root}/db/fixtures/kokeshi.jpg"))
 }
 
 
@@ -86,7 +86,7 @@ status = ["新品未使用","未使用に近い","目立った傷や汚れなし
   category = Category.find(170)
   sell_status = SellStatus.find(2)
   product = Product.create(seller_id:"#{user.id}", name:"アイアンマン",info:"『アイアンマン』（[英]):Iron Man）は、マーベル・コミックが刊行しているアメリカン・コミックス。アニメや映画作品も制作されており、2008年5月2日には実写映画『アイアンマン (映画)』が公開された。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
-  Image.create(product_id: "#{product.id}",image: "https://www.cinemacafe.net/imgs/thumb_h1/65544.jpg")
+  Image.create(product_id: "#{product.id}",image: open("#{Rails.root}/db/fixtures/ironman.jpg"))
 }
 
 8.times {
@@ -97,7 +97,7 @@ status = ["新品未使用","未使用に近い","目立った傷や汚れなし
   category = Category.find(180)
   sell_status = SellStatus.find(3)
   product = Product.create(seller_id:"#{user.id}", name:"マグニート",info:"マグニートーは磁場を生成し操作する能力を持つ、強力なミュータントである。ミュータントとは、生まれながらに普通の人間にはない特殊な能力が備わった新たな人類種を指し、マグニートーは人類をホモサピエンスと呼ぶことから、ミュータントを「ホモ・スペリオール」（優れた人間）と呼んでいる。マグニートーは人類より優れたミュータントによる世界の支配を目的としており、人間とミュータントの平和的共存という考えは否定している。マグニートーの生い立ちや動機については作家により肉付けが行われており、ホロコースト生存者であることが明らかにされている。マグニートーのテロ活動を基本とする極端な手段やシニカルな哲学は、ミュータントを恐れ、迫害する人間達によりミュータントがホロコーストの二の舞になることを防ぎたいという決意からきている。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
-  Image.create(product_id: "#{product.id}",image: "http://file.hirohiron.blog.shinobi.jp/x-men3.jpg")
+  Image.create(product_id: "#{product.id}",image: open("#{Rails.root}/db/fixtures/magnet.jpg"))
 }
 
 8.times {
@@ -108,5 +108,6 @@ status = ["新品未使用","未使用に近い","目立った傷や汚れなし
   category = Category.find(180)
   sell_status = SellStatus.find(3)
   product = Product.create(seller_id:"#{user.id}", name:"ウルヴァリン", info:"ミュータントであるウルヴァリンは動物的な鋭い感覚と反射能力、そして実質的にどんな怪我からも回復することができる治癒能力（ヒーリング・ファクター）を持っている。この治癒能力はスーパーソルジャー製造計画「ウェポンX」において、骨格（出し入れが可能なカミソリのように鋭い爪を含む）に世界最硬の金属であるアダマンチウム合金を組み入れることを可能にした。近接戦闘の達人でもある。コードネームの「ウルヴァリン」とは、クズリというイタチ科の、小さいが獰猛な動物を意味する。また、「ウェポンX」（ウェポンエックス）の「X」はローマ数字の「10」のダブルミーニングであり「兵器第10号」を意味するが、実在するアメリカ陸軍兵器・M10 (駆逐戦車)の型番も「M10」（Model10:10型）である。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
-  Image.create(product_id: "#{product.id}",image: "https://s.pacn.ws/640/98/xmen-origins-wolverine-ultimate-2disc-edition-166221.7.jpg?o6zszf")
+  Image.create(product_id: "#{product.id}",image: open("#{Rails.root}/db/fixtures/wolvarine.jpg"))
 }
+
