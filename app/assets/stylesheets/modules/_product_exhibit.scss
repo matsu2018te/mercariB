@@ -23,6 +23,16 @@
       font-size: 12px;
       margin-top: 15px;
     }
+    &-brand{
+      padding:16px 8px;
+      width:100%;
+      font-size: 14px;
+      &:hover{
+        background-color: #b3d4fc;
+        color:white;
+        text-shadow:none;
+      }
+    }
   }
   &-form{
     border:thin solid gray;
@@ -88,6 +98,7 @@
     &_container{
       margin-top: 16px;
       height:186px;
+      width:100%;
       @include clearfix;
     }
     &-items{
@@ -99,6 +110,8 @@
         text-align: center;
         background: $light-gray;
         border:thin dashed gray;
+        margin-right:15px;
+        float:right;
         @include clearfix;
         position:relative
       }
@@ -120,14 +133,43 @@
     &-uploader{
       height:100%;
       padding:60px 20px;
-      width:75%;
       text-align: center;
       background: $light-gray;
       border:thin dashed gray;
       float:right;
+      @include clearfix;
+      width:100%;
     }
   }
 }
+
+.three-quarters-width{
+  width:75%;
+}
+
+.half-width{
+  width:50%;
+}
+
+.quarter-width{
+  width:25%;
+}
+
+.hidden {
+  display: none;
+}
+
+ul.brand-search-result{
+  overflow: auto;
+  position: absolute;
+  background: white;
+  z-index: 10;
+  max-height: 280px;
+  width:400px;
+  box-shadow:0 0 4px 0 rgba(0,0,0,0.64);
+}
+
+
 h2.l-single-head{
   font-weight: bold;
   text-align: center;
@@ -206,4 +248,9 @@ textarea.sell-form-text_area{
   @extend .form-require;
   background: gray;
   border-color: gray;
+}
+@media screen and (max-width: 700px) {
+  .sell-dropbox-items_container{
+    width:60px;
+  }
 }
