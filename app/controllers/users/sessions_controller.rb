@@ -10,9 +10,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    if verify_recaptcha
-      super
-    end
+    # if verify_recaptcha
+    #   super
+    # end
   end
 
   # DELETE /resource/sign_out
