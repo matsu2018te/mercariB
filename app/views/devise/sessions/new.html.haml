@@ -6,7 +6,7 @@
     .login-panel
       .login-no-account
         %p アカウントをお持ちでない方はこちら
-        = link_to "" do
+        = link_to signup_path do
           %button.btn.btn__blue 新規会員登録
       .login-form-inner
         = link_to user_facebook_omniauth_authorize_path do
