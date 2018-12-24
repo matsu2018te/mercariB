@@ -1,67 +1,67 @@
-# require "csv"
+require "csv"
 
-# parents =[]
-# children =[]
-# CSV.foreach('db/category_parent.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#   parent = Category.create(name: row[0],belongs: "parent")
-#   parents << parent
-# end
+parents =[]
+children =[]
+CSV.foreach('db/category_parent.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+  parent = Category.create(name: row[0],belongs: "parent")
+  parents << parent
+end
 
-# parent_count = 0
-# parents.each do |parents|
-#   CSV.foreach('db/category_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#     if row[parent_count]
-#       child = parents.children.create(name: row[parent_count],belongs: "child")
-#       children << child
-#     end
-#   end
-#   parent_count += 1
-# end
+parent_count = 0
+parents.each do |parents|
+  CSV.foreach('db/category_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+    if row[parent_count]
+      child = parents.children.create(name: row[parent_count],belongs: "child")
+      children << child
+    end
+  end
+  parent_count += 1
+end
 
-# child_count = 0
-# children.each do |child|
-#   CSV.foreach('db/category_g_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#     if row[child_count]
-#       child.children.create(name: row[child_count],belongs: "g_child")
-#     end
-#   end
-#   child_count += 1
-# end
+child_count = 0
+children.each do |child|
+  CSV.foreach('db/category_g_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+    if row[child_count]
+      child.children.create(name: row[child_count],belongs: "g_child")
+    end
+  end
+  child_count += 1
+end
 
-# CSV.foreach('db/size.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
-#   Size.create(size: row[0])
-# end
+CSV.foreach('db/size.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
+  Size.create(size: row[0])
+end
 
-# # ユーザーの作成
-# User.create(nickname: "test1", telephone: "08011112222", email: "test@gmail.com", password: "test1test1", birth_year: 1991, birth_month: 1, birth_day: 1)
+# ユーザーの作成
+User.create(nickname: "test1", telephone: "08011112222", email: "test@gmail.com", password: "test1test1", birth_year: 1991, birth_month: 1, birth_day: 1)
 
-# User.create(nickname: "test2", telephone: "08022223333", email: "test2@gmail.com", password: "test2test2", birth_year: 1992, birth_month: 2, birth_day: 2)
+User.create(nickname: "test2", telephone: "08022223333", email: "test2@gmail.com", password: "test2test2", birth_year: 1992, birth_month: 2, birth_day: 2)
 
-# User.create(nickname: "test3", telephone: "08033334444", email: "test3@gmail.com", password: "test3test3", birth_year: 1993, birth_month: 3, birth_day: 3)
+User.create(nickname: "test3", telephone: "08033334444", email: "test3@gmail.com", password: "test3test3", birth_year: 1993, birth_month: 3, birth_day: 3)
 
-# users = User.all()
+users = User.all()
 
-# # クレジットの作成
-# Credit.create(card_number: 1111111111, expiration_month: 1, expiration_year: 21, security_code: 1111, user_id: "#{users[0].id}")
+# クレジットの作成
+Credit.create(card_number: 1111111111, expiration_month: 1, expiration_year: 21, security_code: 1111, user_id: "#{users[0].id}")
 
-# Credit.create(card_number: 2222222222, expiration_month: 2, expiration_year: 22, security_code: 2222, user_id: "#{users[1].id}")
+Credit.create(card_number: 2222222222, expiration_month: 2, expiration_year: 22, security_code: 2222, user_id: "#{users[1].id}")
 
-# Credit.create(card_number: 3333333333, expiration_month: 3, expiration_year: 23, security_code: 3333, user_id: "#{users[2].id}")
+Credit.create(card_number: 3333333333, expiration_month: 3, expiration_year: 23, security_code: 3333, user_id: "#{users[2].id}")
 
-# # アドレスの作成
-# Address.create( first_name: "テスト", last_name: "一郎", first_name_phonetic: "テスト", last_name_phonetic: "イチロウ", postal_code: "123456", prefecture: 1,municipality: "テスト市テスト区", address_number: "テスト町1-1-1", building_name: "テストハウス101", user_id: "#{users[0].id}")
+# アドレスの作成
+Address.create( first_name: "テスト", last_name: "一郎", first_name_phonetic: "テスト", last_name_phonetic: "イチロウ", postal_code: "123456", prefecture: 1,municipality: "テスト市テスト区", address_number: "テスト町1-1-1", building_name: "テストハウス101", user_id: "#{users[0].id}")
 
-# Address.create( first_name: "テスト", last_name: "次郎", first_name_phonetic: "テスト", last_name_phonetic: "ジロウ", postal_code: "123456", prefecture: 1,municipality: "テスト市テスト区", address_number: "テスト町1-1-1", building_name: "テストハウス101", user_id: "#{users[1].id}")
+Address.create( first_name: "テスト", last_name: "次郎", first_name_phonetic: "テスト", last_name_phonetic: "ジロウ", postal_code: "123456", prefecture: 1,municipality: "テスト市テスト区", address_number: "テスト町1-1-1", building_name: "テストハウス101", user_id: "#{users[1].id}")
 
-# Address.create( first_name: "テスト", last_name: "三郎", first_name_phonetic: "テスト", last_name_phonetic: "サブロウ", postal_code: "123456", prefecture: 1 ,municipality: "テスト市テスト区", address_number: "テスト町1-1-1", building_name: "テストハウス101", user_id: "#{users[2].id}")
+Address.create( first_name: "テスト", last_name: "三郎", first_name_phonetic: "テスト", last_name_phonetic: "サブロウ", postal_code: "123456", prefecture: 1 ,municipality: "テスト市テスト区", address_number: "テスト町1-1-1", building_name: "テストハウス101", user_id: "#{users[2].id}")
 
-# s_status = [0,1,2]
-# s_status.each do |s_status|
-#   SellStatus.create(status:s_status)
-# end
+s_status = [0,1,2]
+s_status.each do |s_status|
+  SellStatus.create(status:s_status)
+end
 
 
-Brand.create(name:"MARVEL")
+Brand.create(name:"アベンジャーズ")
 Brand.create(name:"スタークインダストリーズ")
 Brand.create(name:"ウルヴァリン")
 

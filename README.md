@@ -78,7 +78,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false|
-|prefecture|string|null: false|
+|prefecture|integer|null: false|
 |municipality|string|null: false|
 |address_number|string|null: false|
 |building_name|string||
