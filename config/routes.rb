@@ -25,12 +25,6 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
-  scope '/mypage' do
-    #クレジットカード
-    resources "credits", :path => 'card', only: [:index, :destroy]
-    get 'card/create' => 'credits#new'
-    post 'card' => 'credits#create'
-  end
 
   #user関連
   get 'mypage' => 'users#show'
@@ -46,6 +40,13 @@ Rails.application.routes.draw do
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
   get 'transaction' => 'products#transaction'
+
+  scope '/mypage' do
+    #クレジットカード
+    resources "credits", :path => 'card', only: [:index, :destroy]
+    get 'card/create' => 'credits#new'
+    post 'card' => 'credits#create'
+  end
 end
 
 
