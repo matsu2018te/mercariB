@@ -28,14 +28,14 @@
         %section.items-box
           =link_to "",class: 'item-box' do
             .items-box-photo
-            - related_item.images.each do |related_item_image|
-              = image_tag related_item_image.image
-            .items-box-body
-              %h3.item-name.font-2 #{related_item.name}
-              .item-box-num.clearfix
-                .item-box-price.font-5 ¥ #{related_item.price}
-                .item-box-likes
-                  %p.like-count 13
-                  %i.like.font-2
-                %p.item-box-tax（税込）
+              - related_item.images.each do |related_item_image|
+                = image_tag related_item_image.image
+              .items-box-body
+                %h3.item-name.font-2 #{related_item.name}
+                .item-box-num.clearfix
+                  .item-box-price.font-5 ¥ #{related_item.price}
+                  .item-box-likes
+                    %p.like-count 13
+                    %i.like.font-2
+                  %p.item-box-tax（税込）
 
