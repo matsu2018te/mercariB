@@ -5,10 +5,13 @@ Rails.application.routes.draw do
     :registrations      => "users/registrations",
     :passwords          => "users/passwords",
     :omniauth_callbacks =>  "users/omniauth_callbacks"
-  }
-
-  devise_scope :user do
-    get 'login' => 'users/sessions#new'#ログイン
+  },
+  skip: [:sessions, :registrations]
+  as :user do
+    get 'login', to: 'devise/sessions#new', as: :new_user_session
+    post 'login', to: 'devise/sessions#create', as: :user_session
+    match 'mypage/signup', to: 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
+    # get 'login' => 'users/sessions#new'#ログイン
     get 'signup' => 'users/registrations#signup' #新規会員登録
     get "/signup/registration" => "users/registrations#registration"#会員情報入力
     post "/signup/sms_confirmation" => "users/registrations#sms_confirmation"#電話番号入力
@@ -16,6 +19,9 @@ Rails.application.routes.draw do
     post "/signup/credit_card" => "users/registrations#credit"#支払い方法
     post "/signup/completed" => "users/registrations#create"
     get "/signup/done" => "users/registrations#done"#完了画面
+  end
+
+  devise_scope :user do
   end
 
   root 'home#index'
