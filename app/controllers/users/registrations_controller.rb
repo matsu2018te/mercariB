@@ -11,9 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def sms_confirmation
     # @user.build_address
-    unless verify_recaptcha
-      render action: :registration
-    end
+    # unless verify_recaptcha
+    #   render action: :registration
+    # end
 
   end
 
