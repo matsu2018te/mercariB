@@ -81,7 +81,7 @@
             %p #{@product.delivery_date}
   .price-box
     %h1
-      %span.price ¥ 3,380
+      %span.price ¥ #{@product.price}
       %span.tax (税込)
       %span.tax-include 送料込み
   .buy-btn 購入画面に進む
@@ -127,6 +127,6 @@
       =link_to "" do
         %i.pinterest-icon
 
-= render "product_user-item", user: @sell_user, sell_items: @sell_items, brand: @sell_product_brand, category: @sell_product_category, related_items: @related_items
+= render "product_user-item", user: @sell_user, sell_other_products: @sell_other_products, brand: @sell_product_brand, category: @sell_product_category, related_items: @related_items
 
 = render "home/footer"
