@@ -10,18 +10,20 @@ class CreditsController < ApplicationController
   def create
     @credit = Credit.new(credit_params)
     if @credit.save
-      redirect_to mypage_card_path
+      redirect_to card_path
     else
       render :new
     end
   end
 
   def destroy
-    credit = current_user.credits
-    if credit.destroy
-      redirect_to mypage_card_path
-    else
-      render :index
+    credit = Credit.find(params[:id])
+    if credit.user_id == current_user.id
+      if credit.destroy
+        redirect_to card_path
+      else
+        render :index
+      end
     end
   end
 

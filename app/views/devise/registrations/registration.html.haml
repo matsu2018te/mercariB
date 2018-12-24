@@ -1,8 +1,6 @@
 .single-container
   %header.single-header
-    %h1
-      = link_to do
-        = image_tag("logo.svg", alt:"mercari")
+    = render 'devise/shared/header'
     %nav.signup-bar
       %ul.progress-bar
         %li
