@@ -19,22 +19,24 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
+  scope '/mypage' do
+    #クレジットカード
+    resources "credits", :path => 'card', only: [:index, :destroy]
+    get 'card/create' => 'credits#new'
+    post 'card' => 'credits#create'
+  end
+
   get 'mypage' => 'users#show'
-  post 'mypage' => 'users#update'
+  patch 'mypage' => 'users#update'
   get 'mypage/profile' => 'users#edit'
   get 'mypage/identification' => 'users#set_user'
   get 'mypage/notification' => 'users#notification'
   get 'mypage/todo' => 'users#todo'
   get 'mypage/purchase' => 'products#purchase'
   get 'mypage/purchased' => 'products#purchased'
-  patch 'mypage' => 'users#update'
   get 'mypage/logout' => 'users#destroy'
   get 'sell' => 'products#new'
   get 'transaction' => 'products#transaction'
-  get 'mypage/card' => 'credits#index'
-  get 'mypage/card/create' => 'credits#new'
-  post 'mypage/card' => 'credits#create'
-  delete 'mypage/card' => 'credits#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :products
