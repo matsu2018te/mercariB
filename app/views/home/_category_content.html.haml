@@ -2,7 +2,7 @@
   %h3.text-center
     レディース新着アイテム
   .items-box-content.clearfix
-    - @products.each do |product|
+    - @lady_products.each do |product|
       %section.items-box
         = link_to(show_path(product)) do
           .items-box-photo
@@ -25,7 +25,7 @@
   %h3.text-center
     メンズ新着アイテム
   .items-box-content.clearfix
-    - @products.each do |product|
+    - @mens_products.each do |product|
       %section.items-box
         = link_to(show_path(product)) do
           .items-box-photo
@@ -46,7 +46,7 @@
   %h3.text-center
     ベビー・キッズ新着アイテム
   .items-box-content.clearfix
-    - @products.each do |product|
+    - @kids_products.each do |product|
       %section.items-box
         = link_to(show_path(product)) do
           .items-box-photo
@@ -67,7 +67,7 @@
   %h3.text-center
     コスメ・香水美容 新着アイテム
   .items-box-content.clearfix
-    - @products.each do |product|
+    - @cosme_products.each do |product|
       %section.items-box
         = link_to(show_path(product)) do
           .items-box-photo
