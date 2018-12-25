@@ -10,7 +10,5 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :brand
 
-  validates :seller, :category, :area, :sell_status, presence: true
-
-  enum delivery_fee_owner: {postage: 0,cash_on: 1}
+  validates :seller,:name,:info, :category_id, :status, :delivery_fee_owner, :shipping_method, :prefecture, :delivery_date, :price, presence: true
 end
