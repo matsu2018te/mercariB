@@ -5,6 +5,11 @@ class CreditsController < ApplicationController
 
   def new
     @credit = Credit.new
+
+    time = Time.new
+    min_year = time.year.to_s[2,2].to_i
+    max_year = min_year + 10
+    @years = [*(min_year..max_year)]
   end
 
   def create
