@@ -1,4 +1,8 @@
 = render 'home/header'
+.bread-crumbs
+  .bread-crumbs_box
+    - breadcrumb :todo
+    = breadcrumbs separator: " &rsaquo; "
 .l-contener
   = render 'mypages/todo'
   = render 'mypages/side_bar'
