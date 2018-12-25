@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => {
-    :sessions      => "users/sessions",
-    :registrations => "users/registrations",
-    :passwords     => "users/passwords"
-  }
-
-  devise_scope :user do
-    get 'login' => 'users/sessions#new'#ログイン
-    get 'signup' => 'users/registrations#signup' #新規会員登録
+    :sessions           => "users/sessions",
+    :registrations      => "users/registrations",
+    :passwords          => "users/passwords",
+    :omniauth_callbacks =>  "users/omniauth_callbacks"
+  },
+  skip: [:sessions, :registrations]
+  as :user do
+    #ログイン
+    get 'login' => 'devise/sessions#new', as: :new_user_session
+    post 'login' => 'devise/sessions#create', as: :user_session
+    #ログアウト
+    match 'mypage/logout' => 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
+    get 'mypage/logout' => 'users#destroy'
+    #サインアップ
+    get 'signup' => 'users/registrations#signup'#新規会員登録
     get "/signup/registration" => "users/registrations#registration"#会員情報入力
     post "/signup/sms_confirmation" => "users/registrations#sms_confirmation"#電話番号入力
     post "/signup/address" => "users/registrations#address"#住所入力
@@ -17,28 +24,28 @@ Rails.application.routes.draw do
     get "/signup/done" => "users/registrations#done"#完了画面
   end
 
-
-
   root 'home#index'
+
+  #user関連
   get 'mypage' => 'users#show'
-  post 'mypage' => 'users#update'
+  patch 'mypage' => 'users#update'
   get 'mypage/profile' => 'users#edit'
   get 'mypage/identification' => 'users#set_user'
   get 'mypage/notification' => 'users#notification'
   get 'mypage/todo' => 'users#todo'
+
+  #products関連
+  resources :products
   get 'mypage/purchase' => 'products#purchase'
   get 'mypage/purchased' => 'products#purchased'
-  patch 'mypage' => 'users#update'
-  get 'mypage/logout' => 'users#destroy'
-  get 'show' => 'products#show'
   get 'sell' => 'products#new'
-  post 'sell' => 'products#create'
-  get 'mypage/card' => 'credits#index'
-  get 'mypage/card/create' => 'credits#new'
-  post 'mypage/card' => 'credits#create'
-  delete 'mypage/card' => 'credits#destroy'
-  get 'brand/index' => 'brands#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+  get 'transaction' => 'products#transaction'
 
+  scope '/mypage' do
+    #クレジットカード
+    resources "credits", :path => 'card', only: [:index, :destroy]
+    get 'card/create' => 'credits#new'
+    post 'card' => 'credits#create'
+  end
+end
 
