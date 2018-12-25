@@ -18,6 +18,11 @@ class HomeController < ApplicationController
     cosme_ids = cosme.map{|cosme| cosme.id }
     @cosme_products = Product.where(category_id:cosme_ids).limit(4)
 
+    @chanel = @products.where(brand_id: 1..4).limit(4)
+    @louisvuitton = @products.where(brand_id: 9..12).limit(4)
+    @supreme = @products.where(brand_id: 17..20).limit(4)
+    @nike = @products.where(brand_id: 25..29).limit(4)
+
     # @louisvuitton = @productss.brand.where(name: 'スタークインダストリーズ').limit(4)
     # @supreme = @products.brands.where(name: 'ウルヴァリン').limit(4)
     # @nike = @products.brands.where(name: 'ウルヴァリン').limit(4)
