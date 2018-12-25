@@ -13,10 +13,17 @@ describe ProductsController do
       expect(response).to render_template :show
     end
 
-  it "assigns the requested product to @product" do
-    get :show, params: { id: @product.id }
-    expect(assigns(:product)).to eq @product
+    it "assigns the requested product to @product" do
+      get :show, params: { id: @product.id }
+      expect(assigns(:product)).to eq @product
+    end
   end
 
+  describe 'Delete #destroy' do
+    it "product delete" do
+      expect{
+        delete :destroy, params: { id: @product.id }
+      }.to change(Product, :count).by(-1)
+    end
   end
 end
