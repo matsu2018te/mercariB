@@ -46,7 +46,7 @@
             = f.label :password_confirmation, "パスワード（確認）"
             %span.form-require 必須
             = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", required:""
-          / .form-group
-          /   = recaptcha_tags
+          .form-group
+            = recaptcha_tags
           = f.submit "次へ進む", class: "btn btn__red"
   = render "devise/shared/footer"
