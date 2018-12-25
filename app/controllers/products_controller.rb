@@ -16,8 +16,6 @@ class ProductsController < ApplicationController
     else @product.brand_id.present? || @product.category_id.present?
       @related_items = Product.where("brand_id = ? or category_id = ?", @product.brand_id, @product.category_id)
     end
-    # binding.pry
-
   end
 
   def destroy
