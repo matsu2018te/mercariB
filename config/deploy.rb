@@ -24,3 +24,8 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
+
+set :default_env, {
+  RECAPTCHA_SITE_KEY: ENV["RECAPTCHA_SITE_KEY"],
+  RECAPTCHA_SECRET_KEY: ENV["RECAPTCHA_SECRET_KEY"]
+}
