@@ -2,7 +2,9 @@
   .bread-crumbs_box
     - breadcrumb :mypage
     = breadcrumbs separator: " &rsaquo; "
+= render 'home/header'
 .l-contener
   = render 'mypages/mypage'
   = render 'mypages/side_bar'
-
+= render 'home/footer'
+= render 'home/exhibit_btn'

@@ -42,6 +42,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'rspec-rails'
+  gem 'capybara'
   gem 'factory_girl_rails', "~> 4.4.1"
   gem 'rails-controller-testing'
 
@@ -93,3 +94,11 @@ gem 'jp_prefecture'
 # カテゴリテーブル 階層構造
 gem 'ancestry'
 gem 'gretel'
+
+#認証
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+
+#私はロボットではありません
+gem 'recaptcha', require: "recaptcha/rails"

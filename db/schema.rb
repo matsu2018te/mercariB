@@ -10,17 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181220061722) do
+ActiveRecord::Schema.define(version: 20181222042722) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "postal_code",    null: false
-    t.string   "prefecture",     null: false
-    t.string   "municipality",   null: false
-    t.string   "address_number", null: false
+    t.string   "last_name_phonetic",  null: false
+    t.string   "first_name_phonetic", null: false
+    t.string   "last_name",           null: false
+    t.string   "first_name",          null: false
+    t.integer  "postal_code",         null: false
+    t.integer  "prefecture",          null: false
+    t.string   "municipality",        null: false
+    t.string   "address_number",      null: false
     t.string   "building_name"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
@@ -31,11 +35,11 @@ ActiveRecord::Schema.define(version: 20181220061722) do
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "category_name", null: false
+    t.string   "name",       null: false
     t.string   "belongs"
     t.string   "ancestry"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
@@ -61,12 +65,12 @@ ActiveRecord::Schema.define(version: 20181220061722) do
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "seller_id"
     t.integer  "buyer_id"
-    t.string   "product_name",                     null: false
-    t.text     "product_info",       limit: 65535, null: false
+    t.string   "name",                             null: false
+    t.text     "info",               limit: 65535, null: false
     t.integer  "price",                            null: false
-    t.string   "product_state",                    null: false
+    t.string   "status",                           null: false
     t.string   "delivery_fee_owner",               null: false
-    t.datetime "delivery_date",                    null: false
+    t.string   "delivery_date",                    null: false
     t.string   "shipping_method",                  null: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
@@ -92,6 +96,15 @@ ActiveRecord::Schema.define(version: 20181220061722) do
     t.string "size", null: false
   end
 
+  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "uid"
+    t.string   "provider"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
@@ -101,18 +114,14 @@ ActiveRecord::Schema.define(version: 20181220061722) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.string   "nickname",                                          null: false
-    t.string   "first_name",                                        null: false
-    t.string   "last_name",                                         null: false
-    t.string   "last_name_phonetic",                                null: false
     t.string   "icon_picture"
     t.text     "profile",                limit: 65535
     t.string   "background_image"
     t.integer  "point"
-    t.string   "first_name_phonetic"
     t.string   "telephone",                                         null: false
-    t.integer  "birth_year",                                        null: false
-    t.integer  "birth_month",                                       null: false
-    t.integer  "birth_day",                                         null: false
+    t.integer  "birth_year"
+    t.integer  "birth_month"
+    t.integer  "birth_day"
     t.integer  "seller_id"
     t.integer  "buyer_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -128,4 +137,5 @@ ActiveRecord::Schema.define(version: 20181220061722) do
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "users", column: "buyer_id"
   add_foreign_key "products", "users", column: "seller_id"
+  add_foreign_key "sns_credentials", "users"
 end

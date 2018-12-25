@@ -1,10 +1,6 @@
-%script{src:'https://www.google.com/recaptcha/api.js'}
-
 .single-container
   %header.single-header
-    %h1
-      = link_to do
-        = image_tag("logo.svg", alt:"mercari")
+    = render 'devise/shared/header'
     %nav.signup-bar
       %ul.progress-bar
         %li
@@ -31,8 +27,9 @@
   %main.single-main
     .signup-panel
       %h2.signup-panel__head 会員情報入力
+      = devise_error_messages!
       .signup-panel__inner
-        = form_for(@user, url: signup_sms_confirmation_path, html: {method: :post}) do |f|
+        = form_for(@user, url: signup_sms_confirmation_path , html: { id:"form", method: :post}) do |f|
           .form-group
             = f.label :nickname, "ニックネーム"
             %span.form-require 必須
@@ -44,12 +41,12 @@
           .form-group
             = f.label :password, "パスワード"
             %span.form-require 必須
-            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", required:""
+            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", required:"", minlength: "6"
           .form-group
             = f.label :password_confirmation, "パスワード（確認）"
             %span.form-require 必須
             = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", required:""
           .form-group
-            .g-recaptcha{data:{callback:"clearcall", sitekey:"ここにサイトキーをいれる"}}
+            = recaptcha_tags
           = f.submit "次へ進む", class: "btn btn__red"
   = render "devise/shared/footer"

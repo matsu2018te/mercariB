@@ -1,33 +1,31 @@
-//暫定記載
-%script{src:'https://www.google.com/recaptcha/api.js'}
-
 .single-container
   %header.single-header
-    %h1
-      = link_to do
-        = image_tag("logo.svg", alt:"mercari")
+    = render 'devise/shared/header'
 
   %main.single-main
     .login-panel
       .login-no-account
         %p アカウントをお持ちでない方はこちら
-        = link_to "" do
+        = link_to signup_path do
           %button.btn.btn__blue 新規会員登録
       .login-form-inner
-        %button.btn.btn__sns.btn__sns--facebook
-          %i.fab.fa-facebook-square
-          Facebookでログイン
-        %button.btn.btn__sns.btn__sns--google
-          %i.fab.fa-google-plus
-          Googleでログイン
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = link_to user_facebook_omniauth_authorize_path do
+          %button.btn.btn__sns.btn__sns--facebook
+            %i.fab.fa-facebook-square
+            Facebookでログイン
+        = link_to user_google_oauth2_omniauth_authorize_path do
+          %button.btn.btn__sns.btn__sns--google
+            %i.fab.fa-google-plus
+            Googleでログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: { id:"form"}) do |f|
         .form-group
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", required:""
         .form-group
           = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
         .form-group
-          .g-recaptcha{data:{callback:"clearcall", sitekey:"ここにサイトキーをいれる"}}
+          = recaptcha_tags
         = f.submit "ログイン", class: "btn btn__red"
       = link_to "パスワードをお忘れの方", new_password_path(resource_name)
 
   = render "devise/shared/footer"
+

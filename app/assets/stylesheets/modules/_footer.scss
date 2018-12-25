@@ -58,7 +58,7 @@
   text-align: center;
   position:relative;
   .nav{
-    width: 1020px;
+    width: 100%;
     margin: 0 auto;
     &__list{
       .footer-cell{
@@ -109,26 +109,26 @@
     font-size: 14px;
     color: $White;
   }
-  a.sell-btn{
-    text-decoration:none;
-    margin:0;
-    position:fixed;
-    right:50px;
-    bottom: 50px;
-    width: 150px;
-    height: 150px;
-    background-color: $Red;
-    border-radius: 50%;
-    .sell-text{
-      color: $White;
-      margin: 32px 0 0 0;
-      font-size:24px;
-    }
-    .fas{
-      color: $White;
-      margin: 8px 0 0 0;
-      font-size: 54px;
-    }
+}
+a.sell-btn{
+  text-decoration:none;
+  margin:0;
+  position:fixed;
+  right:40px;
+  bottom: 40px;
+  width: 160px;
+  height: 160px;
+  background-color: $Red;
+  border-radius: 50%;
+  text-align: center;
+  .sell-text{
+    color: $White;
+    margin: 32px 0 0 0;
+    font-size:20px;
+  }
+  .fas{
+    color: $White;
+    margin: 8px 0 0 0;
+    font-size: 60px;
   }
 }
-
