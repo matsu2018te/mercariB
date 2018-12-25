@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function() {
                     <a class="sell-dropbox-items-btn sell-image_delete">
                       <p>削除</p>
                     </a>
-                     <input type="file" name="product[images_attributes][${i_count}][image]" id="product_images_attributes_${i_count}_image" val="${image}" src="${image}",class="hidden">
+                     <input type="file" name="product[images_attributes][${i_count}][image]" id="product_images_attributes_${i_count}_image" val="${result}" src="${result}">
                 </li>`
     upload_image.append(html);
   }
@@ -53,10 +53,9 @@ function ImageCount() {
     const reader = new FileReader();
     reader.onload = function (e) {
       appendImage(e.target.result)
-      console.log(e.target.result);
-
     }
     reader.readAsDataURL(e.dataTransfer.files[0]);
+    appendChild()
     ImageCount();
   });
 
@@ -64,7 +63,7 @@ function ImageCount() {
   $('.product_images').change("click",function(e) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      appendImage(e.target.result)
+      appendImage(e.target.result,e.target)
     }
     var imgData = reader.readAsDataURL(this.files[0]);
     ImageCount();
