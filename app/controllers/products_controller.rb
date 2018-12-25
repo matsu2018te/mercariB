@@ -5,16 +5,16 @@ class ProductsController < ApplicationController
   end
 
   def new
-
+    @product.images.build
   end
 
   def create
-    binding.pry
-    @product = products_params
+    @product = Product.new(product_params)
+    @product.brand = Brand.find_or_create_by(name: @product.brand.name) if @product.brand.name
     if @product.save
-      redirect_to home_path
+      redirect_to root_path
     else
-      render action: :sell
+      render action: :new
     end
   end
 
@@ -23,18 +23,19 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
-  def products_params
-    params.require(:products).permit(
-      :product_name,
-      :product_info,
+  def product_params
+    params.require(:product).permit(
+      :name,
+      :info,
       :price,
       :category_id,
       :size_id,
-      :product_status,
+      :status,
       :delivery_fee_owner,
-      :area,
+      :shipping_method,
       :delivery_date,
-      :image_id,
+      :prefecture,
+      images_attributes: [:id,:image],
       brand_attributes: [:name]
     ).merge(seller_id: current_user.id,sell_status_id: 1)
   end
