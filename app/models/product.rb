@@ -8,6 +8,14 @@ class Product < ApplicationRecord
   belongs_to :sell_status
   has_many :images
   accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :brand
 
-  validates :seller, :category, :sell_status, presence: true
+  validates :seller,:name,:info, :category_id, :status, :delivery_fee_owner, :shipping_method, :delivery_date, :price, presence: true
 end
+# = i.file_field :image, class: "upload-product-image hidden"
+
+# = f.fields_for :images do |i|
+#             = i.file_field :image, class: "upload-product-image"
+
+# = i.label :image,class: 'sell-dropbox-uploader_container' do
+# = i.file_field :image,class: "hidden"
