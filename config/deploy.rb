@@ -26,6 +26,8 @@ namespace :deploy do
 end
 
 set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
   RECAPTCHA_SITE_KEY: ENV["RECAPTCHA_SITE_KEY"],
   RECAPTCHA_SECRET_KEY: ENV["RECAPTCHA_SECRET_KEY"]
 }
