@@ -4,13 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+  #正規表現
+  VALID_TELPHONE_REGEX = /\A(070|080|090)-*\d{4}-*\d{4}\z/
+
+  # バリデーション
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true, length: { minimum: 6 }, confirmation: true
-  validates :telephone, presence: true
+  validates :telephone, presence: true, format: { with: VALID_TELPHONE_REGEX }
 
   # validates :birth_year, :birth_month, :birth_day, presence: true
 
+  # アソシエーション
   has_one  :address, dependent: :destroy
   accepts_nested_attributes_for :address
   # accepts_nested_attributes_for :address, update_only: true
@@ -42,7 +47,7 @@ class User < ApplicationRecord
           nickname: auth.info.name,
           email:    auth.info.email,
           password: Devise.friendly_token[0, 20],
-          telephone: "----------"
+          telephone: "08000000000"
           )
         SnsCredential.create(
           uid: uid,
