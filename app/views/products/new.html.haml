@@ -7,31 +7,28 @@
   .l-contener
     .signup-panel__inner
       = form_for(@product, url: sell_path, html: {method: :post}) do |f|
-
         .sell-contents
           %h2.l-single-head 商品の情報を入力
-        / 画像投稿詩 ▼
+        / 画像投稿 ▼
         .sell-contents
           %h3.sell-form-title
             出品画像
             %span.form-require.sell 必須
-
           %p.sell-contents__comment 最大4枚までアップロードできます
           .sell-dropbox_container
-            %ul.sell-dropbox-items
-              %li.sell-dropbox-items_container
-                .sell-dropbox-items-figure
-                  = image_tag("250px-Red_Apple.jpg", alt:"仮",class: ".sell-dropbox-items-figure-")
-                =link_to "" ,class: "sell-dropbox-items-btn" do
-                  %p 編集
-                =link_to "" ,class: "sell-dropbox-items-btn" do
-                  %p 削除
-            %ul.sell-dropbox-uploader
-              %li.sell-dropbox-uploader_container
-                .visible-pc
-                  ドラッグアンドドロップ
-                  %br またはクリックしてファイルをアップロード
-                %i.fas.fa-camera 🐢
+            = f.fields_for :images do |i|
+              %ul.sell-dropbox-items
+              .sell-dropbox-uploader
+                = i.label :image,class: 'sell-dropbox-uploader_container' do
+                  .visible-pc#drop
+                    ドラッグアンド
+                    %br ドロップ
+                    または
+                    %br クリックして
+                    ファイルをアップロード
+                    %i.fas.fa-camera 🐢
+                  = i.file_field :image,class: "hidden product_images"
+
         / 商品名・説明 ▼
         .sell-contents
           .form-group
@@ -56,12 +53,11 @@
                   カテゴリー
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :category_id,["hoge1","fuga1"],prompt: "---"
+                  = f.collection_select :category_id,Category.where(belongs: "parent"), :id, :name,prompt: "---"
                 .select-wrap
-                  = f.select :category_id,["hoge2","fuga2"],prompt: "---"
+                  = f.collection_select :category_id,Category.where(belongs: "child"), :id, :name,prompt: "---"
                 .select-wrap
-                  = f.select :category_id,["hoge3","fuga3"],prompt: "---"
-                / = f.collection_select category_id:, product.category_id, :id, :name, class: "sell-form-select" モデル作成後使用
+                  = f.collection_select :category_id,Category.where(belongs: "g_child"), :id, :name,prompt: "---"
           .sell-form-box
             .form-group
               = f.label :size_id,class: "sell-form-select" do
@@ -70,15 +66,16 @@
                   %span.form-require.sell 必須
                 .select-wrap
                   = f.collection_select :size_id, Size.all, :id, :size, prompt: "---"
-                  /  モデル作成後使用
           .sell-form-box
-            =f.fields_for :brand do |b|
-              .form-group
-                = b.label :brand_name do
-                  %h4.sell-form-sub_title
-                    ブランド
-                    %span.form-arbitrary.sell 任意
-                = b.text_field :name, placeholder: "例）シャネル",class: "sell-form-text_field input_brand"
+            .form-group
+              =f.fields_for :brand_attributes, @product.brand do |b|
+                .form-group
+                  = b.label :name do
+                    %h4.sell-form-sub_title
+                      ブランド
+                      %span.form-arbitrary.sell 任意
+                  = b.text_field :name, placeholder: "例）シャネル",autocomplete:"off",class: "sell-form-text_field input_brand"
+                  %ul.brand-search-result
           .sell-form-box
             .form-group
               = f.label :status, class: "sell-form-select" do
@@ -86,7 +83,7 @@
                   商品の状態
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :status,["よい","やべぇ"], prompt: "---"
+                  = f.select :status, ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れや汚れあり","傷や汚れや汚れあり","全体的に状態が悪い"], prompt: "---"
         / 配送 ▼
         .sell-contents
           %h3.sell-contents-label
@@ -100,17 +97,23 @@
                   配送料の負担
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :delivery_fee_owner, Product.delivery_fee_owners.map{|k, v| [t("products.delivery_fee_owner.#{k}"), v]}, prompt: "---"
-                  / = f.collection_select delivery_fee_owner:, product.delivery_fee_owner, class: "sell-form-select", prompt: "---"
+                  = f.select :delivery_fee_owner, ["着払い(購入者負担)","送料込み(出品者負担)"], prompt: "---"
           .sell-form-box
             .form-group
-              = f.label :area_id, class: "sell-form-select" do
+              = f.label :shipping_method, class: "sell-form-select" do
+                %h4.sell-form-sub_title
+                  配送の方法
+                  %span.form-require.sell 必須
+                .select-wrap
+                  = f.select :shipping_method, ["未定","クロネコヤマト","ゆうパック","ゆうメール"], prompt: "---"
+          .sell-form-box
+            .form-group
+              = f.label :prefecture, class: "sell-form-select" do
                 %h4.sell-form-sub_title
                   発送元の地域
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :area,["どこか","そこか"], prompt: "---"
-                  / = f.collection_select area_id:, product.area_id, class: "sell-form-select", prompt: "---"
+                  = f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, prompt: "---"
           .sell-form-box
             .form-group
               = f.label :delivery_date, class: "sell-form-select" do
@@ -118,8 +121,7 @@
                   発送までの日数
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :delivery_date,["1日","2日"], prompt: "---"
-                  / = f.collection_select delivery_date:, product.delivery_date, class: "sell-form-select", prompt: "---"
+                  = f.select :delivery_date,["1〜2日で発送","2〜3日で発送","4〜7日で発送"], prompt: "---"
         / 金額 ▼
         .sell-contents
           %h3.sell-contents-label

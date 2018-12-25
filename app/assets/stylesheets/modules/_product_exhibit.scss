@@ -99,21 +99,23 @@
       margin-top: 16px;
       height:186px;
       width:100%;
-      @include clearfix;
+      float:left;
     }
     &-items{
-      height:186px;
-      float:left;
+      height:100%;
+      float: left;
+      background: white;
+      border-right: thin dashed gray;
+      @include clearfix;
       &_container{
-        height:186px;
+        height:100%;
         width:140px;
         text-align: center;
         background: $light-gray;
         border:thin dashed gray;
-        margin-right:15px;
-        float:right;
-        @include clearfix;
-        position:relative
+        float:left;
+        position:relative;
+        margin-right: 14px;
       }
       &-figure{
         height:70%;
@@ -131,32 +133,24 @@
       }
     }
     &-uploader{
-      height:100%;
-      padding:60px 20px;
-      text-align: center;
-      background: $light-gray;
-      border:thin dashed gray;
-      float:right;
-      @include clearfix;
-      width:100%;
+        height:100%;
+      &_container{
+        .visible-pc{
+          width:100%;
+          text-align: center;
+          height: 100%;
+          padding:50px 0;
+          background: $light-gray;
+          border:thin dashed gray;
+        }
+      }
     }
   }
 }
 
-.three-quarters-width{
-  width:75%;
-}
-
-.half-width{
-  width:50%;
-}
-
-.quarter-width{
-  width:25%;
-}
 
 .hidden {
-  display: none;
+  visibility: hidden;
 }
 
 ul.brand-search-result{
