@@ -1,4 +1,8 @@
 = render 'home/header'
+.bread-crumbs
+  .bread-crumbs_box
+    - breadcrumb :product
+    = breadcrumbs separator: " &rsaquo; "
 
 %section.product-box-container.clearfix
   %h1.product-name
