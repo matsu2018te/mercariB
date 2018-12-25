@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get 'mypage/todo' => 'users#todo'
 
   #products関連
-  resources :products
+  resources :products, except: [:new]
   get 'mypage/purchase' => 'products#purchase'
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
