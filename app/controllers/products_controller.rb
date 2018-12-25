@@ -20,6 +20,17 @@ class ProductsController < ApplicationController
 
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    if current_user.id == @product.seller_id
+      if @product.destroy
+        redirect_to root_path
+      else
+        render :show
+      end
+    end
+  end
+
     def transaction
       @product = Product.find(params[:id])
       @product.update(buyer_id: current_user.id)
