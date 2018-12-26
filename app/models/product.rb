@@ -7,7 +7,8 @@ class Product < ApplicationRecord
   belongs_to :size
   belongs_to :sell_status
   has_many :images
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images, limit: 4
+  accepts_nested_attributes_for :brand
 
-  validates :seller, :category, :sell_status, presence: true
+  validates :seller,:name,:info, :category_id, :status, :delivery_fee_owner, :shipping_method, :prefecture, :delivery_date, :price, presence: true
 end

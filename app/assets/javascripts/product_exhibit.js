@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-
+// 金額算出
   function  ReplaceNum(num) {
     num = num.toLocaleString();
     return num;
@@ -22,5 +22,42 @@ $(document).on('turbolinks:load', function() {
       $(".sell-form-price-fee-num").text('-');
       $(".sell-form-price-gains-num").text('-');
     }
+  });
+
+// ブランド名検索
+  var brand_list = $('.brand-search-result')
+
+  function appendBrand(brand) {
+    var html = `<a src= "">
+                  <li class="sell-contents-brand">${ brand.name }</li>
+                </a>`
+    brand_list.append(html);
+  }
+
+  $(".input_brand").on("keyup", function(e) {
+    var input = $(this).val();
+    $.ajax({
+      type: 'GET',
+      url: '/brand/index',
+      data: { keyword: input},
+      dataType: 'json'
+    })
+    .done(function(brands) {
+      $(".brand-search-result").empty();
+      if (brands.length !== 0 && input.length !== 0 ){
+        brands.forEach(function(brand) {
+          appendBrand(brand);
+        });
+      }
+    })
+    .fail(function() {
+      alert("ブランドの検索に失敗しました")
+    })
+  });
+
+  $(document).on("click",".sell-contents-brand",function(e) {
+    var brand_name = $(this).html();
+    $(".input_brand").val(brand_name);
+    $(brand_list).empty();
   });
 });
