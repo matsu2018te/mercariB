@@ -10,4 +10,8 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :images
 
   validates :seller, :category, :sell_status, presence: true
+
+  def other_products
+    other_products = Product.where(seller_id: self.seller_id)
+  end
 end
