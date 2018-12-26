@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :product_info, only: [:show, :item_show]
+  before_action :product_info, only: [:show, :item_show, :destroy]
 
   def new
   end
@@ -20,7 +20,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     if current_user.id == @product.seller_id
       if @product.destroy
         redirect_to root_path

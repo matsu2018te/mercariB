@@ -17,7 +17,8 @@
       %span.price ¥ #{@product.price}
       %span.tax (税込)
       %span.tax-include 送料込み
-  .product-detail #{@product.info}
+  .product-detail
+    = @product.info
   = link_to edit_product_path(@product) do
     .buy-btn 商品の編集
   %p.text-center or
@@ -39,7 +40,7 @@
       .delete-dialog__select__cancel
         キャンセル
       .delete-dialog__select__submit
-        = link_to "削除する", "/products/#{@product.id}", method: :delete
+        = link_to "削除する", product_path(@product), method: :delete
 = render "product_comment"
 
 = render "home/footer"
