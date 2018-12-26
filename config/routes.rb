@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
   get 'transaction' => 'products#transaction'
+  post 'completed_transaction' => 'products#completed_transaction'
 
   scope '/mypage' do
     #クレジットカード

@@ -13,10 +13,18 @@ describe ProductsController do
       expect(response).to render_template :show
     end
 
-  it "assigns the requested product to @product" do
-    get :show, params: { id: @product.id }
-    expect(assigns(:product)).to eq @product
+    it "assigns the requested product to @product" do
+      get :show, params: { id: @product.id }
+      expect(assigns(:product)).to eq @product
+    end
   end
 
+  describe 'POST #completed_transaction' do
+    it "renders the :completed_transaction template" do
+      post :completed_transaction, params: { id: @product.id }
+      expect(response).to render_template :completed_transaction
+    end
   end
+
 end
+
