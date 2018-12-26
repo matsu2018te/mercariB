@@ -18,31 +18,38 @@
       %th カテゴリー
       %td
         =link_to do
-          %p.parent #{product.category.g_parent.name}
+          %p.parent
+            = product.category.g_parent.name
         =link_to "",class: 'child-box' do
           %i.right
-          %p.child #{product.category.parent.name}
+          %p.child
+            = product.category.parent.name
         =link_to "",class: 'child-box' do
           %i.right
-          %p.g-child #{product.category.name}
+          %p.g-child
+            = product.category.name
 
     %tr
       %th ブランド
       %td
         =link_to do
-          %p #{product.brand.name}
+          %p
+           = product.brand.name
     %tr
       %th 商品の状態
       %td
-        %p #{product.status}
+        %p
+          = product.status
     %tr
       %th 配送料の負担
       %td
-        %p #{product.delivery_fee_owner}
+        %p
+          = product.delivery_fee_owner
     %tr
       %th 配送の方法
       %td
-        %p #{product.shipping_method}
+        %p
+          = product.shipping_method
     %tr
       %th 配送元地域
       %td
@@ -51,4 +58,5 @@
     %tr
       %th 発送日の目安
       %td
-        %p #{product.delivery_date}
+        %p
+          product.delivery_date
