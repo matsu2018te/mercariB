@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'mypage/logout' => 'users#destroy'
   get 'sell' => 'products#new'
   get 'transaction' => 'products#transaction'
+  post 'completed_transaction' => 'products#completed_transaction'
   get 'mypage/card' => 'credits#index'
   get 'mypage/card/create' => 'credits#new'
   post 'mypage/card' => 'credits#create'
