@@ -3,7 +3,7 @@
     %tr
       %th 出品者
       %td
-        =link_to("#{product.seller.nickname}", "/")
+        =link_to "#{product.seller.nickname}", "/"
         %div
           .product-user-rate
             %i.good
@@ -34,7 +34,7 @@
       %td
         =link_to do
           %p
-           = product.brand.name
+            = product.brand.name
     %tr
       %th 商品の状態
       %td

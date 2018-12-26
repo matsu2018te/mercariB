@@ -84,6 +84,7 @@ class ProductsController < ApplicationController
       images_attributes: [:id,:image],
       brand_attributes: [:name]
     ).merge(seller_id: current_user.id,sell_status_id: 1)
+  end
 
   def product_info
     @product = Product.find(params[:id])
