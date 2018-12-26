@@ -5,23 +5,30 @@ class CreditsController < ApplicationController
 
   def new
     @credit = Credit.new
+
+    time = Time.new
+    min_year = time.year.to_s[2,2].to_i
+    max_year = min_year + 10
+    @years = [*(min_year..max_year)]
   end
 
   def create
     @credit = Credit.new(credit_params)
     if @credit.save
-      redirect_to mypage_card_path
+      redirect_to card_path
     else
       render :new
     end
   end
 
   def destroy
-    credit = current_user.credits
-    if credit.destroy
-      redirect_to mypage_card_path
-    else
-      render :index
+    credit = Credit.find(params[:id])
+    if credit.user_id == current_user.id
+      if credit.destroy
+        redirect_to card_path
+      else
+        render :index
+      end
     end
   end
 
