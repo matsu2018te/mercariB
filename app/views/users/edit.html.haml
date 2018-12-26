@@ -1,4 +1,8 @@
 = render 'home/header'
+.bread-crumbs
+  .bread-crumbs_box
+    - breadcrumb :profile
+    = breadcrumbs separator: " &rsaquo; "
 .l-contener
   .mypage
     .mypage_contents
@@ -8,7 +12,8 @@
           .profile__box.clearfix
             .profile__box-name.clearfix
               .field-image
-                %img{src: "/assets/icon.jpg", alt: "", class:"image"}/
+                = image_tag("icon.jpg", alt: "", class:"image")
+                / %img{src: "/assets/icon.jpg", alt: "", class:"image"}/
               .field-name-input
                 = f.text_field :name, class:"name-input", autofocus: true, placeholder:"例) メルカリ太郎"
           .profile__intro-box

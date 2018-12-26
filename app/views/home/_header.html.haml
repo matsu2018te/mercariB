@@ -1,6 +1,6 @@
 %header.pc-header
   .pc-header-inner
-    = link_to image_tag('/assets/logo.svg', alt:"mercari", class: 'l-left'), root_path
+    = link_to image_tag('logo.svg', alt:"mercari", class: 'l-left'), root_path
     %form.pc-header-form.l-right
       %input.input-default{name: "keyword",placeholder: "キーワードから探す", type: "search", value: ""}
       %i.fas.fa-search
@@ -19,7 +19,7 @@
       - if user_signed_in?
         %nav.list-right
           %li
-            = image_tag "/assets/member_photo_noimage_thumb.png",alt:"noimage_thumb",class: "nav_mypage_icon"
+            = image_tag "member_photo_noimage_thumb.png",alt:"noimage_thumb",class: "nav_mypage_icon"
             = link_to 'マイページ', mypage_path, class: "nav-mypage"
           %li
             %i.fas.fa-bell

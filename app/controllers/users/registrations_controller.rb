@@ -14,7 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     unless verify_recaptcha
       render action: :registration
     end
-
   end
 
   def address
@@ -43,9 +42,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
     else
+      render action: :registration
       clean_up_passwords resource
       set_minimum_password_length
-      respond_with resource
+      # respond_with resource, location: after_failed_sign_up_path_for(resource)
     end
     # if @user.save
     #   redirect_to signup_done_path
@@ -68,6 +68,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     signup_done_path
+  end
+
+  def after_failed_sign_up_path_for(resource)
+    signup_registration_path
   end
 
 end
