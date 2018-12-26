@@ -40,15 +40,7 @@ Rails.application.routes.draw do
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
   get 'transaction' => 'products#transaction'
-<<<<<<< HEAD
   post 'completed_transaction' => 'products#completed_transaction'
-  get 'mypage/card' => 'credits#index'
-  get 'mypage/card/create' => 'credits#new'
-  post 'mypage/card' => 'credits#create'
-  delete 'mypage/card' => 'credits#destroy'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-=======
->>>>>>> cb347d83f060bd3e7cdb48db208a4c6934a0c0a8
 
   scope '/mypage' do
     #クレジットカード
