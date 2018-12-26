@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   get 'mypage/purchase' => 'products#purchase'
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
+  post 'sell' => 'products#create'
+  get 'brand/index' => 'brands#index'
+
   get 'transaction' => 'products#transaction'
   get 'items/:id' => 'products#item_show'
   post 'completed_transaction' => 'products#completed_transaction'
@@ -49,6 +52,7 @@ Rails.application.routes.draw do
     get 'card/create' => 'credits#new'
     post 'card' => 'credits#create'
   end
+
 end
 
 
