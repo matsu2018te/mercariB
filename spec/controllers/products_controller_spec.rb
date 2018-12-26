@@ -1,5 +1,10 @@
 require 'rails_helper'
 
+def login_user(user)
+  @request.env["devise.mapping"] = Devise.mappings[:user]
+  sign_in user
+end
+
 describe ProductsController do
 
   before do
@@ -20,6 +25,10 @@ describe ProductsController do
   end
 
   describe 'Delete #destroy' do
+    before do
+      sign_in @user
+    end
+
     it "product delete" do
       expect{
         delete :destroy, params: { id: @product.id }
