@@ -23,6 +23,16 @@
       font-size: 12px;
       margin-top: 15px;
     }
+    &-brand{
+      padding:16px 8px;
+      width:100%;
+      font-size: 14px;
+      &:hover{
+        background-color: #b3d4fc;
+        color:white;
+        text-shadow:none;
+      }
+    }
   }
   &-form{
     border:thin solid gray;
@@ -88,19 +98,24 @@
     &_container{
       margin-top: 16px;
       height:186px;
-      @include clearfix;
+      width:100%;
+      float:left;
     }
     &-items{
-      height:186px;
-      float:left;
+      height:100%;
+      float: left;
+      background: white;
+      border-right: thin dashed gray;
+      @include clearfix;
       &_container{
-        height:186px;
+        height:100%;
         width:140px;
         text-align: center;
         background: $light-gray;
         border:thin dashed gray;
-        @include clearfix;
-        position:relative
+        float:left;
+        position:relative;
+        margin-right: 14px;
       }
       &-figure{
         height:70%;
@@ -118,16 +133,37 @@
       }
     }
     &-uploader{
-      height:100%;
-      padding:60px 20px;
-      width:75%;
-      text-align: center;
-      background: $light-gray;
-      border:thin dashed gray;
-      float:right;
+        height:100%;
+      &_container{
+        .visible-pc{
+          width:100%;
+          text-align: center;
+          height: 100%;
+          padding:50px 0;
+          background: $light-gray;
+          border:thin dashed gray;
+        }
+      }
     }
   }
 }
+
+
+.hidden {
+  visibility: hidden;
+}
+
+ul.brand-search-result{
+  overflow: auto;
+  position: absolute;
+  background: white;
+  z-index: 10;
+  max-height: 280px;
+  width:400px;
+  box-shadow:0 0 4px 0 rgba(0,0,0,0.64);
+}
+
+
 h2.l-single-head{
   font-weight: bold;
   text-align: center;
@@ -206,4 +242,9 @@ textarea.sell-form-text_area{
   @extend .form-require;
   background: gray;
   border-color: gray;
+}
+@media screen and (max-width: 700px) {
+  .sell-dropbox-items_container{
+    width:60px;
+  }
 }
