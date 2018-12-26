@@ -71,5 +71,4 @@ class ProductsController < ApplicationController
       @product.update!(buyer_id: current_user.id)
     end
   end
-
 end
