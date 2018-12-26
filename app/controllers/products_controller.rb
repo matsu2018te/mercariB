@@ -25,16 +25,19 @@ class ProductsController < ApplicationController
   end
 
   def completed_transaction
-    @product = Product.find(params[:id])
-    require 'payjp'
-    Payjp.api_key = PAYJP_SECRET_KEY
+    ActiveRecord::Base.transaction do
 
-    Payjp::Charge.create(
-      amount:  @product.price,
-      card:    params['payjp-token'],
-      currency: 'jpy',
-    )
-    @product.update(buyer_id: current_user.id)
+      @product = Product.find(params[:id])
+      require 'payjp'
+      Payjp.api_key = PAYJP_SECRET_KEY
+
+      Payjp::Charge.create(
+        amount:  @product.price,
+        card:    params['payjp-token'],
+        currency: 'jpy',
+      )
+      @product.update!(buyer_id: current_user.id)
+    end
   end
 
 end
