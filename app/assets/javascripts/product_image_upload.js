@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function() {
 
   var upload_image = $(".sell-dropbox-items");
 
-  function appendImage(image,result) {
+  function appendImage(image) {
     var i_count = ImageCount() + 1;
     var html = `<li class='sell-dropbox-items_container'>
                     <div class='sell-dropbox-items-figure'>
@@ -14,10 +14,12 @@ $(document).on('turbolinks:load', function() {
                     <a class="sell-dropbox-items-btn sell-image_delete">
                       <p>削除</p>
                     </a>
-                     <input type="hidden" name="product[images_attributes][${i_count}][image]" id="product_images_attributes_${i_count}_image" val="${result}" src="${result}">
+                     <input type="file" name="product[images_attributes][${i_count}][image]" id="product_images_attributes_${i_count}_image" class = "product_images" value="${image}">
                 </li>`
-    console.log(result);
+    console.log(i_count);
     upload_image.append(html);
+    $("label.sell-dropbox-uploader_container").attr('for','product_images_attributes_'+ i_count+'_image'
+    );
   }
 
 
@@ -56,18 +58,17 @@ function ImageCount() {
     e.preventDefault();
     const reader = new FileReader();
     reader.onload = function (e) {
-      appendImage(e.target.result)
+      appendImage(e.target.result,e.target)
     }
     reader.readAsDataURL(e.dataTransfer.files[0]);
     ImageCount();
   });
 
 // クリック
-  $('.product_images').change("click",function(e) {
+  $('.product_images').on("change",function(e) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      var test = $(this).prop('files');
-      appendImage(e.target.result,test);
+      appendImage(e.target.result,e.target);
     }
     reader.readAsDataURL(this.files[0]);
     ImageCount();

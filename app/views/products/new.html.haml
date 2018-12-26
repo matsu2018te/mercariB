@@ -16,18 +16,18 @@
             %span.form-require.sell 必須
           %p.sell-contents__comment 最大4枚までアップロードできます
           .sell-dropbox_container
-            = f.fields_for :images do |i|
+            = f.fields_for :images,multiple: true do |i|
               %ul.sell-dropbox-items
               .sell-dropbox-uploader
                 = i.label :image,class: 'sell-dropbox-uploader_container' do
-                  %ul.visible-pc#drop
+                  .visible-pc#drop
                     ドラッグアンド
                     %br ドロップ
                     または
                     %br クリックして
                     ファイルをアップロード
                     %i.fas.fa-camera 🐢
-                  = i.file_field "images[]",class: " product_images"
+                  = i.file_field :image,multiple: true,class: "product_images"
 
         / 商品名・説明 ▼
         .sell-contents
@@ -83,7 +83,7 @@
                   商品の状態
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :status, ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れや汚れあり","傷や汚れや汚れあり","全体的に状態が悪い"], prompt: "---"
+                  = f.select :status, ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れやあり","傷や汚れや汚れあり","全体的に状態が悪い"], prompt: "---"
         / 配送 ▼
         .sell-contents
           %h3.sell-contents-label
