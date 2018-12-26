@@ -88,7 +88,7 @@
       %span.price ¥ #{@product.price}
       %span.tax (税込)
       %span.tax-include 送料込み
-  .buy-btn 購入画面に進む
+    = link_to '購入画面に進む', transaction_path(@product), class: "buy-btn"
   .product-detail #{@product.info}
   .product-btn.clearfix
     .product-btn-left
