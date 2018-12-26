@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
 
   def show
     @images = @product.images
+    @sell_user = @product.seller
+    @sell_other_products = Product.where(seller_id: @product.seller_id)
+    @sell_product_brand = @product.brand
+    @sell_product_category = @product.category
 
     if @product.brand_id.present? && @product.category_id.present?
       @related_items = Product.where(brand_id: @product.brand_id, category_id: @product.category_id)
@@ -24,7 +28,6 @@ class ProductsController < ApplicationController
         render :show
       end
     end
-    binding.pry
   end
 
   def transaction
@@ -39,10 +42,6 @@ class ProductsController < ApplicationController
   private
   def product_info
     @product = Product.find(params[:id])
-    @sell_user = @product.seller
-    @sell_other_products = Product.where(seller_id: @product.seller_id)
-    @sell_product_brand = Brand.find_by(id: @product.brand_id)
-    @sell_product_category = Category.find_by(id: @product.category_id)
   end
 
 end
