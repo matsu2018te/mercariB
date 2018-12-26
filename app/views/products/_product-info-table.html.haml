@@ -1,0 +1,62 @@
+%table.product-info
+  %tbody
+    %tr
+      %th 出品者
+      %td
+        =link_to "#{product.seller.nickname}", "/"
+        %div
+          .product-user-rate
+            %i.good
+            %p.count 222
+          .product-user-rate
+            %i.normal
+            %p.count 111
+          .product-user-rate
+            %i.bad
+            %p.count 22
+    %tr
+      %th カテゴリー
+      %td
+        =link_to do
+          %p.parent
+            = product.category.g_parent.name
+        =link_to "",class: 'child-box' do
+          %i.right
+          %p.child
+            = product.category.parent.name
+        =link_to "",class: 'child-box' do
+          %i.right
+          %p.g-child
+            = product.category.name
+
+    %tr
+      %th ブランド
+      %td
+        =link_to do
+          %p
+            = product.brand.name
+    %tr
+      %th 商品の状態
+      %td
+        %p
+          = product.status
+    %tr
+      %th 配送料の負担
+      %td
+        %p
+          = product.delivery_fee_owner
+    %tr
+      %th 配送の方法
+      %td
+        %p
+          = product.shipping_method
+    %tr
+      %th 配送元地域
+      %td
+        =link_to do
+          %p 兵庫県
+    %tr
+      %th 発送日の目安
+      %td
+        %p
+          = product.delivery_date
