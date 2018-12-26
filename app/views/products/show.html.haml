@@ -1,94 +1,42 @@
 = render 'home/header'
+.bread-crumbs
+  .bread-crumbs_box
+    - breadcrumb :product
+    = breadcrumbs separator: " &rsaquo; "
 
 %section.product-box-container.clearfix
   %h1.product-name
-    正規品！COACH【コーチ】★★大きめ ミニシグネチャー ショルダーバッグ
+    #{@product.name}
   .product-main-box
     .product-img-box
       .product-img-carousel.slider
-        .product-img-box-main
-          = image_tag("bag.jpg", alt:"バッグ")
-        .product-img-box-main
-          = image_tag("bag-2.jpg", alt:"バッグ")
-        .product-img-box-main
-          = image_tag("bag-3.jpg", alt:"バッグ")
-        .product-img-box-main
-          = image_tag("bag-4.jpg", alt:"バッグ")
+        - @images.each do |image|
+          .product-img-box-main
+            = image_tag image.image, alt:"バッグ"
+          .product-img-box-main
+            = image_tag image.image, alt:"バッグ2"
+          .product-img-box-main
+            = image_tag image.image, alt:"バッグ3"
+          .product-img-box-main
+            = image_tag image.image, alt:"バッグ4"
       .product-img-box-detail.thumb
-        .box-sub
-          = image_tag("bag.jpg", alt:"バッグ")
-        .box-sub
-          = image_tag("bag-2.jpg", alt:"バッグ")
-        .box-sub
-          = image_tag("bag-3.jpg", alt:"バッグ")
-        .box-sub
-          = image_tag("bag-4.jpg", alt:"バッグ")
-    %table.product-info
-      %tbody
-        %tr
-          %th 出品者
-          %td
-            =link_to("DPS(ぶーんです)@大人ふるぎ養成講座", "/")
-            %div
-              .product-user-rate
-                %i.good
-                %p.count 222
-              .product-user-rate
-                %i.normal
-                %p.count 111
-              .product-user-rate
-                %i.bad
-                %p.count 22
-        %tr
-          %th カテゴリー
-          %td
-            =link_to do
-              %p.parent レディース
-            =link_to "",class: 'child-box' do
-              %i.right
-              %p.child バッグ
-            =link_to "",class: 'child-box' do
-              %i.right
-              %p.g-child ショルダーバッグ
-
-        %tr
-          %th ブランド
-          %td
-            =link_to do
-              %p コーチ
-        %tr
-          %th 商品の状態
-          %td
-            %p やや汚れあり
-        %tr
-          %th 配送料の負担
-          %td
-            %p 送料込み(出品者負担)
-        %tr
-          %th 配送の方法
-          %td
-            %p らくらくメルカリ便
-        %tr
-          %th 配送元地域
-          %td
-            =link_to do
-              %p 兵庫県
-        %tr
-          %th 発送日の目安
-          %td
-            %p 1~2日で発送
+        - @images.each do |image|
+          .box-sub
+            = image_tag image.image, alt:"バッグ"
+          .box-sub
+            = image_tag image.image, alt:"バッグ2"
+          .box-sub
+            = image_tag image.image, alt:"バッグ3"
+          .box-sub
+            = image_tag image.image, alt:"バッグ4"
+    = render "product-info-table", product: @product
   .price-box
     %h1
-      %span.price ¥ 3,380
+      %span.price ¥ #{@product.price}
       %span.tax (税込)
       %span.tax-include 送料込み
-  .buy-btn 購入画面に進む
-  .product-detail ■商品ご覧頂き、誠にありがとうございます。
-  %br ※今だけ、フォロワーになって下さった方に、300円のお値引きサービス中！！
-  %br 私の商品検索は、・バッグ検索してください。質問がありましたらコメントでよろしくお願いします！
-  %br ■ 商品説明■まずはプロフを確認してください☆
-  %br ■ 商品詳細 ■シンプルな落ち着いたお色味でどんな場面にも合い、どんな服にも合わせやすいお鞄です。
-  %br 使用感有！角擦れはございませんが多少の汚れはあります。内側はとても綺麗です☆使わなくなったのでどなたか使っていただける方お願いします。
+    = link_to '購入画面に進む', transaction_path(@product), class: "buy-btn"
+  .product-detail #{@product.info}
   .product-btn.clearfix
     .product-btn-left
       %button.like-btn
@@ -130,6 +78,6 @@
       =link_to "" do
         %i.pinterest-icon
 
-= render "product_user-item"
+= render "product_user-item", user: @sell_user, sell_other_products: @sell_other_products, brand: @sell_product_brand, category: @sell_product_category, related_items: @related_items
 
 = render "home/footer"

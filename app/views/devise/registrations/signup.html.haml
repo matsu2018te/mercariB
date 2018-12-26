@@ -1,8 +1,6 @@
 .single-container
   %header.single-header
-    %h1
-      = link_to do
-        = image_tag("logo.svg", alt:"mercari")
+    = render 'devise/shared/header'
 
   %main.single-main
     .signup-panel
@@ -12,10 +10,12 @@
           %button.btn.btn__mail
             %i.far.fa-envelope
             メールアドレスで登録
-        %button.btn.btn__sns.btn__sns--facebook
-          %i.fab.fa-facebook-square
-          Facebookで登録
-        %button.btn.btn__sns.btn__sns--google
-          %i.fab.fa-google-plus
-          Googleで登録
+        = link_to user_facebook_omniauth_authorize_path do
+          %button.btn.btn__sns.btn__sns--facebook
+            %i.fab.fa-facebook-square
+            Facebookで登録
+        = link_to user_google_oauth2_omniauth_authorize_path do
+          %button.btn.btn__sns.btn__sns--google
+            %i.fab.fa-google-plus
+            Googleで登録
   = render "devise/shared/footer"

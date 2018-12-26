@@ -4,7 +4,7 @@
   .items-box-content.clearfix
     - @lady_products.each do |product|
       %section.items-box
-        = link_to(show_path(product)) do
+        = link_to(product_path(product)) do
           .items-box-photo
             = image_tag product.images.first.image
             / = image_tag product.images.first.image
@@ -27,7 +27,7 @@
   .items-box-content.clearfix
     - @mens_products.each do |product|
       %section.items-box
-        = link_to(show_path(product)) do
+        = link_to(product_path(product)) do
           .items-box-photo
             = image_tag product.images.first.image
           .items-box-body
@@ -48,7 +48,7 @@
   .items-box-content.clearfix
     - @kids_products.each do |product|
       %section.items-box
-        = link_to(show_path(product)) do
+        = link_to(product_path(product)) do
           .items-box-photo
             = image_tag product.images.first.image
           .items-box-body
@@ -69,7 +69,7 @@
   .items-box-content.clearfix
     - @cosme_products.each do |product|
       %section.items-box
-        = link_to(show_path(product)) do
+        = link_to(product_path(product)) do
           .items-box-photo
             = image_tag product.images.first.image
           .items-box-body

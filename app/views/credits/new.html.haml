@@ -1,3 +1,4 @@
+= render 'home/header'
 .l-contener
   .mypage
     .mypage_contents
@@ -31,7 +32,7 @@
               = f.select :expiration_month, options_for_select(1..12), {}, { class: "number_select" }
               月
               %br
-              = f.select :expiration_year,options_for_select(18..28), {}, { class: "number_select" }
+              = f.select :expiration_year,options_for_select(@years), {}, { class: "number_select" }
               年
             .form-group
               = f.label :security_code, "セキュリティコード"

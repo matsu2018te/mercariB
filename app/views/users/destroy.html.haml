@@ -1,4 +1,8 @@
 = render 'home/header'
+.bread-crumbs
+  .bread-crumbs_box
+    - breadcrumb :logout
+    = breadcrumbs separator: " &rsaquo; "
 .l-contener
   = render 'mypages/logout'
   = render 'mypages/side_bar'

@@ -1,3 +1,4 @@
+= render 'home/header'
 .l-contener
   .mypage
     .mypage_contents
@@ -19,10 +20,10 @@
                 \/
                 = credit.expiration_year
               .card__delete
-                = link_to "削除する", "/mypage/card", method: :delete, class: "card__delete__text"
+                = link_to "削除する", "/mypage/card/#{credit.id}", method: :delete, class: "card__delete__text"
         - else
           .credit__list
-            = link_to mypage_card_create_path, method: :get, class: '.btn-red',"style": "color:white;" do
+            = link_to card_create_path, method: :get, class: '.btn-red',"style": "color:white;" do
               %p.mypage__logout-btn
                 %i.far.fa-credit-card
                 クレジットカードを追加する

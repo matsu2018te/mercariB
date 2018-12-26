@@ -20,6 +20,8 @@
           .product-img-box-main{
             float:left;
             max-width: 300px;
+            min-height: 300px;
+            max-height: 300px;
           }
         }
         .product-img-box-detail{
@@ -151,9 +153,17 @@
     margin-top: 10px;
     font-weight: bold;
   }
+  .stop-btn {
+    @extend .buy-btn;
+    background-color: $Gray;
+    cursor: pointer;
+  }
+  .calcel-btn {
+    @extend .stop-btn;
+  }
   .product-detail{
     padding: 32px 0 0 0;
-    height: 10px;
+    line-height: 1.3;
   }
   .product-btn{
     margin: 20px 0 0 0;
@@ -216,17 +226,7 @@
       }
     }
   }
-  // .product-btn.clearfix{
-  //   content:"";
-  //   display: block;
-  //   clear: both;
-  // }
 }
-// .product-box-container.clearfix::after{
-//   content:"";
-//   display: block;
-//   clear: both;
-// }
 .product-message{
   width: 700px;
   margin: 5px auto 0;
@@ -319,11 +319,6 @@
     li:first-child{
       margin-top: 20px;
     }
-    // li.clearfix::after{
-    //   content:"";
-    //   display: block;
-    //   clear: both;
-    // }
     .caution{
       background-color: #fff6de;
       padding: 8px;
@@ -406,11 +401,7 @@
     }
   }
 }
-// ul.nav-item-link.clearfix::after{
-//   content:"";
-//   display: block;
-//   clear: both;
-// }
+
 .social-media-box{
   width: 700px;
   margin: 24px auto 32px;
@@ -489,7 +480,9 @@
           width: 220px;
           height: 220px;
           .items-box-photo{
-
+            width: 220px;
+            height: 200px;
+            min-height: 200px;
           }
           .items-box-body{
             height: 110px;
@@ -549,4 +542,53 @@
   content:"";
   display: block;
   clear: both;
+}
+
+.text-center {
+  text-align:center;
+}
+
+.modal {
+  background-color:$Gray;
+  height:100%;
+  position:fixed;
+    top:0;
+  visibility: hidden;
+  width:100%;
+  z-index:100;
+  &__show {
+    background: rgba(45,45,45, 0.5);
+    visibility:visible;
+  }
+  .delete-dialog {
+    background-color:$White;
+    box-sizing:border-box;
+    margin:0 auto;
+    opacity:1;
+    text-align:center;
+    width:70%;
+    strong {
+      font-weight:bold;
+    }
+    &__text {
+      height:80%;
+      padding:64px;
+    }
+    &__select {
+      border-top:1px solid $Gray;
+      height:20%;
+      line-height: 49px;
+      width: 100%;
+      &__cancel {
+        cursor: pointer;
+        float:left;
+        text-align:center;
+        width: 50%;
+      }
+      &__submit {
+        @extend .delete-dialog__select__cancel;
+        border-left:1px solid $Gray;
+      }
+    }
+  }
 }

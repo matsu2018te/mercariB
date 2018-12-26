@@ -24,3 +24,13 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
+
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  RECAPTCHA_SITE_KEY: ENV["RECAPTCHA_SITE_KEY"],
+  RECAPTCHA_SECRET_KEY: ENV["RECAPTCHA_SECRET_KEY"],
+  PAYJP_PUBLIC_KEY: ENV["PAYJP_PUBLIC_KEY"],
+  PAYJP_SECRET_KEY: ENV["PAYJP_SECRET_KEY"],
+
+}
