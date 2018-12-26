@@ -6,8 +6,13 @@ class Product < ApplicationRecord
   belongs_to :brand, optional: true
   belongs_to :size
   belongs_to :sell_status
-  has_many :images
-  accepts_nested_attributes_for :images
+  has_many :images, dependent: :destroy
+  accepts_nested_attributes_for :images, limit: 4
+  accepts_nested_attributes_for :brand
 
-  validates :seller, :category, :sell_status, presence: true
+  validates :seller,:name,:info, :category_id, :status, :delivery_fee_owner, :shipping_method, :prefecture, :delivery_date, :price, presence: true
+
+  def other_products
+    other_products = Product.where(seller_id: self.seller_id)
+  end
 end
