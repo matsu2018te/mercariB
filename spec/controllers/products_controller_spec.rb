@@ -35,4 +35,13 @@ describe ProductsController do
       }.to change(Product, :count).by(-1)
     end
   end
+
+  describe 'POST #completed_transaction' do
+    it "renders the :completed_transaction template" do
+      post :completed_transaction, params: { id: @product.id }
+      expect(response).to render_template :completed_transaction
+    end
+  end
+
 end
+

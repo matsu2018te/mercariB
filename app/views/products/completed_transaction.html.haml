@@ -1,0 +1,24 @@
+.single-container
+  %header.single-header
+    %h1
+      = link_to do
+        = image_tag("logo.svg", alt:"mercari")
+
+  %main.single-main
+    .transaction-product-container
+      .transaction-product-container__head 購入が完了しました
+
+      .transaction-content
+        .transaction-content-inner
+          .transaction-product-image
+            = image_tag @product.images.first.image
+
+          %form.transaction-form
+            %p.transaction-price-ja.bold
+              発送をお待ち下さい
+
+              .transaction-price-table
+                .transaction-product-name
+                  = link_to 'トップに戻る', root_path, class: 'transaction_info'
+
+  = render "devise/shared/footer"
