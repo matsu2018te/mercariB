@@ -29,6 +29,7 @@
       %h2.signup-panel__head 住所入力
       = form_for(@user, url: signup_credit_card_path, html: {method: :post}) do |f|
         .form-group
+          = f.hidden_field :nickname, value: @user.nickname
           = f.hidden_field :email, value: @user.email
           = f.hidden_field :password, value: @user.password
           = f.hidden_field :password_confirmation, value: @user.password_confirmation
