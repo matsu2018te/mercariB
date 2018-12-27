@@ -1,13 +1,5 @@
 class ProductsController < ApplicationController
   before_action :product_new, only:[:new]
-<<<<<<< HEAD
-  def show
-
-  end
-
-  def new
-    @product.images.build
-=======
   before_action :product_info, only: [:show, :item_show, :destroy]
 
   def new
@@ -51,22 +43,9 @@ class ProductsController < ApplicationController
       render action: :new
     end
   end
->>>>>>> 34f9d677a1093959826ed0afed0c4f80e2e2395a
 
   def transaction
     @product = Product.find(params[:format])
-  end
-
-<<<<<<< HEAD
-  def create
-    @product = Product.new(product_params)
-    @product.brand = Brand.find_or_create_by(name: @product.brand.name) if @product.brand.name
-    binding.pry
-    if @product.save
-      redirect_to root_path
-    else
-      render action: :new
-    end
   end
 
   private
@@ -74,7 +53,7 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
-=======
+
   def completed_transaction
     ActiveRecord::Base.transaction do
 
@@ -91,12 +70,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  private
-  def product_new
-    @product = Product.new
-  end
 
->>>>>>> 34f9d677a1093959826ed0afed0c4f80e2e2395a
   def product_params
     params.require(:product).permit(
       :name,
@@ -109,12 +83,6 @@ class ProductsController < ApplicationController
       :shipping_method,
       :delivery_date,
       :prefecture,
-<<<<<<< HEAD
-      images_attributes: [:id, :image],
-      brand_attributes: [:name]
-    ).merge(seller_id: current_user.id,sell_status_id: 1)
-  end
-=======
       images_attributes: [:id,:image],
       brand_attributes: [:name]
     ).merge(seller_id: current_user.id,sell_status_id: 1)
@@ -123,5 +91,4 @@ class ProductsController < ApplicationController
   def product_info
     @product = Product.find(params[:id])
   end
->>>>>>> 34f9d677a1093959826ed0afed0c4f80e2e2395a
 end
