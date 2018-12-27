@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181223045233) do
+ActiveRecord::Schema.define(version: 20181227040151) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "last_name_phonetic",  null: false
     t.string   "first_name_phonetic", null: false
     t.string   "last_name",           null: false
     t.string   "first_name",          null: false
-    t.integer  "postal_code",         null: false
+    t.string   "postal_code",         null: false
     t.integer  "prefecture",          null: false
     t.string   "municipality",        null: false
     t.string   "address_number",      null: false
