@@ -29,66 +29,13 @@
             = image_tag image.image, alt:"バッグ3"
           .box-sub
             = image_tag image.image, alt:"バッグ4"
-    %table.product-info
-      %tbody
-        %tr
-          %th 出品者
-          %td
-            =link_to("#{@sell_user.nickname}", "/")
-            %div
-              .product-user-rate
-                %i.good
-                %p.count 222
-              .product-user-rate
-                %i.normal
-                %p.count 111
-              .product-user-rate
-                %i.bad
-                %p.count 22
-        %tr
-          %th カテゴリー
-          %td
-            =link_to do
-              %p.parent #{@sell_product_category.parent.parent.name}
-            =link_to "",class: 'child-box' do
-              %i.right
-              %p.child #{@sell_product_category.parent.name}
-            =link_to "",class: 'child-box' do
-              %i.right
-              %p.g-child #{@sell_product_category.name}
-
-        %tr
-          %th ブランド
-          %td
-            =link_to do
-              %p #{@sell_product_brand.name}
-        %tr
-          %th 商品の状態
-          %td
-            %p #{@product.status}
-        %tr
-          %th 配送料の負担
-          %td
-            %p #{@product.delivery_fee_owner}
-        %tr
-          %th 配送の方法
-          %td
-            %p #{@product.shipping_method}
-        %tr
-          %th 配送元地域
-          %td
-            =link_to do
-              %p 兵庫県
-        %tr
-          %th 発送日の目安
-          %td
-            %p #{@product.delivery_date}
+    = render "product-info-table", product: @product
   .price-box
     %h1
       %span.price ¥ #{@product.price}
       %span.tax (税込)
       %span.tax-include 送料込み
-  .buy-btn 購入画面に進む
+    = link_to '購入画面に進む', transaction_path(@product), class: "buy-btn"
   .product-detail #{@product.info}
   .product-btn.clearfix
     .product-btn-left

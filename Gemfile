@@ -102,3 +102,4 @@ gem 'omniauth-facebook'
 
 #私はロボットではありません
 gem 'recaptcha', require: "recaptcha/rails"
+gem 'payjp'

@@ -1,0 +1,6 @@
+ja:
+  products:
+    sell_status:
+      sale: '販売中'
+      trading: '取引中'
+      sold: '販売済み'

@@ -16,7 +16,11 @@
             %span.form-require.sell 必須
           %p.sell-contents__comment 最大4枚までアップロードできます
           .sell-dropbox_container
+<<<<<<< HEAD
             = f.fields_for :images do |i|
+=======
+            = f.fields_for :images,multiple: true do |i|
+>>>>>>> 34f9d677a1093959826ed0afed0c4f80e2e2395a
               %ul.sell-dropbox-items
               .sell-dropbox-uploader
                 = i.label :image,class: 'sell-dropbox-uploader_container' do
@@ -27,7 +31,11 @@
                     %br クリックして
                     ファイルをアップロード
                     %i.fas.fa-camera 🐢
+<<<<<<< HEAD
                   = i.file_field :image
+=======
+                  = i.file_field :image,multiple: true,class: "product_images"
+>>>>>>> 34f9d677a1093959826ed0afed0c4f80e2e2395a
 
         / 商品名・説明 ▼
         .sell-contents
@@ -83,7 +91,11 @@
                   商品の状態
                   %span.form-require.sell 必須
                 .select-wrap
+<<<<<<< HEAD
                   = f.select :status, ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れや汚れあり","傷や汚れや汚れあり","全体的に状態が悪い"], prompt: "---"
+=======
+                  = f.select :status, ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れやあり","傷や汚れや汚れあり","全体的に状態が悪い"], prompt: "---"
+>>>>>>> 34f9d677a1093959826ed0afed0c4f80e2e2395a
         / 配送 ▼
         .sell-contents
           %h3.sell-contents-label
@@ -113,7 +125,11 @@
                   発送元の地域
                   %span.form-require.sell 必須
                 .select-wrap
+<<<<<<< HEAD
                   / = f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, prompt: "---"
+=======
+                  = f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, prompt: "---"
+>>>>>>> 34f9d677a1093959826ed0afed0c4f80e2e2395a
           .sell-form-box
             .form-group
               = f.label :delivery_date, class: "sell-form-select" do

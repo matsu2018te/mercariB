@@ -60,56 +60,63 @@ s_status.each do |s_status|
   SellStatus.create(status:s_status)
 end
 
+
+Brand.create(name:"シャネル")
+Brand.create(name:"ヴィトン")
+Brand.create(name:"ナイキ")
+Brand.create(name:"シュプリーム")
+
 delivery_fee_owner = ["着払い(購入者負担)","送料込み(出品者負担)"]
 shipping_method = ["未定","クロネコヤマト","ゆうパック","ゆうメール"]
 delivery_date = ["1〜2日で発送","2〜3日で発送","4〜7日で発送"]
 status = ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れや汚れあり","傷や汚れや汚れあり","全体的に状態が悪い"]
 
+
 # 商品
 8.times {
   random = Random.new
-  brand = Brand.create(name:"MARVEL")
-  size = Size.find(1)
-  user = User.find(1)
-  category = Category.find(160)
-  sell_status = SellStatus.find(1)
-  product = Product.create!(seller_id: "#{user.id}", name:"スパイダーマン", info:"スパイダーマンは、原作者のスタン・リーとアーティストのスティーブ・ディッコによって作られて、Amazing Fantasy15（1962年8月）で初登場した。「Spidey（スパイディ）」、「Friendly Neighborhood（親愛なる隣人）」、「Web head（ウェブヘッド）」、「Web slinger（ウェブスリンガー）」などのニックネームを持つ。キャッチフレーズは「Your Friendly Neighborhood Spider-Man（あなたの親愛なる隣人スパイダーマン）」。", price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
-  Image.create(product_id: "#{product.id}",image: open("#{Rails.root}/db/fixtures/kokeshi.jpg"))
-}
+  category_sample = [random.rand(157..308),random.rand(309..454),random.rand(455..565),random.rand(842..941)]
+  image_sample = ["#{Rails.root}/db/fixtures/kokeshi.jpg","#{Rails.root}/db/fixtures/ironman.jpg","#{Rails.root}/db/fixtures/magnet.jpg","#{Rails.root}/db/fixtures/wolvarine.jpg"]
 
+  i = random.rand(1..3)
+  brand = Brand.find(random.rand(1..4))
+  size = Size.find(i)
+  user = User.find(i)
+  category = Category.find(category_sample.sample())
+  sell_status = SellStatus.find(i)
+  product = Product.create(seller_id: "#{user.id}", name:"スパイダーマン", info:"スパイダーマンは、原作者のスタン・リーとアーティストのスティーブ・ディッコによって作られて、Amazing Fantasy15（1962年8月）で初登場した。「Spidey（スパイディ）」、「Friendly Neighborhood（親愛なる隣人）」、「Web head（ウェブヘッド）」、「Web slinger（ウェブスリンガー）」などのニックネームを持つ。キャッチフレーズは「Your Friendly Neighborhood Spider-Man（あなたの親愛なる隣人スパイダーマン）」。", price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample(),prefecture: "#{i}")
+  Image.create(product_id: "#{product.id}",image: open(image_sample.sample))
+  Image.create(product_id: "#{product.id}",image: open(image_sample.sample))
 
-8.times {
-  random = Random.new
-  brand = Brand.create(name:"スタークインダストリーズ")
-  size = Size.find(2)
-  user = User.find(2)
-  category = Category.find(170)
-  sell_status = SellStatus.find(2)
-  product = Product.create(seller_id:"#{user.id}", name:"アイアンマン",info:"『アイアンマン』（[英]):Iron Man）は、マーベル・コミックが刊行しているアメリカン・コミックス。アニメや映画作品も制作されており、2008年5月2日には実写映画『アイアンマン (映画)』が公開された。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
-  Image.create(product_id: "#{product.id}",image: open("#{Rails.root}/db/fixtures/ironman.jpg"))
-}
+  i = random.rand(1..3)
+  brand = Brand.find(random.rand(1..4))
+  size = Size.find(i)
+  user = User.find(i)
+  category = Category.find(category_sample.sample())
+  sell_status = SellStatus.find(i)
+  product = Product.create(seller_id:"#{user.id}", name:"アイアンマン",info:"『アイアンマン』（[英]):Iron Man）は、マーベル・コミックが刊行しているアメリカン・コミックス。アニメや映画作品も制作されており、2008年5月2日には実写映画『アイアンマン (映画)』が公開された。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample(),prefecture: "#{i}")
+  Image.create(product_id: "#{product.id}",image: open(image_sample.sample))
+  Image.create(product_id: "#{product.id}",image: open(image_sample.sample))
 
-8.times {
-  random = Random.new
-  brand = Brand.create(name:"ウルヴァリン")
-  size = Size.find(3)
-  user = User.find(3)
-  category = Category.find(180)
-  sell_status = SellStatus.find(3)
-  product = Product.create(seller_id:"#{user.id}", name:"マグニート",info:"マグニートーは磁場を生成し操作する能力を持つ、強力なミュータントである。ミュータントとは、生まれながらに普通の人間にはない特殊な能力が備わった新たな人類種を指し、マグニートーは人類をホモサピエンスと呼ぶことから、ミュータントを「ホモ・スペリオール」（優れた人間）と呼んでいる。マグニートーは人類より優れたミュータントによる世界の支配を目的としており、人間とミュータントの平和的共存という考えは否定している。マグニートーの生い立ちや動機については作家により肉付けが行われており、ホロコースト生存者であることが明らかにされている。マグニートーのテロ活動を基本とする極端な手段やシニカルな哲学は、ミュータントを恐れ、迫害する人間達によりミュータントがホロコーストの二の舞になることを防ぎたいという決意からきている。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
-  Image.create(product_id: "#{product.id}",image: open("#{Rails.root}/db/fixtures/magnet.jpg"))
-}
+  i = random.rand(1..3)
+  brand = Brand.find(random.rand(1..4))
+  size = Size.find(i)
+  user = User.find(i)
+  category = Category.find(category_sample.sample())
+  sell_status = SellStatus.find(i)
+  product = Product.create!(seller_id:"#{user.id}", name:"マグニート",info:"マグニートーは磁場を生成し操作する能力を持つ、強力なミュータントである。ミュータントとは、生まれながらに普通の人間にはない特殊な能力が備わった新たな人類種を指し、マグニートーは人類をホモサピエンスと呼ぶことから、ミュータントを「ホモ・スペリオール」（優れた人間）と呼んでいる。マグニートーは人類より優れたミュータントによる世界の支配を目的としており、人間とミュータントの平和的共存という考えは否定している。マグニートーの生い立ちや動機については作家により肉付けが行われており、ホロコースト生存者であることが明らかにされている。マグニートーのテロ活動を基本とする極端な手段やシニカルな哲学は、ミュータントを恐れ、迫害する人間達によりミュータントがホロコーストの二の舞になることを防ぎたいという決意からきている。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample(),prefecture: "#{i}")
+  Image.create(product_id: "#{product.id}",image: open(image_sample.sample))
+  Image.create(product_id: "#{product.id}",image: open(image_sample.sample))
 
-8.times {
-  random = Random.new
-  brand = Brand.create(name:"ウルヴァリン")
-  size = Size.find(3)
-  user = User.find(3)
-  category = Category.find(180)
-  sell_status = SellStatus.find(3)
-  product = Product.create(seller_id:"#{user.id}", name:"ウルヴァリン", info:"ミュータントであるウルヴァリンは動物的な鋭い感覚と反射能力、そして実質的にどんな怪我からも回復することができる治癒能力（ヒーリング・ファクター）を持っている。この治癒能力はスーパーソルジャー製造計画「ウェポンX」において、骨格（出し入れが可能なカミソリのように鋭い爪を含む）に世界最硬の金属であるアダマンチウム合金を組み入れることを可能にした。近接戦闘の達人でもある。コードネームの「ウルヴァリン」とは、クズリというイタチ科の、小さいが獰猛な動物を意味する。また、「ウェポンX」（ウェポンエックス）の「X」はローマ数字の「10」のダブルミーニングであり「兵器第10号」を意味するが、実在するアメリカ陸軍兵器・M10 (駆逐戦車)の型番も「M10」（Model10:10型）である。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample())
-
-  Image.create(product_id: "#{product.id}",image: open("#{Rails.root}/db/fixtures/wolvarine.jpg"))
+  i = random.rand(1..3)
+  brand = Brand.find(random.rand(1..4))
+  size = Size.find(i)
+  user = User.find(i)
+  sell_status = SellStatus.find(i)
+  category = Category.find(category_sample.sample())
+  product = Product.create(seller_id:"#{user.id}", name:"ウルヴァリン", info:"ミュータントであるウルヴァリンは動物的な鋭い感覚と反射能力、そして実質的にどんな怪我からも回復することができる治癒能力（ヒーリング・ファクター）を持っている。この治癒能力はスーパーソルジャー製造計画「ウェポンX」において、骨格（出し入れが可能なカミソリのように鋭い爪を含む）に世界最硬の金属であるアダマンチウム合金を組み入れることを可能にした。近接戦闘の達人でもある。コードネームの「ウルヴァリン」とは、クズリというイタチ科の、小さいが獰猛な動物を意味する。また、「ウェポンX」（ウェポンエックス）の「X」はローマ数字の「10」のダブルミーニングであり「兵器第10号」を意味するが、実在するアメリカ陸軍兵器・M10 (駆逐戦車)の型番も「M10」（Model10:10型）である。",price:random.rand(300..90000), category_id: "#{category.id}", brand_id: "#{brand.id}", size_id: "#{size.id}", status: status.sample(), delivery_fee_owner: delivery_fee_owner.sample(), delivery_date: delivery_date.sample(), sell_status_id: "#{sell_status.id}", shipping_method: shipping_method.sample(),prefecture: "#{i}")
+  Image.create(product_id: "#{product.id}",image: open(image_sample.sample))
+  Image.create(product_id: "#{product.id}",image: open(image_sample.sample))
 }
 
 
