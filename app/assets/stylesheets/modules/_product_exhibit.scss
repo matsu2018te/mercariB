@@ -185,7 +185,7 @@ a.text-blue{
   color:$light-blue;
 }
 
-input[type="text"].sell-form-text_field{
+input.sell-form-text_field{
   border-radius: 5px;
   border: thin solid gray;
   margin-top:8px;
@@ -196,7 +196,7 @@ input[type="text"].sell-form-text_field{
 }
 
 input[type="number"].sell-form-text_number{
-  @extend input[type="text"].sell-form-text_field;
+  @extend input.sell-form-text_field;
   width:160px;
   text-align: right;
   &::-webkit-outer-spin-button,&::-webkit-inner-spin-button {
@@ -205,7 +205,7 @@ input[type="number"].sell-form-text_number{
 }
 
 textarea.sell-form-text_area{
-  @extend input[type="text"].sell-form-text_field;
+  @extend input.sell-form-text_field;
   border-radius:none;
   padding:10px;
   height:120px;
@@ -213,7 +213,7 @@ textarea.sell-form-text_area{
 }
 
 .sell-form-select select{
-  @extend input[type="text"].sell-form-text_field;
+  @extend input.sell-form-text_field;
   background: none transparent;
   vertical-align: middle;
   font-size: inherit;
