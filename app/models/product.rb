@@ -16,3 +16,10 @@ class Product < ApplicationRecord
     other_products = Product.where(seller_id: self.seller_id)
   end
 end
+# = i.file_field :image, class: "upload-product-image hidden"
+
+# = f.fields_for :images do |i|
+#             = i.file_field :image, class: "upload-product-image"
+
+# = i.label :image,class: 'sell-dropbox-uploader_container' do
+# = i.file_field :image,class: "hidden"
