@@ -8,16 +8,15 @@
         %section.items-box
           =link_to "",class: 'item-box' do
             .items-box-photo
-              - sell_other_product.images.each do |sell_other_product_image|
-                = image_tag sell_other_product_image.image
-              .items-box-body
-                %h3.item-name.font-2 #{sell_other_product.name}
-                .item-box-num.clearfix
-                  .item-box-price.font-5 ¥ #{sell_other_product.price}
-                  .item-box-likes
-                    %p.like-count 13
-                    %i.like.font-2
-                  %p.item-box-tax（税込）
+              = image_tag sell_other_product.images.first.image
+            .items-box-body
+              %h3.item-name.font-2 #{sell_other_product.name}
+              .item-box-num.clearfix
+                .item-box-price.font-5 ¥ #{sell_other_product.price}
+                .item-box-likes
+                  %p.like-count 13
+                  %i.like.font-2
+                %p.item-box-tax（税込）
 
   %section.items-box-container.clearfix.in-category
     %h2.item-box-head
@@ -30,12 +29,12 @@
             .items-box-photo
               - related_item.images.each do |related_item_image|
                 = image_tag related_item_image.image
-              .items-box-body
-                %h3.item-name.font-2 #{related_item.name}
-                .item-box-num.clearfix
-                  .item-box-price.font-5 ¥ #{related_item.price}
-                  .item-box-likes
-                    %p.like-count 13
-                    %i.like.font-2
-                  %p.item-box-tax（税込）
+            .items-box-body
+              %h3.item-name.font-2 #{related_item.name}
+              .item-box-num.clearfix
+                .item-box-price.font-5 ¥ #{related_item.price}
+                .item-box-likes
+                  %p.like-count 13
+                  %i.like.font-2
+                %p.item-box-tax（税込）
 
