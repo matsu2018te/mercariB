@@ -12,7 +12,7 @@ $(function(){
 
   $('.thumb').slick({
     accessibility: false,
-    slidesToShow:4,
+    slidesToShow:gon.images,
   });
 
   $(thumbnailSlider+' .slick-slide').on('mouseover',function(){
