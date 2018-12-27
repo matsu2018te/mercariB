@@ -103,10 +103,6 @@ gem 'omniauth-facebook'
 #私はロボットではありません
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'payjp'
-<<<<<<< HEAD
 gem 'fog-aws'
-=======
-
 # js-rails連携
 gem 'gon'
->>>>>>> 606e17040e460d63dad924e357b9e1740467fe02
