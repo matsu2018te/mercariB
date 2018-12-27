@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   belongs_to :sell_status
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, limit: 4
-  accepts_nested_attributes_for :brand
+  accepts_nested_attributes_for :brand, reject_if: proc { |attributes| attributes['title'].blank? }
 
   validates :seller,:name,:info, :category_id, :status, :delivery_fee_owner, :shipping_method, :prefecture, :delivery_date, :price, presence: true
 
