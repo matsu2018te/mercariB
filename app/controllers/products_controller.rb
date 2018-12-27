@@ -15,11 +15,11 @@ class ProductsController < ApplicationController
     @sell_product_category = @product.category
 
     if @product.brand_id.present? && @product.category_id.present?
-      @related_items = Product.where(brand_id: @product.brand_id, category_id: @product.category_id)
+      @related_items = Product.where(brand_id: @product.brand_id, category_id: @product.category_id).where.not(id: @product.id)
     else @product.brand_id.present? || @product.category_id.present?
       @related_items = Product.where("brand_id = ? or category_id = ?", @product.brand_id, @product.category_id)
     end
-
+binding.pry
   end
 
   def destroy
