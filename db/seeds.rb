@@ -196,4 +196,3 @@ category_sample = [random.rand(157..308),random.rand(309..454),random.rand(455..
     {product_id: "#{product.id}",image: open(image_2)}])
 }
 
-
