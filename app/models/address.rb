@@ -8,7 +8,7 @@ class Address < ApplicationRecord
   #正規表現
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/
   VALID_NAME_PHONETIC = /\A[ァ-ン]+\z/
-  VALID_POSTALCODE_REGEX = /\A\d{3}-*\d{4}\z/
+  VALID_POSTALCODE_REGEX = /\A\d{3}[-]*\d{4}\z/
 
   #バリデーション
   validates :first_name, presence: true, format: { with: VALID_NAME_REGEX }
