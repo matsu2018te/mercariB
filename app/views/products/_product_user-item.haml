@@ -30,8 +30,7 @@
           %section.items-box
             =link_to "",class: 'item-box' do
               .items-box-photo
-                - related_item.images.each do |related_item_image|
-                  = image_tag related_item_image.image
+                = image_tag related_item.images.first.image
               .items-box-body
                 %h3.item-name.font-2 #{related_item.name}
                 .item-box-num.clearfix
