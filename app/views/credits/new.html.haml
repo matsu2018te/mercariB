@@ -6,10 +6,10 @@
       .credit
         .credit__form
           = form_for @credit,url: {action: :create}  do |f|
-            .form-group
+            .form
               = f.label :card_number, "カード番号"
               %span.form-require 必須
-              = f.text_field :card_number, placeholder: "半角英数のみ"
+              = f.text_field :card_number, placeholder: "半角英数のみ", class: "form__input"
               %ul.cards
                 %li.card
                   = image_tag("credits/visa.svg", alt:"vise", class: "card__mark")
@@ -25,19 +25,23 @@
                   = image_tag("credits/dinersclub.svg", alt:"dinersclub", class: "card__mark")
                 %li.card
                   = image_tag("credits/discover.svg", alt:"discover", class: "card__mark")
-            .form-group
+            .form
               = f.label [:expiration_monnth, :expiration_year], "有効期限"
               %span.form-require 必須
               %br
-              = f.select :expiration_month, options_for_select(1..12), {}, { class: "number_select" }
-              月
+              .num_wrap
+                .select-wrap
+                  = f.select :expiration_month, options_for_select(1..12), {}, { class: "form__select" }
+                月
               %br
-              = f.select :expiration_year,options_for_select(@years), {}, { class: "number_select" }
-              年
-            .form-group
+              .num_wrap
+                .select-wrap
+                  = f.select :expiration_year,options_for_select(@years), {}, { class: "form__select" }
+                年
+            .form
               = f.label :security_code, "セキュリティコード"
               %span.form-require 必須
-              = f.text_field :security_code, placeholder: "カード背面4桁もしくは3桁の番号"
+              = f.text_field :security_code, placeholder: "カード背面4桁もしくは3桁の番号", class: "form__input"
               %p.security-code__description
                 %span.cricle-mark ?
                 カード裏面の番号とは?

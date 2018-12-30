@@ -42,32 +42,26 @@
   }
 }
 
-select.number_select {
-  outline:none;
-  text-indent: 0.01px;
-  text-overflow: '';
-  vertical-align: left;
-  width:110px;
-}
-
-
-.security-code{
-  &__description {
-    color:$linkBlue;
-    text-align:right;
-    }
-  &__image {
-    background-color:$Gray;
-    opacity: 0;
-    padding: 16px;
-    position: absolute;
-      left:0;
-      right:0;
-    visibility: hidden;
-    z-index:1;
-    &--show {
-      opacity:1;
-      visibility: visible;
+.form {
+  .security-code{
+    width:100%;
+    &__description {
+      color:$linkBlue;
+      text-align:right;
+      }
+    &__image {
+      background-color:$Gray;
+      margin:0 auto;
+      max-width: 320px;
+      opacity: 0;
+      padding: 16px;
+      position: absolute;
+      visibility: hidden;
+      z-index:1;
+      &--show {
+        opacity:1;
+        visibility: visible;
+      }
     }
   }
 }
