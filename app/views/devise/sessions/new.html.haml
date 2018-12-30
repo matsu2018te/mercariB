@@ -18,11 +18,11 @@
             %i.fab.fa-google-plus
             Googleでログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { id:"form"}) do |f|
-        .form-group
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", required:""
-        .form-group
-          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
-        .form-group
+        .form
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", required:"", class: "form__input"
+        .form
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form__input"
+        .form
           = recaptcha_tags
         = f.submit "ログイン", class: "btn btn__red"
       = link_to "パスワードをお忘れの方", new_password_path(resource_name)

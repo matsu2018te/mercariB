@@ -29,13 +29,13 @@
     .signup-panel
       %h2.signup-panel__head 電話番号の確認
       = form_for(@user, url: signup_address_path, html: { id:"form", method: :post}) do |f|
-        .form-group
+        .form
           = f.hidden_field :nickname, value: @user.nickname
           = f.hidden_field :email, value: @user.email
           = f.hidden_field :password, value: @user.password
           = f.hidden_field :password_confirmation, value: @user.password_confirmation
           = f.label :telephone, "携帯電話の番号"
-          = f.telephone_field :telephone, autofocus: true, placeholder: "携帯電話の番号を入力", required:""
+          = f.telephone_field :telephone, autofocus: true, placeholder: "携帯電話の番号を入力", required:"", class: "form__input"
           %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
         = f.submit "smsを送信する", class: "btn btn__red"
         %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
