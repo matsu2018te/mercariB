@@ -11,11 +11,11 @@
       .login-form-inner
         = link_to user_facebook_omniauth_authorize_path do
           %button.btn.btn__sns.btn__sns--facebook
-            %i.fab.fa-facebook-square
+            %i.fab.fa-facebook-square.icon
             Facebookでログイン
         = link_to user_google_oauth2_omniauth_authorize_path do
           %button.btn.btn__sns.btn__sns--google
-            %i.fab.fa-google-plus
+            %i.fab.fa-google-plus.icon
             Googleでログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { id:"form"}) do |f|
         .form
