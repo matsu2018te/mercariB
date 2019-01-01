@@ -7,9 +7,11 @@
         = image_tag("mercari_icon.png", class:"app__banner-logo")
         %ul.store
           %li
+            / = link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8" do
             %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"}
               = image_tag("app-store.svg", class:"app-store")
           %li
+            / = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja" do
             %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
               = image_tag("google-play.svg", class:"google-play")
     = image_tag("banner-img.jpg", class:"app__banner-pc-image")
