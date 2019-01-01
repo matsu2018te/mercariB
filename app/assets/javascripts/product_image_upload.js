@@ -1,9 +1,9 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
 
   var upload_image = $(".sell-dropbox-items");
+  var i_count = 0;
 
   function appendImage(image) {
-    var i_count = ImageCount() + 1;
     var html = `<li class='sell-dropbox-items_container'>
                     <div class='sell-dropbox-items-figure'>
                         <img alt='商品画像' src='${image}'>
@@ -14,12 +14,8 @@ $(document).on('turbolinks:load', function() {
                     <a class="sell-dropbox-items-btn sell-image_delete">
                       <p>削除</p>
                     </a>
-                     <input type="file" name="product[images_attributes][${i_count}][image]" id="product_images_attributes_${i_count}_image" class = "product_images" value="${image}">
                 </li>`
-    console.log(i_count);
     upload_image.append(html);
-    $("label.sell-dropbox-uploader_container").attr('for','product_images_attributes_'+ i_count+'_image'
-    );
   }
 
 
@@ -27,6 +23,7 @@ $(document).on('turbolinks:load', function() {
   // 削除機能
   $(document).on("click",".sell-image_delete",function(e) {
     $(this).parent().remove();
+    i_count -= 1;
     ImageCount();
   });
 
@@ -71,7 +68,9 @@ function ImageCount() {
       appendImage(e.target.result,e.target);
     }
     reader.readAsDataURL(this.files[0]);
-    ImageCount();
+    i_count += 1;
+    next_for_num = i_count+1
+    $("label.sell-dropbox-uploader_container").attr('for','product_images_attributes_0_image'+ next_for_num);
   });
 
 });

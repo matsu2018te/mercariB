@@ -16,10 +16,10 @@
             %span.form-require.sell 必須
           %p.sell-contents__comment 最大4枚までアップロードできます
           .sell-dropbox_container
-            = f.fields_for :images,multiple: true do |i|
+            = f.fields_for :images do |i|
               %ul.sell-dropbox-items
               .sell-dropbox-uploader
-                = i.label :image,class: 'sell-dropbox-uploader_container' do
+                = i.label :image1,class: 'sell-dropbox-uploader_container' do
                   .visible-pc#drop
                     ドラッグアンド
                     %br ドロップ
@@ -27,7 +27,10 @@
                     %br クリックして
                     ファイルをアップロード
                     %i.fas.fa-camera 🐢
-                  = i.file_field :image,multiple: true,class: "product_images"
+                  = i.file_field :image1,class: "product_images"
+                  = i.file_field :image2,class: "product_images"
+                  = i.file_field :image3,class: "product_images"
+                  = i.file_field :image4,class: "product_images"
 
         / 商品名・説明 ▼
         .sell-contents
