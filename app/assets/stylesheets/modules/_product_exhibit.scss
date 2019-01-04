@@ -2,9 +2,9 @@
   &-contents{
     max-width: 700px;
     padding:40px;
-    background:$white;
+    background:$White;
     margin:0 auto;
-    border-bottom: solid thin $gray;
+    border-bottom: solid thin $Gray;
     @include clearfix;
     &-label{
       color:gray;
@@ -35,7 +35,7 @@
     }
   }
   &-form{
-    border:thin solid gray;
+    border:thin solid $Gray;
     @include clearfix;
     &-box{
       margin-top:40px;
@@ -58,7 +58,7 @@
     &-price{
       @include clearfix;
       height:90px;
-      border-bottom:thin solid gray;
+      border-bottom:thin solid $Gray;
       &_left{
         float:left;
         padding-top:20px;
@@ -70,7 +70,7 @@
       &-fee{
         height:40px;
         @include clearfix;
-        border-bottom:thin solid gray;
+        border-bottom:thin solid $Gray;
         &-text{
           float:left;
           font-size:12px;
@@ -105,14 +105,14 @@
       height:100%;
       float: left;
       background: white;
-      border-right: thin dashed gray;
+      border-right: thin dashed $Gray;
       @include clearfix;
       &_container{
         height:100%;
         width:140px;
         text-align: center;
-        background: $light-gray;
-        border:thin dashed gray;
+        background: $Lightgray;
+        border:thin dashed $Gray;
         float:left;
         position:relative;
         margin-right: 14px;
@@ -127,8 +127,8 @@
         height:30%;
         padding-top: 16px;
         width:50%;
-        border: thin solid $gray;
-        color:$light-blue;
+        border: thin solid $Gray;
+        color:$Lightblue;
         float:left;
       }
     }
@@ -140,8 +140,8 @@
           text-align: center;
           height: 100%;
           padding:50px 0;
-          background: $light-gray;
-          border:thin dashed gray;
+          background: $Lightgray;
+          border:thin dashed $Gray;
         }
       }
     }
@@ -156,7 +156,7 @@
 ul.brand-search-result{
   overflow: auto;
   position: absolute;
-  background: white;
+  background: $White;
   z-index: 10;
   max-height: 280px;
   width:400px;
@@ -179,18 +179,18 @@ p.btn.btn__gray{
   @extend.btn__red;
   width:280px;
   margin:23px auto 0;
-  background: gray;
+  background: $Gray;
 }
 a.text-blue{
-  color:$light-blue;
+  color:$Lightblue;
 }
 
 input.sell-form-text_field{
   border-radius: 5px;
-  border: thin solid gray;
+  border: thin solid $Gray;
   margin-top:8px;
   &:focus{
-    border-color:$light-blue;
+    border-color:$Lightblue;
     outline: 0;
   }
 }
@@ -223,20 +223,6 @@ textarea.sell-form-text_area{
   padding:0 16px ;
   width:100%;
   height:46px;
-}
-.select-wrap {
-  position: relative;
-  &:before {
-    z-index: 1;
-    position: absolute;
-    right: 15px;
-    font-size:26px;
-    content: "\f107";
-    font-family: "FontAwesome";
-    line-height: 60px;
-    pointer-events: none;
-    color:gray;
-  }
 }
 .form-arbitrary.sell{
   @extend .form-require;
