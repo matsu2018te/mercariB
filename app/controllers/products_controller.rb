@@ -19,7 +19,6 @@ class ProductsController < ApplicationController
     else @product.brand_id.present? || @product.category_id.present?
       @related_items = Product.where("brand_id = ? or category_id = ?", @product.brand_id, @product.category_id)
     end
-    # binding.pry
   end
 
   def destroy
@@ -50,6 +49,18 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:format])
   end
 
+  #ユーザー出品商品一覧
+  def listing
+    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
+  end
+
+  def in_progress
+  end
+
+  def completed
+    @products = Product.where(seller_id: current_user.id, buyer_id: nil)
+  end
+
   private
   def product_new
     @product = Product.new
@@ -71,6 +82,7 @@ class ProductsController < ApplicationController
       @product.update!(buyer_id: current_user.id)
     end
   end
+
 
 
   def product_params
