@@ -47,10 +47,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def purchased
-    @product = Product.where(buyer_id: current_user.id, sell_status_id: 2)
-  end
-
   def transaction
     @product = Product.find(params[:format])
   end
@@ -84,6 +80,10 @@ class ProductsController < ApplicationController
     @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
   end
 
+  #ユーザー購入済み商品一覧
+  def purchased
+    @product = Product.where(buyer_id: current_user.id, sell_status_id: 2)
+  end
 
   private
   def product_new
