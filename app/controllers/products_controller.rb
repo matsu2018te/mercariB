@@ -37,7 +37,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.brand = Brand.find_or_create_by(name: @product.brand.name) if @product.brand.name
+    if @product.brand
+      @product.brand = Brand.find_or_create_by(name: @product.brand.name)
+    end
     if @product.save
       redirect_to root_path
     else
@@ -48,24 +50,6 @@ class ProductsController < ApplicationController
   def transaction
     @product = Product.find(params[:format])
   end
-
-  #ユーザー出品商品一覧
-  def listing
-    @products = Product.where(seller_id: current_user.id, buyer_id: nil)
-  end
-
-  def in_progress
-  end
-
-  def completed
-    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
-  end
-
-  private
-  def product_new
-    @product = Product.new
-  end
-
 
   def completed_transaction
     ActiveRecord::Base.transaction do
@@ -83,6 +67,23 @@ class ProductsController < ApplicationController
     end
   end
 
+  #ユーザー出品商品一覧
+  def listing
+    @products = Product.where(seller_id: current_user.id, buyer_id: nil)
+  end
+
+  def in_progress
+  end
+
+  def completed
+    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
+  end
+
+
+  private
+  def product_new
+    @product = Product.new
+  end
 
 
   def product_params

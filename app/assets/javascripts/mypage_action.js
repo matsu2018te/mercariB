@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
   $('.mypage__tabs-top li').click(function() {
     var index = $('.mypage__tabs-top li').index(this);
     $('.mypage__item-list-top li').css('display','none');
