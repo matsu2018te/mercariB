@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
   post 'sell' => 'products#create'
+  match 'search' => 'products#search', via: [:get, :post], as: :search
   get 'brand/index' => 'brands#index'
   get 'transaction' => 'products#transaction'
   get 'items/:id' => 'products#item_show'

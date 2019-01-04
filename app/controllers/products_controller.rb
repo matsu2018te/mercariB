@@ -47,6 +47,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    # @q        = Product.ransack(params[:q])
+    # @products = @q.result(distinct: true)
+    @products = Product.where(name: "アイアンマン")
+  end
+
   def transaction
     @product = Product.find(params[:format])
   end
