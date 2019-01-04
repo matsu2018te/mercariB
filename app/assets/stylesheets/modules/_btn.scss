@@ -1,0 +1,40 @@
+.btn {
+  color: $White;
+  font-size: 14px;
+  line-height: 48px;
+  margin: 16px 0 0;
+  text-align: center;
+  width: 100%;
+  &__blue {
+    background-color:$ButtonBlue;
+  }
+  &__red {
+    background-color:$Red;
+    &:active{
+      background:gray;
+    }
+  }
+  &__mail {
+    background-color:$ThinGray;
+    color:$Black;
+    margin-bottom:16px;
+    position:relative;
+  }
+  &__sns {
+    position:relative;
+    &--facebook{
+      background-color:$Navy;
+    }
+    &--google{
+      background-color:$Rouge;
+      margin-top: 16px;
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+    left:16px;
+    top:30%;
+  font-size:18px;
+}
