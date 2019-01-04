@@ -48,6 +48,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def purchased
+    @product = Product.where(buyer_id: current_user.id, sell_status_id: 2)
+  end
+
   def transaction
     @product = Product.find(params[:format])
   end
