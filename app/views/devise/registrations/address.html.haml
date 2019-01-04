@@ -35,36 +35,35 @@
           = f.hidden_field :password_confirmation, value: @user.password_confirmation
           = f.hidden_field :telephone, value: @user.telephone
           = f.fields_for :address do |i|
-            .form-group
+            .form
               = i.label [:first_name, :last_name], "お名前"
               %span.form-require 必須
-              = i.text_field :first_name, placeholder: "例)山田", required:""
-              = i.text_field :last_name, placeholder: "例)彩", required:""
-            .form-group
+              = i.text_field :first_name, placeholder: "例)山田", required:"", class: "form__input"
+              = i.text_field :last_name, placeholder: "例)彩", required:"", class: "form__input"
+            .form
               = i.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
               %span.form-require 必須
-              = i.text_field :first_name_phonetic, placeholder: "例)ヤマダ", required:""
-              = i.text_field :last_name_phonetic, placeholder: "例)アヤ", required:""
-            .form-group
+              = i.text_field :first_name_phonetic, placeholder: "例)ヤマダ", required:"", class: "form__input"
+              = i.text_field :last_name_phonetic, placeholder: "例)アヤ", required:"", class: "form__input"
+            .form
               = i.label :postal_code, "郵便番号"
               %span.form-require 必須
-              = i.text_field :postal_code, placeholder: "例)123-4567", required:""
-            .form-group
+              = i.text_field :postal_code, placeholder: "例)123-4567", required:"", class: "form__input"
+            .form
               = i.label :prefecture, "都道府県"
               %span.form-require 必須
-              / = i.text_field :prefecture, placeholder: "例)北海道", required:""
               .select-wrap
-                = i.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, {}, {class: "prefecture_select"}
-            .form-group
+                = i.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, {}, {class: "form__select"}
+            .form
               = i.label :municipality, "市区町村"
               %span.form-require 必須
-              = i.text_field :municipality, placeholder: "例)横浜市緑区", required:""
-            .form-group
+              = i.text_field :municipality, placeholder: "例)横浜市緑区", required:"", class: "form__input"
+            .form
               = i.label :address_number, "番地"
               %span.form-require 必須
-              = i.text_field :address_number, placeholder: "例)青山1-1-1", required:""
-            .form-group
+              = i.text_field :address_number, placeholder: "例)青山1-1-1", required:"", class: "form__input"
+            .form
               = i.label :building_name, "建物名"
-              = i.text_field :building_name, placeholder: "例)柳ビル103"
+              = i.text_field :building_name, placeholder: "例)柳ビル103", class: "form__input"
           = f.submit "次へ進む", class: "btn btn__red"
   = render "devise/shared/footer"

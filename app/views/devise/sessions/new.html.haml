@@ -11,18 +11,18 @@
       .login-form-inner
         = link_to user_facebook_omniauth_authorize_path do
           %button.btn.btn__sns.btn__sns--facebook
-            %i.fab.fa-facebook-square
+            %i.fab.fa-facebook-square.icon
             Facebookでログイン
         = link_to user_google_oauth2_omniauth_authorize_path do
           %button.btn.btn__sns.btn__sns--google
-            %i.fab.fa-google-plus
+            %i.fab.fa-google-plus.icon
             Googleでログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { id:"form"}) do |f|
-        .form-group
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", required:""
-        .form-group
-          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
-        .form-group
+        .form
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", required:"", class: "form__input"
+        .form
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form__input"
+        .form
           = recaptcha_tags
         = f.submit "ログイン", class: "btn btn__red"
       = link_to "パスワードをお忘れの方", new_password_path(resource_name)
