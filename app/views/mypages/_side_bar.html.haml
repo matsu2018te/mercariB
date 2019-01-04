@@ -15,13 +15,13 @@
     =link_to sell_path,class: "sidebar__content" do
       %h4.sidebar__content-name 出品する
       %i.sidebar__content-angle
-    =link_to "",class: "sidebar__content" do
+    =link_to listing_path,class: "sidebar__content" do
       %h4.sidebar__content-name 出品した商品・出品中
       %i.sidebar__content-angle
-    =link_to "",class: "sidebar__content" do
+    =link_to in_progress_path,class: "sidebar__content" do
       %h4.sidebar__content-name 出品した商品・取引中
       %i.sidebar__content-angle
-    =link_to "",class: "sidebar__content" do
+    =link_to completed_path,class: "sidebar__content" do
       %h4.sidebar__content-name 出品した商品・売却済み
       %i.sidebar__content-angle
     =link_to mypage_purchase_path,class: "sidebar__content #{"active" if params[:action] == "purchase"}" do

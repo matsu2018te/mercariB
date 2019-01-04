@@ -1,0 +1,8 @@
+- products.each do |product|
+  = link_to "/items/#{product.id}", method: :get,class: "mypage__item-link","style": "color:black;" do
+    .mypage__item
+      .mypage__item-figure
+        =image_tag "#{product.images[0].image}",class: "item-figure"
+      %i.mypage__item-angle ＞
+      .mypage__item-text
+        = product.name
