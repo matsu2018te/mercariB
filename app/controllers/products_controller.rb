@@ -38,7 +38,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.brand = Brand.find_or_create_by(name: @product.brand.name) if @product.brand.name
+    if @product.brand
+      @product.brand = Brand.find_or_create_by(name: @product.brand.name)
+    end
     if @product.save
       redirect_to root_path
     else
@@ -49,12 +51,6 @@ class ProductsController < ApplicationController
   def transaction
     @product = Product.find(params[:format])
   end
-
-  private
-  def product_new
-    @product = Product.new
-  end
-
 
   def completed_transaction
     ActiveRecord::Base.transaction do
@@ -72,6 +68,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  private
+  def product_new
+    @product = Product.new
+  end
 
   def product_params
     params.require(:product).permit(
