@@ -151,48 +151,6 @@
   }
 }
 
-.btn {
-  color: $White;
-  font-size: 14px;
-  line-height: 48px;
-  text-align: center;
-  width: 100%;
-  &__blue {
-    background-color:$ButtonBlue;
-  }
-  &__red {
-    background-color:$Red;
-  }
-  &__mail {
-    background-color:$ThinGray;
-    color:$Black;
-    margin-bottom:16px;
-    position:relative;
-    i {
-      position: absolute;
-      left:16px;
-      top:30%;
-      font-size:18px;
-    }
-  }
-  &__sns {
-    position:relative;
-    i {
-      position: absolute;
-      left:16px;
-      top:30%;
-      font-size:18px;
-    }
-    &--facebook{
-      background-color:$Navy;
-    }
-    &--google{
-      background-color:$Rouge;
-      margin-top: 16px;
-    }
-  }
-}
-
 form {
   .form-group {
     margin-bottom: 24px;

@@ -3,11 +3,15 @@ a{
 }
 
 body{
-  background:$light-gray;
+  background:$Lightgray;
 }
 
 a.mypage__tabs-list,a.mypage__item-to-show{
   color:black;
+}
+
+.display-none{
+  display: none;
 }
 
 .l-contener{
@@ -27,7 +31,7 @@ a.mypage__tabs-list,a.mypage__item-to-show{
   &_contents{
     max-width: 700px;
     margin: 0 auto 40px;
-    background:$white;
+    background:$White;
   }
   &_top{
     &:hover{
@@ -36,7 +40,7 @@ a.mypage__tabs-list,a.mypage__item-to-show{
     &__backimage{
       padding-top: 40px;
       height: 160px;
-      background-image: url("/assets/user-bg.jpg");
+      background-image: image-url("user-bg.jpg");
     }
     &__profile_icon{
       @include user-icon(60px);
@@ -63,12 +67,12 @@ a.mypage__tabs-list,a.mypage__item-to-show{
   }
   &__tabs{
     &-top{
-      background: $gray;
+      background: $Gray;
       float:left;
       width:100%;
     }
     &-bottom{
-      background: $gray;
+      background: $Gray;
       float:left;
       width:100%;
     }
@@ -88,7 +92,7 @@ a.mypage__tabs-list,a.mypage__item-to-show{
       color:rgba(0,0,0,0.6);
       }
       .tab-active{
-        background: $white;
+        background: $White;
         border-top: 2px solid #ea352d;
       }
     }
@@ -124,14 +128,14 @@ a.mypage__tabs-list,a.mypage__item-to-show{
     }
     &-to-index{
       padding: 16px 20px;
-      background: $white;
+      background: $White;
       margin-bottom: 40px;
       .link-to-item{
         height: 55px;
-        background: $gray;
+        background: $Gray;
         text-align: center;
         &:hover{
-          background: $light-gray;
+          background: $Lightgray;
         }
         h4.view-index{
           padding: 20px;
@@ -143,17 +147,16 @@ a.mypage__tabs-list,a.mypage__item-to-show{
   &__no-item{
     width:100%;
     margin-bottom: 40px;
-    background:$white;
+    background:$White;
     font-weight: bold;
-    color: $gray;
+    color: $Gray;
     padding:40px 0 60px;
     float:left;
     &-top{
       background:gray;
     }
     &-icon{
-      background-image:url("/assets/logo-gray.svg");
-      height: 85px;
+      background-image: image-url("logo-gray-icon.svg");
       width: 78px;
       margin:0 auto 20px;
       }

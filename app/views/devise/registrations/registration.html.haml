@@ -33,19 +33,19 @@
           .form-group
             = f.label :nickname, "ニックネーム"
             %span.form-require 必須
-            = f.text_field :nickname, autofocus: true, placeholder: "例)メルカリ太郎", required:""
+            = f.text_field :nickname, autofocus: true, placeholder: "例)メルカリ太郎", required:"", class: "form__input"
           .form-group
             = f.label :email, "メールアドレス"
             %span.form-require 必須
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", required:""
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", required:"", class: "form__input"
           .form-group
             = f.label :password, "パスワード"
             %span.form-require 必須
-            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", required:"", minlength: "6"
+            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", required:"", minlength: "6", class: "form__input"
           .form-group
             = f.label :password_confirmation, "パスワード（確認）"
             %span.form-require 必須
-            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", required:""
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", required:"", class: "form__input"
           .form-group
             = recaptcha_tags
           = f.submit "次へ進む", class: "btn btn__red"
