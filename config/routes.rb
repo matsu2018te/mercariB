@@ -50,6 +50,13 @@ Rails.application.routes.draw do
     resources "credits", :path => 'card', only: [:index, :destroy]
     get 'card/create' => 'credits#new'
     post 'card' => 'credits#create'
+
+    #ユーザー出品商品一覧
+    scope '/listings' do
+      get 'listing' => 'products#listing'
+      get 'in_progress' => 'products#in_progress'
+      get 'completed' => 'products#completed'
+    end
   end
 
 end

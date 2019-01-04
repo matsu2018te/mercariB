@@ -21,6 +21,11 @@ a.mypage__tabs-list,a.mypage__item-to-show{
   @include clearfix;
 }
 
+.tab-active{
+  background: $White;
+  border-top: 2px solid #ea352d;
+}
+
 .mypage{
   @include clearfix;
   text-decoration: none;
@@ -87,9 +92,12 @@ a.mypage__tabs-list,a.mypage__item-to-show{
       &:hover{
       color:rgba(0,0,0,0.6);
       }
-      .tab-active{
-        background: $White;
-        border-top: 2px solid #ea352d;
+    }
+    &-listing-list {
+      @extend .mypage__tabs-list;
+      width:33.3%;
+      &:hover {
+        @extend .mypage__tabs-list:hover;
       }
     }
     &-text{
