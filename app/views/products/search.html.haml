@@ -1,21 +1,10 @@
 %section.pickup-container
   %section.items-box-container.clearfix
-    %h3.text-center
-      検索結果 #{@products.length}件
-    .items-box-content.clearfix
-      - @products.each do |product|
-        %section.items-box
-          = link_to(product_path(product)) do
-            .items-box-photo
-              = image_tag product.images.first.image
-            .items-box-body
-              %h3.items-box-name.font-2
-                = product.name
-              .items-box-num.clearfix
-                .items-box-price.font-5
-                  ¥ #{product.price}
-                .items-box-likes.font-2
-                  %i.fas.fa-heart
-                %p.item-box-tax
-                  （税込）
-/ = render partial: 'home/search', locals: {products: @products}
+    - if @products.present?
+      %h3.text-center
+        検索結果 #{@products.length}件
+      = render partial: 'products/items', locals: {products: @products}
+    - else
+      %h3.text-center
+        検索結果 0件
+      = render partial: 'products/items', locals: {products: @all_products}

@@ -48,9 +48,9 @@ class ProductsController < ApplicationController
   end
 
   def search
-    # @q        = Product.ransack(params[:q])
-    # @products = @q.result(distinct: true)
-    @products = Product.where(name: "アイアンマン")
+    @q        = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
+    @all_products = Product.all unless @products.present?
   end
 
   def transaction
