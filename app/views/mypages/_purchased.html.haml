@@ -9,6 +9,9 @@
         =link_to mypage_purchased_path,class: "mypage__tabs-list" do
           .tab-active
             .mypage__tabs-text 過去の取引
-      .mypage__no-item
-        .mypage__no-item-icon
-        .mypage__no-item-text 過去に取引した商品がありません
+        - if @products.present?
+          = render partial: 'mypages/items', locals: {products: @products}
+        -else
+          .mypage__no-item
+            .mypage__no-item-icon
+            .mypage__no-item-text 過去に取引した商品がありません
