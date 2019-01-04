@@ -13,22 +13,22 @@
         - @images.each do |image|
           .product-img-box-main
             = image_tag image.image, alt:"バッグ"
-          .product-img-box-main
-            = image_tag image.image, alt:"バッグ2"
-          .product-img-box-main
-            = image_tag image.image, alt:"バッグ3"
-          .product-img-box-main
-            = image_tag image.image, alt:"バッグ4"
+          / .product-img-box-main
+          /   = image_tag image.image, alt:"バッグ2"
+          / .product-img-box-main
+          /   = image_tag image.image, alt:"バッグ3"
+          / .product-img-box-main
+          /   = image_tag image.image, alt:"バッグ4"
       .product-img-box-detail.thumb
         - @images.each do |image|
           .box-sub
             = image_tag image.image, alt:"バッグ"
-          .box-sub
-            = image_tag image.image, alt:"バッグ2"
-          .box-sub
-            = image_tag image.image, alt:"バッグ3"
-          .box-sub
-            = image_tag image.image, alt:"バッグ4"
+          / .box-sub
+          /   = image_tag image.image, alt:"バッグ2"
+          / .box-sub
+          /   = image_tag image.image, alt:"バッグ3"
+          / .box-sub
+          /   = image_tag image.image, alt:"バッグ4"
     = render "product-info-table", product: @product
   .price-box
     %h1

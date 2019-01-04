@@ -36,7 +36,7 @@ a.mypage__tabs-list,a.mypage__item-to-show{
     &__backimage{
       padding-top: 40px;
       height: 160px;
-      background-image: url("/assets/user-bg.jpg");
+      background-image: image-url("user-bg.jpg");
     }
     &__profile_icon{
       @include user-icon(60px);
