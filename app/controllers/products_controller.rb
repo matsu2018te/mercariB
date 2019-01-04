@@ -86,7 +86,7 @@ class ProductsController < ApplicationController
       :shipping_method,
       :delivery_date,
       :prefecture,
-      images_attributes: [:id,:image1,:image2,:image3,:image4,:_destroy],
+      images_attributes: [:id,:image,:image2,:image3,:image4,:_destroy],
       brand_attributes: [:name]
     ).merge(seller_id: current_user.id,sell_status_id: 1)
   end
