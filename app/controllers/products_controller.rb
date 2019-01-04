@@ -38,7 +38,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.brand = Brand.find_or_create_by(name: @product.brand.name) if @product.brand.name
+    if @product.brand
+      @product.brand = Brand.find_or_create_by(name: @product.brand.name)
+    end
     if @product.save
       redirect_to root_path
     else

@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
 // 金額算出
   function  ReplaceNum(num) {
     num = num.toLocaleString();

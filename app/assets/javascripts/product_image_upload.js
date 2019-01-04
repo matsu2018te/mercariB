@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
 
   var upload_image = $(".sell-dropbox-items");
 
