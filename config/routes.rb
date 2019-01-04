@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'mypage' => 'users#show'
   patch 'mypage' => 'users#update'
   get 'mypage/profile' => 'users#edit'
+  patch 'mypage/profile' => 'users#profile_update'
   get 'mypage/identification' => 'users#set_user'
   get 'mypage/notification' => 'users#notification'
   get 'mypage/todo' => 'users#todo'
