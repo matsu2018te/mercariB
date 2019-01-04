@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
         card:    params['payjp-token'],
         currency: 'jpy',
       )
-      @product.update!(buyer_id: current_user.id)
+      @product.update!(buyer_id: current_user.id,sell_status_id: 2)
     end
   end
 
