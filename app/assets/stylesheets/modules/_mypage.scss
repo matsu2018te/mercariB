@@ -17,6 +17,10 @@ a.mypage__tabs-list,a.mypage__item-to-show{
   @include clearfix;
 }
 
+.display-none{
+  display: none;
+}
+
 .mypage{
   @include clearfix;
   text-decoration: none;
@@ -148,7 +152,7 @@ a.mypage__tabs-list,a.mypage__item-to-show{
       background:gray;
     }
     &-icon{
-      background-image:url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?27899896");
+      background-image:url("/assets/logo-gray.svg");
       height: 85px;
       width: 78px;
       margin:0 auto 20px;
