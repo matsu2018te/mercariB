@@ -73,6 +73,7 @@ class ProductsController < ApplicationController
   end
 
   def in_progress
+    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
   end
 
   def completed
