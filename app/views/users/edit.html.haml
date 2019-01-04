@@ -7,16 +7,16 @@
   .mypage
     .mypage_contents
       .profile
-        = form_for(@user) do |f|
+        = form_for current_user,url: {action: :profile_update} do |f|
           %h4.profile__title プロフィール
           .profile__box.clearfix
             .profile__box-name.clearfix
               .field-image
                 = image_tag("icon.jpg", alt: "", class:"image")
               .field-name-input
-                = f.text_field :name, class:"name-input", autofocus: true, placeholder:"例) メルカリ太郎"
+                = f.text_field :nickname, class:"name-input", autofocus: true, placeholder:"例) メルカリ太郎", value: current_user.nickname
           .profile__intro-box
-            = f.text_area :name, class:"text-input", autofocus: true, placeholder: "例) こんにちは、メルカリ大好きメルカリ太郎です。趣味はハンドメイドです！出品はハンドメイド作品メインです！ぜひ気に入った方はご購入ください"
+            = f.text_area :profile, class:"text-input", autofocus: true, placeholder: "例) こんにちは、メルカリ大好きメルカリ太郎です。趣味はハンドメイドです！出品はハンドメイド作品メインです！ぜひ気に入った方はご購入ください", value: current_user.profile
             .actions
               = f.submit "変更する", class: 'btn btn__red'
   = render 'mypages/side_bar'
