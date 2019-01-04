@@ -4,13 +4,23 @@
       .mypage__content-head
         %h3.mypage__content-label 購入した商品
       .mypage__tabs-bottom
-        =link_to listing_path,class: "mypage__tabs-list" do
+        =link_to listing_path,class: "mypage__tabs-listing-list" do
           .tab-active
             .mypage__tabs-text 出品中
-        =link_to in_progress_path,class: "mypage__tabs-list" do
+        =link_to in_progress_path,class: "mypage__tabs-listing-list" do
           .mypage__tabs-text 取引中
-        =link_to completed_path,class: "mypage__tabs-list" do
+        =link_to completed_path,class: "mypage__tabs-listing-list" do
           .mypage__tabs-text 売却済み
-      .mypage__no-item
-        .mypage__no-item-icon
-        .mypage__no-item-text 出品中の商品はありません
+      - if @products.present?
+        - @products.each do |product|
+          =link_to "/items/#{product.id}", method: :get,class: "mypage__item-link","style": "color:black;" do
+            .mypage__item
+              .mypage__item-figure
+                =image_tag "#{product.images[0].image}",class: "item-figure"
+              %i.mypage__item-angle ＞
+              .mypage__item-text
+                = product.name
+      -else
+        .mypage__no-item
+          .mypage__no-item-icon
+          .mypage__no-item-text 出品中の商品はありません

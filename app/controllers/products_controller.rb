@@ -51,14 +51,14 @@ class ProductsController < ApplicationController
 
   #ユーザー出品商品一覧
   def listing
-    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
+    @products = Product.where(seller_id: current_user.id, buyer_id: nil)
   end
 
   def in_progress
   end
 
   def completed
-    @products = Product.where(seller_id: current_user.id, buyer_id: nil)
+    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
   end
 
   private
