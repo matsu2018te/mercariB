@@ -6,11 +6,11 @@
         = f.search_field :name_or_brand_name_or_category_name_cont, placeholder: "値下げ", class: "form__input"
       .form
         = f.label :category_id_in, "カテゴリーを選択する"
-        / .select-wrap
-        /   = f.collection_select :category_id,Category.where(belongs: "parent"), :id, :name, {prompt: "---"}, { class: "form__select" }
-        / .select-wrap
-        /   = f.collection_select :category_id,Category.where(belongs: "child"), :id, :name, {prompt: "---"}, { class: "form__select" }
-        = f.collection_check_boxes :category_id_in,Category.where("ancestry LIKE ?", "%2/30%"), :id, :name
+        .select-wrap
+          = f.collection_select :category_id,Category.where(belongs: "parent"), :id, :name, {prompt: "---"}, { class: "form__select parent_select" }
+        .select-wrap
+          = f.select :category_id, {}, {prompt: "---"}, { class: "form__select child_select" }
+        .check-box-wrap.g_child_check_boxes
       .form
         = f.label :brand_name_cont, "ブランド名から探す"
         = f.search_field :brand_name_cont, placeholder: "例）シャネル",autocomplete:"off", class: "form__input"

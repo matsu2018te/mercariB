@@ -1,11 +1,14 @@
-%section.pickup-container
-  %section.items-box-container.clearfix
-    - if @products.present?
-      %h3.text-center
-        検索結果 #{@products.length}件
-      = render partial: 'products/items', locals: {products: @products}
-    - else
-      %h3.text-center
-        検索結果 0件
-      = render partial: 'products/items', locals: {products: @all_products}
-= render "home/search_form"
+= render 'home/header'
+.l-contener
+  .mypage
+    %section.pickup-container
+      %section.items-box-container.clearfix
+        - if @products.present?
+          %h3.text-center
+            検索結果 #{@products.length}件
+          = render partial: 'products/items', locals: {products: @products}
+        - else
+          %h3.text-center
+            検索結果 0件
+          = render partial: 'products/items', locals: {products: @all_products}
+  = render "home/search_form"

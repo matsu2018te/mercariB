@@ -53,6 +53,9 @@ class ProductsController < ApplicationController
     @q        = Product.search(params[:q]) unless @q.present?
     @products = @q.result(distinct: true)
     @all_products = Product.all unless @products.present?
+
+    gon.children = Category.where(belongs:"child")
+    gon.g_children = Category.where(belongs:"g_child")
   end
 
   def transaction
