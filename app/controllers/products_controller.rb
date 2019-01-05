@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @product = Product.order("id DESC")
+    @product = Product.order(id: :DESC).includes(:images)
     @product_result = @product.where('name LIKE ? ', "%#{params[:keyword]}%")
     @product_count = @product_result.length
   end
