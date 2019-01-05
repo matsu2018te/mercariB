@@ -1,88 +1,27 @@
 %section.items-box-container.clearfix
   %h3.text-center
-    レディース新着アイテム
-  .items-box-content.clearfix
-    - @lady_products.each do |product|
-      %section.items-box
-        = link_to(product_path(product)) do
-          .items-box-photo
-            = image_tag(product.images.first.image, class: "items-box-photo-photo")
-          .items-box-body
-            %h3.items-box-name.font-2
-              = product.name
-            .items-box-num.clearfix
-              .items-box-price.font-5
-                ¥
-                = number_with_delimiter(product.price)
-              .items-box-likes.font-2
-                %i.like.font-2
-              %p.item-box-tax
-                （税込）
+    レディース 新着アイテム
+  = render partial: 'products', locals: {products: @lady_products}
   .view-all
     %a 全ての商品を見る
+
 %section.items-box-container.clearfix
   %h3.text-center
-    メンズ新着アイテム
-  .items-box-content.clearfix
-    - @mens_products.each do |product|
-      %section.items-box
-        = link_to(product_path(product)) do
-          .items-box-photo
-            = image_tag(product.images.first.image, class: "items-box-photo-photo")
-          .items-box-body
-            %h3.items-box-name.font-2
-              = product.name
-            .items-box-num.clearfix
-              .items-box-price.font-5
-                ¥
-                = number_with_delimiter(product.price)
-              .items-box-likes.font-2
-                %i.like.font-2
-              %p.item-box-tax
-                （税込）
+    メンズ 新着アイテム
+  = render partial: 'products', locals: {products: @mens_products}
   .view-all
     %a 全ての商品を見る
+
 %section.items-box-container.clearfix
   %h3.text-center
-    ベビー・キッズ新着アイテム
-  .items-box-content.clearfix
-    - @kids_products.each do |product|
-      %section.items-box
-        = link_to(product_path(product)) do
-          .items-box-photo
-            = image_tag(product.images.first.image, class: "items-box-photo-photo")
-          .items-box-body
-            %h3.items-box-name.font-2
-              = product.name
-            .items-box-num.clearfix
-              .items-box-price.font-5
-                ¥
-                = number_with_delimiter(product.price)
-              .items-box-likes.font-2
-                %i.like.font-2
-              %p.item-box-tax
-                （税込）
+    ベビー・キッズ 新着アイテム
+  = render partial: 'products', locals: {products: @kids_products}
   .view-all
     %a 全ての商品を見る
+
 %section.items-box-container.clearfix
   %h3.text-center
-    コスメ・香水美容 新着アイテム
-  .items-box-content.clearfix
-    - @cosme_products.each do |product|
-      %section.items-box
-        = link_to(product_path(product)) do
-          .items-box-photo
-            = image_tag(product.images.first.image, class: "items-box-photo-photo")
-          .items-box-body
-            %h3.items-box-name.font-2
-              = product.name
-            .items-box-num.clearfix
-              .items-box-price.font-5
-                ¥
-                = number_with_delimiter(product.price)
-              .items-box-likes.font-2
-                %i.like.font-2
-              %p.item-box-tax
-                （税込）
+    コスメ・香水・美容 新着アイテム
+  = render partial: 'products', locals: {products: @cosme_products}
   .view-all
     %a 全ての商品を見る

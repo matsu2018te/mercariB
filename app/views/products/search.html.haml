@@ -14,8 +14,7 @@
             = link_to(product_path(product)) do
               .items-box-photo
                 = image_tag(product.images.first.image, :class => "items-box-photo-photo")
-                / = image_tag product.images.first.image
-                / carrierwave実装後にコメントアウトを外す
+
               .items-box-body
                 .items-box-name.font-2
                   = product.name
@@ -31,25 +30,7 @@
       検索結果 0件
       .items-box-content_none
         該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
-        .items-box-content.clearfix
-          - @product.each do |product|
-            %section.items-box
-              = link_to(product_path(product)) do
-                .items-box-photo
-                  = image_tag(product.images.first.image, :class => "items-box-photo-photo")
-                  / = image_tag product.images.first.image
-                  / carrierwave実装後にコメントアウトを外す
-                .items-box-body
-                  .items-box-name.font-2
-                    = product.name
-                  .items-box-num.clearfix
-                    .items-box-price.font-5
-                      ¥
-                      = number_with_delimiter(product.price)
-                    .items-box-likes.font-2
-                    %i.like.font-2
-                    .item-box-tax
-                      （税込）
+        = render partial: '/home/products', locals: {products: @product}
 
 
 = render partial: 'home/footer'
