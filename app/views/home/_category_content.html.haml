@@ -6,15 +6,16 @@
       %section.items-box
         = link_to(product_path(product)) do
           .items-box-photo
-            = image_tag product.images.first.image
+            = image_tag(product.images.first.image, :class => "items-box-photo-photo")
           .items-box-body
             %h3.items-box-name.font-2
               = product.name
             .items-box-num.clearfix
               .items-box-price.font-5
-                ¥ #{product.price}
+                ¥
+                = number_with_delimiter(product.price)
               .items-box-likes.font-2
-                %i.fas.fa-heart
+                %i.like.font-2
               %p.item-box-tax
                 （税込）
   .view-all
@@ -27,15 +28,16 @@
       %section.items-box
         = link_to(product_path(product)) do
           .items-box-photo
-            = image_tag product.images.first.image
+            = image_tag(product.images.first.image, :class => "items-box-photo-photo")
           .items-box-body
             %h3.items-box-name.font-2
               = product.name
             .items-box-num.clearfix
               .items-box-price.font-5
-                ¥ #{product.price}
+                ¥
+                = number_with_delimiter(product.price)
               .items-box-likes.font-2
-                %i.fas.fa-heart
+                %i.like.font-2
               %p.item-box-tax
                 （税込）
   .view-all
@@ -48,15 +50,16 @@
       %section.items-box
         = link_to(product_path(product)) do
           .items-box-photo
-            = image_tag product.images.first.image
+            = image_tag(product.images.first.image, :class => "items-box-photo-photo")
           .items-box-body
             %h3.items-box-name.font-2
               = product.name
             .items-box-num.clearfix
               .items-box-price.font-5
-                ¥ #{product.price}
+                ¥
+                = number_with_delimiter(product.price)
               .items-box-likes.font-2
-                %i.fas.fa-heart
+                %i.like.font-2
               %p.item-box-tax
                 （税込）
   .view-all
@@ -69,15 +72,16 @@
       %section.items-box
         = link_to(product_path(product)) do
           .items-box-photo
-            = image_tag product.images.first.image
+            = image_tag(product.images.first.image, :class => "items-box-photo-photo")
           .items-box-body
             %h3.items-box-name.font-2
               = product.name
             .items-box-num.clearfix
               .items-box-price.font-5
-                ¥ #{product.price}
+                ¥
+                = number_with_delimiter(product.price)
               .items-box-likes.font-2
-                %i.fas.fa-heart
+                %i.like.font-2
               %p.item-box-tax
                 （税込）
   .view-all
