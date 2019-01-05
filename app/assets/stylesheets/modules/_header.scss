@@ -26,17 +26,17 @@
       border: 1px solid #ccc;
       line-height: 36px;
       .input-default {
-        height: 30px;
+        height: 34px;
         width: calc(100% - 36px);
         padding:9px 32px 9px 8px;
         border: none;
       }
 
-      i.icon-search {
-        height: 36px;
-        width: 36px;
-        background-color: $red;
+      .icon-search {
+        height: 34px;
+        width: 34px;
         float: right;
+        border-color: white;
       }
     }
     .pc-header-nav-box.clearfix {
@@ -60,7 +60,7 @@
           line-height: 38px;
           padding: 0;
           margin: 0;
-          text-align: center;
+          text-align: left;
         }
       }
 
@@ -148,7 +148,7 @@
   border-top: 1px solid #eee;
   font: 66.66667% sans-serif;
   &_box {
-    width: 85%;
+    width: 70%;
     margin: 0 auto;
   }
 }
