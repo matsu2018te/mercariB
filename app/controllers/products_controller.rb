@@ -19,7 +19,6 @@ class ProductsController < ApplicationController
     else @product.brand_id.present? || @product.category_id.present?
       @related_items = Product.where("brand_id = ? or category_id = ?", @product.brand_id, @product.category_id)
     end
-    # binding.pry
   end
 
   def destroy
@@ -50,11 +49,11 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:format])
   end
 
-  private
-  def product_new
-    @product = Product.new
+  def search
+    @product = Product.order("id DESC")
+    @product_result = @product.where('name LIKE ? ', "%#{params[:keyword]}%")
+    @product_count = @product_result.length
   end
-
 
   def completed_transaction
     ActiveRecord::Base.transaction do
@@ -72,6 +71,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  private
+  def product_new
+    @product = Product.new
+  end
 
   def product_params
     params.require(:product).permit(
