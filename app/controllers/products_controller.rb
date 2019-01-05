@@ -47,19 +47,16 @@ class ProductsController < ApplicationController
     end
   end
 
-  def transaction
-    @product = Product.find(params[:format])
-  end
-
-<<<<<<< HEAD
   def search
     @product = Product.order("id DESC")
     @product_result = @product.where('name LIKE ? ', "%#{params[:keyword]}%")
     @product_count = @product_result.length
   end
 
-=======
->>>>>>> 4692975a0cb30e6bee083c11d9b3074f05144a78
+  def transaction
+    @product = Product.find(params[:format])
+  end
+
   def completed_transaction
     ActiveRecord::Base.transaction do
 
@@ -76,8 +73,6 @@ class ProductsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
   #ユーザー出品商品一覧
   def listing
     @products = Product.where(seller_id: current_user.id, buyer_id: nil)
@@ -96,15 +91,10 @@ class ProductsController < ApplicationController
     @product = Product.where(buyer_id: current_user.id, sell_status_id: 2)
   end
 
->>>>>>> 4692975a0cb30e6bee083c11d9b3074f05144a78
   private
   def product_new
     @product = Product.new
   end
-<<<<<<< HEAD
-=======
-
->>>>>>> 4692975a0cb30e6bee083c11d9b3074f05144a78
 
   def product_params
     params.require(:product).permit(
