@@ -35,7 +35,12 @@ Rails.application.routes.draw do
   get 'mypage/todo' => 'users#todo'
 
   #products関連
-  resources :products, except: [:new]
+  resources :products, except: [:new] do
+    collection do
+      get 'search'
+      post 'completed_transaction'
+    end
+  end
   get 'mypage/purchase' => 'products#purchase'
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
@@ -43,7 +48,6 @@ Rails.application.routes.draw do
   get 'brand/index' => 'brands#index'
   get 'transaction' => 'products#transaction'
   get 'items/:id' => 'products#item_show'
-  post 'completed_transaction' => 'products#completed_transaction'
 
   scope '/mypage' do
     #クレジットカード
