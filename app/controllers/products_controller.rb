@@ -37,7 +37,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.brand = Brand.find_or_create_by(name: @product.brand.name) if @product.brand.name
+    if @product.brand
+      @product.brand = Brand.find_or_create_by(name: @product.brand.name)
+    end
     if @product.save
       redirect_to root_path
     else
@@ -49,12 +51,15 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:format])
   end
 
+<<<<<<< HEAD
   def search
     @product = Product.order("id DESC")
     @product_result = @product.where('name LIKE ? ', "%#{params[:keyword]}%")
     @product_count = @product_result.length
   end
 
+=======
+>>>>>>> 4692975a0cb30e6bee083c11d9b3074f05144a78
   def completed_transaction
     ActiveRecord::Base.transaction do
 
@@ -67,14 +72,39 @@ class ProductsController < ApplicationController
         card:    params['payjp-token'],
         currency: 'jpy',
       )
-      @product.update!(buyer_id: current_user.id)
+      @product.update!(buyer_id: current_user.id,sell_status_id: 2)
     end
   end
 
+<<<<<<< HEAD
+=======
+  #ユーザー出品商品一覧
+  def listing
+    @products = Product.where(seller_id: current_user.id, buyer_id: nil)
+  end
+
+  def in_progress
+    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
+  end
+
+  def completed
+    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
+  end
+
+  #ユーザー購入済み商品一覧
+  def purchased
+    @product = Product.where(buyer_id: current_user.id, sell_status_id: 2)
+  end
+
+>>>>>>> 4692975a0cb30e6bee083c11d9b3074f05144a78
   private
   def product_new
     @product = Product.new
   end
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4692975a0cb30e6bee083c11d9b3074f05144a78
 
   def product_params
     params.require(:product).permit(

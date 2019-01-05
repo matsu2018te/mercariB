@@ -11,7 +11,24 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = "aaa"
+  end
+
+  def profile_update
+    if current_user.update(user_profile_params)
+      redirect_to mypage_profile_path
+    else
+      render action: :edit
+    end
+  end
+
+
+  def show
+  end
+
+  def destroy
+  end
+
+  def set_user
   end
 
   def update
@@ -20,17 +37,6 @@ class UsersController < ApplicationController
     else
       render action: :set_user
     end
-  end
-
-  def show
-
-  end
-
-  def destroy
-
-  end
-
-  def set_user
   end
 
   private
@@ -48,5 +54,9 @@ class UsersController < ApplicationController
                            :municipality,
                            :address_number,
                            :building_name])
+  end
+
+  def user_profile_params
+    params.require(:user).permit(:nickname, :profile)
   end
 end

@@ -8,46 +8,52 @@
         .profile__intro-box
           = form_for current_user,url: {action: :update} do |f|
             = f.fields_for :address do |add_f|
-              .form-group
+              .form
                 = add_f.label [:first_name, :last_name], "お名前"
                 %span.form-require 必須
-                = add_f.text_field :first_name, placeholder: "例)山田", value: current_user.address.first_name
-                = add_f.text_field :last_name, placeholder: "例)彩", value: current_user.address.last_name
-              .form-group
+                = add_f.text_field :first_name, placeholder: "例)山田", value: current_user.address.first_name, class: "form__input"
+                = add_f.text_field :last_name, placeholder: "例)彩", value: current_user.address.last_name, class: "form__input"
+              .form
                 = add_f.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
                 %span.form-require 必須
-                = add_f.text_field :first_name_phonetic, placeholder: "例)ヤマダ", value: current_user.address.first_name_phonetic
-                = add_f.text_field :last_name_phonetic, placeholder: "例)アヤ", value: current_user.address.last_name_phonetic
-              .form-group
+                = add_f.text_field :first_name_phonetic, placeholder: "例)ヤマダ", value: current_user.address.first_name_phonetic, class: "form__input"
+                = add_f.text_field :last_name_phonetic, placeholder: "例)アヤ", value: current_user.address.last_name_phonetic, class: "form__input"
+              .form
                 = add_f.label :postal_code, "郵便番号"
                 %span.form-arbitrary 任意
-                = add_f.text_field :postal_code, placeholder: "例)123-4567", value: current_user.address.postal_code
-              .form-group
+                = add_f.text_field :postal_code, placeholder: "例)123-4567", value: current_user.address.postal_code, class: "form__input"
+              .form
                 = add_f.label :prefecture, "都道府県"
                 %span.form-require 必須
                 .select-wrap
-                  = add_f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, {}, {class: "prefecture_select"}
-              .form-group
+                  = add_f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, {}, { class: "form__select" }
+              .form
                 = add_f.label :municipality, "市区町村"
                 %span.form-require 必須
-                = add_f.text_field :municipality, placeholder: "例)横浜市緑区", value: current_user.address.municipality
-              .form-group
+                = add_f.text_field :municipality, placeholder: "例)横浜市緑区", value: current_user.address.municipality, class: "form__input"
+              .form
                 = add_f.label :address_number, "番地"
                 %span.form-require 必須
-                = add_f.text_field :address_number, placeholder: "例)青山1-1-1", value: current_user.address.address_number
-              .form-group
+                = add_f.text_field :address_number, placeholder: "例)青山1-1-1", value: current_user.address.address_number, class: "form__input"
+              .form
                 = add_f.label :building_name, "建物名"
-                = add_f.text_field :building_name, placeholder: "例)柳ビル103", value: current_user.address.building_name
-            .form-group
+                = add_f.text_field :building_name, placeholder: "例)柳ビル103", value: current_user.address.building_name, class: "form__input"
+            .form
               = f.label [:birth_year, :birth_month, :birth_day], "生年月日"
               %span.form-require 必須
               %br
-              = f.number_field :birth_year, value: current_user.birth_year, min: "1900", max: "2018", class: "number_field"
-              年
-              = f.number_field :birth_month, value: current_user.birth_month, min: "1", max: "12", class: "number_field"
-              月
-              = f.number_field :birth_day, value: current_user.birth_day, min: "1", max: "31", class: "number_field"
-              日
+              .birth_wrap
+                .select-wrap
+                  = f.select :birth_year, options_for_select(1900..2019), {}, { class: "form__select" }
+                年
+              .birth_wrap
+                .select-wrap
+                  = f.select :birth_year, options_for_select(1..12), {}, { class: "form__select" }
+                月
+              .birth_wrap
+                .select-wrap
+                  = f.select :birth_year, options_for_select(1..31), {}, { class: "form__select" }
+                日
             .actions
               = f.submit "変更する", class: 'btn-red'
   = render 'mypages/side_bar'

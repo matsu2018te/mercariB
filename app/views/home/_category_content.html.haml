@@ -6,9 +6,13 @@
       %section.items-box
         = link_to(product_path(product)) do
           .items-box-photo
+<<<<<<< HEAD
             = image_tag(product.images.first.image, :class => "items-box-photo-photo")
             / = image_tag(product.images.first.image, :class => "items-box-photo-photo")
             / carrierwave実装後にコメントアウトを外す
+=======
+            = image_tag product.images.first.image
+>>>>>>> 4692975a0cb30e6bee083c11d9b3074f05144a78
           .items-box-body
             %h3.items-box-name.font-2
               = product.name

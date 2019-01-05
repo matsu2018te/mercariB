@@ -3,7 +3,7 @@
     .mypage_top
       =link_to "","style": "color:black;" do
         .mypage_top__backimage
-          =image_tag "/assets/member_photo_noimage_thumb.png",alt:"noimage_thumb",class: "mypage_top__profile_icon"
+          =image_tag "member_photo_noimage_thumb.png",alt:"noimage_thumb",class: "mypage_top__profile_icon"
           .mypage_top__profile
             = "名前が入るよ #{}"
           .mypage_top__profile
@@ -21,7 +21,7 @@
           =link_to "",class: "mypage__item-link","style": "color:black;" do
             .mypage__item
               .mypage__item-figure
-                =image_tag "//static-mercari-jp.akamaized.net/images/mercari_profile.png",class: "item-figure"
+                =image_tag "mercari_profile.png",class: "item-figure"
               %i.mypage__item-angle ＞
               .mypage__item-text
                 = "おしらせ"
@@ -31,7 +31,7 @@
           =link_to "",class: "mypage__item-link","style": "color:black;" do
             .mypage__item
               .mypage__item-figure
-                =image_tag "//static-mercari-jp.akamaized.net/images/mercari_profile.png",class: "item-figure"
+                =image_tag "mercari_profile.png",class: "item-figure"
               %i.mypage__item-angle ＞
               .mypage__item-text
                 = "もじもじもじももじもじもじもじもじもじもじもじもじもじもじもじもじもじもじもじも"
@@ -42,7 +42,7 @@
             .link-to-item
               = link_to "","style": "color:black;" do
                 %h4.view-index 一覧を見る
-        %li.hidden
+        %li.display-none
           .mypage__no-item
             .mypage__no-item-icon
             .mypage__no-item-text 現在、やることリストはありません
@@ -61,7 +61,7 @@
         .mypage__no-item
           .mypage__no-item-icon
           .mypage__no-item-text 取引中の商品はありません
-      %li.hidden
+      %li.display-none
         .mypage__no-item
           .mypage__no-item-icon
           .mypage__no-item-text 過去に取引した商品がありません

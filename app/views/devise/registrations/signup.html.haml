@@ -8,14 +8,14 @@
       .signup-panel__inner
         =link_to signup_registration_path do
           %button.btn.btn__mail
-            %i.far.fa-envelope
+            %i.far.fa-envelope.icon
             メールアドレスで登録
         = link_to user_facebook_omniauth_authorize_path do
           %button.btn.btn__sns.btn__sns--facebook
-            %i.fab.fa-facebook-square
+            %i.fab.fa-facebook-square.icon
             Facebookで登録
         = link_to user_google_oauth2_omniauth_authorize_path do
           %button.btn.btn__sns.btn__sns--google
-            %i.fab.fa-google-plus
+            %i.fab.fa-google-plus.icon
             Googleで登録
   = render "devise/shared/footer"

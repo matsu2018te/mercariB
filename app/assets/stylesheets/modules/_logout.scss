@@ -1,7 +1,7 @@
 .mypage__logout{
   height: 179px;
   width:100%;
-  background:$white;
+  background:$White;
   padding:64px;
   margin-bottom: 40px;
   &-btn{
@@ -12,7 +12,7 @@
     text-align: center;
     font-size:14px;
     trasition:1.0s;
-    background:$red;
+    background:$Red;
     &:active{
       background:gray;
     }

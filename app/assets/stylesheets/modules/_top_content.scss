@@ -3,7 +3,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: $light-gray;
+  background-color: $Lightgray;
 }
 
 li {
@@ -19,7 +19,7 @@ img {
 main.white {
   height: 4372px;
   width: 100%;
-  background-color: $light-gray;
+  background-color: $Lightgray;
 }
 
 .top-main-visual {
@@ -41,7 +41,7 @@ i.like.font-2::before{
   height: 1911px;
   width: 100%;
   padding: 40px 0;
-  background-color: $light-gray;
+  background-color: $Lightgray;
   h2.pickup-head {
     height: 39px;
     width: 100%;
@@ -52,8 +52,13 @@ i.like.font-2::before{
   }
   .items-box-container {
     height: 442px;
+<<<<<<< HEAD
     width: 60%;
     background-color: $light-gray;
+=======
+    width: 70%;
+    background-color: $Lightgray;
+>>>>>>> 4692975a0cb30e6bee083c11d9b3074f05144a78
     margin: 0 auto;
     box-sizing: border-box;
     h3.text-center {
@@ -72,10 +77,10 @@ i.like.font-2::before{
       .items-box {
         height: 330px;
         width: 25%;
-        background-color: red;
+        background-color: $Red;
         box-sizing: border-box;
         float: left;
-        border: 10px solid $light-gray;
+        border: 10px solid $Lightgray;
         a {
           height: 330px;
           width: 100%;
@@ -83,7 +88,7 @@ i.like.font-2::before{
           .items-box-photo {
             height: 220px;
             width: 100%;
-            background-color: $light-gray;
+            background-color: $Lightgray;
             box-sizing: border-box;
             text-align: center;
             margin: auto;
@@ -97,13 +102,13 @@ i.like.font-2::before{
             height: 110px;
             width: 100%;
             padding: 10px;
-            background-color: $white;
+            background-color: $White;
             box-sizing: border-box;
             color: #333;
             h3.items-box-name.font-2 {
               height: 48px;
               width: 100%;
-              background-color:$white;
+              background-color:$White;
               margin: 0;
               overflow: hidden;
             }
@@ -112,7 +117,7 @@ i.like.font-2::before{
               height: 30px;
               width: 100%;
               margin-top: 8px;
-              background-color:$white;
+              background-color:$White;
               .items-box-price.font-5 {
                 height:20px;
                 float: left;
@@ -144,6 +149,6 @@ i.like.font-2::before{
   padding-top:20px;
   padding-bottom:30px;
   color:#0099e8;
-  background-color: $light-gray;
+  background-color: $Lightgray;
   text-align: right;
 }
