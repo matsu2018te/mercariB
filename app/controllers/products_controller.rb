@@ -47,6 +47,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @product = Product.order("id DESC")
+    @product_result = @product.where('name LIKE ? ', "%#{params[:keyword]}%")
+    @product_count = @product_result.length
+  end
+
   def transaction
     @product = Product.find(params[:format])
   end
