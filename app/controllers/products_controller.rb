@@ -48,7 +48,9 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @q        = Product.ransack(params[:q])
+    # binding.pry
+    @q        = Product.search(search_params)
+    @q        = Product.search(params[:q]) unless @q.present?
     @products = @q.result(distinct: true)
     @all_products = Product.all unless @products.present?
   end
@@ -116,5 +118,20 @@ class ProductsController < ApplicationController
 
   def product_info
     @product = Product.find(params[:id])
+  end
+
+  def search_params
+    params.require(:q).permit(
+      :name_or_brand_name_or_category_name_cont,
+      {:category_id_in => []},
+      :brand_name_cont,
+      {:size_id_in => []},
+      :price_gteq,
+      :price_lteq,
+      {:status_eq_any => []},
+      {:delivery_fee_owner_eq_any => []},
+      :buyer_id_null,
+      :buyer_id_not_null
+      ) unless params[:q].blank?
   end
 end
