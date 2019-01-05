@@ -7,7 +7,7 @@
       .form
         = f.label :category_id_in, "カテゴリーを選択する"
         .select-wrap
-          = f.collection_select :category_id,Category.where(belongs: "parent"), :id, :name, {prompt: "---"}, { class: "form__select parent_select" }
+          = f.collection_select :category_id, @parents, :id, :name, {prompt: "---"}, { class: "form__select parent_select" }
         .select-wrap
           = f.select :category_id, {}, {prompt: "---"}, { class: "form__select child_select" }
         .check-box-wrap.g_child_check_boxes

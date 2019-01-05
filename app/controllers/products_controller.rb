@@ -48,14 +48,14 @@ class ProductsController < ApplicationController
   end
 
   def search
-    # binding.pry
+    @parents = Category.where(belongs:"parent")
+    gon.children = Category.where(belongs:"child")
+    gon.g_children = Category.where(belongs:"g_child")
+
     @q        = Product.search(search_params)
     @q        = Product.search(params[:q]) unless @q.present?
     @products = @q.result(distinct: true)
     @all_products = Product.all unless @products.present?
-
-    gon.children = Category.where(belongs:"child")
-    gon.g_children = Category.where(belongs:"g_child")
   end
 
   def transaction
