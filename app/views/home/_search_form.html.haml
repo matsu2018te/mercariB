@@ -1,10 +1,6 @@
 .sidebar_wrapper
   .select-wrap
     = select :search, :sort, [["価格の安い順", "price+asc"], ["価格の高い順", "price+desc"], ["出品の古い順", "created_at+asc"], ["出品の新しい順", "created_at+desc"]], {prompt: "並び替え"}, { class: "form__select" }
-    / = sort_link(@q, :price, "価格が安い順", hide_indicator: true, default_order: :asc)
-    / = sort_link(@q, :price, "価格が高い順", hide_indicator: true, default_order: :desc)
-    / = sort_link(@q, :created_at, "出品の古い順", hide_indicator: true, default_order: :asc)
-    / = sort_link(@q, :created_at, "出品の新しい順", hide_indicator: true, default_order: :desc)
   .sidebar.search-bar
     = search_form_for(@q, url:search_path) do |f|
       .form

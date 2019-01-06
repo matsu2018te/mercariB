@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   #products関連
   resources :products, except: [:new] do
     collection do
-      get 'search'
+      # get 'search'
       post 'completed_transaction'
     end
   end

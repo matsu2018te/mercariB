@@ -48,10 +48,16 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @product = Product.order(id: :DESC).includes(:images)
-    @product_result = @product.where('name LIKE ? ', "%#{params[:keyword]}%")
+    # binding.pry
+    @q        = Product.search(search_params)
+    @q        = Product.search(params[:q]) unless @q.present?
+    @products = Product.order(id: :DESC).includes(:images)
+    if params[:keyword].present?
+      @product_result = @products.where('name LIKE ? ', "%#{params[:keyword]}%")
+    else
+      @product_result = @q.result(distinct: true)
+    end
     @product_count = @product_result.length
-
 
     @parents       = Category.where(belongs:"parent")
     gon.children   = Category.where(belongs:"child")
@@ -59,11 +65,6 @@ class ProductsController < ApplicationController
 
     @size_groups = SizeGroup.all
     gon.sizes = Size.all
-
-    @q        = Product.search(search_params)
-    @q        = Product.search(params[:q]) unless @q.present?
-    @products = @q.result(distinct: true)
-    @all_products = Product.all unless @products.present?
   end
 
   def transaction

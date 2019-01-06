@@ -1,16 +1,5 @@
 = render 'home/header'
-/ .l-contener
-/   .mypage
-/     %section.pickup-container
-/       %section.items-box-container.clearfix
-/         - if @products.present?
-/           %h3.text-center
-/             検索結果 #{@products.length}件
-/           = render partial: 'products/items', locals: {products: @products}
-/         - else
-/           %h3.text-center
-/             検索結果 0件
-/           = render partial: 'products/items', locals: {products: @all_products}
+= render "home/search_form"
 .bread-crumbs
   .bread-crumbs_box
     - breadcrumb :search
@@ -42,8 +31,7 @@
       検索結果 0件
       .items-box-content_none
         該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
-        = render partial: '/home/products', locals: {products: @product}
+        = render partial: '/home/products', locals: {products: @products}
 
 = render partial: 'home/footer'
 = render 'home/exhibit_btn'
-= render "home/search_form"

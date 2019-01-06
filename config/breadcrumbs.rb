@@ -33,6 +33,6 @@ crumb :logout do #ログアウトのビュー完成後実装
 end
 
 crumb :search do
-  link "#{params[:keyword]}", search_products_path
+  link "#{params[:keyword]}", search_path
   parent :root
 end
