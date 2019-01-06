@@ -1,7 +1,8 @@
-= link_to sell_path, class: "sell-btn" do
-  %p.sell-text 出品
-  %i.fas.fa-camera
-
-= link_to price_recommend_path, class: "sell-btn" do
-  %p.sell-text らくちん査定
-  %i.fas.fa-camera
+- if user_signed_in?
+  = link_to sell_path, class: "sell-btn" do
+    %p.sell-text 出品
+    %i.fas.fa-camera
+- else
+  = link_to price_recommend_path, class: "sell-btn" do
+    %p.sell-text らくちん査定
+    %i.fas.fa-camera
