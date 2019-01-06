@@ -1,8 +1,9 @@
 $(function(){
   function append_child_option(results){
     var child_select = $(".child_select")
+    var check_boxes = $(".g_child_check_boxes")
     child_select.empty();
-    child_select.empty();
+    check_boxes.empty();
     child_select.append(`<option value="">---</option>`);
     results.forEach(function(result){
       child_select.append(`<option value="${result.id}">${result.name}</option>`)
