@@ -48,9 +48,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    # binding.pry
     @q        = Product.search(search_params)
-    @q        = Product.search(params[:q]) unless @q.present?
     @products = Product.order(id: :DESC).includes(:images)
     if params[:keyword].present?
       @product_result = @products.where('name LIKE ? ', "%#{params[:keyword]}%")

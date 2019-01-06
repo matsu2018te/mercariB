@@ -68,8 +68,10 @@ $(function(){
 
   $('#search_sort').change(function(){
     if ($(this).val() != ''){
-      url = window.location.href + "&q%5Bs%5D=" + $(this).val()
-      window.location.href = url
+      current_url = window.location.href
+      reg_url     = current_url.replace(/&q%5Bs%5D=(price|created_at)\+(asc|desc)/g, "").replace(/&keyword/g, "&q%5Bname_or_brand_name_or_category_name_cont%5D")
+      next_url = reg_url + "&q%5Bs%5D=" + $(this).val()
+      window.location.href = next_url
     }
   })
 });
