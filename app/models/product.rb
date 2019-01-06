@@ -15,11 +15,10 @@ class Product < ApplicationRecord
   def other_products
     other_products = Product.where(seller_id: self.seller_id)
   end
+
+  def self.search(search)
+    return "同様の商品は出品された事がありません。" unless search
+    Product.where(category_id: search[:category_id], brand_id: search[:brand_id], status: search[:status])
+  end
+
 end
-# = i.file_field :image, class: "upload-product-image hidden"
-
-# = f.fields_for :images do |i|
-#             = i.file_field :image, class: "upload-product-image"
-
-# = i.label :image,class: 'sell-dropbox-uploader_container' do
-# = i.file_field :image,class: "hidden"

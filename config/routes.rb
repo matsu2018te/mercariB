@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get 'transaction' => 'products#transaction'
   get 'items/:id' => 'products#item_show'
   post 'completed_transaction' => 'products#completed_transaction'
+  get 'price_recommend' => 'products#price_recommend'
+  get 'price_recommend_result' => 'products#price_recommend_result'
 
   scope '/mypage' do
     #クレジットカード
