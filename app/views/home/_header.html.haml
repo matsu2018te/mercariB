@@ -1,12 +1,16 @@
 %header.pc-header
   .pc-header-inner
     = link_to image_tag('logo.svg', alt:"mercari", class: 'l-left'), root_path
-    %form.pc-header-form.l-right
-      %input.input-default{name: "keyword",placeholder: "キーワードから探す", type: "search", value: ""}
-      %i.fas.fa-search
+
+    .pc-header-form.l-right
+      =form_tag(search_products_path,method: :get) do
+        %input.input-default{ type: "search", name: "keyword", placeholder: "キーワードから探す"}
+          %button.icon-search{type:"search"}
+            %i.fas.fa-search
+
     .pc-header-nav-box.clearfix
       %nav.list-left
-        / カテゴリー/ブランド
+
         %ul.pc-header-nav-l
           カテゴリーから探す
           %li

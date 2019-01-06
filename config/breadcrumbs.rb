@@ -31,3 +31,8 @@ crumb :logout do #ログアウトのビュー完成後実装
   link "ログアウト", mypage_logout_path
   parent :mypage
 end
+
+crumb :search do
+  link "#{params[:keyword]}", search_products_path
+  parent :root
+end
