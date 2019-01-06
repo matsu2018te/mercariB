@@ -65,5 +65,12 @@ $(function(){
     $('.min_price').val(min_price)
     $('.max_price').val(max_price)
   })
+
+  $('#search_sort').change(function(){
+    if ($(this).val() != ''){
+      url = window.location.href + "&q%5Bs%5D=" + $(this).val()
+      window.location.href = url
+    }
+  })
 });
 

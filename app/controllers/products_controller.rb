@@ -48,14 +48,15 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @parents = Category.where(belongs:"parent")
-    gon.children = Category.where(belongs:"child")
+    @parents       = Category.where(belongs:"parent")
+    gon.children   = Category.where(belongs:"child")
     gon.g_children = Category.where(belongs:"g_child")
 
     @size_groups = SizeGroup.all
     gon.sizes = Size.all
 
     @q        = Product.search(search_params)
+    # @q.sorts  = ['name asc', 'created_at desc'] if @q.sorts.empty?
     @q        = Product.search(params[:q]) unless @q.present?
     @products = @q.result(distinct: true)
     @all_products = Product.all unless @products.present?
@@ -128,6 +129,7 @@ class ProductsController < ApplicationController
 
   def search_params
     params.require(:q).permit(
+      :s,
       :name_or_brand_name_or_category_name_cont,
       {:category_id_in => []},
       :brand_name_cont,
