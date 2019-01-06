@@ -18,6 +18,14 @@ $(function(){
     })
   }
 
+  function append_size_check_boxes(results) {
+    var check_boxes = $(".size_check_boxes")
+    check_boxes.empty();
+    results.forEach(function(result){
+      check_boxes.append(`<div class="form__checkbox">\n<input type="checkbox" value="${result.id}" name="q[size_id_in][]" id="q_size_id_in_${result.id}">\n<label for="q_size_id_in_${result.id}">${result.size}</label>\n</div>`)
+    })
+  }
+
   $('.parent_select').change(function() {
     var parent_val = $(this).val();
     var parent_results = gon.children.filter(function(e){
@@ -32,7 +40,6 @@ $(function(){
     var parent_val = $('.parent_select').val();
     var child_val = $(this).val();
     var ancestry = `${parent_val}/${child_val}`
-    console.log(ancestry)
     var child_results = gon.g_children.filter(function(e){
       if (e.ancestry == ancestry){
         return e
@@ -40,5 +47,23 @@ $(function(){
     })
     append_g_child_check_boxes(child_results);
   });
+
+  $('.size_group_select').change(function() {
+    var size_group_val = $(this).val();
+    var size_group_results = gon.sizes.filter(function(e) {
+      if (e.size_group_id == size_group_val){
+        return e
+      }
+    });
+    append_size_check_boxes(size_group_results);
+  });
+
+  $('.price_select').change(function(){
+    var price_select_val = $(this).val().split(" ~ ");
+    var min_price = price_select_val[0]
+    var max_price = price_select_val[1]
+    $('.min_price').val(min_price)
+    $('.max_price').val(max_price)
+  })
 });
 
