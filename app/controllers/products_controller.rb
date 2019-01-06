@@ -48,6 +48,11 @@ class ProductsController < ApplicationController
   end
 
   def search
+    @product = Product.order(id: :DESC).includes(:images)
+    @product_result = @product.where('name LIKE ? ', "%#{params[:keyword]}%")
+    @product_count = @product_result.length
+
+
     @parents       = Category.where(belongs:"parent")
     gon.children   = Category.where(belongs:"child")
     gon.g_children = Category.where(belongs:"g_child")
@@ -56,7 +61,6 @@ class ProductsController < ApplicationController
     gon.sizes = Size.all
 
     @q        = Product.search(search_params)
-    # @q.sorts  = ['name asc', 'created_at desc'] if @q.sorts.empty?
     @q        = Product.search(params[:q]) unless @q.present?
     @products = @q.result(distinct: true)
     @all_products = Product.all unless @products.present?
