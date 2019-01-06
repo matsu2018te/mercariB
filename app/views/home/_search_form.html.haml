@@ -1,5 +1,5 @@
 .sidebar_wrapper
-  .sidebar
+  .sidebar.search-bar
     = search_form_for(@q, url:search_path) do |f|
       .form
         = f.label :name_or_brand_name_or_category_name_cont, "キーワードを追加する"
@@ -16,35 +16,55 @@
         = f.search_field :brand_name_cont, placeholder: "例）シャネル",autocomplete:"off", class: "form__input"
       .form
         = f.label :size_id_in, "サイズを指定する"
-        = f.collection_check_boxes :size_id_in, Size.where(id: 1..10), :id, :size
+        .check-box-wrap
+          = f.collection_check_boxes :size_id_in, Size.where(id: 1..10), :id, :size do |b|
+            .form__checkbox
+              = b.check_box
+              = b.label
       .form
         = f.label :price, "価格"
-        = f.search_field :price_gteq
+        .select-wrap
+          = f.select :category_id, {}, {prompt: "選択してください"}, { class: "form__select" }
+        = f.search_field :price_gteq, class: "form__input--half"
         〜
-        = f.search_field :price_lteq
+        = f.search_field :price_lteq, class: "form__input--half"
       .form
         = f.label :status_eq_any, "商品の状態"
-        = f.check_box :status_eq_any, {multiple: true}, "新品未使用", nil
-        新品未使用
-        = f.check_box :status_eq_any, {multiple: true}, "未使用に近い", nil
-        未使用に近い
-        = f.check_box :status_eq_any, {multiple: true}, "目立った傷や汚れなし", nil
-        目立った傷や汚れなし
-        = f.check_box :status_eq_any, {multiple: true}, "やや傷や汚れやあり", nil
-        やや傷や汚れやあり
-        = f.check_box :status_eq_any, {multiple: true}, "全体的に状態が悪い", nil
-        全体的に状態が悪い
+        %br
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "新品未使用", nil
+          新品未使用
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "未使用に近い", nil
+          未使用に近い
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "目立った傷や汚れなし", nil
+          目立った傷や汚れなし
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "やや傷や汚れやあり", nil
+          やや傷や汚れやあり
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "全体的に状態が悪い", nil
+          全体的に状態が悪い
       .form
         = f.label :delivery_fee_owner_eq_any, "配送料の負担"
-        = f.check_box :delivery_fee_owner_eq_any, {multiple: true}, "着払い(購入者負担)", nil
-        着払い(購入者負担)
-        = f.check_box :delivery_fee_owner_eq_any, {multiple: true}, "送料込み(出品者負担)", nil
-        送料込み(出品者負担)
+        %br
+        .form__checkbox
+          = f.check_box :delivery_fee_owner_eq_any, {multiple: true}, "着払い(購入者負担)", nil
+          着払い(購入者負担)
+        .form__checkbox
+          = f.check_box :delivery_fee_owner_eq_any, {multiple: true}, "送料込み(出品者負担)", nil
+          送料込み(出品者負担)
       .form
         = f.label :buyer_id, "販売状況"
-        = f.check_box :buyer_id_null, as: :boolean, include_hidden: false
-        販売中
-        = f.check_box :buyer_id_not_null, as: :boolean, include_hidden: false
-        売り切れ
-      = f.submit
-
+        %br
+        .form__checkbox
+          = f.check_box :buyer_id_null, as: :boolean, include_hidden: false
+          販売中
+        .form__checkbox
+          = f.check_box :buyer_id_not_null, as: :boolean, include_hidden: false
+          売り切れ
+      .actions
+        .btn__clear
+          クリア
+        = f.submit "完了", class: 'btn__half btn__red'

@@ -13,7 +13,7 @@ $(function(){
     var check_boxes = $(".g_child_check_boxes")
     check_boxes.empty();
     results.forEach(function(result){
-      check_boxes.append(`<input type="checkbox" value="${result.id}" name="q[category_id_in][]" id="q_category_id_in_${result.id}">\n<label for="q_category_id_in_${result.id}">${result.name}</label>`)
+      check_boxes.append(`<div  class="form__checkbox">\n\t<input type="checkbox" value="${result.id}" name="q[category_id_in][]" id="q_category_id_in_${result.id}">\n\t<label for="q_category_id_in_${result.id}">${result.name}</label>\n</div>`)
     })
   }
 
