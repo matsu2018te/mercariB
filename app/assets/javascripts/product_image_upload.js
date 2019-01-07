@@ -18,16 +18,16 @@ $(function() {
     upload_image.append(html);
   }
 
-  function SetLabelNum(next_label_id) {
-    if (document.getElementById(next_label_id) != null || next_label_id > 4){
-      for (var i = 1; i < 4; i++) {
-        if(document.getElementById(i)== null){
-          return i;
-          break;
-        }
-      }
-    }
-  }
+  // function SetLabelNum(next_label_id) {
+  //   if (document.getElementById(next_label_id) != null || next_label_id > 4){
+  //     for (var i = 1; i < 4; i++) {
+  //       if(document.getElementById(i)== null){
+  //         return i;
+  //         break;
+  //       }
+  //     }
+  //   }
+  // }
 
   // 削除機能
   $(document).on("click",".sell-image_delete",function(e) {
@@ -56,18 +56,20 @@ function ImageCount() {
 
 // ドラッグオーバー定義
   var target = document.getElementById('drop');
-  target.addEventListener('dragover', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.dataTransfer.dropEffect = 'copy';
-  });
+  if (target != null) {
+    target.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.dataTransfer.dropEffect = 'copy';
+    });
 
-// ドラッグアンドドロップ保存
-  target.addEventListener('drop', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    document.getElementById('product_images_attributes_0_image'+ i_count).files = e.dataTransfer.files;
-  });
+  // ドラッグアンドドロップ保存
+    target.addEventListener('drop', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      document.getElementById('product_images_attributes_0_image'+ i_count).files = e.dataTransfer.files;
+    });
+  }
 
 // プレヴュー
   $('.product_images').on("change",function(e) {
@@ -82,4 +84,5 @@ function ImageCount() {
     }
     ImageCount()
   });
+
 });
