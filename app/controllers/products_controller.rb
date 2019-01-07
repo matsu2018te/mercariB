@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
       params[:image].each do |i|
         @product.images.create(product_id: @product.id, image: i)
       end
-      redirect_to sell_path
+      redirect_to root_path
     else
       render action: :new
     end
