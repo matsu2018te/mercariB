@@ -32,9 +32,10 @@
     %tr
       %th ブランド
       %td
-        =link_to do
-          %p
-            = product.brand.name
+        -if product.brand
+          =link_to do
+            %p
+              = product.brand.name
     %tr
       %th 商品の状態
       %td

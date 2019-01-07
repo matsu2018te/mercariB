@@ -20,8 +20,9 @@
 
   %section.items-box-container.clearfix.in-category
     %h2.item-box-head
-      =link_to "",class: 'user-link' do
-        %p #{brand.name}の#{category.name} その他の商品
+      - if brand
+        =link_to "",class: 'user-link' do
+          %p #{brand.name}の#{category.name} その他の商品
     - if related_items.empty?
       %p.no-item 関連する商品はございません。
     - else
