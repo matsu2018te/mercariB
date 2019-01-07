@@ -1,0 +1,16 @@
+.l-single-head-result{
+  font-weight: bold;
+  text-align: center;
+  font-size:22px;
+  width:100%;
+  margin-top: 40px;
+}
+.price_reccomend_result{
+  text-align: center;
+  margin-top: 24px;
+  &-output{
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+}
