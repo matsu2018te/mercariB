@@ -22,6 +22,21 @@ main.white {
   background-color: $Lightgray;
 }
 
+.top-main-visual {
+  width: 100%;
+  object-fit: cover;
+}
+
+i.like.font-2::before{
+  font-family: "Font Awesome 5 Free";
+  content: '\f004';
+  color: $Gray;
+  display: inline-block;
+  padding-right: 5px;
+  float: right;
+  font-size: 18px;
+}
+
 .pickup-container {
   height: 1911px;
   width: 100%;
@@ -32,13 +47,12 @@ main.white {
     width: 100%;
     text-align: center;
     margin: 0;
-    color: #0099e8;
     font-size: 28px;
     font-style: bold;
   }
   .items-box-container {
     height: 442px;
-    width: 70%;
+    width: 60%;
     background-color: $Lightgray;
     margin: 0 auto;
     box-sizing: border-box;
@@ -74,6 +88,10 @@ main.white {
             box-sizing: border-box;
             text-align: center;
             margin: auto;
+            .items-box-photo-photo {
+              height: 100vh;
+              object-fit: cover;
+            }
           }
 
           .items-box-body {

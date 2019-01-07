@@ -36,7 +36,12 @@ Rails.application.routes.draw do
   get 'mypage/todo' => 'users#todo'
 
   #products関連
-  resources :products, except: [:new]
+  resources :products, except: [:new] do
+    collection do
+      get 'search'
+      post 'completed_transaction'
+    end
+  end
   get 'mypage/purchase' => 'products#purchase'
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
