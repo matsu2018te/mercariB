@@ -3,7 +3,11 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE images;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE products;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE brands;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE categories;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE sell_statuses;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE sizes;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE size_groups;")
 ActiveRecord::Base.connection.execute("SET FOREIGN_KEY_CHECKS=1;")
+# userとaddressとCredit以外のテーブルをリセット
 
 require "csv"
 
@@ -35,8 +39,12 @@ children.each do |child|
   child_count += 1
 end
 
+CSV.foreach('db/size_group.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
+  SizeGroup.create(group: row[0])
+end
+
 CSV.foreach('db/size.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
-  Size.create(size: row[0])
+  Size.create(size: row[0], size_group_id: row[1])
 end
 
 # ユーザーの作成
