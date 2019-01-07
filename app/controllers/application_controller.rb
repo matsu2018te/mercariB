@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production?
+  before_action :search_variable
 
   private
 
@@ -20,5 +21,9 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_basic do |username, password|
       username == 'admin' && password == '2222'
     end
+  end
+
+  def search_variable
+    @q = Product.search(params[:name_or_brand_name_or_category_name_cont])
   end
 end

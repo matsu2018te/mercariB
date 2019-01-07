@@ -50,11 +50,7 @@ class ProductsController < ApplicationController
   def search
     @q        = Product.search(search_params)
     @products = Product.order(id: :DESC).includes(:images)
-    if params[:keyword].present?
-      @product_result = @products.where('name LIKE ? ', "%#{params[:keyword]}%")
-    else
-      @product_result = @q.result(distinct: true)
-    end
+    @product_result = @q.result(distinct: true)
     @product_count = @product_result.length
 
     @parents       = Category.where(belongs:"parent")
