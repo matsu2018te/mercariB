@@ -48,9 +48,18 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @product = Product.order(id: :DESC).includes(:images)
-    @product_result = @product.where('name LIKE ? ', "%#{params[:keyword]}%")
-    @product_count = @product_result.length
+    @search_data    = Product.ransack(search_params)
+    @keyword        = search_params[:info_or_name_or_brand_name_or_category_name_cont_all]
+    @products       = Product.order(id: :DESC).includes(:images)
+    @product_result = @search_data.result(distinct: true)
+    @product_count  = @product_result.length
+
+    @parents        = Category.where(belongs:"parent")
+    gon.children    = Category.where(belongs:"child")
+    gon.g_children  = Category.where(belongs:"g_child")
+
+    @size_groups = SizeGroup.all
+    gon.sizes = Size.all
   end
 
   def transaction
@@ -128,6 +137,22 @@ class ProductsController < ApplicationController
 
   def product_info
     @product = Product.find(params[:id])
+  end
+
+  def search_params
+    params.require(:q).permit(
+      :s,
+      :info_or_name_or_brand_name_or_category_name_cont_all,
+      {:category_id_in => []},
+      :brand_name_cont_all,
+      {:size_id_in => []},
+      :price_gteq,
+      :price_lteq,
+      {:status_eq_any => []},
+      {:delivery_fee_owner_eq_any => []},
+      :buyer_id_null,
+      :buyer_id_not_null
+      ) unless params[:q].blank?
   end
 
   def recommend_params

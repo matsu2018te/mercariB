@@ -98,8 +98,16 @@ ActiveRecord::Schema.define(version: 20190106054203) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "size_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "group",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "size", null: false
+    t.string  "size",          null: false
+    t.integer "size_group_id"
+    t.index ["size_group_id"], name: "index_sizes_on_size_group_id", using: :btree
   end
 
   create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -143,5 +151,6 @@ ActiveRecord::Schema.define(version: 20190106054203) do
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "users", column: "buyer_id"
   add_foreign_key "products", "users", column: "seller_id"
+  add_foreign_key "sizes", "size_groups"
   add_foreign_key "sns_credentials", "users"
 end

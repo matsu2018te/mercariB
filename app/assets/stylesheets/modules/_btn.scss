@@ -5,6 +5,16 @@
   margin: 16px 0 0;
   text-align: center;
   width: 100%;
+  &__half {
+    @extend .btn;
+    float: right;
+    width:45%;
+  }
+  &__clear {
+    @extend .btn__half;
+    background-color:$Gray;
+    float: left;
+  }
   &__blue {
     background-color:$ButtonBlue;
   }
