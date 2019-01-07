@@ -4,8 +4,8 @@
   .sidebar.search-bar
     = search_form_for(@q, url:search_path) do |f|
       .form
-        = f.label :info_or_name_or_brand_name_or_category_name_cont, "キーワードを追加する"
-        = f.search_field :info_or_name_or_brand_name_or_category_name_cont, placeholder: "値下げ", class: "form__input"
+        = f.label :info_or_name_or_brand_name_or_category_name_cont_all, "キーワードを追加する"
+        = f.search_field :info_or_name_or_brand_name_or_category_name_cont_all, placeholder: "値下げ", class: "form__input"
       .form
         = f.label :category_id_in, "カテゴリーを選択する"
         .select-wrap
@@ -14,8 +14,8 @@
           = f.select :category_id, {}, {prompt: "---"}, { class: "form__select child_select" }
         .check-box-wrap.g_child_check_boxes
       .form
-        = f.label :brand_name_cont, "ブランド名から探す"
-        = f.search_field :brand_name_cont, placeholder: "例）シャネル",autocomplete:"off", class: "form__input"
+        = f.label :brand_name_cont_all, "ブランド名から探す"
+        = f.search_field :brand_name_cont_all, placeholder: "例）シャネル",autocomplete:"off", class: "form__input"
       .form
         = f.label :size_id_in, "サイズを指定する"
         .select-wrap

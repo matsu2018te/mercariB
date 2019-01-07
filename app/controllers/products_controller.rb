@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
 
   def search
     @q        = Product.search(search_params)
-    @keyword  = search_params[:info_or_name_or_brand_name_or_category_name_cont]
+    @keyword  = search_params[:info_or_name_or_brand_name_or_category_name_cont_all]
     @products = Product.order(id: :DESC).includes(:images)
     @product_result = @q.result(distinct: true)
     @product_count = @product_result.length
@@ -130,9 +130,9 @@ class ProductsController < ApplicationController
   def search_params
     params.require(:q).permit(
       :s,
-      :info_or_name_or_brand_name_or_category_name_cont,
+      :info_or_name_or_brand_name_or_category_name_cont_all,
       {:category_id_in => []},
-      :brand_name_cont,
+      :brand_name_cont_all,
       {:size_id_in => []},
       :price_gteq,
       :price_lteq,
