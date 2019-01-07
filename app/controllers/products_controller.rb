@@ -93,7 +93,7 @@ class ProductsController < ApplicationController
   def price_recommend_result
     @product = PriceRecommend.new(recommend_params)
     @same_product = Product.search(recommend_params)
-    @same_product_price = @same_product.average(:price).floor.to_s(:delimited)
+    @same_product_price = @same_product.average(:price).floor.to_s(:delimited) if @same_product.present?
   end
 
 
