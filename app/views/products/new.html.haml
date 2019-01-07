@@ -26,11 +26,11 @@
                     または
                     %br クリックして
                     ファイルをアップロード
-                    %i.fas.fa-camera 🐢
-                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image1", name: "[image][]"
-                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image2", name: "[image][]"
-                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image3", name: "[image][]"
-                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image4", name: "[image][]"
+                    %i.fas.fa-camera
+                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image1", name: "[image][]",multiple: true
+                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image2", name: "[image][]",multiple: true
+                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image3", name: "[image][]",multiple: true
+                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image4", name: "[image][]",multiple: true
 
         / 商品名・説明 ▼
         .sell-contents
