@@ -40,12 +40,19 @@ class ProductsController < ApplicationController
     if @product.brand
       @product.brand = Brand.find_or_create_by(name: @product.brand.name)
     end
-    if @product.save
-      params[:image].each do |i|
-        @product.images.create(product_id: @product.id, image: i)
+    if params[:image]
+      if @product.save
+        params[:image].each do |i|
+          @product.images.create(product_id: @product.id, image: i)
+        end
+        redirect_to root_path
+      else
+        @product.images.build
+        render action: :new
       end
-      redirect_to root_path
     else
+      @product.images.build
+      flash.now[:alert] = "画像を設定してください"
       render action: :new
     end
   end
