@@ -8,6 +8,7 @@ FactoryGirl.define do
     price                    "500"
     status                   "出品中"
     delivery_fee_owner       "送料込み（出品者負担）"
+    prefecture               1
     delivery_date            "2017-04-25 21:01:27 +0900"
     shipping_method          "らくらくメルカリ便"
     category_id              "160"
@@ -18,6 +19,8 @@ FactoryGirl.define do
     brand
     sell_status
     size
+    association :seller, factory: :user
   end
+
 
 end
