@@ -1,9 +1,9 @@
 = render 'home/header'
-= render "home/search_form"
 .bread-crumbs
   .bread-crumbs_box
     - breadcrumb :search
     = breadcrumbs separator: " &rsaquo; "
+= render "home/search_form"
 
 %section.items-box-container-search.clearfix
   - if @product_result.present?

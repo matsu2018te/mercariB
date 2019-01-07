@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @q        = Product.search(search_params)
+    @q        = Product.ransack(search_params)
     @keyword  = search_params[:info_or_name_or_brand_name_or_category_name_cont_all]
     @products = Product.order(id: :DESC).includes(:images)
     @product_result = @q.result(distinct: true)
