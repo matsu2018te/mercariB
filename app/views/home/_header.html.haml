@@ -3,7 +3,7 @@
     = link_to image_tag('logo.svg', alt:"mercari", class: 'l-left'), root_path
 
     .pc-header-form.l-right
-      = search_form_for(@q, url:search_path) do |f|
+      = search_form_for(@search_data, url:search_path) do |f|
         = f.search_field :info_or_name_or_brand_name_or_category_name_cont_all, placeholder: "キーワードから探す", class: "input-default"
         %button.icon-search{type:"submit"}
           %i.fas.fa-search

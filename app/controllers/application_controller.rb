@@ -24,6 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def search_variable
-    @q = Product.ransack(params[:info_name_or_brand_name_or_category_name_cont_all])
+    @search_data = Product.ransack(params[:info_name_or_brand_name_or_category_name_cont_all])
   end
 end
