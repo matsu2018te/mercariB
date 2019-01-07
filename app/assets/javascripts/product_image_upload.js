@@ -23,6 +23,7 @@ $(function() {
       for (var i = 1; i < 4; i++) {
         if(document.getElementById(i)== null){
           return i;
+          break;
         }
       }
     }
@@ -31,15 +32,9 @@ $(function() {
   // 削除機能
   $(document).on("click",".sell-image_delete",function(e) {
     var input_num = $(this).attr('id');
-    console.log(input_num);
     $(this).parent().remove();
-    if (input_num == 1){
-    document.getElementById('product_images_attributes_0_image').value = null
-    }
-    else{
-      document.getElementById('product_images_attributes_0_image'+input_num).value = null
-    }
-    $("label.sell-dropbox-uploader_container").attr('for','product_images_attributes_0_image'+ SetLabelNum(input_num));
+    document.getElementById('product_images_attributes_0_image'+input_num).value = null
+    $("label.sell-dropbox-uploader_container").attr('for','product_images_attributes_0_image'+ input_num);
     $('.sell-dropbox-uploader').removeClass('hidden');
     $('ul.sell-dropbox-items').css('border-right','thin dashed $gray');
     i_count -= 1;
@@ -71,30 +66,20 @@ function ImageCount() {
   target.addEventListener('drop', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      e.target.result
-    }
-    if (i_count == 1){
-      document.getElementById('product_images_attributes_0_image').files = e.dataTransfer.files;
-    }
-    else {
-      document.getElementById('product_images_attributes_0_image'+ i_count).files = e.dataTransfer.files;
-    }
-    reader.readAsDataURL(e.dataTransfer.files[0]);
-    ImageCount();
+    document.getElementById('product_images_attributes_0_image'+ i_count).files = e.dataTransfer.files;
   });
 
 // プレヴュー
   $('.product_images').on("change",function(e) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      appendImage(e.target.result,i_count);
+    for(var i = 0; i < this.files.length; i++){
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        appendImage(e.target.result,i_count);
+      }
+      reader.readAsDataURL(this.files[i]);
+      i_count += 1;
+      $("label.sell-dropbox-uploader_container").attr('for','product_images_attributes_0_image'+ i_count);
     }
-    reader.readAsDataURL(this.files[0]);
-    i_count += 1;
-    $("label.sell-dropbox-uploader_container").attr('for','product_images_attributes_0_image'+ i_count);
-
     ImageCount()
   });
 
