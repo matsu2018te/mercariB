@@ -30,26 +30,42 @@ Rails.application.routes.draw do
   get 'mypage' => 'users#show'
   patch 'mypage' => 'users#update'
   get 'mypage/profile' => 'users#edit'
+  patch 'mypage/profile' => 'users#profile_update'
   get 'mypage/identification' => 'users#set_user'
   get 'mypage/notification' => 'users#notification'
   get 'mypage/todo' => 'users#todo'
 
   #products関連
-  resources :products, except: [:new]
+  resources :products, except: [:new] do
+    collection do
+      # get 'search'
+      post 'completed_transaction'
+    end
+  end
   get 'mypage/purchase' => 'products#purchase'
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
   post 'sell' => 'products#create'
+  match 'search' => 'products#search', via: [:get, :post], as: :search
   get 'brand/index' => 'brands#index'
   get 'transaction' => 'products#transaction'
   get 'items/:id' => 'products#item_show'
   post 'completed_transaction' => 'products#completed_transaction'
+  get 'price_recommend' => 'products#price_recommend'
+  get 'price_recommend_result' => 'products#price_recommend_result'
 
   scope '/mypage' do
     #クレジットカード
     resources "credits", :path => 'card', only: [:index, :destroy]
     get 'card/create' => 'credits#new'
     post 'card' => 'credits#create'
+
+    #ユーザー出品商品一覧
+    scope '/listings' do
+      get 'listing' => 'products#listing'
+      get 'in_progress' => 'products#in_progress'
+      get 'completed' => 'products#completed'
+    end
   end
 
 end

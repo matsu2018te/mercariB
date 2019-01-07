@@ -5,13 +5,9 @@ class Credit < ApplicationRecord
   VALID_CARDNUM_REGEX = /\A\d{14,16}\z/
   VALID_SECURITYCODE_REGEX = /\A\d{3,4}\z/
 
-  time = Time.new
-  min_year = time.year.to_s[2,2].to_i
-  max_year = min_year + 10
-
   # バリデーション
   validates :expiration_month, presence: true, :numericality => { only_integer: true, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 12 }
-  validates :expiration_year, presence: true, numericality: { only_integer: true, :greater_than_or_equal_to => min_year, :less_than_or_equal_to => max_year }
+  validates :expiration_year, presence: true, numericality: { only_integer: true }
   validates :card_number, presence: true, uniqueness: true, format: { with: VALID_CARDNUM_REGEX }
   validates :security_code, presence: true, uniqueness: true, format: { with: VALID_SECURITYCODE_REGEX }
 

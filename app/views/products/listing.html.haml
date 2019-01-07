@@ -1,0 +1,24 @@
+= render 'home/header'
+.l-contener
+  .mypage
+    .mypage_contents
+      .mypage__content-box
+        .mypage__content-head
+          %h3.mypage__content-label 出品した商品
+        .mypage__tabs-bottom
+          =link_to listing_path,class: "mypage__tabs-listing-list" do
+            .tab-active
+              .mypage__tabs-text 出品中
+          =link_to in_progress_path,class: "mypage__tabs-listing-list" do
+            .mypage__tabs-text 取引中
+          =link_to completed_path,class: "mypage__tabs-listing-list" do
+            .mypage__tabs-text 売却済み
+        - if @products.present?
+          = render partial: 'mypages/items', locals: {products: @products}
+        -else
+          .mypage__no-item
+            .mypage__no-item-icon
+            .mypage__no-item-text 出品中の商品はありません
+  = render 'mypages/side_bar'
+= render 'home/footer'
+= render "home/exhibit_btn"

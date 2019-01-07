@@ -1,8 +1,6 @@
 FactoryGirl.define do
-
   factory :image do
-    id                1
-    image            "hoge.jpg"
+    product_id              1
+    image                   "test.jpg"
   end
-
 end

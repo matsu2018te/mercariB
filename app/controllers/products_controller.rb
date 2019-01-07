@@ -57,6 +57,21 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @search_data    = Product.ransack(search_params)
+    @keyword        = search_params[:info_or_name_or_brand_name_or_category_name_cont_all]
+    @products       = Product.order(id: :DESC).includes(:images)
+    @product_result = @search_data.result(distinct: true)
+    @product_count  = @product_result.length
+
+    @parents        = Category.where(belongs:"parent")
+    gon.children    = Category.where(belongs:"child")
+    gon.g_children  = Category.where(belongs:"g_child")
+
+    @size_groups = SizeGroup.all
+    gon.sizes = Size.all
+  end
+
   def transaction
     @product = Product.find(params[:format])
   end
@@ -73,14 +88,45 @@ class ProductsController < ApplicationController
         card:    params['payjp-token'],
         currency: 'jpy',
       )
-      @product.update!(buyer_id: current_user.id)
+      @product.update!(buyer_id: current_user.id,sell_status_id: 2)
     end
   end
+
+  #ユーザー出品商品一覧
+  def listing
+    @products = Product.where(seller_id: current_user.id, buyer_id: nil)
+  end
+
+  def in_progress
+    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
+  end
+
+  def completed
+    @products = Product.where(seller_id: current_user.id).where.not(buyer_id: nil)
+  end
+
+  #ユーザー購入済み商品一覧
+  def purchased
+    @product = Product.where(buyer_id: current_user.id, sell_status_id: 2)
+  end
+
+  # 商品価格査定
+  def price_recommend
+    @product = PriceRecommend.new
+  end
+
+  def price_recommend_result
+    @product = PriceRecommend.new(recommend_params)
+    @same_product = Product.search(recommend_params)
+    @same_product_price = @same_product.average(:price).floor.to_s(:delimited) if @same_product.present?
+  end
+
 
   private
   def product_new
     @product = Product.new
   end
+
 
   def product_params
     params.require(:product).permit(
@@ -101,5 +147,28 @@ class ProductsController < ApplicationController
 
   def product_info
     @product = Product.find(params[:id])
+  end
+
+  def search_params
+    params.require(:q).permit(
+      :s,
+      :info_or_name_or_brand_name_or_category_name_cont_all,
+      {:category_id_in => []},
+      :brand_name_cont_all,
+      {:size_id_in => []},
+      :price_gteq,
+      :price_lteq,
+      {:status_eq_any => []},
+      {:delivery_fee_owner_eq_any => []},
+      :buyer_id_null,
+      :buyer_id_not_null
+      ) unless params[:q].blank?
+  end
+
+  def recommend_params
+    params.require(:price_recommend).permit(
+      :category_id,
+      :brand_id,
+      :status)
   end
 end

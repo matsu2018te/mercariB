@@ -108,3 +108,5 @@ gem 'fog-aws'
 # js-rails連携
 gem 'gon'
 
+#詳細検索
+gem 'ransack'
