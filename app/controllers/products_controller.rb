@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :product_new, only:[:new]
   before_action :product_info, only: [:show, :item_show, :destroy]
+  before_action :move_to_login,only:[:new,:destroy]
 
   def new
     @product.images.build
@@ -170,5 +171,9 @@ class ProductsController < ApplicationController
       :category_id,
       :brand_id,
       :status)
+  end
+
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
