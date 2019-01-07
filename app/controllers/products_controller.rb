@@ -100,6 +100,18 @@ class ProductsController < ApplicationController
     @product = Product.where(buyer_id: current_user.id, sell_status_id: 2)
   end
 
+  # 商品価格査定
+  def price_recommend
+    @product = PriceRecommend.new
+  end
+
+  def price_recommend_result
+    @product = PriceRecommend.new(recommend_params)
+    @same_product = Product.search(recommend_params)
+    @same_product_price = @same_product.average(:price).floor.to_s(:delimited) if @same_product.present?
+  end
+
+
   private
   def product_new
     @product = Product.new
@@ -141,5 +153,12 @@ class ProductsController < ApplicationController
       :buyer_id_null,
       :buyer_id_not_null
       ) unless params[:q].blank?
+  end
+
+  def recommend_params
+    params.require(:price_recommend).permit(
+      :category_id,
+      :brand_id,
+      :status)
   end
 end

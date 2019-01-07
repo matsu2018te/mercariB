@@ -1,0 +1,69 @@
+.single-container
+  %header.single-header
+    %h1
+      = link_to root_path do
+        = image_tag("logo.svg", alt:"mercari")
+
+  .l-contener
+    .signup-panel__inner
+      = form_for(@product, url: price_recommend_result_path, html: {method: :get}) do |f|
+        .sell-contents
+          .price_reccomend_result
+            %p 査定結果は・・・
+            - if @same_product_price.present?
+              %p.price_reccomend_result-output
+                ¥ #{@same_product_price} です。
+            - else
+              申し訳ございません。同様の商品が出品された事はございません。
+            = link_to sell_path do
+              %p.btn.btn__red 出品する
+          %h2.l-single-head-result 商品の情報を入力
+
+        / 商品詳細 ▼
+        .sell-contents
+          %h3.sell-contents-label 商品の詳細
+          / カテゴリー ▼
+          .sell-form-box
+            .form-group
+              = f.label :category_id,class: "sell-form-select" do
+                %h4.sell-form-sub_title
+                  カテゴリー
+                  %span.form-require.sell 必須
+                .select-wrap
+                  = f.collection_select :category_id, Category.where(belongs: "parent"), :id, :name, prompt: "---"
+                .select-wrap
+                  = f.collection_select :category_id, Category.where(belongs: "child"), :id, :name, prompt: "---"
+                .select-wrap
+                  = f.collection_select :category_id, Category.where(belongs: "g_child"), :id, :name, prompt: "---"
+          / ブランド ▼
+          .sell-form-box
+            .form-group
+              = f.label :brand_id,class: "sell-form-select" do
+                %h4.sell-form-sub_title
+                  ブランド
+                  %span.form-require.sell 必須
+                .select-wrap
+                  = f.collection_select :brand_id, Brand.all, :id, :name, prompt: "---"
+          / 商品状態 ▼
+          .sell-form-box
+            .form-group
+              = f.label :status, class: "sell-form-select" do
+                %h4.sell-form-sub_title
+                  商品の状態
+                  %span.form-require.sell 必須
+                .select-wrap
+                  = f.select :status, ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れやあり","傷や汚れや汚れあり","全体的に状態が悪い"], prompt: "---"
+
+        .sell-contents
+          %p.sell-contents__caution
+            らくちん査定とは・・・
+            %br
+            あなたが出品を検討している商品と同様のカテゴリー・ブランドの商品がメルカリ内にて出品されている場合、いくらで取引されているかの平均価格を査定いたします。
+            %br
+            (*あくまでも参考としての査定価格となります。)
+          .sell-contents__caution-space
+          = f.submit "もう一度査定する", class: "btn btn__red"
+          = link_to root_path do
+            %p.btn.btn__gray 戻る
+
+  = render "devise/shared/footer"
