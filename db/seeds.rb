@@ -2,41 +2,42 @@ ActiveRecord::Base.connection.execute("SET FOREIGN_KEY_CHECKS=0;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE images;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE products;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE brands;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE categories;")
 ActiveRecord::Base.connection.execute("SET FOREIGN_KEY_CHECKS=1;")
 
-# require "csv"
+require "csv"
 
-# parents =[]
-# children =[]
-# CSV.foreach('db/category_parent.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#   parent = Category.create(name: row[0],belongs: "parent")
-#   parents << parent
-# end
+parents =[]
+children =[]
+CSV.foreach('db/category_parent.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+  parent = Category.create(name: row[0],belongs: "parent")
+  parents << parent
+end
 
-# parent_count = 0
-# parents.each do |parents|
-#   CSV.foreach('db/category_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#     if row[parent_count]
-#       child = parents.children.create(name: row[parent_count],belongs: "child")
-#       children << child
-#     end
-#   end
-#   parent_count += 1
-# end
+parent_count = 0
+parents.each do |parents|
+  CSV.foreach('db/category_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+    if row[parent_count]
+      child = parents.children.create(name: row[parent_count],belongs: "child")
+      children << child
+    end
+  end
+  parent_count += 1
+end
 
-# child_count = 0
-# children.each do |child|
-#   CSV.foreach('db/category_g_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
-#     if row[child_count]
-#       child.children.create(name: row[child_count],belongs: "g_child")
-#     end
-#   end
-#   child_count += 1
-# end
+child_count = 0
+children.each do |child|
+  CSV.foreach('db/category_g_child.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+    if row[child_count]
+      child.children.create(name: row[child_count],belongs: "g_child")
+    end
+  end
+  child_count += 1
+end
 
-# CSV.foreach('db/size.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
-#   Size.create(size: row[0])
-# end
+CSV.foreach('db/size.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
+  Size.create(size: row[0])
+end
 
 # # ユーザーの作成
 # User.create(nickname: "test1", telephone: "08011112222", email: "test@gmail.com", password: "test1test1", birth_year: 1991, birth_month: 1, birth_day: 1)
