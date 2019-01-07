@@ -19,7 +19,6 @@ class ProductsController < ApplicationController
     else @product.brand_id.present? || @product.category_id.present?
       @related_items = Product.where("brand_id = ? or category_id = ?", @product.brand_id, @product.category_id)
     end
-    # binding.pry
   end
 
   def destroy
@@ -41,9 +40,11 @@ class ProductsController < ApplicationController
     if @product.brand
       @product.brand = Brand.find_or_create_by(name: @product.brand.name)
     end
-
     if @product.save
-      redirect_to root_path
+      params[:image].each do |i|
+        @product.images.create(product_id: @product.id, image: i)
+      end
+      redirect_to sell_path
     else
       render action: :new
     end
@@ -86,8 +87,8 @@ class ProductsController < ApplicationController
       :shipping_method,
       :delivery_date,
       :prefecture,
-      images_attributes: [:id,:image,:image2,:image3,:image4,:_destroy],
-      brand_attributes: [:name]
+      images_attributes: [:id,:product_id,:image,:_destroy],
+      brand_attributes: [:id,:name]
     ).merge(seller_id: current_user.id,sell_status_id: 1)
   end
 
