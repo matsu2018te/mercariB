@@ -1,0 +1,70 @@
+.sidebar_wrapper
+  .select-wrap
+    = select :search, :sort, [["価格の安い順", "price+asc"], ["価格の高い順", "price+desc"], ["出品の古い順", "created_at+asc"], ["出品の新しい順", "created_at+desc"]], {prompt: "並び替え"}, { class: "form__select" }
+  .sidebar.search-bar
+    = search_form_for(@search_data, url:search_path) do |f|
+      .form
+        = f.label :info_or_name_or_brand_name_or_category_name_cont_all, "キーワードを追加する"
+        = f.search_field :info_or_name_or_brand_name_or_category_name_cont_all, placeholder: "値下げ", class: "form__input"
+      .form
+        = f.label :category_id_in, "カテゴリーを選択する"
+        .select-wrap
+          = f.collection_select :category_id, @parents, :id, :name, {prompt: "---"}, { class: "form__select parent_select" }
+        .select-wrap
+          = f.select :category_id, {}, {prompt: "---"}, { class: "form__select child_select" }
+        .check-box-wrap.g_child_check_boxes
+      .form
+        = f.label :brand_name_cont_all, "ブランド名から探す"
+        = f.search_field :brand_name_cont_all, placeholder: "例）シャネル",autocomplete:"off", class: "form__input"
+      .form
+        = f.label :size_id_in, "サイズを指定する"
+        .select-wrap
+          = f.collection_select :size_id, @size_groups, :id, :group, {prompt: "---"}, { class: "form__select size_group_select" }
+        .check-box-wrap.size_check_boxes
+      .form
+        = f.label :price, "価格"
+        .select-wrap
+          = f.select :price, ["300 ~ 1000", "1000 ~ 5000", "5000 ~ 10000", "10000 ~ 30000", "10000 ~ 30000", "50000 ~ "], {prompt: "選択してください"}, { class: "form__select price_select" }
+        = f.search_field :price_gteq, class: "form__input--half min_price"
+        〜
+        = f.search_field :price_lteq, class: "form__input--half max_price"
+      .form
+        = f.label :status_eq_any, "商品の状態"
+        %br
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "新品未使用", nil
+          新品未使用
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "未使用に近い", nil
+          未使用に近い
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "目立った傷や汚れなし", nil
+          目立った傷や汚れなし
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "やや傷や汚れやあり", nil
+          やや傷や汚れやあり
+        .form__checkbox
+          = f.check_box :status_eq_any, {multiple: true}, "全体的に状態が悪い", nil
+          全体的に状態が悪い
+      .form
+        = f.label :delivery_fee_owner_eq_any, "配送料の負担"
+        %br
+        .form__checkbox
+          = f.check_box :delivery_fee_owner_eq_any, {multiple: true}, "着払い(購入者負担)", nil
+          着払い(購入者負担)
+        .form__checkbox
+          = f.check_box :delivery_fee_owner_eq_any, {multiple: true}, "送料込み(出品者負担)", nil
+          送料込み(出品者負担)
+      .form
+        = f.label :buyer_id, "販売状況"
+        %br
+        .form__checkbox
+          = f.check_box :buyer_id_null, as: :boolean, include_hidden: false
+          販売中
+        .form__checkbox
+          = f.check_box :buyer_id_not_null, as: :boolean, include_hidden: false
+          売り切れ
+      .actions
+        .btn__clear
+          クリア
+        = f.submit "完了", class: 'btn__half btn__red'

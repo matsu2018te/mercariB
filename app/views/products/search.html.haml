@@ -3,6 +3,7 @@
   .bread-crumbs_box
     - breadcrumb :search
     = breadcrumbs separator: " &rsaquo; "
+= render "home/search_form"
 
 %section.items-box-container-search.clearfix
   - if @product_result.present?
@@ -30,8 +31,7 @@
       検索結果 0件
       .items-box-content_none
         該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
-        = render partial: '/home/products', locals: {products: @product}
-
+        = render partial: '/home/products', locals: {products: @products}
 
 = render partial: 'home/footer'
 = render 'home/exhibit_btn'
