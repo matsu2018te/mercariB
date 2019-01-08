@@ -87,6 +87,7 @@ end
 
 
 gem 'carrierwave'
+gem 'mini_magick'
 
 # jp_prefecture(都道府県)
 gem 'jp_prefecture'
@@ -106,5 +107,6 @@ gem 'payjp'
 gem 'fog-aws'
 # js-rails連携
 gem 'gon'
+
 #詳細検索
 gem 'ransack'

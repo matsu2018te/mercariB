@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :move_to_login,only: %i(show destroy update destroy profile_update edit)
   def index
 
   end
@@ -58,5 +59,9 @@ class UsersController < ApplicationController
 
   def user_profile_params
     params.require(:user).permit(:nickname, :profile)
+  end
+
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end

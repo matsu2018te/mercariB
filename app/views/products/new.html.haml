@@ -6,9 +6,18 @@
 
   .l-contener
     .signup-panel__inner
-      = form_for(@product, url: sell_path, html: {method: :post}) do |f|
+      = form_for(@product, url: sell_path, html: {multiple: true,method: :post}) do |f|
         .sell-contents
           %h2.l-single-head 商品の情報を入力
+        - if flash[:alert]
+          .sell-contents
+            .alert
+              = flash[:alert]
+        - if @product.errors.any?
+          .sell-contents
+            .alert
+              = "#{@product.errors.count}件のエラーがあります。"
+              %p 画像は再度選択をしてください。
         / 画像投稿 ▼
         .sell-contents
           %h3.sell-form-title
@@ -16,18 +25,21 @@
             %span.form-require.sell 必須
           %p.sell-contents__comment 最大4枚までアップロードできます
           .sell-dropbox_container
-            = f.fields_for :images,multiple: true do |i|
+            = f.fields_for :images do |i|
               %ul.sell-dropbox-items
               .sell-dropbox-uploader
-                = i.label :image,class: 'sell-dropbox-uploader_container' do
+                = i.label :image1,class: 'sell-dropbox-uploader_container' do
                   .visible-pc#drop
                     ドラッグアンド
                     %br ドロップ
                     または
                     %br クリックして
                     ファイルをアップロード
-                    %i.fas.fa-camera 🐢
-                  = i.file_field :image,multiple: true,class: "product_images"
+                    %i.fas.fa-camera
+                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image1", name: "[image][]",multiple: true
+                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image2", name: "[image][]",multiple: true
+                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image3", name: "[image][]",multiple: true
+                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image4", name: "[image][]",multiple: true
 
         / 商品名・説明 ▼
         .sell-contents
@@ -83,7 +95,7 @@
                   商品の状態
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.select :status, ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れやあり","傷や汚れや汚れあり","全体的に状態が悪い"], prompt: "---"
+                  = f.select :status, ["新品未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], prompt: "---"
         / 配送 ▼
         .sell-contents
           %h3.sell-contents-label
