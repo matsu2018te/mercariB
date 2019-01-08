@@ -35,6 +35,11 @@ Rails.application.routes.draw do
   get 'mypage/notification' => 'users#notification'
   get 'mypage/todo' => 'users#todo'
 
+  resources :categories, only: :index do
+    collection do
+      get 'brands'
+    end
+  end
   #products関連
   resources :products, except: [:new] do
     collection do

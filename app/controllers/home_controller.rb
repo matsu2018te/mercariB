@@ -23,9 +23,6 @@ class HomeController < ApplicationController
     @supreme = @products.where(brand_id: 3).limit(4)
     @nike = @products.where(brand_id: 4).limit(4)
 
-    # @louisvuitton = @productss.brand.where(name: 'スタークインダストリーズ').limit(4)
-    # @supreme = @products.brands.where(name: 'ウルヴァリン').limit(4)
-    # @nike = @products.brands.where(name: 'ウルヴァリン').limit(4)
   end
 end
 

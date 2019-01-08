@@ -1,0 +1,23 @@
+%ul.ddmenu
+  %li
+    = link_to "カテゴリーから探す"
+    %ul.submenu
+      - parents.each do |parent|
+        %li
+          =link_to "#{parent.name}",categories_path(parent), class: "ddmenu-list"
+          %ul.submenu.child
+            - parent.children.each do |child|
+              %li
+                =link_to "#{child.name}",categories_path(child), class: "ddmenu-list"
+                %ul.submenu.g_child
+                  - child.children.each do |children|
+                    %li
+                      =link_to "#{children.name}",categories_path(children), class: "ddmenu-list"
+%ul.ddmenu
+  %li
+    = link_to "ブランドから探す"
+    %ul.submenu
+      - brands.each do |brand|
+        %li
+          =link_to "#{brand.name}",brands_categories_path(brand), class: "ddmenu-list"
+
