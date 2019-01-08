@@ -1,3 +1,9 @@
+.alert{
+  color:$Red;
+  font-weight: bold;
+  text-align: center;
+}
+
 .sell{
   &-contents{
     max-width: 700px;
@@ -142,6 +148,8 @@
           padding:50px 0;
           background: $Lightgray;
           border:thin dashed $Gray;
+          cursor: pointer;
+          cursor: hand;
         }
       }
     }
