@@ -1,7 +1,9 @@
 .sidebar_wrapper
-  .select-wrap
+  .select-wrap.sort-wrap
     = select :search, :sort, [["価格の安い順", "price+asc"], ["価格の高い順", "price+desc"], ["出品の古い順", "created_at+asc"], ["出品の新しい順", "created_at+desc"]], {prompt: "並び替え"}, { class: "form__select" }
+  .search-bar__button 詳細検索
   .sidebar.search-bar
+    %p.detail_title 詳細検索
     = search_form_for(@search_data, url:search_path) do |f|
       .form
         = f.label :info_or_name_or_brand_name_or_category_name_cont_all, "キーワードを追加する"

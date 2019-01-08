@@ -87,5 +87,9 @@ $(function(){
     $('select').val('');
     $('.child_select').hide();
   })
+
+  $('.search-bar__button').click(function(){
+    $('.search-bar').toggle();
+  })
 });
 
