@@ -1,0 +1,37 @@
+= render 'home/header'
+.bread-crumbs
+  .bread-crumbs_box
+    - breadcrumb :brands
+    = breadcrumbs separator: " &rsaquo; "
+
+%section.items-box-container-search.clearfix
+  - if @product_result.present?
+    .text-center-result
+      = "検索結果 1- #{@product_count}件"
+      .items-box-content.clearfix
+        - @product_result.each do |product|
+          %section.items-box
+            = link_to(product_path(product)) do
+              .items-box-photo
+                = image_tag(product.images.first.image, class: "items-box-photo-photo")
+
+              .items-box-body
+                .items-box-name.font-2
+                  = product.name
+                .items-box-num.clearfix
+                  .items-box-price.font-5
+                    ¥
+                    = number_with_delimiter(product.price)
+                  %i.like.font-2
+                  .item-box-tax
+                    （税込）
+  - else
+    .text-center-result
+      検索結果 0件
+      .items-box-content_none
+        該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
+        = render partial: '/home/products', locals: {products: @product}
+
+
+= render partial: 'home/footer'
+= render 'home/exhibit_btn'
