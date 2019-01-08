@@ -1,5 +1,5 @@
 .items-box-container-search {
-  width: 63%;
+  width: 100%;
   background-color: $Lightgray;
   margin: 0 auto;
   box-sizing: border-box;
@@ -130,6 +130,9 @@ i.like.font-2::before{
 }
 
 @media screen and (min-width: 1060px) {
+  .items-box-container-search {
+    width: 63%;
+  }
   .sort-wrap {
     width:100%;
   }
