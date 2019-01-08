@@ -36,3 +36,13 @@ crumb :search do
   link "#{params[:keyword]}", search_products_path
   parent :root
 end
+
+crumb :categories do
+  link "カテゴリー検索", categories_path
+  parent :root
+end
+
+crumb :brands do
+  link "ブランド検索", brands_categories_path
+  parent :root
+end
