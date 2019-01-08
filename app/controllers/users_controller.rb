@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
+    current_user.build_address
   end
 
   def update
