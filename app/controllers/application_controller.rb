@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production?
+<<<<<<< HEAD
   before_action :category_search
+=======
+  before_action :search_variable
+>>>>>>> master
 
   private
 
@@ -23,9 +27,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+<<<<<<< HEAD
   def category_search
     @parents = Category.where(belongs: "parent")
     @brands = Brand.all
   end
 
+=======
+  def search_variable
+    @search_data = Product.ransack(params[:info_name_or_brand_name_or_category_name_cont_all])
+  end
+>>>>>>> master
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181227040151) do
+ActiveRecord::Schema.define(version: 20190106054203) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "last_name_phonetic",  null: false
@@ -62,6 +62,11 @@ ActiveRecord::Schema.define(version: 20181227040151) do
     t.index ["product_id"], name: "index_images_on_product_id", using: :btree
   end
 
+  create_table "price_recommends", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "seller_id"
     t.integer  "buyer_id"
@@ -93,8 +98,16 @@ ActiveRecord::Schema.define(version: 20181227040151) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "size_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "group",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "size", null: false
+    t.string  "size",          null: false
+    t.integer "size_group_id"
+    t.index ["size_group_id"], name: "index_sizes_on_size_group_id", using: :btree
   end
 
   create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -138,5 +151,6 @@ ActiveRecord::Schema.define(version: 20181227040151) do
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "users", column: "buyer_id"
   add_foreign_key "products", "users", column: "seller_id"
+  add_foreign_key "sizes", "size_groups"
   add_foreign_key "sns_credentials", "users"
 end

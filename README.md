@@ -177,6 +177,17 @@
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
+|size_group_id|references|foreign_key|
 
 ### Association
 - has_many :products
+- belongs_to :size_group
+
+
+## size_group
+|Column|Type|Options|
+|------|----|-------|
+|group|string|null: false|
+
+### Association
+- has_many :sizes

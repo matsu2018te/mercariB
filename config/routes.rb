@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   #products関連
   resources :products, except: [:new] do
     collection do
-      get 'search'
+      # get 'search'
       post 'completed_transaction'
     end
   end
@@ -51,9 +51,13 @@ Rails.application.routes.draw do
   get 'mypage/purchased' => 'products#purchased'
   get 'sell' => 'products#new'
   post 'sell' => 'products#create'
+  match 'search' => 'products#search', via: [:get, :post], as: :search
   get 'brand/index' => 'brands#index'
   get 'transaction' => 'products#transaction'
   get 'items/:id' => 'products#item_show'
+  post 'completed_transaction' => 'products#completed_transaction'
+  get 'price_recommend' => 'products#price_recommend'
+  get 'price_recommend_result' => 'products#price_recommend_result'
 
   scope '/mypage' do
     #クレジットカード
