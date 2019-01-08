@@ -27,7 +27,6 @@ describe Product do
 
 
     it "is invalid without a size_id" do
-    binding.pry
       product = build(:product,size: "",)
       product.valid?
       expect(product.errors[:size]).to include("が入力されていません。")
