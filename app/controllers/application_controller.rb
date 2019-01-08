@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :category_search
   before_action :search_variable
+  before_action :user_logged_in?
 
   private
 
@@ -32,4 +33,24 @@ class ApplicationController < ActionController::Base
   def search_variable
     @search_data = Product.ransack(params[:info_name_or_brand_name_or_category_name_cont_all])
   end
+
+  def user_logged_in?
+    if session[:user_id]
+      begin
+        @current_user = User.find_by(user_id: session[:user_id])
+      rescue
+        reset_user_session
+      end
+    end
+    return if @current_user
+    # @current_userが取得できなかった場合はログイン画面にリダイレクト
+    flash[:referer] = request.fullpath
+    redirect_to new_user_session_path
+  end
+
+  def reset_user_session
+    session[:user_id] = nil
+    @current_user = nil
+  end
+
 end

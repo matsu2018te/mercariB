@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :product_new, only:[:new]
   before_action :product_info, only: [:show, :item_show, :destroy]
+  skip_before_action :user_logged_in?, only: [:show, :item_show, :search, :price_recommend, :price_recommend_result]
 
   def new
     @product.images.build
