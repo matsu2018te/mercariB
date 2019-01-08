@@ -36,3 +36,13 @@ crumb :search do
   link "#{ params[:q][:info_or_name_or_brand_name_or_category_name_cont_all] }", search_path
   parent :root
 end
+
+crumb :categories do
+  link "カテゴリー検索", categories_path
+  parent :root
+end
+
+crumb :brands do
+  link "ブランド検索", brands_categories_path
+  parent :root
+end

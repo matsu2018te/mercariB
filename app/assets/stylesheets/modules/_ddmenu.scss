@@ -1,0 +1,100 @@
+ul.ddmenu {
+  width: 50%;
+  float: left;
+  background-color:$White;
+  font: 66.66667% sans-serif;
+  line-height: 38px;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  position: relative;
+  display: block;
+}
+
+.ddmenu-list {
+  color: black;
+  font-color: black;
+}
+
+ul.ddmenu li {
+  display: block;
+  list-style-type: none;
+}
+
+ul.ddmenu a {
+  font-color: red;
+  line-height: 38px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+ul.ddmenu a:hover {
+  color: blue;
+}
+
+ul.ddmenu li:hover > .submenu {
+  display: block;
+}
+
+.submenu {
+  height: 530px;
+  display: none;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 40px;
+  box-shadow: 1px 0 0 0 #eee inset;
+  background-color:$White;
+}
+
+ul.submenu li a:hover {
+  background-color: red;
+  color: $White;
+}
+
+ul.submenu li a {
+  line-height: 35px;
+  text-align: left;
+  padding: 0 16px;
+  font-weight: normal;
+  width: 200px;
+  background-color:$White;
+  box-shadow: 2px 0 0 0 #eee inset;
+}
+
+ul.submenu li:hover > .submenu.child {
+  display: block;
+}
+
+.submenu.child {
+  height: 530px;
+  display: none;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  box-shadow: 2px 0 0 0 #eee inset;
+  background-color: $White;
+}
+
+ul.submenu.child li a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+ul.submenu.child li:hover > .submenu.g_child {
+  display: block;
+}
+
+.submenu.g_child {
+  display: none;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  box-shadow: 2px 0 0 0 #eee inset;
+  background-color: $White;
+}
