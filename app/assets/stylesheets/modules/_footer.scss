@@ -121,6 +121,8 @@ a.sell-btn{
   background-color: $Red;
   border-radius: 50%;
   text-align: center;
+  cursor: pointer;
+  cursor: hand;
   .sell-text{
     color: $White;
     margin: 32px 0 0 0;

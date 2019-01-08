@@ -1,9 +1,8 @@
 FactoryGirl.define do
-
   factory :product do
     id                       1
-    seller_id                1
-    buyer_id                 1
+    # seller_id                1
+    # buyer_id                 1
     name                     "aaa"
     info                     "bbbbbb"
     price                    "500"
@@ -20,6 +19,6 @@ FactoryGirl.define do
     brand
     sell_status
     size
+    association :seller, factory: :user
   end
-
 end

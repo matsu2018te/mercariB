@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :product_new, only:[:new]
   before_action :product_info, only: [:show, :item_show, :destroy]
+  before_action :move_to_login,only:[:new,:destroy]
 
   def new
     @product.images.build
@@ -40,9 +41,19 @@ class ProductsController < ApplicationController
     if @product.brand
       @product.brand = Brand.find_or_create_by(name: @product.brand.name)
     end
-    if @product.save
-      redirect_to root_path
+    if params[:image]
+      if @product.save
+        params[:image].each do |i|
+          @product.images.create(product_id: @product.id, image: i)
+        end
+        redirect_to root_path
+      else
+        @product.images.build
+        render action: :new
+      end
     else
+      @product.images.build
+      flash.now[:alert] = "画像を設定してください"
       render action: :new
     end
   end
@@ -130,8 +141,8 @@ class ProductsController < ApplicationController
       :shipping_method,
       :delivery_date,
       :prefecture,
-      images_attributes: [:id,:image],
-      brand_attributes: [:name]
+      images_attributes: [:id,:product_id,:image,:_destroy],
+      brand_attributes: [:id,:name]
     ).merge(seller_id: current_user.id,sell_status_id: 1)
   end
 
@@ -171,5 +182,9 @@ class ProductsController < ApplicationController
       :category_id,
       :brand_id,
       :status)
+  end
+
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end

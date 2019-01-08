@@ -21,6 +21,9 @@ a.mypage__tabs-list,a.mypage__item-to-show{
   @include clearfix;
 }
 
+.display-none{
+  display: none;
+}
 .tab-active{
   background: $White;
   border-top: 2px solid #ea352d;
@@ -161,7 +164,6 @@ a.mypage__tabs-list,a.mypage__item-to-show{
     }
     &-icon{
       background-image: image-url("logo-gray-icon.svg");
-      height: 85px;
       width: 78px;
       margin:0 auto 20px;
       }
