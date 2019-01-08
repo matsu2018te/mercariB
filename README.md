@@ -138,9 +138,6 @@
 |------|----|-------|
 |product_id|references|foreign_key|
 |image|string||
-|image2|string||
-|image3|string||
-|image4|string||
 
 ### Association
 - belongs_to :product
