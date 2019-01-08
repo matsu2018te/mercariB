@@ -13,7 +13,7 @@
         .select-wrap
           = f.collection_select :category_id, @parents, :id, :name, {prompt: "---"}, { class: "form__select parent_select" }
         .select-wrap.hide-wrap
-          = f.select :category_id, {}, {prompt: "---"}, { class: "form__select child_select" }
+          = f.select :category_id_eq, {}, {prompt: "---"}, { class: "form__select child_select" }
         .check-box-wrap.g_child_check_boxes
       .form
         = f.label :brand_name_cont_all, "ブランド名から探す"

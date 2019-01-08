@@ -140,6 +140,17 @@ class ProductsController < ApplicationController
   end
 
   def search_params
+    if params[:q][:category_id_in].blank?
+      if params[:q][:category_id_eq].present?
+        categories = Category.where("ancestry LIKE ?", "%/#{params[:q][:category_id_eq]}")
+        category_ids = categories.map(&:id)
+      else
+        categories = Category.where("ancestry LIKE ?", "#{params[:q][:category_id]}/%")
+        category_ids = categories.map(&:id)
+      end
+      params[:q][:category_id_in] = category_ids
+    end
+
     params.require(:q).permit(
       :s,
       :info_or_name_or_brand_name_or_category_name_cont_all,
