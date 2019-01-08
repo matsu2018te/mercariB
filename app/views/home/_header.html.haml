@@ -4,21 +4,13 @@
 
     .pc-header-form.l-right
       =form_tag(search_products_path,method: :get) do
-        %input.input-default{ type: "search", name: "keyword", placeholder: "キーワードから探す"}
+        %input.input-keyword{ type: "search", name: "keyword", placeholder: "キーワードから探す"}
           %button.icon-search{type:"search"}
             %i.fas.fa-search
 
     .pc-header-nav-box.clearfix
       %nav.list-left
-
-        %ul.pc-header-nav-l
-          カテゴリーから探す
-          %li
-          %li
-        %ul.pc-header-nav-l
-          ブランドから探す
-          %li
-          %li
+        = render partial: 'home/ddmenu', locals: {parents: @parents, brands: @brands}
 
       - if user_signed_in?
         %nav.list-right
@@ -38,4 +30,3 @@
             = link_to '新規会員登録', signup_path, class: "sp-header-btn header-signup"
           %li
             = link_to 'ログイン', new_user_session_path, class: "sp-header-btn btn-red"
-
