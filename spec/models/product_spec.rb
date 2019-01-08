@@ -25,10 +25,12 @@ describe Product do
       expect(product.errors[:category_id]).to include("が入力されていません。")
     end
 
+
     it "is invalid without a size_id" do
-      product = build(:product,size_id: "",)
+    binding.pry
+      product = build(:product,size: "",)
       product.valid?
-      expect(product.errors[:size_id]).to include("が入力されていません。")
+      expect(product.errors[:size]).to include("が入力されていません。")
     end
 
     it "is invalid without a status" do
@@ -60,11 +62,6 @@ describe Product do
       expect(product.errors[:prefecture]).to include("が入力されていません。")
     end
 
-    it "is invalid without a image" do
-      product = build(:product,image: "",)
-      product.valid?
-      expect(product.errors[:image]).to include("が入力されていません。")
-    end
   end
 end
 
