@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production?
+  before_action :category_search
 
   private
 
@@ -21,4 +22,10 @@ class ApplicationController < ActionController::Base
       username == 'admin' && password == '2222'
     end
   end
+
+  def category_search
+    @parents = Category.where(belongs: "parent")
+    @brands = Brand.all
+  end
+
 end
