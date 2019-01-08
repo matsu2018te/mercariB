@@ -2,7 +2,7 @@ $(function(){
   function append_child_option(results){
     var child_select = $(".child_select")
     var check_boxes = $(".g_child_check_boxes")
-    child_select.empty();
+    child_select.empty()
     check_boxes.empty();
     child_select.append(`<option value="">---</option>`);
     results.forEach(function(result){
@@ -28,6 +28,11 @@ $(function(){
 
   $('.parent_select').change(function() {
     var parent_val = $(this).val();
+    if ($.isEmptyObject(parent_val)){
+      $(".hide-wrap").hide();
+    } else {
+      $(".hide-wrap").show();
+    }
     var parent_results = gon.children.filter(function(e){
       if (e.ancestry == parent_val){
         return e
@@ -73,6 +78,14 @@ $(function(){
       next_url = reg_url + "&q%5Bs%5D=" + $(this).val()
       window.location.href = next_url
     }
+  })
+
+  $('.btn__clear').click(function(){
+    $("input[type=search]").val('');
+    $("input:checkbox").attr("checked",false);
+    $('.check-box-wrap').empty();
+    $('select').val('');
+    $('.child_select').hide();
   })
 });
 
