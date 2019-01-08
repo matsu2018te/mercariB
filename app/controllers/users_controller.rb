@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :move_to_login,only:[:show,:destroy,:update,:destroy,:profile_update,:edit]
+  before_action :move_to_login,only: %i(show destroy update destroy profile_update edit)
   def index
 
   end
