@@ -43,6 +43,11 @@ class ProductsController < ApplicationController
 # 商品出品
   def new
     @product.images.build
+    @parents = Category.where(belongs: "parent")
+    @children = Category.where(belongs: "child")
+    @g_children = Category.where(belongs: "g_child")
+    @sizes = Size.all
+    @prefectures = JpPrefecture::Prefecture.all
   end
 
   def create
