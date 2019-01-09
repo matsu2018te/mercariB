@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
   before_action :product_new, only:[:new]
-  before_action :product_info, only: [:show, :item_show, :destroy,:edit,:update]
-  before_action :move_to_login,only:[:new,:destroy]
-  before_action :seller_check,only:[:edit]
-  before_action :seller_check_to_home,only:[:item_show]
+  before_action :product_info, only: [:show, :item_show, :destroy, :edit, :update]
+  before_action :move_to_login,only:[:new, :destroy]
+  before_action -> {seller_check(:back)}, only: [:edit]
+  before_action -> {seller_check(root_path)}, only: [:update, :item_show]
+  before_action :brand_check,only:[:update]
   skip_before_action :authenticate_user!, only: [:show, :item_show, :search, :price_recommend, :price_recommend_result]
 
   def new
@@ -49,16 +50,17 @@ class ProductsController < ApplicationController
     if @product.brand
       @product.brand = Brand.find_or_create_by(name: @product.brand.name)
     end
+    binding.pry
     if params[:image]
-      if @product.save
+      # if @product.save
         params[:image].each do |i|
           @product.images.create(product_id: @product.id, image: i)
         end
-        redirect_to root_path
-      else
-        @product.images.build
+      #   redirect_to root_path
+      # else
+      #   @product.images.build
         render action: :new
-      end
+      # end
     else
       flash.now[:alert] = "画像を設定してください"
       render action: :new
@@ -73,9 +75,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    seller_check
-    brand_check
-    if params[:image]
+    if image_params
       if @product.update(product_params)
         params[:image].each do |i|
           @product.images.create(product_id: @product.id, image: i)
@@ -83,12 +83,12 @@ class ProductsController < ApplicationController
         redirect_to "/items/#{@product.id}"
       else
         @product.images.build
-        render action: :edit
+        render :edit
       end
     else
       @product.images.build
       flash.now[:alert] = "画像を設定してください"
-      render action: :edit
+      render :edit
     end
   end
 
@@ -237,15 +237,10 @@ class ProductsController < ApplicationController
     redirect_to new_user_session_path unless user_signed_in?
   end
 
-  def seller_check
+  def seller_check(a_path)
     unless current_user.id == @product.seller_id
-      redirect_to :back
+      redirect_to a_path
     end
   end
 
-  def seller_check_to_home
-    unless current_user.id == @product.seller_id
-      redirect_to root_path
-    end
-  end
 end
