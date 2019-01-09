@@ -8,7 +8,9 @@ $(function(){
     })
   }
 
-  function append_g_child_check_boxes(check_boxes, results){
+  function append_g_child_check_boxes(parent_val, child_val, check_boxes){
+    var ancestry = `${parent_val}/${child_val}`
+    var results = filter_children(gon.g_children, ancestry)
     check_boxes.empty();
     results.forEach(function(result){
       check_boxes.append(`<div  class="form__checkbox">\n\t<input type="checkbox" value="${result.id}" name="q[category_id_in][]" id="q_category_id_in_${result.id}">\n\t<label for="q_category_id_in_${result.id}">${result.name}</label>\n</div>`)
@@ -22,6 +24,16 @@ $(function(){
     })
   }
 
+
+  function filter_children(children, value){
+    results = children.filter(function(e){
+      if (e.ancestry == value){
+        return e
+      }
+    })
+    return results
+  }
+
   var child_select = $(".child_select")
   var g_child_check_boxes = $(".g_child_check_boxes")
   var parent_select = $('.parent_select')
@@ -33,24 +45,14 @@ $(function(){
     } else {
       hide_wrap.show();
     }
-    var parent_results = gon.children.filter(function(e){
-      if (e.ancestry == parent_val){
-        return e
-      }
-    })
+    var parent_results = filter_children(gon.children, parent_val)
     append_child_option(child_select, g_child_check_boxes, parent_results);
   });
 
   child_select.change(function() {
     var parent_val = parent_select.val();
     var child_val = $(this).val();
-    var ancestry = `${parent_val}/${child_val}`
-    var child_results = gon.g_children.filter(function(e){
-      if (e.ancestry == ancestry){
-        return e
-      }
-    })
-    append_g_child_check_boxes(g_child_check_boxes,child_results);
+    append_g_child_check_boxes(parent_val, child_val, g_child_check_boxes);
   });
 
   var size_check_boxes = $(".size_check_boxes")
@@ -101,6 +103,24 @@ $(function(){
   var searchbar = $('.search-bar')
   searchbar_button.click(function(){
     searchbar.toggle();
+  })
+
+  $(document).ready(function(){
+    if (gon.parent_val){
+      parent_select.val(gon.parent_val)
+      if (gon.child_val){
+        var parent_results = filter_children(gon.children, gon.parent_val)
+        append_child_option(child_select, g_child_check_boxes, parent_results);
+        hide_wrap.show();
+        child_select.val(gon.child_val)
+        if (gon.g_child_val){
+          append_g_child_check_boxes(gon.parent_val, gon.child_val, g_child_check_boxes);
+          gon.g_child_val.forEach(function(val){
+            $(`#q_category_id_in_${val}`).prop("checked",true);
+          })
+        }
+      }
+    }
   })
 });
 

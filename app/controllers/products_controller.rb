@@ -59,6 +59,10 @@ class ProductsController < ApplicationController
   end
 
   def search
+    gon.parent_val = params[:q][:category_id]
+    gon.child_val = params[:q][:category_id_eq]
+    gon.g_child_val = params[:q][:category_id_in]
+
     @search_data    = Product.ransack(search_params)
     @keyword        = search_params[:info_or_name_or_brand_name_or_category_name_cont_all]
     @products       = Product.order(id: :DESC).includes(:images)
@@ -71,6 +75,7 @@ class ProductsController < ApplicationController
 
     @size_groups = SizeGroup.all
     gon.sizes = Size.all
+
   end
 
   def transaction
