@@ -6,7 +6,7 @@
 
   .l-contener
     .signup-panel__inner
-      = form_for(@product, url: "/products/#{@product.id}", html: {multiple: true,method: :patch}) do |f|
+      = form_for(@product, url: product_path, html: {multiple: true,method: :patch}) do |f|
         .sell-contents
           %h2.l-single-head 商品の情報を入力
         - if flash[:alert]
@@ -178,7 +178,7 @@
             に同意したことになります。
           .sell-contents__caution-space
           = f.submit "変更する", class: "btn btn__red"
-          = link_to "/items/#{@product.id}", method: :get do
+          = link_to "/items/#{@product.id}" do
             %p.btn.btn__gray 戻る
 
   = render "devise/shared/footer"
