@@ -35,6 +35,7 @@ ul.ddmenu a:hover {
 
 ul.ddmenu li:hover > .submenu {
   display: block;
+  z-index:1;
 }
 
 .submenu {
