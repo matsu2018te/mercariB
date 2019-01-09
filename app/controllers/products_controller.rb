@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :product_new, only:[:new]
   before_action :product_info, only: [:show, :item_show, :destroy]
-  before_action :move_to_login,only:[:new,:destroy]
+  skip_before_action :authenticate_user!, only: [:show, :item_show, :search, :price_recommend, :price_recommend_result]
 
   def new
     @product.images.build

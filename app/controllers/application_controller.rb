@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :category_search
   before_action :search_variable
+  before_action :authenticate_user!
 
   private
 
@@ -32,4 +33,6 @@ class ApplicationController < ActionController::Base
   def search_variable
     @search_data = Product.ransack(params[:info_name_or_brand_name_or_category_name_cont_all])
   end
+
+
 end
