@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # prepend_before_action :require_no_authentication, only: [:create]
   prepend_before_action :require_no_authentication, only: [:sms_confirmation, :address, :credit, :create]
   before_action :user_new, only:[:sms_confirmation, :address, :credit, :create]
+  skip_before_action :authenticate_user!
 
   def registration
     @user = User.new
@@ -35,6 +36,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user.save
+    session[:user_id] = @user.id
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
@@ -50,13 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render action: :registration
       clean_up_passwords resource
       set_minimum_password_length
-      # respond_with resource, location: after_failed_sign_up_path_for(resource)
     end
-    # if @user.save
-    #   redirect_to signup_done_path
-    # else
-    #   redirect_to signup_registration_path
-    # end
   end
 
   private

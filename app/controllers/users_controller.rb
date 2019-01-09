@@ -1,15 +1,4 @@
 class UsersController < ApplicationController
-  before_action :move_to_login,only: %i(show destroy update destroy profile_update edit)
-  def index
-
-  end
-
-  # def create
-
-  # end
-
-  def new
-  end
 
   def edit
   end
@@ -21,7 +10,6 @@ class UsersController < ApplicationController
       render action: :edit
     end
   end
-
 
   def show
   end
