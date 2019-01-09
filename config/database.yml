@@ -17,6 +17,13 @@ default: &default
   password:
   socket: /tmp/mysql.sock
 
+production:
+  <<: *default
+  database: mercariB_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
+
 development:
   <<: *default
   database: mercariB_development
@@ -47,10 +54,5 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: mercariB_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
+
 
