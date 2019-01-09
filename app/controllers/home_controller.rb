@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_action :user_logged_in?
+    skip_before_action :authenticate_user!
   def index
     @products = Product.order("id DESC").limit(4)
 
