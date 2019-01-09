@@ -51,6 +51,6 @@ production:
   <<: *default
   database: mercariB_production
   username: root
-  password: 'HdRxzQCtAh9a'
+  password: HdRxzQCtAh9a
   socket: /var/lib/mysql/mysql.sock
 
