@@ -4,12 +4,20 @@ class CommentsController < ApplicationController
   def index
     @comment = Comment.new
     @comments = @product.comments.includes(:user)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
     @comment = @product.comments.new(comment_params)
     if @comment.save
-      redirect_to product_path(@product, @comments), notice: 'コメントしました'
+      respond_to do |format|
+        format.html{redirect_to product_path(@product), notice: 'コメントしました'}
+        format.json
+      end
+
     else
       @comments = @product.comments.includes(:user)
       flash.now[:alert] = 'コメントを入力してください。'
