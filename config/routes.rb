@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   skip: [:sessions, :registrations]
   as :user do
     #ログイン
-    get 'login' => 'devise/sessions#new', as: :new_user_session
-    post 'login' => 'devise/sessions#create', as: :user_session
+    get 'login' => 'users/sessions#new', as: :new_user_session
+    post 'login' => 'users/sessions#create', as: :user_session
     #ログアウト
-    match 'mypage/logout' => 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
+    match 'mypage/logout' => 'users/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
     get 'mypage/logout' => 'users#destroy'
     #サインアップ
     get 'signup' => 'users/registrations#signup'#新規会員登録
