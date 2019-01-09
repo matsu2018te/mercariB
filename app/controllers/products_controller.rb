@@ -1,11 +1,9 @@
 class ProductsController < ApplicationController
   before_action :product_new, only:[:new]
-  before_action :product_info, only: [:show, :item_show, :destroy]
+  before_action :product_info, only: [:show, :item_show, :destroy,:edit,:update]
   before_action :move_to_login,only:[:new,:destroy]
-
-  def new
-    @product.images.build
-  end
+  before_action :seller_check,only:[:edit]
+  before_action :seller_check_to_home,only:[:item_show]
 
   def show
     @images = @product.images
@@ -36,6 +34,11 @@ class ProductsController < ApplicationController
     @image = @product.images[0]
   end
 
+# 商品出品
+  def new
+    @product.images.build
+  end
+
   def create
     @product = Product.new(product_params)
     if @product.brand
@@ -52,9 +55,35 @@ class ProductsController < ApplicationController
         render action: :new
       end
     else
-      @product.images.build
       flash.now[:alert] = "画像を設定してください"
       render action: :new
+    end
+  end
+
+# 商品編集
+  def edit
+    flash.now[:alert] = "画像は再度設定をしてください"
+    @product.images = []
+    @product.images.build
+  end
+
+  def update
+    seller_check
+    brand_check
+    if params[:image]
+      if @product.update(product_params)
+        params[:image].each do |i|
+          @product.images.create(product_id: @product.id, image: i)
+        end
+        redirect_to "/items/#{@product.id}"
+      else
+        @product.images.build
+        render action: :edit
+      end
+    else
+      @product.images.build
+      flash.now[:alert] = "画像を設定してください"
+      render action: :edit
     end
   end
 
@@ -128,6 +157,11 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def brand_check
+    if params[:product][:brand_attributes]
+      params[:product][:brand_attributes] = Brand.find_or_create_by(name: params[:product][:brand_attributes][:name])
+    end
+  end
 
   def product_params
     params.require(:product).permit(
@@ -175,5 +209,17 @@ class ProductsController < ApplicationController
 
   def move_to_login
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def seller_check
+    unless current_user.id == @product.seller_id
+      redirect_to :back
+    end
+  end
+
+  def seller_check_to_home
+    unless current_user.id == @product.seller_id
+      redirect_to root_path
+    end
   end
 end
