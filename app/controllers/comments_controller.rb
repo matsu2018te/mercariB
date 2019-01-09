@@ -3,19 +3,18 @@ class CommentsController < ApplicationController
 
   def index
     @comment = Comment.new
-    @comment = @product.messages.includes(:user)
+    @comments = @product.comments.includes(:user)
   end
 
   def create
     @comment = @product.comments.new(comment_params)
     if @comment.save
-      redirect_to product_comments_path(@product), notice: 'コメントしました'
+      redirect_to product_path(@product, @comments), notice: 'コメントしました'
     else
       @comments = @product.comments.includes(:user)
       flash.now[:alert] = 'コメントを入力してください。'
       render :index
     end
-
   end
 
   private
