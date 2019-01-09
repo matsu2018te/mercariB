@@ -75,6 +75,9 @@ class ProductsController < ApplicationController
 
   def transaction
     @product = Product.find(params[:format])
+    if @product.buyer_id != nil
+      redirect_to product_path(@product)
+    end
   end
 
   def completed_transaction
