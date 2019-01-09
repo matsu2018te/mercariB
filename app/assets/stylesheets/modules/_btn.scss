@@ -24,6 +24,14 @@
       background:gray;
     }
   }
+  &__soldout{
+    background-color:$Gray;
+    font-size: 24px;
+    line-height: 60px;
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+  }
   &__mail {
     background-color:$ThinGray;
     color:$Black;
