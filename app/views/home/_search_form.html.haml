@@ -17,7 +17,8 @@
         .check-box-wrap.g_child_check_boxes
       .form
         = f.label :brand_name_cont_all, "ブランド名から探す"
-        = f.search_field :brand_name_cont_all, placeholder: "例）シャネル",autocomplete:"off", class: "form__input"
+        = f.search_field :brand_name_cont_all, placeholder: "例）シャネル",autocomplete:"off", class: "form__input input_brand"
+        %ul.brand-search-result
       .form
         = f.label :size_id_in, "サイズを指定する"
         .select-wrap
