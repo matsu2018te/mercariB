@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   match 'search' => 'products#search', via: [:get, :post], as: :search
   get 'brand/index' => 'brands#index'
   get 'transaction' => 'products#transaction'
-  get 'items/:id' => 'products#item_show'
+  get 'items/:id' => 'products#item_show', as: :item_show
   post 'completed_transaction' => 'products#completed_transaction'
   get 'price_recommend' => 'products#price_recommend'
   get 'price_recommend_result' => 'products#price_recommend_result'
