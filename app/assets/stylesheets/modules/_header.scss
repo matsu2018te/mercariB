@@ -67,7 +67,7 @@
 
       nav.list-right {
         height: 38px;
-        width: 310px;
+        width: 430px;
         float: right;
         .sp-header-btn {//新規会員登録
           height: 32px;
@@ -127,12 +127,18 @@
         }
         .nav-todo{
           height: 38px;
-          width: 98px;
+          width: 85px;
           float: left;
           font: 66.66667% sans-serif;
           text-align: center;
           line-height: 32px;
           color: #333;
+        }
+        .fa-camera{
+          height: 38px;
+          float: left;
+          line-height: 32px;
+          padding-left: 10px;
         }
       }
     }
