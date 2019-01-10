@@ -4,12 +4,7 @@ class ProductsController < ApplicationController
   before_action :move_to_login,only:[:new, :destroy]
   before_action -> {seller_check(:back)}, only: [:edit]
   before_action -> {seller_check(root_path)}, only: [:update, :item_show]
-  before_action :brand_check,only:[:update]
   skip_before_action :authenticate_user!, only: [:show, :item_show, :search, :price_recommend, :price_recommend_result]
-
-  def new
-    @product.images.build
-  end
 
   def show
     @images = @product.images
@@ -74,13 +69,20 @@ class ProductsController < ApplicationController
 # 商品編集
   def edit
     flash.now[:alert] = "画像は再度設定をしてください"
+    # @product[:images_attributes] = Image.find(params.require(:product).require(:images_attributes)["0"][:id]).image
     @product.images = []
+    @parents = Category.where(belongs: "parent")
+    @children = Category.where(belongs: "child")
+    @g_children = Category.where(belongs: "g_child")
+    @sizes = Size.all
+    @prefectures = JpPrefecture::Prefecture.all
+    @product.brand if @product.brand == nil
     @product.images.build
   end
 
   def update
     if params[:image]
-      if @product.update(product_params)
+      if @product.update(product_params_update)
         params[:image].each do |i|
           @product.images.create(product_id: @product.id, image: i)
         end
@@ -170,16 +172,13 @@ class ProductsController < ApplicationController
     @same_product_price = @same_product.average(:price).floor.to_s(:delimited) if @same_product.present?
   end
 
-
   private
   def product_new
     @product = Product.new
   end
 
-  def brand_check
-    if params[:product][:brand_attributes]
-      params[:product][:brand_attributes] = Brand.find_or_create_by(name: params[:product][:brand_attributes][:name])
-    end
+  def image_params
+    params.permit(:image)
   end
 
   def product_params
@@ -194,8 +193,27 @@ class ProductsController < ApplicationController
       :shipping_method,
       :delivery_date,
       :prefecture,
+      :brand_id,
       images_attributes: [:id,:product_id,:image,:_destroy],
       brand_attributes: [:id,:name]
+    ).merge(seller_id: current_user.id,sell_status_id: 1)
+  end
+
+  def product_params_update
+    params.require(:product).permit(
+      :name,
+      :info,
+      :price,
+      :category_id,
+      :size_id,
+      :status,
+      :delivery_fee_owner,
+      :shipping_method,
+      :delivery_date,
+      :prefecture,
+      :brand_id,
+      images_attributes: [:id,:product_id,:image,:_destroy],
+      brand_attributes: [:id]
     ).merge(seller_id: current_user.id,sell_status_id: 1)
   end
 
