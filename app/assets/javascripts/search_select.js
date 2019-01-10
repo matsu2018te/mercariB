@@ -8,7 +8,7 @@ $(function(){
   var parent_select = $('.parent_select')
   var price_select = $('.price_select')
   var search_input = $("input[type=search]")
-  var search_sort = $('#search_sort')
+  var sort_select = $('#q_s')
   var selects = $('select')
   var searchbar = $('.search-bar')
   var searchbar_button = $('.search-bar__button')
@@ -82,6 +82,9 @@ $(function(){
         $(`#q_size_id_in_${val}`).prop("checked",true);
       })
     }
+    if (gon.sort_val){
+      sort_select.val(gon.sort_val)
+    }
   })
 
   parent_select.change(function() {
@@ -115,11 +118,11 @@ $(function(){
     $('.max_price').val(max_price)
   })
 
-  search_sort.change(function(){
+  sort_select.change(function(){
     if ($(this).val() != ''){
       current_url = window.location.href
       reg_url     = current_url.replace(/&q%5Bs%5D=(price|created_at)\+(asc|desc)/g, "")
-      next_url = reg_url + "&q%5Bs%5D=" + $(this).val()
+      next_url = reg_url + "&q%5Bs%5D=" + $(this).val().replace(" ", "+")
       window.location.href = next_url
     }
   })
