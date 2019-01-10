@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comments = @product.comments.includes(:user)
     respond_to do |format|
       format.html
-      format.json
+      format.json {@new_comments = Comment.where('id > ?', params[:id])}
     end
   end
 

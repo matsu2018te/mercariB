@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(comment){
     var html = `
-      <li class="clearfix">
+      <li class="clearfix comment-box" data-comment-id=${comment.id}>
         <div class="message-user">
           <div class="user-img">
             <img class="user-icon" src="/assets/user-icon.svg" alt="User icon">
@@ -49,13 +49,44 @@ $(function(){
       var html = buildHTML(data);
       $('.messages').append(html);
       $('.text-input').val('');
-      $('.post-btn').removeAttr('disabled');
+      $('#post-btn').prop('disabled', false);
     })
     // ajax通信に失敗した場合
     .fail(function() {
       alert('error');
     });
-
   });
+
+  if (window.location.href.match(/\/products\/\d+/)){
+      // 自動更新機能
+    var interval = setInterval(function(){
+    var LastCommentId = $('.comment-box').last().data('comment-id');
+    var url = window.location.href + '/comments';
+      // ajax通信開始(idが最新のものを取得)
+      $.ajax({
+        url: url,
+        type: "GET",
+        data: { id: LastCommentId },
+        dataType: "json"
+      })
+      // ajax通信に成功したら
+      .done(function(comments){
+        var id = LastCommentId;
+        comments.forEach(function(comment){
+          if ( comment.id > id){
+            var html = buildHTML(comment);
+            $('.messages').append(html);
+          }
+        })
+        $('#post-btn').prop('disabled', false);
+      })
+      // 自動更新に失敗しましたに失敗した場合
+      .fail(function() {
+        alert('自動更新に失敗しました(>.<)');
+      });
+    }, 5000);
+  }
+
+
 
 });
