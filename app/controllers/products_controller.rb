@@ -82,6 +82,10 @@ class ProductsController < ApplicationController
 
   def update
     if params[:image]
+      if params[:product][:brand_attributes]
+        @brand = Brand.find_or_create_by(brand_params)
+        @product.brand_id = @brand.id
+      end
       if @product.update(product_params_update)
         params[:image].each do |i|
           @product.images.create(product_id: @product.id, image: i)
@@ -173,6 +177,10 @@ class ProductsController < ApplicationController
   end
 
   private
+  def brand_params
+    params.require(:product).require(:brand_attributes).permit(:name)
+  end
+
   def product_new
     @product = Product.new
   end
@@ -211,9 +219,7 @@ class ProductsController < ApplicationController
       :shipping_method,
       :delivery_date,
       :prefecture,
-      :brand_id,
       images_attributes: [:id,:product_id,:image,:_destroy],
-      brand_attributes: [:id]
     ).merge(seller_id: current_user.id,sell_status_id: 1)
   end
 
