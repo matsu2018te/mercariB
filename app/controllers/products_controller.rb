@@ -60,12 +60,6 @@ class ProductsController < ApplicationController
 
   def search
     gon.search_params = gon_search_params
-    gon.parent_val  = gon_search_params[:category_id]
-    gon.child_val   = gon_search_params[:category_id_eq]
-    gon.g_child_val = gon_search_params[:category_id_in]
-    gon.size_group_val = gon_search_params[:size_size_group_id]
-    gon.size_val = gon_search_params[:size_id_in]
-    gon.sort_val = gon_search_params[:s]
 
     @search_data    = Product.ransack(search_params)
     @keyword        = search_params[:info_or_name_or_brand_name_or_category_name_cont_all]
