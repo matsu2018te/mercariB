@@ -22,7 +22,7 @@
       .form
         = f.label :size_id_in, "サイズを指定する"
         .select-wrap
-          = f.collection_select :size_id, @size_groups, :id, :group, {prompt: "---"}, { class: "form__select size_group_select" }
+          = f.collection_select :size_size_group_id, @size_groups, :id, :group, {prompt: "---"}, { class: "form__select size_group_select" }
         .check-box-wrap.size_check_boxes
       .form
         = f.label :price, "価格"

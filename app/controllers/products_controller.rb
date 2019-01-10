@@ -59,13 +59,13 @@ class ProductsController < ApplicationController
   end
 
   def search
-    params_val = params[:q]
-    gon.parent_val = params_val[:category_id]
-    gon.child_val = params_val[:category_id_eq]
-    gon.g_child_val = params_val[:category_id_in]
-    gon.size_group_val = params_val[:size_id]
-    gon.size_val = params_val[:size_id_in]
-    gon.sort_val = params_val[:s]
+    gon.search_params = gon_search_params
+    gon.parent_val  = gon_search_params[:category_id]
+    gon.child_val   = gon_search_params[:category_id_eq]
+    gon.g_child_val = gon_search_params[:category_id_in]
+    gon.size_group_val = gon_search_params[:size_size_group_id]
+    gon.size_val = gon_search_params[:size_id_in]
+    gon.sort_val = gon_search_params[:s]
 
     @search_data    = Product.ransack(search_params)
     @keyword        = search_params[:info_or_name_or_brand_name_or_category_name_cont_all]
@@ -187,6 +187,16 @@ class ProductsController < ApplicationController
       :buyer_id_null,
       :buyer_id_not_null
       ) unless params[:q].blank?
+  end
+
+  def gon_search_params
+    params.require(:q).permit(
+      :category_id,
+      :category_id_eq,
+      {:category_id_in => []},
+      :size_size_group_id,
+      {:size_id_in => []},
+      :s)
   end
 
   def recommend_params
