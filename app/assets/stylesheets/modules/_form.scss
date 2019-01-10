@@ -40,8 +40,11 @@
     pointer-events: none;
     position: absolute;
       right: 15px;
-    z-index: 1;
   }
+}
+
+.hide-wrap {
+  display:none;
 }
 
 .birth_wrap {
@@ -60,7 +63,6 @@
   }
 }
 
-.check-box-wrap {}
 @media screen and (min-width: 768px) {
   .birth_wrap {
     display:inline-block;

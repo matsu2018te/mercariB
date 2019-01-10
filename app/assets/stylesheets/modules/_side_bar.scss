@@ -37,11 +37,6 @@
     }
     @include clearfix;
   }
-  .search-bar {
-    background-color:$White;
-    margin: 0 auto;
-    padding:16px 5%;
-  }
 }
 
 @media screen and (min-width: 1060px) {
@@ -52,8 +47,5 @@
   .sidebar_wrapper {
     width:280px;
     float:left;
-    .search-bar {
-      padding:16px;
-    }
   }
 }
