@@ -19,6 +19,8 @@ class ProductsController < ApplicationController
     else @product.brand_id.present? || @product.category_id.present?
       @related_items = Product.where("brand_id = ? or category_id = ?", @product.brand_id, @product.category_id)
     end
+    @comment = Comment.new
+    @comments = @product.comments.includes(:user)
   end
 
   def destroy
@@ -103,11 +105,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    gon.parent_val = params[:q][:category_id]
-    gon.child_val = params[:q][:category_id_eq]
-    gon.g_child_val = params[:q][:category_id_in]
-    gon.size_group_val = params[:q][:size_id]
-    gon.size_val = params[:q][:size_id_in]
+    gon.search_params = gon_search_params
 
     @search_data    = Product.ransack(search_params)
     @keyword        = search_params[:info_or_name_or_brand_name_or_category_name_cont_all]
@@ -125,7 +123,7 @@ class ProductsController < ApplicationController
   end
 
   def transaction
-    @product = Product.find(params[:format])
+    @product = Product.find(params[:id])
     if @product.buyer_id != nil
       redirect_to product_path(@product)
     end
@@ -252,6 +250,16 @@ class ProductsController < ApplicationController
       :buyer_id_null,
       :buyer_id_not_null
       ) unless params[:q].blank?
+  end
+
+  def gon_search_params
+    params.require(:q).permit(
+      :category_id,
+      :category_id_eq,
+      {:category_id_in => []},
+      :size_size_group_id,
+      {:size_id_in => []},
+      :s)
   end
 
   def recommend_params
