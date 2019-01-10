@@ -6,7 +6,7 @@
 
   .l-contener
     .signup-panel__inner
-      = form_for(@product, url: product_path, html: {multiple: true,method: :patch}) do |f|
+      = form_for(@product, url: product_path, html: {multiple: true, method: :patch}) do |f|
         .sell-contents
           %h2.l-single-head 商品の情報を入力
         - if flash[:alert]
@@ -65,11 +65,11 @@
                   カテゴリー
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.collection_select :category_id, @parents, :id, :name,prompt: "---"
+                  = f.collection_select :category_id, @parents, :id, :name, prompt: "---"
                 .select-wrap
-                  = f.collection_select :category_id, @children, :id, :name,prompt: "---"
+                  = f.collection_select :category_id, @children, :id, :name, prompt: "---"
                 .select-wrap
-                  = f.collection_select :category_id, @g_children, :id, :name,prompt: "---"
+                  = f.collection_select :category_id, @g_children, :id, :name, prompt: "---"
           .sell-form-box
             .form-group
               = f.label :size_id,class: "sell-form-select" do
@@ -86,7 +86,7 @@
                     %h4.sell-form-sub_title
                       ブランド
                       %span.form-arbitrary.sell 任意
-                  = b.text_field :name, placeholder: "例）シャネル",autocomplete:"off",class: "sell-form-text_field input_brand"
+                  = b.text_field :name, placeholder: "例）シャネル",autocomplete:"off", class: "sell-form-text_field input_brand"
                   = b.hidden_field :id
                   %ul.brand-search-result
           .sell-form-box
@@ -151,7 +151,7 @@
                 .sell-form-price_right
                   %h5.sell-contents__comment
                     ¥
-                    = f.number_field :price, placeholder: "例）300",min:"300", max:"9999999",class: "sell-form-text_number"
+                    = f.number_field :price, placeholder: "例）300", min:"300", max:"9999999", class: "sell-form-text_number"
             .sell-form-price-fee
               %p.sell-form-price-fee-text
                 販売手数料 (10%)
@@ -163,18 +163,18 @@
 
         .sell-contents
           %p.sell-contents__caution
-            =link_to "",class: "text-blue" do
+            =link_to "", class: "text-blue" do
               禁止されている出品
             、
-            =link_to "",class: "text-blue" do
+            =link_to "", class: "text-blue" do
               行為
             を必ずご確認ください。
             %br またブランド品でシリアルナンバー等がある場合はご記載ください。
-            =link_to "",class: "text-blue" do
+            =link_to "", class: "text-blue" do
               偽ブランドの販売
             は犯罪であり処罰される可能性があります。
             %br また、出品をもちまして
-            =link_to "",class: "text-blue" do
+            =link_to "", class: "text-blue" do
               加盟店規約
             に同意したことになります。
           .sell-contents__caution-space
