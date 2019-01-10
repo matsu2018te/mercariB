@@ -65,11 +65,11 @@
                   カテゴリー
                   %span.form-require.sell 必須
                 .select-wrap
-                  = f.collection_select :category_id,@parents, :id, :name,prompt: "---"
+                  = f.collection_select :category_id, @parents, :id, :name,prompt: "---"
                 .select-wrap
-                  = f.collection_select :category_id,@children, :id, :name,prompt: "---"
+                  = f.collection_select :category_id, @children, :id, :name,prompt: "---"
                 .select-wrap
-                  = f.collection_select :category_id,@g_children, :id, :name,prompt: "---"
+                  = f.collection_select :category_id, @g_children, :id, :name,prompt: "---"
           .sell-form-box
             .form-group
               = f.label :size_id,class: "sell-form-select" do
@@ -80,13 +80,14 @@
                   = f.collection_select :size_id, @sizes, :id, :size, prompt: "---"
           .sell-form-box
             .form-group
-              =f.fields_for :brand_attributes, @product.brand do |b|
+              =f.fields_for :brand do |b|
                 .form-group
                   = b.label :name do
                     %h4.sell-form-sub_title
                       ブランド
                       %span.form-arbitrary.sell 任意
                   = b.text_field :name, placeholder: "例）シャネル",autocomplete:"off",class: "sell-form-text_field input_brand"
+                  = b.hidden_field :id
                   %ul.brand-search-result
           .sell-form-box
             .form-group
@@ -178,7 +179,7 @@
             に同意したことになります。
           .sell-contents__caution-space
           = f.submit "変更する", class: "btn btn__red"
-          = link_to "/items/#{@product.id}" do
+          = link_to item_show_path do
             %p.btn.btn__gray 戻る
 
   = render "devise/shared/footer"
