@@ -1,5 +1,5 @@
 .sidebar_wrapper
-  = search_form_for(@search_data, url:search_path) do |f|
+  = search_form_for(@search_data, url:search_path, html:{ class: "product_search__detail" }) do |f|
     .select-wrap.sort-wrap
       = f.select :s, [["価格の安い順", "price asc"], ["価格の高い順", "price desc"], ["出品の古い順", "created_at asc"], ["出品の新しい順", "created_at desc"]], {prompt: "並び替え"}, { class: "form__select" }
     .search-bar__button 詳細検索

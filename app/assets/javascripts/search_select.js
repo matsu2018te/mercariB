@@ -14,6 +14,7 @@ $(function(){
   var searchbar_button = $('.search-bar__button')
   var size_check_boxes = $(".size_check_boxes")
   var size_group_select = $('.size_group_select')
+  var detail_search = $('.product_search__detail')
 
   if (gon.search_params) {
     var parent_val  = gon.search_params.category_id
@@ -129,12 +130,7 @@ $(function(){
   })
 
   sort_select.change(function(){
-    if ($(this).val() != ''){
-      current_url = window.location.href
-      reg_url     = current_url.replace(/&q%5Bs%5D=(price|created_at)\+(asc|desc)/g, "")
-      next_url = reg_url + "&q%5Bs%5D=" + $(this).val().replace(" ", "+")
-      window.location.href = next_url
-    }
+    detail_search.submit();
   })
 
   clear_btn.click(function(){
