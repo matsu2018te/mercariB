@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :images, reject_if: proc { |attributes| attributes['image'].blank? }
   accepts_nested_attributes_for :brand, reject_if: proc { |attributes| attributes['name'].blank? }
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :seller,:name,:info, :category_id, :status, :delivery_fee_owner, :shipping_method, :prefecture, :delivery_date, :price, presence: true
 
