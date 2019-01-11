@@ -41,6 +41,6 @@
         キャンセル
       .delete-dialog__select__submit
         = link_to "削除する", product_path(@product), method: :delete
-= render "product_comment"
+= render template: 'comments/index'
 
 = render "home/footer"
