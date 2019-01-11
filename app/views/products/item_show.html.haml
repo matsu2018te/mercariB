@@ -10,11 +10,17 @@
   .product-main-box
     .product-img-box
       .product-img-carousel.slider
-        = image_tag @image.image, alt:"商品画像"
+        - @images.each do |image|
+          .product-img-box-main
+            = image_tag image.image, alt:"商品画像"
+      .product-img-box-detail.thumb
+        - @images.each do |image|
+          .box-sub
+            = image_tag image.image, alt:"商品画像"
     = render "product-info-table", product: @product
   .price-box
     %h1
-      %span.price ¥ #{@product.price}
+      %span.price ¥ #{@product_price}
       %span.tax (税込)
       %span.tax-include 送料込み
   .product-detail
