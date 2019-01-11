@@ -35,6 +35,8 @@ class ProductsController < ApplicationController
 
   def item_show
     @image = @product.images[0]
+    @comment = Comment.new
+    @comments = @product.comments.includes(:user)
   end
 
 # 商品出品
