@@ -1,3 +1,4 @@
+# userとaddressとCredit以外のテーブルをリセット
 ActiveRecord::Base.connection.execute("SET FOREIGN_KEY_CHECKS=0;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE images;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE products;")
@@ -7,7 +8,11 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE sell_statuses;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE sizes;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE size_groups;")
 ActiveRecord::Base.connection.execute("SET FOREIGN_KEY_CHECKS=1;")
-# userとaddressとCredit以外のテーブルをリセット
+
+
+# カテゴリと画像について
+# カテゴリ（色分け）レディース：赤、メンズ：黄、ベビー・キッズ：青、コスメ：緑
+# ブランド（形状分け）シャネル：○、ヴィトン：★、シュプリーム：×、ナイキ：六角形
 
 require "csv"
 
@@ -101,10 +106,13 @@ image_2 = "#{Rails.root}/db/fixtures/kokeshi.jpg"
 image_sample = [image_red,image_orange,image_blue,image_green]
 
 random = Random.new
-category_sample = [random.rand(157..308),random.rand(309..454),random.rand(455..565),random.rand(842..941)]
+# カテゴリランダム配列内訳 [レディース、メンズ、キッズ、コスメ]
+category_sample = [random.rand(159..337),random.rand(338..467),random.rand(468..586),random.rand(866..952)]
 
-# イメージ呼び出すはimage_sample[大カテゴリ番号][ブランド番号]
-8.times {
+# トップページ表示商品サンプルデータ
+# イメージ呼び出しはimage_sample[大カテゴリ番号][ブランド番号]
+# 商品「ウルヴァリン」は販売済みに設定
+12.times {
 
   i = random.rand(1..3)
   brand_i_num = random.rand(1..4)
@@ -207,6 +215,14 @@ category_sample = [random.rand(157..308),random.rand(309..454),random.rand(455..
     {product_id: "#{product.id}",image: open(image_2)}])
 }
 
+# 価格査定用商品サンプルデータ
+# 共通仕様
+# ブランド：アディダス(brand_id:7)、カテゴリ：その他/その他/その他(category_id:1324)
+# 比較仕様
+# ・商品の状態："全体的に状態が悪い"＝＞商品価格：300~1500
+# ・商品の状態："新品未使用"＝＞商品価格：3000~10000
+
+
 p_num = 0
 brand = Brand.find(7)
 category = Category.find(1324)
@@ -219,7 +235,7 @@ category = Category.find(1324)
   sell_status = SellStatus.find(1)
   product = Product.create(
     seller_id: "#{user.id}",
-    name:"サンプル商品#{p_num}",
+    name:"価格比較サンプル#{p_num}",
     info:"サンプル商品#{p_num}の説明",
     price:random.rand(300..1500),
     category_id: "#{category.id}",
@@ -240,7 +256,7 @@ category = Category.find(1324)
   sell_status = SellStatus.find(3)
   product = Product.create(
     seller_id: "#{user.id}",buyer_id:"#{users[1].id}",
-    name:"サンプル商品#{p_num}",
+    name:"価格比較サンプル#{p_num}",
     info:"サンプル商品#{p_num}の説明",
     price:random.rand(3000..10000),
     category_id: "#{category.id}",
