@@ -1,6 +1,9 @@
 # userとaddressとCredit以外のテーブルをリセット
 ActiveRecord::Base.connection.execute("SET FOREIGN_KEY_CHECKS=0;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE images;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE users;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE addresses;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE credits;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE products;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE brands;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE categories;")
