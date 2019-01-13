@@ -7,6 +7,7 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE categories;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE sell_statuses;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE sizes;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE size_groups;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE comments;")
 ActiveRecord::Base.connection.execute("SET FOREIGN_KEY_CHECKS=1;")
 
 
@@ -53,7 +54,7 @@ CSV.foreach('db/size.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
 end
 
 # ユーザーの作成
-User.create(nickname: "test1", telephone: "08023455445", email: "test@gmail.com", password: "test1test1", birth_year: 1991, birth_month: 1, birth_day: 1)
+User.create(nickname: "test", telephone: "08023455445", email: "test@gmail.com", password: "testtest", birth_year: 1991, birth_month: 1, birth_day: 1)
 
 User.create(nickname: "test2", telephone: "08034567790", email: "test2@gmail.com", password: "test2test2", birth_year: 1992, birth_month: 2, birth_day: 2)
 
@@ -198,7 +199,7 @@ category_sample = [random.rand(159..337),random.rand(338..467),random.rand(468..
   brand = Brand.find(brand_i_num)
   category = Category.find(category_sample[category_i_num])
   sell_status = SellStatus.find(3)
-  product = Product.create(seller_id:"#{user.id}",buyer_id:"#{users[4].id}",
+  product = Product.create(seller_id:"#{user.id}",buyer_id:"#{users[3].id}",
     name:"ウルヴァリン",
     info:"ミュータントであるウルヴァリンは動物的な鋭い感覚と反射能力、そして実質的にどんな怪我からも回復することができる治癒能力（ヒーリング・ファクター）を持っている。この治癒能力はスーパーソルジャー製造計画「ウェポンX」において、骨格（出し入れが可能なカミソリのように鋭い爪を含む）に世界最硬の金属であるアダマンチウム合金を組み入れることを可能にした。近接戦闘の達人でもある。コードネームの「ウルヴァリン」とは、クズリというイタチ科の、小さいが獰猛な動物を意味する。また、「ウェポンX」（ウェポンエックス）の「X」はローマ数字の「10」のダブルミーニングであり「兵器第10号」を意味するが、実在するアメリカ陸軍兵器・M10 (駆逐戦車)の型番も「M10」（Model10:10型）である。",
     price:random.rand(300..90000),
