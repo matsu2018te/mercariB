@@ -54,7 +54,7 @@ CSV.foreach('db/size.csv',  encoding: 'Shift_JIS:UTF-8') do |row|
 end
 
 # ユーザーの作成
-User.create(nickname: "test", telephone: "08023455445", email: "test@gmail.com", password: "testtest", birth_year: 1991, birth_month: 1, birth_day: 1)
+User.create(nickname: "test", telephone: "09012344321", email: "test@gmail.com", password: "testtest", birth_year: 1991, birth_month: 1, birth_day: 1)
 
 User.create(nickname: "test2", telephone: "08034567790", email: "test2@gmail.com", password: "test2test2", birth_year: 1992, birth_month: 2, birth_day: 2)
 
