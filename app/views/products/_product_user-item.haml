@@ -22,7 +22,10 @@
 
   %section.items-box-container.clearfix.in-category
     %h2.item-box-head
-      - if brand
+      - if brand.blank?
+        =link_to "",class: 'user-link' do
+          %p #{category.name}(#{category.parent.parent.name}) その他の商品
+      - else
         =link_to "",class: 'user-link' do
           %p #{brand.name}の#{category.name} その他の商品
     - if related_items.empty?
