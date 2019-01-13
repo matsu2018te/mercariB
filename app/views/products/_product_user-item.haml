@@ -6,13 +6,15 @@
     .items-box-content.clearfix
       - sell_other_products[0...6].each do |sell_other_product|
         %section.items-box
-          =link_to "",class: 'item-box' do
+          =link_to (product_path(sell_other_product)),class: 'item-box' do
             .items-box-photo
               = image_tag sell_other_product.images.first.image
             .items-box-body
               %h3.item-name.font-2 #{sell_other_product.name}
               .item-box-num.clearfix
-                .item-box-price.font-5 ¥ #{sell_other_product.price}
+                .item-box-price.font-5
+                  ¥
+                  = number_with_delimiter(sell_other_product.price)
                 .item-box-likes
                   %p.like-count 13
                   %i.like.font-2
@@ -29,13 +31,15 @@
       .items-box-content.clearfix
         - related_items[0...6].each do |related_item|
           %section.items-box
-            =link_to "",class: 'item-box' do
+            =link_to (product_path(related_item)),class: 'item-box' do
               .items-box-photo
                 = image_tag related_item.images.first.image
               .items-box-body
                 %h3.item-name.font-2 #{related_item.name}
                 .item-box-num.clearfix
-                  .item-box-price.font-5 ¥ #{related_item.price}
+                  .item-box-price.font-5
+                    ¥
+                    = number_with_delimiter(related_item.price)
                   .item-box-likes
                     %p.like-count 13
                     %i.like.font-2
