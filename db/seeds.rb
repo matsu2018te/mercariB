@@ -101,9 +101,12 @@ image_2 = "#{Rails.root}/db/fixtures/kokeshi.jpg"
 image_sample = [image_red,image_orange,image_blue,image_green]
 
 random = Random.new
-category_sample = [random.rand(157..308),random.rand(309..454),random.rand(455..565),random.rand(842..941)]
+# カテゴリランダム配列内訳 [レディース、メンズ、キッズ、コスメ]
+category_sample = [random.rand(159..337),random.rand(338..467),random.rand(468..586),random.rand(866..952)]
 
+# トップページ表示商品サンプルデータ
 # イメージ呼び出すはimage_sample[大カテゴリ番号][ブランド番号]
+# ４つ目商品「ウルヴァリン」は販売済みに設定
 8.times {
 
   i = random.rand(1..3)
@@ -207,6 +210,7 @@ category_sample = [random.rand(157..308),random.rand(309..454),random.rand(455..
     {product_id: "#{product.id}",image: open(image_2)}])
 }
 
+# 価格査定用商品サンプルデータ
 p_num = 0
 brand = Brand.find(7)
 category = Category.find(1324)
