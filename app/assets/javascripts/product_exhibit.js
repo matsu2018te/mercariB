@@ -1,14 +1,14 @@
 $(function() {
 // 金額算出
-  function  ReplaceNum(num) {
-    num = num.toLocaleString();
-    return num;
+  function ReplaceNum(num) {
+    var str = new String(num).replace(/,/g, "");
+    while(str != (str = str.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
+    return str;
   }
 
   $(".sell-form-text_number").on("keyup", function(e) {
     var input = $(this).val();
     var price = Number(input.replace(/[^0-9]/g, ''));
-    $(".sell-form-price-fee-num").val('');
 
     if( price >= 300 && price <= 9999999 ){
       var fee = Math.floor(price / 10);
