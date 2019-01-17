@@ -46,7 +46,7 @@ function ImageCount() {
 
 // ドラッグオーバー定義
   var target = document.getElementById('drop');
-  if (target != null) {
+  if (target) {
     target.addEventListener('dragover', function (e) {
       e.preventDefault();
       e.stopPropagation();
