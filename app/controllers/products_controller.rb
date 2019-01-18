@@ -77,7 +77,7 @@ class ProductsController < ApplicationController
   def edit
     flash.now[:alert] = "画像は再度設定をしてください"
     gon.images = @product.images
-    gon.category = @product.category
+    gon.category = @product.category.id
     if @product.category.parent.present?
       gon.category_parent = @product.category.parent.id
       if @product.category.parent.parent.present?
@@ -86,8 +86,10 @@ class ProductsController < ApplicationController
     end
     # gon.images = @product.images
 
-    @product.images = []
     @parents        = Category.where(belongs:"parent")
+    @children       = Category.where(ancestry: "#{@product.category.parent.parent.id}")
+    @child          = @product.category.parent
+    @g_children     = @child.children
     gon.children    = Category.where(belongs:"child")
     gon.g_children  = Category.where(belongs:"g_child")
     @sizes = Size.all

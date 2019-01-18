@@ -71,6 +71,34 @@ $(function() {
   var hide_wrap3 = $(".third-hide-wrap")
   var parent_val = null
 
+// 編集時の処理
+  if (gon.category_g_parent) {
+    var parent_val  = gon.category_g_parent
+    var child_val   = gon.category_parent
+    var g_child_val = gon.category
+  } else {
+    var parent_val  = gon.category_parent
+    var child_val   = gon.category
+  }
+
+  $(document).ready(function(){
+    if (parent_val){
+      select_parent.val(parent_val)
+      if (child_val){
+        var parent_results = filter_children(gon.children, parent_val)
+        append_child_option(select_child, select_g_child, parent_results);
+        hide_wrap.show();
+        select_child.val(child_val)
+        if (g_child_val){
+          hide_wrap2.show();
+          hide_wrap3.show();
+          append_g_child_option(select_g_child,parent_val, child_val);
+          select_g_child.val(g_child_val)
+        }
+      }
+    }
+  })
+
   function filter_children(children, value){
     results = children.filter(function(e){
       if (e.ancestry == value){

@@ -67,9 +67,9 @@
                 .select-wrap
                   = f.collection_select :category_id, @parents, :id, :name, {prompt: "---"}, {class: "form-select_parent"}
                 .select-wrap.hide-wrap
-                  = f.select :category_id, {}, {class: "form-select_child"}
+                  = f.collection_select :category_id, @children, :id, :name, {prompt: "---"}, {class: "form-select_child"}
                 .select-wrap.second-hide-wrap
-                  = f.select :category_id, {}, {class: "form-select_g_child"}
+                  = f.collection_select :category_id, @g_children, :id, :name, {prompt: "---"}, {class: "form-select_g_child"}
           .sell-form-box.third-hide-wrap
             .form-group
               = f.label :size_id,class: "sell-form-select" do
