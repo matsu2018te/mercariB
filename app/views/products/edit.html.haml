@@ -25,21 +25,22 @@
             %span.form-require.sell 必須
           %p.sell-contents__comment 最大4枚までアップロードできます
           .sell-dropbox_container
-            = f.fields_for :images do |i|
-              %ul.sell-dropbox-items
-              .sell-dropbox-uploader
-                = i.label :image1,class: 'sell-dropbox-uploader_container' do
-                  .visible-pc#drop
+            %ul.sell-dropbox-items
+            .sell-dropbox-uploader
+              .sell-dropbox-uploader_container#drop
+                .visible-pc
+                  %label{for: 'product_images_attributes_0_image1', class: 'sell-dropbox-uploader_container'}
                     ドラッグアンド
                     %br ドロップ
                     または
                     %br クリックして
                     ファイルをアップロード
                     %i.fas.fa-camera
-                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image1",name: "[image][]",multiple: true
-                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image2",name: "[image][]",multiple: true
-                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image3",name: "[image][]",multiple: true
-                  = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image4",name: "[image][]",multiple: true
+              = f.fields_for :image_attributes, @product.images do |i|
+                = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image1",name: "[image][]",multiple: true
+                = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image2",name: "[image][]",multiple: true
+                = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image3",name: "[image][]",multiple: true
+                = i.file_field :image,class: "product_images hidden",id:"product_images_attributes_0_image4",name: "[image][]",multiple: true
 
         / 商品名・説明 ▼
         .sell-contents

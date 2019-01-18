@@ -84,7 +84,6 @@ class ProductsController < ApplicationController
         gon.category_g_parent = @product.category.parent.parent.id
       end
     end
-    # gon.images = @product.images
 
     @parents        = Category.where(belongs:"parent")
     @children       = Category.where(ancestry: "#{@product.category.parent.parent.id}")
@@ -95,7 +94,6 @@ class ProductsController < ApplicationController
     @sizes = Size.all
     @prefectures = JpPrefecture::Prefecture.all
     @product.brand if @product.brand == nil
-    @product.images.build
   end
 
   def update
@@ -105,18 +103,17 @@ class ProductsController < ApplicationController
         @product.brand_id = @brand.id
       end
       if @product.update(product_params_update)
+        @product.images = []
         params[:image].each do |i|
           @product.images.create(product_id: @product.id, image: i)
         end
         redirect_to "/items/#{@product.id}"
       else
-        @product.images.build
-        render :edit
+        redirect_back(fallback_location: edit_product_path)
       end
     else
-      @product.images.build
       flash.now[:alert] = "画像を設定してください"
-      render :edit
+      redirect_back(fallback_location: edit_product_path)
     end
   end
 
