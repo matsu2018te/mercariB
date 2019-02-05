@@ -27,45 +27,29 @@
   %main.single-main
     .signup-panel
       %h2.signup-panel__head 会員情報入力
-      = form_for(@user, url: signup_completed_path ) do |f|
-        .form
-          = f.hidden_field :nickname, value: @user.nickname
-          = f.hidden_field :email, value: @user.email
-          = f.hidden_field :password, value: @user.password
-          = f.hidden_field :password_confirmation, value: @user.password_confirmation
-          = f.hidden_field :telephone, value: @user.telephone
-          = f.fields_for :address do |i|
-            = i.hidden_field :first_name, value: @user.address.first_name
-            = i.hidden_field :last_name, value: @user.address.last_name
-            = i.hidden_field :first_name_phonetic, value: @user.address.first_name_phonetic
-            = i.hidden_field :last_name_phonetic, value: @user.address.last_name_phonetic
-            = i.hidden_field :postal_code, value: @user.address.postal_code
-            = i.hidden_field :prefecture, value: @user.address.prefecture
-            = i.hidden_field :municipality, value: @user.address.municipality
-            = i.hidden_field :address_number, value: @user.address.address_number
-            = i.hidden_field :building_name, value: @user.address.building_name
-          = f.fields_for :credits do |i2|
-            .form
-              = i2.label :card_number, "カード番号"
-              %span.form-require 必須
-              = i2.text_field :card_number, autofocus: true, required:"", class: "form__input"
-            .form
-              = i2.label :expiration_date, "有効期限"
-              %span.form-require 必須
-              %br
-              .num_wrap
-                .select-wrap
-                  = i2.select :expiration_month, options_for_select(1..12), {}, { class: "form__select" }
-                月
-              %br
-              .num_wrap
-                .select-wrap
-                  = i2.select :expiration_year, options_for_select(@years), {}, { class: "form__select" }
-                年
-            .form
-              = i2.label :security_code, "セキュリティコード"
-              %span.form-require 必須
-              = i2.text_field :security_code, required:"", class: "form__input"
-          = f.submit "次へ進む", class: "btn btn__red"
+      = form_for(:session, url: signup_completed_path ) do |f|
+        = f.fields_for :credits do |i2|
+          .form
+            = i2.label :card_number, "カード番号"
+            %span.form-require 必須
+            = i2.text_field :card_number, autofocus: true, required:"", class: "form__input"
+          .form
+            = i2.label :expiration_date, "有効期限"
+            %span.form-require 必須
+            %br
+            .num_wrap
+              .select-wrap
+                = i2.select :expiration_month, options_for_select(1..12), {}, { class: "form__select" }
+              月
+            %br
+            .num_wrap
+              .select-wrap
+                = i2.select :expiration_year, options_for_select(@years), {}, { class: "form__select" }
+              年
+          .form
+            = i2.label :security_code, "セキュリティコード"
+            %span.form-require 必須
+            = i2.text_field :security_code, required:"", class: "form__input"
+        = f.submit "次へ進む", class: "btn btn__red"
 
   = render "devise/shared/footer"
