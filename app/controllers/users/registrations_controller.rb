@@ -3,7 +3,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   # prepend_before_action :require_no_authentication, only: [:create]
   prepend_before_action :require_no_authentication, only: [:sms_confirmation, :address, :credit, :create]
-  # before_action :user_new, only:[:sms_confirmation, :address, :credit, :create]
   skip_before_action :authenticate_user!
 
   def registration
@@ -28,15 +27,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def credit
-    session[:first_name] = params[:session][:address][:first_name]
-    session[:last_name] = params[:session][:address][:last_name]
-    session[:first_name_phonetic] = params[:session][:address][:first_name_phonetic]
-    session[:last_name_phonetic] = params[:session][:address][:last_name_phonetic]
-    session[:postal_code] = params[:session][:address][:postal_code]
-    session[:prefecture] = params[:session][:address][:prefecture]
-    session[:municipality] = params[:session][:address][:municipality]
-    session[:address_number] = params[:session][:address][:address_number]
-    session[:building_name] = params[:session][:address][:building_name]
+    session[:first_name] = params[:session][:first_name]
+    session[:last_name] = params[:session][:last_name]
+    session[:first_name_phonetic] = params[:session][:first_name_phonetic]
+    session[:last_name_phonetic] = params[:session][:last_name_phonetic]
+    session[:postal_code] = params[:session][:postal_code]
+    session[:prefecture] = params[:session][:prefecture]
+    session[:municipality] = params[:session][:municipality]
+    session[:address_number] = params[:session][:address_number]
+    session[:building_name] = params[:session][:building_name]
 
     time = Time.new
     min_year = time.year.to_s[2,2].to_i
@@ -50,10 +49,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    session[:card_number] = params[:session][:credits][:card_number]
-    session[:expiration_month] = params[:session][:credits][:expiration_month]
-    session[:expiration_year] = params[:session][:credits][:expiration_year]
-    session[:security_code] = params[:session][:credits][:security_code]
+    session[:card_number] = params[:session][:card_number]
+    session[:expiration_month] = params[:session][:expiration_month]
+    session[:expiration_year] = params[:session][:expiration_year]
+    session[:security_code] = params[:session][:security_code]
 
     @user = User.new(
       nickname: session[:nickname],
@@ -109,11 +108,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_new
     @user = User.new(user_params)
-  end
-
-  def user_params
-    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :telephone, address_attributes: [ :first_name, :last_name, :first_name_phonetic, :last_name_phonetic, :id, :postal_code, :prefecture, :municipality, :address_number, :building_name],
-      credits_attributes: [:id, :card_number, :expiration_month, :expiration_year, :security_code])
   end
 
   def after_sign_up_path_for(resource)

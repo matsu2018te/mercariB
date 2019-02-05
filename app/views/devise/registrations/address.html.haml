@@ -27,36 +27,35 @@
     .signup-panel
       %h2.signup-panel__head 住所入力
       = form_for(:session, url: signup_credit_card_path, html: {method: :post}) do |f|
-        = f.fields_for :address do |i|
-          .form
-            = i.label [:first_name, :last_name], "お名前"
-            %span.form-require 必須
-            = i.text_field :first_name, placeholder: "例)山田", required:"", class: "form__input"
-            = i.text_field :last_name, placeholder: "例)彩", required:"", class: "form__input"
-          .form
-            = i.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
-            %span.form-require 必須
-            = i.text_field :first_name_phonetic, placeholder: "例)ヤマダ", required:"", class: "form__input"
-            = i.text_field :last_name_phonetic, placeholder: "例)アヤ", required:"", class: "form__input"
-          .form
-            = i.label :postal_code, "郵便番号"
-            %span.form-require 必須
-            = i.text_field :postal_code, placeholder: "例)123-4567", required:"", class: "form__input", id: "address_zip"
-          .form
-            = i.label :prefecture, "都道府県"
-            %span.form-require 必須
-            .select-wrap
-              = i.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, {}, {class: "form__select", id: "address_prefecture_name"}
-          .form
-            = i.label :municipality, "市区町村"
-            %span.form-require 必須
-            = i.text_field :municipality, placeholder: "例)横浜市緑区", required:"", class: "form__input", id:"address_city"
-          .form
-            = i.label :address_number, "番地"
-            %span.form-require 必須
-            = i.text_field :address_number, placeholder: "例)青山1-1-1", required:"", class: "form__input", id:"address_street"
-          .form
-            = i.label :building_name, "建物名"
-            = i.text_field :building_name, placeholder: "例)柳ビル103", class: "form__input"
-        = f.submit "次へ進む", class: "btn btn__red"
+        .form-group
+          = f.label [:first_name, :last_name], "お名前"
+          %span.form-require 必須
+          = f.text_field :first_name, placeholder: "例)山田", required:"", class: "form__input"
+          = f.text_field :last_name, placeholder: "例)彩", required:"", class: "form__input"
+        .form-group
+          = f.label [:first_name_phonetic, :last_name_phonetic], "お名前カナ"
+          %span.form-require 必須
+          = f.text_field :first_name_phonetic, placeholder: "例)ヤマダ", required:"", class: "form__input"
+          = f.text_field :last_name_phonetic, placeholder: "例)アヤ", required:"", class: "form__input"
+        .form-group
+          = f.label :postal_code, "郵便番号"
+          %span.form-require 必須
+          = f.text_field :postal_code, placeholder: "例)123-4567", required:"", class: "form__input", id: "address_zip"
+        .form-group
+          = f.label :prefecture, "都道府県"
+          %span.form-require 必須
+          .select-wrap
+            = f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, {}, {class: "form__select", id: "address_prefecture_name"}
+        .form-group
+          = f.label :municipality, "市区町村"
+          %span.form-require 必須
+          = f.text_field :municipality, placeholder: "例)横浜市緑区", required:"", class: "form__input", id:"address_city"
+        .form-group
+          = f.label :address_number, "番地"
+          %span.form-require 必須
+          = f.text_field :address_number, placeholder: "例)青山1-1-1", required:"", class: "form__input", id:"address_street"
+        .form-group
+          = f.label :building_name, "建物名"
+          = f.text_field :building_name, placeholder: "例)柳ビル103", class: "form__input"
+          = f.submit "次へ進む", class: "btn btn__red"
   = render "devise/shared/footer"
