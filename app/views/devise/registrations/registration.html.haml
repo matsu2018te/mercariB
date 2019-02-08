@@ -27,9 +27,9 @@
   %main.single-main
     .signup-panel
       %h2.signup-panel__head 会員情報入力
-      = devise_error_messages!
+      / = devise_error_messages!
       .signup-panel__inner
-        = form_for(@user, url: signup_sms_confirmation_path , html: { id:"form", method: :post}) do |f|
+        = form_for(:session, url: signup_sms_confirmation_path , html: { id:"form", method: :post}) do |f|
           .form-group
             = f.label :nickname, "ニックネーム"
             %span.form-require 必須
